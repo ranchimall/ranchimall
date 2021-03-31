@@ -7,152 +7,622 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body data-theme="light">
-
-    <!-- Compoenet templates -->
+    <audio id="notification_sound">
+        <source src="https://rmservices.duckdns.org/files/notification-sound.mp3" type="audio/mpeg">
+        <source src="https://rmservices.duckdns.org/files/notification-sound.ogg" type="audio/ogg">
+    </audio>
+    <sm-popup id="confirmation_popup">
+        <h4 id="confirm_title"></h4>
+        <p id="confirm_message"></p>
+        <div class="flex align-center">
+            <sm-button variant="no-outline" class="cancel-btn">Cancel</sm-button>
+            <sm-button variant="no-outline" class="submit-btn">OK</button>
+        </div>
+    </sm-popup>
+    <sm-popup id="prompt_popup">
+        <h4 id="prompt_title"></h4>
+        <p id="prompt_message"></p>
+        <sm-input id="prompt_input"></sm-input>
+        <div class="flex align-center">
+            <sm-button variant="no-outline" class="cancel-btn">Cancel</sm-button>
+            <sm-button variant="no-outline" class="submit-btn" type="submit">OK</button>
+        </div>
+    </sm-popup>
+    <sm-notifications id="notification_drawer"></sm-notifications>
+    <!-- Component templates -->
 
     <template id="bit_bond_row">
-        <div class="bit-bond-series__row grid gap-1-5">
+        <div class="bit-bond-series__row grid flow-column gap-1-5 common-padding">
             <div class="flex direction-column">
-                <h5 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">Series</h5>
-                <h3 class="h3 original-value"></h3>
+                <h5 class="label font-slab color-0-8 weight-500">Series</h5>
+                <h3 class="value original-value"></h3>
             </div>
             <div class="flex direction-column">
-                <h5 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">Current value</h5>
-                <h3 class="h3 current-value"></h3>
+                <h5 class="label font-slab color-0-8 weight-500">Current value</h5>
+                <h3 class="value current-value"></h3>
             </div>
             <div class="flex direction-column">
-                <h5 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">Time Elapsed</h5>
-                <h3 class="h3 time-elapsed"></h3>
+                <h5 class="label font-slab color-0-8 weight-500">Time Elapsed</h5>
+                <h3 class="value time-elapsed"></h3>
             </div>
         </div>
     </template>
 
+    <template id="bob_fund_row">
+        <div class="bob-fund__row grid gap-1-5 common-padding">
+            <div class="flex direction-column">
+                <h5 class="label font-slab color-0-8 weight-500">Investor</h5>
+                <h3 class="value investor-name"></h3>
+            </div>
+            <div class="grid flow-column">
+                <div class="flex direction-column">
+                    <h5 class="label font-slab color-0-8 weight-500">Invested</h5>
+                    <h3 class="value original-value"></h3>
+                </div>
+                <div class="flex direction-column">
+                    <h4 class="label font-slab color-0-8 weight-500">Current value</h4>
+                    <h3 class="value current-value"></h3>
+                </div>
+                <div class="flex direction-column">
+                    <h4 class="label font-slab color-0-8 weight-500">Time Elapsed</h4>
+                    <h3 class="value time-elapsed"></h3>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="ico_investor_row">
+        <div class="investor-card grid gap-1-5 common-padding">
+            <img class="investor__image" src="dp.jpg" alt="">
+            <div class="flex direction-column">
+                <h4 class="label font-slab color-0-8 weight-500">Investor</h4>
+                <h3 class="investor-name value">John Doe</h3>
+            </div>
+            <div class="flex direction-column investor__contribution-container">
+                <h4 class="label font-slab color-0-8 weight-500">Contribution</h4>
+                <p class="investor-contribution font-mono weight-700"></p>
+            </div>
+        </div>
+    </template>
+    
+
     <!--  -->
 
-
-    <div id="background_tile"></div>
-    <header id="main_header" class="grid align-center margin-bottom-1">
+    <header id="main_header" class="grid align-center margin-bottom-1r">
         <button class="button">Elevator</button>
         <div id="main_logo" class="flex align-center">
             <svg id="main_header__logo" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.46,21.32C20,19.78,18.6,18.59,15.3,17a12.67,12.67,0,0,1-2.64-1.56,4.27,4.27,0,0,1-.79-1,2.6,2.6,0,0,1,0-1.41c.24-.68.49-1,2.43-2.85a7.18,7.18,0,0,0,2.09-2.92,4.25,4.25,0,0,0,0-1.77,6.52,6.52,0,0,0-2.85-3.11c-.56-.36-.81-.4-.81-.15a2.33,2.33,0,0,1-.18.45L12.4,3l-.53-.36c-.28-.21-.64-.41-.77-.49s-.46-.11-.46,0a6.21,6.21,0,0,1-.37.83s-.08,0-.17-.08c-1.15-.83-1.64-1-1.64-.73A7.33,7.33,0,0,1,7.7,3.65C6.48,5.68,5.24,6.7,4,6.7c-.56,0-.54,0-.37.64s.2.58.68.43a3.37,3.37,0,0,0,1.09-.54.86.86,0,0,1,.3-.17,1.34,1.34,0,0,1,.13.39.79.79,0,0,0,.17.4A3.5,3.5,0,0,0,7.37,7.3L7.8,7l.09.34c.12.45.19.51.62.39a4.25,4.25,0,0,0,2.17-1.54l.38-.45,0,.39A5.92,5.92,0,0,1,8.89,9.54L7.67,10.71c-2,1.93-1.89,3.51.37,5a27.41,27.41,0,0,0,2.89,1.51c.17.07.62.32,1,.54C14,19,15,20.23,15,21.48a2,2,0,0,0,0,.49h0c0,.05,0,.05.56-.1a1.89,1.89,0,0,0,.53-.21,2.41,2.41,0,0,0-.34-1.15,7.05,7.05,0,0,0-1.68-1.77,21.91,21.91,0,0,0-3.2-1.83A9.53,9.53,0,0,1,8.16,15.2a2.18,2.18,0,0,1-.74-1.55C7.42,12.79,7.86,12,9,11c1.77-1.64,2.45-2.45,2.92-3.55a2.28,2.28,0,0,0,.26-1.26A2,2,0,0,0,12,5.06l-.2-.45L12,4.3l.28-.49.09-.18L12.6,4a3.69,3.69,0,0,1,.61,1.76A3.47,3.47,0,0,1,12.94,7l-.09.25s-.21.37-.41.69A17.78,17.78,0,0,1,9.91,10.6c-1.07,1-1.43,1.62-1.47,2.47a2.05,2.05,0,0,0,.7,1.73,10.47,10.47,0,0,0,3.28,2.08c2.28,1.13,3.26,1.81,4,2.73a2.94,2.94,0,0,1,.74,1.75,1.26,1.26,0,0,0,.09.57.48.48,0,0,0,.26,0l.51-.13.29-.08,0-.28c-.13-1-1-2-2.47-3a25.52,25.52,0,0,0-3.26-1.77,8.59,8.59,0,0,1-2.23-1.43,2.09,2.09,0,0,1-.5-2.62c.26-.53.5-.83,2.35-2.6,1.51-1.45,2.15-2.58,2.15-3.79A3.67,3.67,0,0,0,13,3.48a3,3,0,0,1-.4-.42A1.85,1.85,0,0,1,13,2.33a6.74,6.74,0,0,1,1.83,1.73,2.62,2.62,0,0,1,.47,1.68,3,3,0,0,1-.55,1.84c-.45.78-.79,1.14-2.67,2.93a5.56,5.56,0,0,0-1.3,1.64,1.77,1.77,0,0,0-.21,1,1.76,1.76,0,0,0,.19.92,6.28,6.28,0,0,0,2.9,2.34,21.6,21.6,0,0,1,3.66,2c1.35,1,2,2,2,3a1.06,1.06,0,0,0,.05.47,2.83,2.83,0,0,0,1-.24C20.56,21.68,20.56,21.66,20.46,21.32ZM7.29,6.4h0a2.23,2.23,0,0,1-.9.28L6,6.72l.43-.53a15.22,15.22,0,0,0,1.89-3,3.52,3.52,0,0,1,.38-.67c.07-.08.49.2,1,.64l.39.35L9.66,4A6.7,6.7,0,0,1,7.29,6.4Zm3.58-1.11A5.8,5.8,0,0,1,9.25,6.51h0a3.3,3.3,0,0,1-.74.17l-.35,0,.39-.49a15.64,15.64,0,0,0,1.32-2,4.63,4.63,0,0,1,.28-.49c.06-.08.33.26.57.77l.28.57Zm1-1.4a1.63,1.63,0,0,1-.28.4A6.63,6.63,0,0,1,11,3.72l-.53-.56.12-.29c.2-.49.24-.51.64-.19a5.57,5.57,0,0,1,.85.78A2.78,2.78,0,0,1,11.87,3.89Z"/></svg>
             <h4 class="h4 header__company-name">RanchiMall</h4>
         </div>
     </header>
-    <article id="homepage" class="page">
+    <article id="home_page" class="page hide-completely">
         <section id="floor_1" class="floor">
-            <header class="floor__header margin-bottom-2">
-                <h4 class="heading h4">Floor 1</h4>
+            <header class="floor__header margin-bottom-2r">
+                <h4 class="font-slab h4">Floor 1</h4>
             </header>
             <main id="floor_1__outlets" class="grid">
                 <div class="flex direction-column card outlet-preview">
-                    <div class="flex direction-column margin-bottom-1-5 text-center">
-                        <h3 class="heading h3 outlet__title margin-bottom-1">bitcoin bonds</h3>
-                        <p class="outlet__description margin-bottom-1-5">
+                    <div class="flex direction-column common-padding margin-bottom-1-5r text-center">
+                        <h3 class="font-slab h3 outlet__title margin-bottom-1r">bitcoin bonds</h3>
+                        <p class="outlet__description margin-bottom-1-5r">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                         </p>
-                        <button class="button outlet-preview__button justify-right">
+                        <button class="button outlet-preview__button justify-right" data-target="bitbonds">
                             <span class="button__label">VISIT</span>
                             <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                         </button>
                     </div>
-                    <div id="bit_bond_series__container" class="flex"></div>
+                    <sm-carousel id="bit_bond_series__container" indicator></sm-carousel>
                 </div>
                 <div class="flex direction-column card outlet-preview">
-                    <div class="flex direction-column margin-bottom-1-5 text-center">
-                        <h3 class="heading h3 outlet__title margin-bottom-1">Bob's Fund</h3>
-                        <p class="outlet__description margin-bottom-1-5">
+                    <div class="flex direction-column margin-bottom-1-5r text-center common-padding">
+                        <h3 class="font-slab h3 outlet__title margin-bottom-1r">Bob's Fund</h3>
+                        <p class="outlet__description margin-bottom-1-5r">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                         </p>
-                        <button class="button outlet-preview__button justify-right">
+                        <button class="button outlet-preview__button justify-right" data-target="bob'sfund">
                             <span class="button__label">VISIT</span>
                             <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                         </button>
                     </div>
-                    <div id="bit_bond_series__container" class="grid gap-1">
-                        <div class="flex direction-column margin-bottom-1">
-                            <h5 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                Investor
-                            </h5>
-                            <h3 class="h3">
-                                John Doe
-                            </h3>
-                        </div>
-                        <div class="grid flow-column">
-                            <div class="flex direction-column">
-                                <h5 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                    Series
-                                </h5>
-                                <h3 class="h3">
-                                    $975
-                                </h3>
-                            </div>
-                            <div class="flex direction-column">
-                                <h4 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                    Current value
-                                </h4>
-                                <h3 class="h3">
-                                    $XXXXXX
-                                </h3>
-                            </div>
-                            <div class="flex direction-column">
-                                <h4 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                    Time Elapsed
-                                </h4>
-                                <h3 class="h3">
-                                    XXXXXX
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
+                    <sm-carousel id="bob_fund_investors__container" indicator></sm-carousel>
                 </div>
                 <div class="flex direction-column card outlet-preview">
-                    <div class="flex direction-column margin-bottom-1-5 text-center">
-                        <h3 class="heading h3 outlet__title margin-bottom-1">ICO</h3>
-                        <p class="outlet__description margin-bottom-1-5">
+                    <div class="flex direction-column margin-bottom-1-5r text-center common-padding">
+                        <h3 class="font-slab h3 outlet__title margin-bottom-1r">ICO</h3>
+                        <p class="outlet__description margin-bottom-1-5r">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                         </p>
-                        <button class="button outlet-preview__button justify-right">
+                        <button class="button outlet-preview__button justify-right" data-target="ico">
                             <span class="button__label">VISIT</span>
                             <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                         </button>
                     </div>
-                    <div id="ico_investor__container" class="grid">
-                        <div class="investor-card grid gap-1-5">
-                            <img class="investor__image" src="dp.jpg" alt="">
-                            <div class="flex direction-column">
-                                <h4 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                    Investor
-                                </h4>
-                                <h3 class="h3">
-                                    John Doe
-                                </h3>
-                            </div>
-                            <div class="flex direction-column">
-                                <h4 class="h5 heading color-0-8 weight-500 margin-bottom-0-5">
-                                    Contribution
-                                </h4>
-                                <p class="weight-700">
-                                    Helping us in social media with increasing reach of Twitter
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <sm-carousel id="ico_investors__container" indicator></sm-carousel>
                 </div>
             </main>
         </section>
     </article>
 
-    <script>
+
+
+    <!-- Seperate pages -->
+
+    <article id="bitbonds" class="page flex direction-column align-center hide-completely">
+        <section class="text-center margin-bottom-3r">
+            <h1 class="h1 weight-900 font-slab">BitCoin</h1>
+            <h2 class="h2 weight-900 font-slab margin-bottom-1r">Bonds</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
+        </section>
+        <sm-tab-header target="bit_bonds__rooms" variant="tab" class="margin-bottom-1-5r">
+            <sm-tab>Returns</sm-tab>
+            <sm-tab>About</sm-tab>
+        </sm-tab-header>
+        <sm-tab-panels id="bit_bonds__rooms">
+            <sm-panel class="flex direction-column align-center w-100" style="overflow-x: auto;">
+                <table style="min-width: max-content;">
+                    <thead>
+                        <tr class="tr">
+                            <td class="td weight-700 uppercase">Series</td>
+                            <td class="td weight-700 uppercase">Series date</td>
+                            <td class="td weight-700 uppercase">Time Elapsed</td>
+                            <td class="td weight-700 uppercase">Current value</td>
+                            <td class="td weight-700 uppercase">Rate of return</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr">
+                            <td class="td weight-500">$975</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1057</td>
+                         </tr>   
+                         <tr class="tr">
+                             <td class="td weight-500">$1064</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1205</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1285</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$2513</td>
+                         </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </sm-panel>
+            <sm-panel>
+
+            </sm-panel>
+        </sm-tab-panels>
+    </article>
+
+    <article id="bob'sfund" class="page flex direction-column align-center hide-completely">
+        <section class="text-center margin-bottom-3r">
+            <h1 class="h1 weight-900 font-slab margin-bottom-1r">Bob's Fund</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
+        </section>
+    </article>
+
+    <article id="ico" class="page flex direction-column align-center hide-completely">
+        <section class="text-center margin-bottom-3r">
+            <h1 class="h1 weight-900 font-slab margin-bottom-1r">ICO</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
+        </section>
+    </article>
+
+    <!--  -->
+    <script src="components.js"></script>
+    <script id="standard_UI_functions">
+
         const domRefs = {}
 
         function getRef(elementId){
-            if(!domRefs.elementId)
-                domRefs[elementId] = document.getElementById(elementId)
-            return domRefs[elementId]
+            if(!domRefs.hasOwnProperty(elementId)){
+                domRefs[elementId] = {
+                    count: 1,
+                    ref: null
+                }
+                return document.getElementById(elementId)
+            }
+            else{
+                if(domRefs[elementId].count < 3){
+                    domRefs[elementId].count = domRefs[elementId].count + 1
+                    return document.getElementById(elementId)
+                }
+                else{
+                    if(!domRefs[elementId].ref)
+                        domRefs[elementId].ref = document.getElementById(elementId)
+                    return domRefs[elementId].ref
+                }
+            } 
         }
+
+
+        //Checks for internet connection status
+        if (!navigator.onLine)
+            notify('There seems to be a problem connecting to the internet, Please check you internet connection.', 'error', '', true)
+        window.addEventListener('offline', () => {
+            notify('There seems to be a problem connecting to the internet, Please check you internet connection.', 'error', true, true)
+        })
+        window.addEventListener('online', () => {
+            getRef('notification_drawer').clearAll()
+            notify('We are back online.', 'success')
+        })
+
+        const   themeSwitcher = getRef('theme_switcher'),
+                hapticFeedbackSwitcher = getRef('haptic_feedback_switcher')
+
+        if(themeSwitcher){
+            if (localStorage.theme === "dark") {
+                nightlight()
+                themeSwitcher.checked = true;
+            } else {
+                daylight()
+                themeSwitcher.checked = false;
+            }
+    
+            function daylight() {
+                document.body.setAttribute("data-theme", "light");
+            }
+    
+            function nightlight() {
+                document.body.setAttribute("data-theme", "dark");
+            }
+            themeSwitcher.addEventListener('change', function (e) {
+                if (this.checked) {
+                    nightlight();
+                    localStorage.setItem("theme", "dark");
+                }
+                else {
+                    daylight();
+                    localStorage.setItem("theme", "light");
+                }
+            })
+        }
+
+        let isHapticOn
+        if(hapticFeedbackSwitcher){
+            if(localStorage.getItem('haptic') === null)
+                localStorage.setItem("haptic", "on");
+        
+            if (localStorage.haptic === "on") {
+                isHapticOn = true
+                hapticFeedbackSwitcher.checked = true;
+            } else {
+                isHapticOn = false
+                hapticFeedbackSwitcher.checked = false;
+            }
+            hapticFeedbackSwitcher.addEventListener('change', function (e) {
+                if (this.checked) {
+                    isHapticOn = true
+                    localStorage.setItem("haptic", "on");
+                }
+                else {
+                    isHapticOn = false
+                    localStorage.setItem("haptic", "off");
+                }
+            })
+        }
+
+        // function required for popups or modals to appear
+        class Stack {
+            constructor() {
+                this.items = [];
+            }
+            push(element) {
+                this.items.push(element);
+            }
+            pop() {
+                if (this.items.length == 0)
+                    return "Underflow";
+                return this.items.pop();
+            }
+            peek() {
+                return this.items[this.items.length - 1];
+            }
+        }
+        let popupStack = new Stack(),
+            zIndex = 10;
+
+        async function showPopup(popup, pinned) {
+            zIndex++
+            getRef(popup).setAttribute('style', `z-index: ${zIndex}`)
+            popupStack = getRef(popup).show(pinned, popupStack)
+            return getRef(popup);
+        }
+
+        // hides the popup or modal 
+        function hidePopup() {
+            if (popupStack.peek() === undefined)
+                return;
+            popupStack.peek().popup.hide()
+        }
+
+        document.addEventListener('popupopened', async e => {
+            let thisPopup = e.detail.popup,
+                firstInput = thisPopup.querySelector('sm-input')
+
+            //pushes popup as seprate entry in history
+            history.pushState({type: 'popup'}, null, null)
+
+            if (window.innerWidth > 720 && firstInput)
+                firstInput.focusIn()
+
+            switch (e.detail.popup.id) {
+            }
+        })
+
+        document.addEventListener('popupclosed', e => {
+            popupStack = e.detail.popupStack
+            let thisPopup = e.detail.popup
+            switch (e.detail.popup.id) {
+            }
+        })
+
+        window.addEventListener('popstate', e => {
+            if(!e.state) return
+            switch (e.state.type){
+                case 'popup':
+                    hidePopup()
+                    break;
+                case 'page':
+                    showPage(e.state.id)
+                    break;
+                case 'subpage':
+                    showPage(e.state.id, true)
+                    break;
+            }
+        })
+
+        function setAttributes(el, attrs) {
+            for (key in attrs) {
+                el.setAttribute(key, attrs[key]);
+            }
+        }
+
+        function randomHsl(saturation = 80, lightness = 80) {
+            let hue = Math.random() * 360
+            let color = {
+                primary: `hsla( ${hue}, ${saturation}%, ${lightness}%, 1)`,
+                light: `hsla( ${hue}, ${saturation}%, 90%, 0.6)`
+            }
+            return color;
+        }
+
+        const selectedColors = ['#FF1744', '#F50057', '#8E24AA', '#5E35B1', '#3F51B5', '#3D5AFE', '#00B0FF', '#00BCD4', '#16c79a', '#66BB6A', '#8BC34A', '#11698e', '#FF6F00', '#FF9100', '#FF3D00']
+        function randomColor(){
+            return selectedColors[Math.floor(Math.random() * selectedColors.length)]
+        }
+
+        function clearElements(array = []) {
+            array.forEach(item => {
+                getRef(item).innerHTML = ``
+            })
+        }
+
+        //Function for displaying toast notifications. pass in error for mode param if you want to show an error.
+        function notify(message, mode, pinned, sound) {
+
+            if (mode === 'error')
+                console.error(message)
+            else
+                console.log(message)
+            getRef('notification_drawer').push(message, mode, pinned)
+            if (navigator.onLine && sound) {
+                getRef('notification_sound').currentTime = 0;
+                getRef('notification_sound').play();
+            }
+        }
+
+        // displays a popup for asking permission. Use this instead of JS confirm
+        let confirmation = (title, message, cancelText = 'Cancel', confirmText = 'OK') => {
+            return new Promise(resolve => {
+                showPopup('confirmation_popup')
+                getRef('confirm_title').textContent = title;
+                getRef('confirm_message').textContent = message;
+                let cancelButton = getRef('confirmation_popup').children[2].children[0],
+                    submitButton = getRef('confirmation_popup').children[2].children[1]  
+                submitButton.textContent = confirmText
+                cancelButton.textContent = cancelText 
+                submitButton.onclick = () => {
+                    hidePopup()
+                    resolve(true);
+                }
+                cancelButton.onclick = () => {
+                    hidePopup()
+                    resolve(false);
+                }
+            })
+        }
+
+        const currentYear = new Date().getFullYear()
+        function getFormatedTime(time, relative) {
+            try {
+                if (String(time).indexOf('_'))
+                time = String(time).split('_')[0]
+                const intTime = parseInt(time)
+                if(String(intTime).length < 13)
+                    time *= 1000
+                let timeFrag = new Date(intTime).toString().split(' '),
+                    day = timeFrag[0],
+                    month = timeFrag[1],
+                    date = timeFrag[2],
+                    year = timeFrag[3],
+                    minutes = new Date(intTime).getMinutes(),
+                    hours = new Date(intTime).getHours(),
+                    currentTime = new Date().toString().split(' ')
+
+                minutes = minutes < 10 ? `0${minutes}` : minutes
+                let finalHours = ``;
+                if (hours > 12)
+                    finalHours = `${hours - 12}:${minutes}`
+                else if (hours === 0)
+                    finalHours = `12:${minutes}`
+                else
+                    finalHours = `${hours}:${minutes}`
+
+                finalHours = hours >= 12 ? `${finalHours} PM` : `${finalHours} AM`
+                if (relative) {
+                    if (year == currentYear) {
+                        if (currentTime[1] === month){
+                            const dateDiff = (parseInt(currentTime[2]) - parseInt(date))
+                            if(dateDiff === 0)
+                                return `${finalHours}`;
+                            else if(dateDiff === 1)
+                                return `Yesterday`;
+                            else if(dateDiff > 1 && dateDiff < 8)
+                                return currentTime[0];
+                            else
+                                return ` ${date} ${month}`;
+                        }
+                        else
+                            return ` ${date} ${month}`;
+                    }
+                    else
+                        return `${month} ${year}`;
+                }
+                else
+                    return `${finalHours} ${month} ${date} ${year}`;
+            } catch (e) {
+                console.error(e);
+                return time;
+            }
+        }
+
+
+        function areInputsValid(parent) {
+            let allInputs = parent.querySelectorAll("sm-input:not([disable]), pin-input:not([disable])"),
+                inputsFilled = [...allInputs].every(input => {
+                    if (input.hasAttribute('floId')) {
+                        if (floCrypto.validateAddr(input.value.trim())) return true
+                    }
+                    else if (input.hasAttribute('privateKey')) {
+                        if (floCrypto.getPubKeyHex(input.value.trim())) return true
+                    }
+                    else
+                        return input.isValid
+                })
+            let allRadios = parent.querySelectorAll("input[type='radio']")
+            if (allRadios.length)
+                return inputsFilled && parent.querySelector('[checked]')
+            else
+                return inputsFilled
+        }
+
+        function formValidation(formElement) {
+            let parent = formElement.closest('sm-popup') || formElement.closest('form'),
+                submitBtn
+            if(parent)
+                submitBtn = parent.querySelector("button[type='submit'], sm-button[variant='primary']");
+            if (!submitBtn) return;
+            if (areInputsValid(parent))
+                submitBtn.disabled = false;
+            else
+                submitBtn.disabled = true;
+        }
+
+        window.addEventListener('load', () => {
+            loadPage()
+            document.addEventListener('input', e => {
+                if (e.target.closest('sm-input')) {
+                    let input = e.target.closest('sm-input')
+                    formValidation(input)
+                    if (input.value === '')
+                        input.setValidity('')
+                    let validityState = input.validity
+                    if (input.hasAttribute('floId')) {
+                        if (floCrypto.validateAddr(input.value.trim()) || input.value.trim() === '')
+                            input.setValidity('')
+                        else
+                            input.setValidity('Invalid FLO address.')
+                    }
+                    else if (input.hasAttribute('privateKey')) {
+                        if (floCrypto.getPubKeyHex(input.value.trim()) || input.value.trim() === '')
+                            input.setValidity('')
+                        else
+                            input.setValidity('Invalid FLO private key.')
+                    }
+                }
+                else if(e.target.closest('pin-input')){
+                    formValidation(e.target.closest('pin-input'))
+                }
+            })
+            document.addEventListener('keyup', (e) => {
+                if (e.target.closest('sm-input, pin-input')) {
+                    if (e.key === 'Enter') {
+                        let parent = e.target.closest('sm-popup') || e.target.closest('form')
+                        parent.querySelector("button[type='submit'], sm-button[variant='primary'], sm-button[type='submit']")
+                            .click();
+                    }
+                }
+                if(e.code === 'Escape'){
+                    hidePopup()
+                }
+            })
+
+            document.addEventListener('pointerdown', (e) => {
+                if (e.target.closest('button, sm-button:not([disable]), .interact')) {
+                    createRipple(e, e.target.closest('button, sm-button, .interact'))
+                }
+            })
+
+        })
+        function createRipple(event, target) {
+            const circle = document.createElement("span");
+            const diameter = Math.max(target.clientWidth, target.clientHeight);
+            const radius = diameter / 2;
+            const targetDimensions = target.getBoundingClientRect()
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - (targetDimensions.left + radius)}px`;
+            circle.style.top = `${event.clientY - (targetDimensions.top + radius)}px`;
+            circle.classList.add("ripple");
+            const rippleAnimation = circle.animate([
+
+                {
+                    transform: 'scale(3)',
+                    opacity: 0
+                }
+            ],
+                {
+                    duration: 1000,
+                    fill: "forwards",
+                    easing: 'ease-out'
+                })
+            target.append(circle);
+            rippleAnimation.onfinish = () => {
+                circle.remove()
+            }
+        }
+
+       async function loadPage(){
+            if(location.hash === ''){
+                history.pushState({type: 'page', id: 'home_page'}, null, '')
+                showPage('home_page', true)
+            }
+            else{
+                showPage(location.hash.split('#')[1])
+            }
+        }
+        function debounce(func, wait, immediate) {
+            let timeout;
+            return function() {
+                let context = this, args = arguments;
+                let later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                let callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
     </script>
 
     <script>
@@ -165,7 +635,23 @@
                 row.querySelector('.current-value').textContent = currentValue
                 row.querySelector('.time-elapsed').textContent = timeElapsed
                 return row
-            }
+            },
+            bobFundRow(obj){
+                const {investorName, invested, currentValue, timeElapsed} = obj
+                const row = document.getElementById('bob_fund_row').content.cloneNode(true)
+                row.querySelector('.investor-name').textContent = investorName
+                row.querySelector('.original-value').textContent = invested
+                row.querySelector('.current-value').textContent = currentValue
+                row.querySelector('.time-elapsed').textContent = timeElapsed
+                return row
+            },
+            icoInvestorRow(obj){
+                const {investorName, contribution} = obj
+                const row = document.getElementById('ico_investor_row').content.cloneNode(true)
+                row.querySelector('.investor-name').textContent = investorName
+                row.querySelector('.investor-contribution').textContent = contribution
+                return row
+            },
         }
 
 
@@ -286,6 +772,16 @@
                 opacity: 0
             },
         ]
+        const slideOutDown = [
+            {
+                transform: 'translateY(0)',
+                opacity: 1
+            },
+            {
+                transform: 'translateY(1rem)',
+                opacity: 0
+            },
+        ]
 
         // eases
         const easeInOvershoot = `cubic-bezier(0.6, -0.28, 0.735, 0.045)`;
@@ -326,14 +822,52 @@
                 timeElapsed: '2years'
             },
         ]
-        let currentSeriesIndex = 0
+
+
+        const bobFund = [
+            {
+                investorName: 'John Doe',
+                invested: '₹20000',
+                currentValue: '$XXXXX',
+                timeElapsed: '2years'
+            },
+            {
+                investorName: 'Jane Doe',
+                invested: '₹10000',
+                currentValue: '$XXXXX',
+                timeElapsed: '2years'
+            },
+            {
+                investorName: 'james Doe',
+                invested: '₹15000',
+                currentValue: '$XXXXX',
+                timeElapsed: '2years'
+            },
+        ]
+
+        const icoInvestors = [
+            {
+                investorName: 'John Doe',
+                contribution: 'Helping us in social media with increasing reach of Twitter',
+            },
+            {
+                investorName: 'Jane Doe',
+                contribution: 'Helping us in social media with increasing reach of Twitter',
+            },
+            {
+                investorName: 'james Doe',
+                contribution: 'Helping us in social media with increasing reach of Twitter',
+            },
+        ]
+/*         let currentSeriesIndex = 0
         function changeSeriesRow(){
             const options = {
                         duration: 300,
-                        fill: 'forwards'
+                        fill: 'forwards',
+                        easing: 'ease'
                     }
             if(getRef('bit_bond_series__container').children.length){
-                getRef('bit_bond_series__container').children[0].animate(fadeOut, options)
+                getRef('bit_bond_series__container').children[0].animate(slideOutRight, options)
                 .onfinish = () => {
                     getRef('bit_bond_series__container').children[0].remove()
                     replaceSeriesRow(options)
@@ -347,10 +881,79 @@
         function replaceSeriesRow(options){
             const row = render.bitBondRow(bitBondSerieses[currentSeriesIndex])
             getRef('bit_bond_series__container').append(row)
-            getRef('bit_bond_series__container').children[0].animate(fadeIn, options)
+            getRef('bit_bond_series__container').children[0].animate(slideInRight, options)
             currentSeriesIndex = currentSeriesIndex < bitBondSerieses.length - 1 ? currentSeriesIndex + 1 : 0
         }
-        changeSeriesRow()
+        changeSeriesRow() */
+        function renderAllSeries(){
+            const frag = document.createDocumentFragment()
+            getRef('bit_bond_series__container').innerHTML = ''
+            bitBondSerieses.forEach(series => {
+                frag.append(render.bitBondRow(series))
+            })
+            getRef('bit_bond_series__container').append(frag)
+        }
+        function renderAllFundInvestors(){
+            const frag = document.createDocumentFragment()
+            getRef('bob_fund_investors__container').innerHTML = ''
+            bobFund.forEach(investor => {
+                frag.append(render.bobFundRow(investor))
+            })
+            getRef('bob_fund_investors__container').append(frag)
+        }
+        function renderAllIcoInvestors(){
+            const frag = document.createDocumentFragment()
+            getRef('ico_investors__container').innerHTML = ''
+            icoInvestors.forEach(investor => {
+                frag.append(render.icoInvestorRow(investor))
+            })
+            getRef('ico_investors__container').append(frag)
+        }
+        renderAllSeries()
+        renderAllFundInvestors()
+        renderAllIcoInvestors()
+    
+        document.addEventListener('click', e => {
+            if(e.target.closest('.outlet-preview__button')){
+                const button = e.target.closest('.outlet-preview__button')
+                const targetPage = button.dataset.target
+                showPage(targetPage)
+                history.pushState({type: 'page', id: targetPage}, null, `#${targetPage}`)
+            }
+        })
+
+        let currentPage = ''
+
+        function showPage(pageId){
+            if(currentPage !== pageId){
+                const options = {
+                    duration: 300,
+                    fill: 'forwards'
+                }
+                if(currentPage){
+                    let pageEnterAnimation = flyInZoom
+                    let pageExitAnimation = flyOutZoom
+                    if(pageId === 'home_page'){
+                        pageEnterAnimation = flyInShrink
+                        pageExitAnimation = flyOutShrink
+                    }
+                    document.body.style.pointerEvents = 'none'
+                    getRef(currentPage).animate(pageExitAnimation, {...options, easing: easeInOvershoot})
+                    .onfinish = () => {
+                        document.body.style.pointerEvents = 'all'
+                        getRef(currentPage).classList.add('hide-completely')
+                        getRef(pageId).classList.remove('hide-completely')
+                        getRef(pageId).animate(pageEnterAnimation, {...options, easing: easeOutOvershoot})
+                        currentPage = pageId
+                    }
+                }
+                else{
+                    getRef(pageId).classList.remove('hide-completely')
+                    currentPage = pageId
+                }
+            }
+        }
+    
     </script>
 </body>
 </html>
