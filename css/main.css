@@ -25,7 +25,7 @@ body {
 }
 
 body[data-theme=dark] {
-  --accent-color:#00fa9a;
+  --accent-color:#9600fa;
   --text-color: 240, 240, 240;
   --text-color-light: 170, 170, 170;
   --foreground-color: 20, 20, 20;
@@ -342,7 +342,6 @@ ul {
 }
 
 #main_logo {
-  position: absolute;
   justify-self: center;
 }
 

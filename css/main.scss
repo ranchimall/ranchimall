@@ -23,7 +23,7 @@ body {
     background: rgba(var(--text-color), 0.06);
 }
 body[data-theme='dark']{
-    --accent-color:#00fa9a;
+    --accent-color:#9600fa;
     --text-color: 240, 240, 240;
     --text-color-light: 170, 170, 170;
     --foreground-color: 20, 20, 20;
@@ -269,7 +269,6 @@ ul{
     grid-template-columns: repeat(3, 1fr);
 }
 #main_logo{
-    position: absolute;
     justify-self: center;
 }
 #main_header__logo{
