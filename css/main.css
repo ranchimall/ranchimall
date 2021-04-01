@@ -37,7 +37,7 @@ body[data-theme=dark] .outlet-preview {
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px, rgba(0, 0, 0, 0.4) 0px 1px 3px -1px;
           box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px -1px, rgba(0, 0, 0, 0.4) 0px 1px 3px -1px;
 }
-body[data-theme=dark] sm-carousel {
+body[data-theme=dark] .outlet-preview sm-carousel {
   border-top: dashed 0.5rem rgba(var(--foreground-color), 0.7);
 }
 
@@ -168,6 +168,16 @@ ul {
   gap: 3rem;
 }
 
+.pos-relative {
+  position: relative;
+}
+
+.align-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .align-center {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -178,6 +188,12 @@ ul {
   text-align: center;
 }
 
+.justify-start {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
 .justify-center {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -186,6 +202,15 @@ ul {
 
 .justify-right {
   margin-left: auto;
+}
+
+.align-self-center {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .direction-column {
@@ -416,6 +441,11 @@ ul {
   padding: 0 1rem;
 }
 
+.tag {
+  background: var(--accent-color);
+  padding: 0.4rem 0.6rem;
+}
+
 .common-padding {
   padding: 0 1rem;
 }
@@ -433,6 +463,7 @@ ul {
 .outlet-preview {
   padding-top: 2rem;
   background: rgba(var(--foreground-color), 1);
+  border-radius: 0.3rem;
   -webkit-transition: -webkit-box-shadow 0.3s;
   transition: -webkit-box-shadow 0.3s;
   transition: box-shadow 0.3s;
@@ -443,6 +474,9 @@ ul {
        background: url(../assets/bg/floor-1-bg.svg) no-repeat top center, linear-gradient(rgba(var(--foreground-color), 1), rgba(var(--foreground-color), 1));
        background-size: contain;
    } */
+}
+.outlet-preview sm-carousel {
+  border-top: dashed 0.5rem rgba(var(--foreground-color), 1);
 }
 
 .outlet__title {
@@ -462,13 +496,13 @@ ul {
 }
 
 sm-carousel {
-  border-top: dashed 0.5rem rgba(var(--foreground-color), 1);
+  position: relative;
   height: 100%;
   background: rgba(var(--text-color), 0.06);
   padding-bottom: 4rem;
   padding-top: 1.5rem;
-  --arrow-left: 2rem;
-  --arrow-right: 2rem;
+  --arrow-left: 1.5rem;
+  --arrow-right: 1.5rem;
   --arrow-fill: rgba(var(--text-color), 1);
   --arrow-background: transparent;
   --arrow-box-shadow: none;
@@ -483,18 +517,33 @@ sm-carousel {
 }
 
 .investor-card {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+}
+.investor-card--small {
   grid-template-areas: "img ." "para para";
+}
+.investor-card--small .investor__image {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.investor-card--big {
+  grid-template-areas: "img ." "img para";
 }
 
 .investor__image {
   grid-area: img;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
+  width: 8rem;
+  border-radius: 0.5rem;
+}
+
+.investor__bio {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 .investor__contribution-container {
@@ -524,6 +573,10 @@ table {
 .td {
   padding: 0.6rem 0.8rem;
   white-space: nowrap;
+}
+
+#ico_page__carousel {
+  width: min(32rem, 100%);
 }
 
 @media only screen and (max-width: 640px) {

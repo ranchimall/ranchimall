@@ -39,15 +39,15 @@
     <template id="bit_bond_row">
         <div class="bit-bond-series__row grid flow-column gap-1-5 common-padding">
             <div class="flex direction-column">
-                <h5 class="label font-slab color-0-8 weight-500">Series</h5>
+                <h5 class="label color-0-8 weight-500">Series</h5>
                 <h3 class="value original-value"></h3>
             </div>
             <div class="flex direction-column">
-                <h5 class="label font-slab color-0-8 weight-500">Current value</h5>
+                <h5 class="label color-0-8 weight-500">Current value</h5>
                 <h3 class="value current-value"></h3>
             </div>
             <div class="flex direction-column">
-                <h5 class="label font-slab color-0-8 weight-500">Time Elapsed</h5>
+                <h5 class="label color-0-8 weight-500">Time Elapsed</h5>
                 <h3 class="value time-elapsed"></h3>
             </div>
         </div>
@@ -56,20 +56,20 @@
     <template id="bob_fund_row">
         <div class="bob-fund__row grid gap-1-5 common-padding">
             <div class="flex direction-column">
-                <h5 class="label font-slab color-0-8 weight-500">Investor</h5>
-                <h3 class="value investor-name"></h3>
+                <h5 class="label color-0-8 weight-500">Investor</h5>
+                <h3 class="value investor__name"></h3>
             </div>
             <div class="grid flow-column">
                 <div class="flex direction-column">
-                    <h5 class="label font-slab color-0-8 weight-500">Invested</h5>
+                    <h5 class="label color-0-8 weight-500">Invested</h5>
                     <h3 class="value original-value"></h3>
                 </div>
                 <div class="flex direction-column">
-                    <h4 class="label font-slab color-0-8 weight-500">Current value</h4>
+                    <h4 class="label color-0-8 weight-500">Current value</h4>
                     <h3 class="value current-value"></h3>
                 </div>
                 <div class="flex direction-column">
-                    <h4 class="label font-slab color-0-8 weight-500">Time Elapsed</h4>
+                    <h4 class="label color-0-8 weight-500">Time Elapsed</h4>
                     <h3 class="value time-elapsed"></h3>
                 </div>
             </div>
@@ -80,12 +80,12 @@
         <div class="investor-card grid gap-1-5 common-padding">
             <img class="investor__image" src="" alt="" loading="lazy">
             <div class="flex direction-column">
-                <h4 class="label font-slab color-0-8 weight-500">Investor</h4>
-                <h3 class="investor-name value capitalize"></h3>
+                <h3 class="investor__name value capitalize"></h3>
+                <p class="investor__bio color-0-8"></p>
             </div>
             <div class="flex direction-column investor__contribution-container">
-                <h4 class="label font-slab color-0-8 weight-500">Contribution</h4>
-                <p class="investor-contribution font-mono weight-700"></p>
+                <h4 class="label color-0-8 weight-500">Contribution</h4>
+                <p class="investor__contribution font-mono weight-700"></p>
             </div>
         </div>
     </template>
@@ -156,7 +156,7 @@
                 <h4 class="font-slab h4 weight-900">Floor 1</h4>
             </aside>
             <main id="floor_1__outlets" class="grid">
-                <div class="flex direction-column card outlet-preview">
+                <div id="bit_bond_outlet" class="flex direction-column card outlet-preview carousel-container">
                     <div class="flex direction-column common-padding margin-bottom-1-5r text-center">
                         <h3 class="font-slab h3 outlet__title margin-bottom-1r">bitcoin bonds</h3>
                         <p class="outlet__description margin-bottom-1-5r">
@@ -169,7 +169,7 @@
                     </div>
                     <sm-carousel id="bit_bond_series__container" indicator autoplay></sm-carousel>
                 </div>
-                <div class="flex direction-column card outlet-preview">
+                <div id="bob_fund_outlet" class="flex direction-column card outlet-preview carousel-container">
                     <div class="flex direction-column margin-bottom-1-5r text-center common-padding">
                         <h3 class="font-slab h3 outlet__title margin-bottom-1r">Bob's Fund</h3>
                         <p class="outlet__description margin-bottom-1-5r">
@@ -180,9 +180,9 @@
                             <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                         </button>
                     </div>
-                    <sm-carousel id="bob_fund_investors__container" indicator autoplay></sm-carousel>
+                    <sm-carousel id="bob_fund_investors__container" indicator></sm-carousel>
                 </div>
-                <div class="flex direction-column card outlet-preview">
+                <div id="ico_outlet" class="flex direction-column card outlet-preview carousel-container">
                     <div class="flex direction-column margin-bottom-1-5r text-center common-padding">
                         <h3 class="font-slab h3 outlet__title margin-bottom-1r">ICO</h3>
                         <p class="outlet__description margin-bottom-1-5r">
@@ -193,7 +193,7 @@
                             <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                         </button>
                     </div>
-                    <sm-carousel id="ico_investors__container" indicator autoplay></sm-carousel>
+                    <sm-carousel id="ico_investors__container" indicator></sm-carousel>
                 </div>
             </main>
         </section>
@@ -205,15 +205,14 @@
 
     <article id="bitbonds" class="page flex direction-column align-center hide-completely">
         <section class="text-center margin-bottom-3r">
-            <h1 class="h1 weight-900 font-slab">BitCoin</h1>
-            <h2 class="h2 weight-900 font-slab margin-bottom-1r">Bonds</h2>
+            <h2 class="h2 weight-900 margin-bottom-1r">BitCoin Bonds</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
         <sm-tab-header target="bit_bonds__rooms" variant="tab" class="margin-bottom-1-5r">
             <sm-tab>Returns</sm-tab>
             <sm-tab>More</sm-tab>
         </sm-tab-header>
-        <sm-tab-panels id="bit_bonds__rooms">
+        <sm-tab-panels id="bit_bonds__rooms" class="grid">
             <sm-panel class="grid w-100" style="overflow-x: auto;">
                 <table>
                     <thead>
@@ -256,7 +255,7 @@
 
     <article id="bob'sfund" class="page flex direction-column align-center hide-completely">
         <section class="text-center margin-bottom-3r">
-            <h1 class="h1 weight-900 font-slab margin-bottom-1r">Bob's Fund</h1>
+            <h2 class="h2 weight-900 margin-bottom-1r">Bob's Fund</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
         <sm-tab-header target="bob_fund_rooms" variant="tab">
@@ -274,12 +273,12 @@
         </sm-tab-panels>
     </article>
 
-    <article id="ico" class="page flex direction-column align-center hide-completely">
-        <section class="text-center margin-bottom-3r">
-            <h1 class="h1 weight-900 font-slab margin-bottom-1r">ICO</h1>
+    <article id="ico" class="page flex direction-column hide-completely">
+        <section class="grid justify-center text-center margin-bottom-3r">
+            <h2 class="h2 weight-900 margin-bottom-1r">ICO</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
-        <sm-tab-header target="ico_rooms" variant="tab">
+        <sm-tab-header target="ico_rooms" variant="tab" class="align-self-center margin-bottom-1-5r">
             <sm-tab>
                 Investors
             </sm-tab>
@@ -290,8 +289,10 @@
                 more
             </sm-tab>
         </sm-tab-header>
-        <sm-tab-panels id="ico_rooms">
-            <sm-panel></sm-panel>
+        <sm-tab-panels id="ico_rooms" class="flex w-100">
+            <sm-panel class="flex justify-center carousel-container">
+                <sm-carousel id="ico_page__carousel" indicator autoplay></sm-carousel>
+            </sm-panel>
             <sm-panel></sm-panel>
             <sm-panel></sm-panel>
         </sm-tab-panels>
@@ -720,19 +721,28 @@
             bobFundRow(obj){
                 const {investorName, invested, currentValue, timeElapsed} = obj
                 const row = document.getElementById('bob_fund_row').content.cloneNode(true)
-                row.querySelector('.investor-name').textContent = investorName
+                row.querySelector('.investor__name').textContent = investorName
                 row.querySelector('.original-value').textContent = invested
                 row.querySelector('.current-value').textContent = currentValue
                 row.querySelector('.time-elapsed').textContent = timeElapsed
                 return row
             },
-            icoInvestorRow(obj){
-                const {extension, investorName, contribution} = obj
+            icoInvestorRow(obj, options){
+                const {extension, investorName, bio, contribution} = obj
+                const {thumbnail} = options
                 const row = document.getElementById('ico_investor_row').content.cloneNode(true)
-                row.querySelector('.investor__image').src = `assets/investors-thumbnail/${investorName}.${extension}`
-                row.querySelector('.investor__image').setAttribute('alt', `${investorName} profile picture`)
-                row.querySelector('.investor-name').textContent = investorName
-                row.querySelector('.investor-contribution').textContent = contribution
+                const card = row.querySelector('.investor-card')
+                const folder = thumbnail ?  'investors-thumbnail' : 'investors'
+                const investorImage = row.querySelector('.investor__image')
+                if(thumbnail)
+                    card.classList.add('investor-card--small')
+                else
+                    card.classList.add('investor-card--big')
+                investorImage.src = `assets/${folder}/${investorName}.${extension}`
+                investorImage.setAttribute('alt', `${investorName} profile picture`)
+                row.querySelector('.investor__name').textContent = investorName
+                row.querySelector('.investor__bio').textContent = bio
+                row.querySelector('.investor__contribution').textContent = contribution
                 return row
             },
         }
@@ -845,6 +855,16 @@
                 opacity: 1
             },
         ]
+        const slideInUp = [
+            {
+                transform: 'translateY(1rem)',
+                opacity: 0
+            },
+            {
+                transform: 'translateY(0)',
+                opacity: 1
+            },
+        ]
         const slideOutUp = [
             {
                 transform: 'translateY(0)',
@@ -932,76 +952,91 @@
             {
                 extension: 'jpg',
                 investorName: 'Abhijeet Das Gupta',
+                bio: 'Product and Technology Solutions Architect at 366Pi Technologies',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Amit Jagetia',
+                bio: 'IT Professional in FinTech Industry',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Amitesh Anand',
+                bio: 'Co-founder and CEO, 366Pi Technologies and Director of Technology, Fennex Ltd.',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Atul Agarwal',
+                bio: 'Entrepreneur, Real Estate Developer, Blockchain Entrepreneur, Iconoclast',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Barun Kumar',
+                bio: 'Cybersecurity Professional, Founder of Mantran Consulting, Singapore',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Janardan Tiwary',
+                bio: 'Retd. General Manager Coal India, Ranchi, Mining Engineer from IIT Dhanbad',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Kanwal Koul',
+                bio: 'Working Professional in the power sector',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Mansoor Ahmed',
+                bio: 'Cybersecurity Expert, Founder, and Director Winged World',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Meghna Patel',
+                bio: 'Marketing Professional turned Blockchain Enthusiast',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Nikhil Kulkarni',
+                bio: 'CTO and Co-Founder of tripDarwin.com',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Pankaj Miglani',
+                bio: 'Professional Services Consultant at AWS Cybersecurity',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Rajeev Kumar Gupta',
+                bio: 'Curator cum Organizer, TEDx Kanke, and Former DGM-Corporate & Regulatory Affairs at JWS Steel ',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Sudhir Taneja',
+                bio: 'Sales and Marketing Professional, Associate Vice President, HDFC Life',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Varucchi Dubey',
+                bio: 'Founder and Managing Director, DNV Security Solutions Pvt Ltd.',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
             {
                 extension: 'jpg',
                 investorName: 'Venkat Narayanan',
+                bio: 'Business Excellence Professional, Sr. Manager at Tata Consultancy Services',
                 contribution: 'Helping us in social media with increasing reach of Twitter',
             },
         ]
@@ -1023,16 +1058,38 @@
             getRef('bob_fund_investors__container').append(frag)
         }
         function renderAllIcoInvestors(){
-            const frag = document.createDocumentFragment()
+            const frag1 = document.createDocumentFragment()
+            const frag2 = document.createDocumentFragment()
             getRef('ico_investors__container').innerHTML = ''
+            getRef('ico_page__carousel').innerHTML = ''
             icoInvestors.forEach(investor => {
-                frag.append(render.icoInvestorRow(investor))
+                frag1.append(render.icoInvestorRow(investor, {thumbnail: true}))
+                frag2.append(render.icoInvestorRow(investor, {thumbnail: false}))
             })
-            getRef('ico_investors__container').append(frag)
+            getRef('ico_investors__container').append(frag1)
+            getRef('ico_page__carousel').append(frag2)
         }
         renderAllSeries()
         renderAllFundInvestors()
         renderAllIcoInvestors()
+
+        const outletObserver = new IntersectionObserver( entries => {
+            entries.forEach(entry => {
+                if(window.innerWidth < 640){
+                    if(entry.isIntersecting){
+                        entry.target.querySelector('sm-carousel').setAttribute('autoplay', '')
+                    }
+                    else{
+                        entry.target.querySelector('sm-carousel').stopAutoPlay()
+                    }
+                }
+            })
+        },
+        {
+            threshold: 0.9
+        })
+
+        document.querySelectorAll('.carousel-container').forEach(outlet => outletObserver.observe(outlet))
     
         document.addEventListener('click', e => {
             if(e.target.closest('.page-link')){
@@ -1049,6 +1106,21 @@
             }
         })
 
+        let activeOutletIndex = 0
+        const allOutletCarousels = document.querySelectorAll('.outlet-preview sm-carousel')
+        function changeOutletFocus(){
+            console.log(allOutletCarousels[activeOutletIndex])
+            allOutletCarousels[activeOutletIndex].stopAutoPlay()
+            activeOutletIndex = activeOutletIndex + 1 < allOutletCarousels.length ? activeOutletIndex + 1 : 0 
+            allOutletCarousels[activeOutletIndex].setAttribute('autoplay', '')
+
+            if(window.innerWidth > 640){
+                setTimeout(() => {
+                    changeOutletFocus()
+                }, 4000);
+            }
+        }
+
         let currentPage = ''
 
         function showPage(pageId){
@@ -1058,12 +1130,14 @@
                     fill: 'forwards'
                 }
                 if(currentPage){
-                    let pageEnterAnimation = flyInZoom
+                    /* let pageEnterAnimation = flyInZoom
                     let pageExitAnimation = flyOutZoom
                     if(pageId === 'home_page'){
                         pageEnterAnimation = flyInShrink
                         pageExitAnimation = flyOutShrink
-                    }
+                    } */
+                    let pageEnterAnimation = slideInUp
+                    let pageExitAnimation = slideOutDown
                     document.body.setAttribute('style', 'pointer-events: none; overflow-x: hidden')
                     getRef(currentPage).animate(pageExitAnimation, {...options, easing: easeInOvershoot})
                     .onfinish = () => {

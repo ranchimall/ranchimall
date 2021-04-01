@@ -2339,9 +2339,7 @@ button:focus-visible{
 }
 .carousel-container{
     position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: grid;
     width: 100%;
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -2451,7 +2449,8 @@ customElements.define('sm-carousel', class extends HTMLElement {
         }).append(smCarousel.content.cloneNode(true))
 
         this.isAutoPlaying = false
-        this.autoPlayInterval = 3000
+        this.autoPlayInterval = 5000
+        this.autoPlayTimeout
         this.activeSlideNum = 0
         this.carouselItems
         this.indicators
@@ -2504,14 +2503,14 @@ customElements.define('sm-carousel', class extends HTMLElement {
         else
             this.showSlide(0)
         if (this.isAutoPlaying) {
-            setTimeout(() => {
+            this.autoPlayTimeout = setTimeout(() => {
                 this.startAutoPlay()
             }, this.autoPlayInterval);
         }
     }
 
     stopAutoPlay = () => {
-        this.isAutoPlaying = false
+        this.removeAttribute('autoplay')
     }
 
     connectedCallback() {
@@ -2617,7 +2616,8 @@ customElements.define('sm-carousel', class extends HTMLElement {
                         this.startAutoPlay()
                 }
                 else {
-                    this.stopAutoPlay()
+                    this.isAutoPlaying = false
+                    clearTimeout(this.autoPlayTimeout)
                 }
                 
             }
@@ -2626,7 +2626,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
                     this.autoPlayInterval = Math.abs(parseInt(this.getAttribute('interval').trim()))
                 }
                 else {
-                    this.autoPlayInterval = 3000
+                    this.autoPlayInterval = 5000
                 }
             }
         }
@@ -3490,9 +3490,6 @@ smTabPanels.innerHTML = `
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 } 
-:host{
-    width: 100%;
-}
 .panel-container{
     position: relative;
     display: -webkit-box;
@@ -3504,17 +3501,7 @@ smTabPanels.innerHTML = `
 }
 slot::slotted(.hide-completely){
     display: none;
-}
-@media (hover: none){
-    .tab-header::-webkit-scrollbar-track {
-        -webkit-box-shadow: none !important;
-        background-color: transparent !important;
-    }
-    .tab-header::-webkit-scrollbar {
-        height: 0;
-        background-color: transparent;
-    }
-}         
+}      
 </style>
 <div part="panel-container" class="panel-container">
     <slot>Nothing to see here.</slot>
