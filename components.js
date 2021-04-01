@@ -2080,6 +2080,11 @@ customElements.define('sm-popup', class extends HTMLElement {
         }).append(smPopup.content.cloneNode(true))
 
         this.allowClosing = false
+        this.isOpen = false
+    }
+
+    get open() {
+        return this.isOpen
     }
 
     resumeScrolling = () => {
@@ -2113,6 +2118,7 @@ customElements.define('sm-popup', class extends HTMLElement {
             )
             this.setAttribute('open', '')
             this.pinned = pinned
+            this.isOpen = true
         }
         this.popupContainer.classList.remove('hide')
         this.popup.style.transform = 'none';
@@ -2158,6 +2164,7 @@ customElements.define('sm-popup', class extends HTMLElement {
                     }
                 })
             )
+            this.isOpen = false
         }, 300);
     }
 
@@ -2278,6 +2285,7 @@ smCarousel.innerHTML = `
     --arrow-box-shadow: 0 0.2rem 0.2rem #00000020, 0 0.5rem 1rem #00000040;
     --indicator-top: auto;
     --indicator-bottom: -1rem;
+    --active-indicator-color: var(--accent-color);
 }
 .carousel__button{
     position: absolute;
@@ -2299,6 +2307,9 @@ smCarousel.innerHTML = `
     z-index: 1;
     border-radius: 3rem;
     padding: 0.5rem;
+}
+.carousel__button:active{
+    background: rgba(var(--text-color), 0.1);
 }
 button:focus{
     outline: none;
@@ -2373,7 +2384,7 @@ button:focus-visible{
     -webkit-transform: scale(1.5);
         -ms-transform: scale(1.5);
             transform: scale(1.5);
-    background: var(--accent-color);
+    background: var(--active-indicator-color);
 }
 slot::slotted(*){
     scroll-snap-align: center;
@@ -2393,6 +2404,9 @@ slot::slotted(*){
     }
     .left,.right{
         display: none;
+    }
+    .carousel__button:hover{
+        background: rgba(var(--text-color), 0.06);
     }
 }
 @media (hover: none){
@@ -2435,15 +2449,27 @@ customElements.define('sm-carousel', class extends HTMLElement {
         this.attachShadow({
             mode: 'open'
         }).append(smCarousel.content.cloneNode(true))
+
+        this.isAutoPlaying = false
+        this.autoPlayInterval = 3000
+        this.activeSlideNum = 0
+        this.carouselItems
+        this.indicators
+        this.showIndicator = false
+        this.carousel = this.shadowRoot.querySelector('.carousel')
+        this.carouselContainer = this.shadowRoot.querySelector('.carousel-container')
+        this.carouselSlot = this.shadowRoot.querySelector('slot')
+        this.nextArrow = this.shadowRoot.querySelector('.carousel__button--right')
+        this.previousArrow = this.shadowRoot.querySelector('.carousel__button--left')
+        this.indicatorsContainer = this.shadowRoot.querySelector('.indicators')
     }
 
     static get observedAttributes() {
-        return ['indicator']
+        return ['indicator', 'autoplay', 'interval']
     }
 
     scrollLeft = () => {
         this.carousel.scrollBy({
-            top: 0,
             left: -this.scrollDistance,
             behavior: 'smooth'
         })
@@ -2451,7 +2477,6 @@ customElements.define('sm-carousel', class extends HTMLElement {
 
     scrollRight = () => {
         this.carousel.scrollBy({
-            top: 0,
             left: this.scrollDistance,
             behavior: 'smooth'
         })
@@ -2459,29 +2484,37 @@ customElements.define('sm-carousel', class extends HTMLElement {
 
     handleIndicatorClick = (e) => {
         if (e.target.closest('.dot')) {
-            const slideNum = e.target.closest('.dot').getAttribute('rank')
+            const slideNum = parseInt(e.target.closest('.dot').getAttribute('rank'))
             if (this.activeSlideNum !== slideNum) {
                 this.showSlide(slideNum)
-                this.activeSlideNum = slideNum
             }
         }
     }
 
     showSlide = (slideNum) => {
-        this.carouselItems[slideNum].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+        this.carousel.scrollTo({
+            left: (this.carouselItems[slideNum].getBoundingClientRect().left - this.carousel.getBoundingClientRect().left + this.carousel.scrollLeft),
+            behavior: 'smooth'
+        })
+    }
+    
+    startAutoPlay = () => {
+        if((this.activeSlideNum + 1) < this.carouselItems.length)
+            this.showSlide(this.activeSlideNum + 1)
+        else
+            this.showSlide(0)
+        if (this.isAutoPlaying) {
+            setTimeout(() => {
+                this.startAutoPlay()
+            }, this.autoPlayInterval);
+        }
+    }
+
+    stopAutoPlay = () => {
+        this.isAutoPlaying = false
     }
 
     connectedCallback() {
-        this.activeSlideNum
-        this.carousel = this.shadowRoot.querySelector('.carousel')
-        this.carouselContainer = this.shadowRoot.querySelector('.carousel-container')
-        this.carouselSlot = this.shadowRoot.querySelector('slot')
-        this.nextArrow = this.shadowRoot.querySelector('.carousel__button--right')
-        this.previousArrow = this.shadowRoot.querySelector('.carousel__button--left')
-        this.indicatorsContainer = this.shadowRoot.querySelector('.indicators')
-        this.carouselItems
-        this.indicators
-        this.showIndicator = false
         this.scrollDistance = this.carouselContainer.getBoundingClientRect().width / 3
         let frag = document.createDocumentFragment();
         if (this.hasAttribute('indicator'))
@@ -2492,12 +2525,15 @@ customElements.define('sm-carousel', class extends HTMLElement {
             lastVisible = false
         const allElementsObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (this.showIndicator)
+                if (this.showIndicator) {                    
+                    const activeRank = parseInt(entry.target.attributes.rank.textContent)
                     if (entry.isIntersecting) {
-                        this.indicators[parseInt(entry.target.attributes.rank.textContent)].classList.add('active')
+                        this.indicators[activeRank].classList.add('active')
+                        this.activeSlideNum = activeRank
                     }
-                else
-                    this.indicators[parseInt(entry.target.attributes.rank.textContent)].classList.remove('active')
+                    else
+                        this.indicators[activeRank].classList.remove('active')
+                }
                 if (!entry.target.previousElementSibling)
                     if (entry.isIntersecting) {
                         this.previousArrow.classList.remove('expand')
@@ -2514,7 +2550,6 @@ customElements.define('sm-carousel', class extends HTMLElement {
                     }
                 else {
                     this.nextArrow.classList.add('expand')
-
                     lastVisible = false
                 }
                 if (firstVisible && lastVisible)
@@ -2550,6 +2585,9 @@ customElements.define('sm-carousel', class extends HTMLElement {
                 this.indicatorsContainer.append(frag)
                 this.indicators = this.indicatorsContainer.children
             }
+            if (this.hasAttribute('autoplay')) {
+                this.startAutoPlay()
+            }
         })
 
         this.addEventListener('keyup', e => {
@@ -2564,12 +2602,33 @@ customElements.define('sm-carousel', class extends HTMLElement {
         this.indicatorsContainer.addEventListener('click', this.handleIndicatorClick)
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'indicator') {
-            if (this.hasAttribute('indicator'))
-                this.showIndicator = true
-            else
-                this.showIndicator = false
+    async attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue !== newValue) {            
+            if (name === 'indicator') {
+                if (this.hasAttribute('indicator'))
+                    this.showIndicator = true
+                else
+                    this.showIndicator = false
+                }
+            if (name === 'autoplay') {
+                if (this.hasAttribute('autoplay')) {
+                    this.isAutoPlaying = true
+                    if(this.carouselSlot.assignedElements().length > 1)
+                        this.startAutoPlay()
+                }
+                else {
+                    this.stopAutoPlay()
+                }
+                
+            }
+            if (name === 'interval') {
+                if (this.hasAttribute('interval') && this.getAttribute('interval').trim() !== '') {
+                    this.autoPlayInterval = Math.abs(parseInt(this.getAttribute('interval').trim()))
+                }
+                else {
+                    this.autoPlayInterval = 3000
+                }
+            }
         }
     }
 
