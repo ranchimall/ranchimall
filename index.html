@@ -90,6 +90,19 @@
         </div>
     </template>
     
+    <template id="ico_phase_template">
+        <li class="phase grid">
+            <div class="progress-bar pos-relative direction-column align-center">
+                <div class="progress-bar__circle"></div>
+                <div class="progress-bar__line"></div>
+            </div>
+            <div class="grid">
+                <h4 class="h4 phase__title"></h4>
+                <h5 class="h5 phase__date weight-500 color-0-8"></h5>
+                <p class="phase__description color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nihil doloremque, mollitia dolor minima et.</p>
+            </div>
+        </li>
+    </template>
 
     <!--  -->
 
@@ -293,7 +306,9 @@
             <sm-panel class="flex justify-center carousel-container">
                 <sm-carousel id="ico_page__carousel" indicator autoplay></sm-carousel>
             </sm-panel>
-            <sm-panel></sm-panel>
+            <sm-panel>
+                <ul id="ico_phase_list"></ul>
+            </sm-panel>
             <sm-panel></sm-panel>
         </sm-tab-panels>
     </article>
@@ -712,7 +727,7 @@
         const render = {
             bitBondRow(obj){
                 const {series, currentValue, timeElapsed} = obj
-                const row = document.getElementById('bit_bond_row').content.cloneNode(true)
+                const row = getRef('bit_bond_row').content.cloneNode(true)
                 row.querySelector('.original-value').textContent = series
                 row.querySelector('.current-value').textContent = currentValue
                 row.querySelector('.time-elapsed').textContent = timeElapsed
@@ -720,7 +735,7 @@
             },
             bobFundRow(obj){
                 const {investorName, invested, currentValue, timeElapsed} = obj
-                const row = document.getElementById('bob_fund_row').content.cloneNode(true)
+                const row = getRef('bob_fund_row').content.cloneNode(true)
                 row.querySelector('.investor__name').textContent = investorName
                 row.querySelector('.original-value').textContent = invested
                 row.querySelector('.current-value').textContent = currentValue
@@ -730,7 +745,7 @@
             icoInvestorRow(obj, options){
                 const {extension, investorName, bio, contribution} = obj
                 const {thumbnail} = options
-                const row = document.getElementById('ico_investor_row').content.cloneNode(true)
+                const row = getRef('ico_investor_row').content.cloneNode(true)
                 const card = row.querySelector('.investor-card')
                 const folder = thumbnail ?  'investors-thumbnail' : 'investors'
                 const investorImage = row.querySelector('.investor__image')
@@ -745,6 +760,14 @@
                 row.querySelector('.investor__contribution').textContent = contribution
                 return row
             },
+            icoPhase(obj){
+                const {phase, date, info} = obj
+                const template = getRef('ico_phase_template').content.cloneNode(true)
+                template.querySelector('.phase__title').textContent = `Phase ${phase}`
+                template.querySelector('.phase__date').textContent = date
+                template.querySelector('.phase__description').textContent = info
+                return template
+            }
         }
 
 
@@ -1041,6 +1064,19 @@
             },
         ]
 
+        const icoPhases = [
+            {
+                phase: 1,
+                date: 'Aug 17',
+                info: ''
+            },
+            {
+                phase: 2,
+                date: 'Oct 17',
+                info: ''
+            }
+        ]
+
         function renderAllSeries(){
             const frag = document.createDocumentFragment()
             getRef('bit_bond_series__container').innerHTML = ''
@@ -1069,9 +1105,18 @@
             getRef('ico_investors__container').append(frag1)
             getRef('ico_page__carousel').append(frag2)
         }
+        function renderAllIcoPhases(){
+            getRef('ico_phase_list').innerHTML = ''
+            const frag = document.createDocumentFragment()
+            icoPhases.forEach(phase => {
+                frag.append(render.icoPhase(phase))
+            })
+            getRef('ico_phase_list').append(frag)
+        }
         renderAllSeries()
         renderAllFundInvestors()
         renderAllIcoInvestors()
+        renderAllIcoPhases()
 
         const outletObserver = new IntersectionObserver( entries => {
             entries.forEach(entry => {
@@ -1109,7 +1154,6 @@
         let activeOutletIndex = 0
         const allOutletCarousels = document.querySelectorAll('.outlet-preview sm-carousel')
         function changeOutletFocus(){
-            console.log(allOutletCarousels[activeOutletIndex])
             allOutletCarousels[activeOutletIndex].stopAutoPlay()
             activeOutletIndex = activeOutletIndex + 1 < allOutletCarousels.length ? activeOutletIndex + 1 : 0 
             allOutletCarousels[activeOutletIndex].setAttribute('autoplay', '')

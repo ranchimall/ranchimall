@@ -579,6 +579,47 @@ table {
   width: min(32rem, 100%);
 }
 
+.phase {
+  grid-template-columns: 4rem 1fr;
+}
+.phase:not(:last-of-type) .phase__description {
+  padding-bottom: 1.5rem;
+}
+.phase:last-of-type .progress-bar__line {
+  height: 0;
+}
+
+.progress-bar__circle,
+.progress-bar__line {
+  position: absolute;
+  margin-top: 1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.progress-bar__circle {
+  padding: 0.4rem;
+  background: rgba(var(--foreground-color), 1);
+  border: solid rgba(var(--text-color), 1) 0.1rem;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.progress-bar__line {
+  height: 100%;
+  width: 0.1rem;
+  background: rgba(var(--text-color), 0.9);
+}
+
+.phase__date {
+  margin-top: 0.3rem;
+}
+
+.phase__description {
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 640px) {
   .hide-on-mobile {
     display: none;
