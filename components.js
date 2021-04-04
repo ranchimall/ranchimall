@@ -2498,6 +2498,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
     }
     
     startAutoPlay = () => {
+        if(!this.carouselItems) return
         if((this.activeSlideNum + 1) < this.carouselItems.length)
             this.showSlide(this.activeSlideNum + 1)
         else
