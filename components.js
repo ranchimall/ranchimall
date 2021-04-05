@@ -2451,6 +2451,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
         this.isAutoPlaying = false
         this.autoPlayInterval = 5000
         this.autoPlayTimeout
+        this.initialTimeout
         this.activeSlideNum = 0
         this.carouselItems
         this.indicators
@@ -2496,18 +2497,24 @@ customElements.define('sm-carousel', class extends HTMLElement {
             behavior: 'smooth'
         })
     }
+
+    nextSlide = () => {
+        if (!this.carouselItems) return
+        let showSlideNo = (this.activeSlideNum + 1) < this.carouselItems.length ? this.activeSlideNum + 1 : 0
+        this.showSlide(showSlideNo)
+    }
     
-    startAutoPlay = () => {
-        if(!this.carouselItems) return
-        if((this.activeSlideNum + 1) < this.carouselItems.length)
-            this.showSlide(this.activeSlideNum + 1)
-        else
-            this.showSlide(0)
+    autoPlay = () => {
+        this.nextSlide()
         if (this.isAutoPlaying) {
             this.autoPlayTimeout = setTimeout(() => {
-                this.startAutoPlay()
+                this.autoPlay()
             }, this.autoPlayInterval);
         }
+    }
+
+    startAutoPlay = () => {
+        this.setAttribute('autoplay', '')
     }
 
     stopAutoPlay = () => {
@@ -2586,7 +2593,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
                 this.indicators = this.indicatorsContainer.children
             }
             if (this.hasAttribute('autoplay')) {
-                this.startAutoPlay()
+                this.autoPlay()
             }
         })
 
@@ -2612,13 +2619,16 @@ customElements.define('sm-carousel', class extends HTMLElement {
                 }
             if (name === 'autoplay') {
                 if (this.hasAttribute('autoplay')) {
-                    this.isAutoPlaying = true
                     if(this.carouselSlot.assignedElements().length > 1)
-                        this.startAutoPlay()
+                        this.initialTimeout = setTimeout(() => {
+                            this.isAutoPlaying = true
+                                this.autoPlay()
+                        }, this.autoPlayInterval);
                 }
                 else {
                     this.isAutoPlaying = false
                     clearTimeout(this.autoPlayTimeout)
+                    clearTimeout(this.initialTimeout)
                 }
                 
             }
