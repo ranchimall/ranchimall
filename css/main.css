@@ -688,12 +688,20 @@ scroll-tab-header {
   --padding: 0.5rem;
   margin-right: 1.5rem;
   --background: rgba(var(--text-color), 0.04);
+  --grid-auto-flow: column;
 }
 
 scroll-tab-panels {
   --height: max(24rem, 50vh);
   --gap: 4rem;
   --background: transparent;
+}
+
+.auto-grid-layout {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow-x: auto;
 }
 
 .grid-2 {
@@ -855,6 +863,14 @@ table {
 
   #elevator_sections {
     gap: 3rem;
+    grid-template-columns: auto 1fr;
+  }
+
+  scroll-tab-header {
+    --grid-auto-flow: row;
+  }
+
+  .auto-grid-layout {
     grid-template-columns: auto 1fr;
   }
 }

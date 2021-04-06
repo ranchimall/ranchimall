@@ -3646,17 +3646,20 @@ scrollTabHeader.innerHTML = `
             gap: 1rem;
             --padding: 0;
             --border-radius: 0.3rem;
+            --grid-auto-flow: auto;
             --background: rgba(var(--foreground-color), 1);
         }
         .tab-header{
             display: grid;
             gap: var(--gap);
+            grid-auto-flow: var(--grid-auto-flow);
+            justify-content: flex-start;
             padding: var(--padding);
             border-radius: var(--border-radius);
             background: var(--background);
         }
     </style>
-    <div class="tab-header">
+    <div part="tab-header" class="tab-header">
         <slot></slot>
     </div>
 `
@@ -3688,7 +3691,6 @@ customElements.define('scroll-tab-header', class extends HTMLElement{
     changeActiveTab = (tabIndex, fire = false) => {
         if (this.activeTab)
             this.activeTab.removeAttribute('active')
-        console.log(this._assignedElements, tabIndex)
         this._assignedElements[tabIndex].setAttribute('active', '')
         if(fire)
             this.fireEvent(tabIndex)
@@ -3837,7 +3839,6 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
         })
         this.tabPanels.addEventListener('slotchange', e => {
             this._assignedElements = this.tabPanelsSlot.assignedElements()
-            console.log(this._assignedElements)
             this._assignedElements.forEach((elem, index) => {
                 elem.setAttribute('data-index', index)
                 if (elem.hasAttribute('active')) {
