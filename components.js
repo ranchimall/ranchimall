@@ -3631,3 +3631,226 @@ customElements.define('sm-tab-panels', class extends HTMLElement {
         })
     }
 })
+
+
+const scrollTabHeader = document.createElement('template')
+scrollTabHeader.innerHTML = `
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+        }   
+        :host{
+            gap: 1rem;
+            --padding: 0;
+            --border-radius: 0.3rem;
+            --background: rgba(var(--foreground-color), 1);
+        }
+        .tab-header{
+            display: grid;
+            gap: var(--gap);
+            padding: var(--padding);
+            border-radius: var(--border-radius);
+            background: var(--background);
+        }
+    </style>
+    <div class="tab-header">
+        <slot></slot>
+    </div>
+`
+customElements.define('scroll-tab-header', class extends HTMLElement{
+    constructor(){
+        super()
+        this.shadow = this.attachShadow({
+            mode: 'open'
+        })
+        this.shadow.append(scrollTabHeader.content.cloneNode(true))
+        this.tabHeader = this.shadow.querySelector('.tab-header')
+        this.tabHeaderSlot = this.shadow.querySelector('slot')
+        this.targetPanelGroup
+        this._assignedElements
+        this.activeTab
+    }
+    
+    fireEvent = (panelIndex) => {
+        this.dispatchEvent(new CustomEvent('changePanel', {
+            bubbles: true,
+            composed: true,
+            detail: {
+                panelIndex,
+                targetPanelGroup: this.targetPanelGroup
+            }
+        }))
+    }
+
+    changeActiveTab = (tabIndex, fire = false) => {
+        if (this.activeTab)
+            this.activeTab.removeAttribute('active')
+        console.log(this._assignedElements, tabIndex)
+        this._assignedElements[tabIndex].setAttribute('active', '')
+        if(fire)
+            this.fireEvent(tabIndex)
+        this.activeTab = this._assignedElements[tabIndex]
+    }
+
+    handleClick = (e) => {
+        if (e.target.closest('[data-index]') && this.activeTab !== e.target.closest('[data-index]')) {
+            this.changeActiveTab(e.target.closest('[data-index]').dataset.index, true)
+        }
+    }
+
+    handleTabChange = (e) => {
+        if(this._assignedElements[e.detail.tabIndex] !== this.activeTab)
+            this.changeActiveTab(e.detail.tabIndex)            
+    }
+
+    connectedCallback() {
+        if (!this.dataset.target) return;
+
+        this.targetPanelGroup = this.dataset.target
+
+        this.tabHeaderSlot.addEventListener('slotchange', e => {
+            this._assignedElements = this.tabHeaderSlot.assignedElements()
+            this._assignedElements.forEach((elem, index) => {
+                elem.setAttribute('data-index', index)
+                if (elem.hasAttribute('active')) {
+                    this.changeActiveTab(elem.dataset.index, true)
+                }
+            })
+        })
+        this.tabHeader.addEventListener('click', this.handleClick)
+        document.addEventListener('changeTab', this.handleTabChange)
+    }
+    disconnectedCallbakc() {
+        this.tabHeader.removeEventListener('click', this.handleClick)
+    }
+})
+
+const scrollTabPanels = document.createElement('template')
+scrollTabPanels.innerHTML = `
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+        }   
+        :host{
+            --gap: 0;
+            --height: auto;
+            --border-radius: 0.3rem;
+            --background: rgba(var(--foreground-color), 1);
+        }
+        .tab-panels{
+            display: grid;
+            gap: var(--gap);
+            height: var(--height);
+            overflow-y: auto;
+            border-radius: var(--border-radius);
+            background: var(--background);
+            scroll-snap-type: y proximity;
+            scroll-behavior: smooth;
+        }
+        slot::slotted(*){
+            scroll-snap-align: start;
+        }
+        @media (any-hover: none){
+            ::-webkit-scrollbar-track {
+                -webkit-box-shadow: none !important;
+                background-color: transparent !important;
+            }
+            ::-webkit-scrollbar {
+                height: 0;
+                background-color: transparent;
+            }
+        }
+        @media (any-hover: hover){
+            ::-webkit-scrollbar{
+                width: 0.5rem;
+                height: 0.5rem;
+            }
+            
+            ::-webkit-scrollbar-thumb{
+                background: rgba(var(--text-color), 0.3);
+                border-radius: 1rem;
+                &:hover{
+                    background: rgba(var(--text-color), 0.5);
+                }
+            }
+        }
+    </style>
+    <div class="tab-panels">
+        <slot></slot>
+    </div>
+`
+customElements.define('scroll-tab-panels', class extends HTMLElement {
+    constructor() {
+        super()
+        this.shadow = this.attachShadow({
+            mode: 'open'
+        })
+        this.shadow.append(scrollTabPanels.content.cloneNode(true))
+        this.tabPanels = this.shadow.querySelector('.tab-panels')
+        this.tabPanelsSlot = this.shadow.querySelector('slot')
+        this._assignedElements
+        this.activePanel
+        this.debounceTimeout
+    }
+
+    fireEvent = (tabIndex) => {
+        this.dispatchEvent(new CustomEvent('changeTab', {
+            bubbles: true,
+            composed: true,
+            detail: {
+                tabIndex
+            }
+        }))
+    }
+
+    handlePanelChange = (e) => {
+        if (e.detail.targetPanelGroup === this.id) {
+            this.tabPanels.scrollTo({
+                top: (this._assignedElements[e.detail.panelIndex].getBoundingClientRect().top - this.tabPanels.getBoundingClientRect().top + this.tabPanels.scrollTop),
+                behavior: 'smooth'
+            })
+        }
+    }
+    
+    connectedCallback() {
+        const panelObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (this.debounceTimeout) {
+                        clearTimeout(this.debounceTimeout)
+                    }
+                    this.debounceTimeout = setTimeout(() => {
+                        this.fireEvent(entry.target.dataset.index)
+                    }, 300);
+                }
+            })
+        },
+            {
+                threshold: 0.8,
+                root: this.tabPanels
+        })
+        this.tabPanels.addEventListener('slotchange', e => {
+            this._assignedElements = this.tabPanelsSlot.assignedElements()
+            console.log(this._assignedElements)
+            this._assignedElements.forEach((elem, index) => {
+                elem.setAttribute('data-index', index)
+                if (elem.hasAttribute('active')) {
+                    this.activePanel = elem
+                    this.fireEvent(elem.dataset.index)
+                }
+                panelObserver.observe(elem)
+            })
+        })
+        document.addEventListener('changePanel', this.handlePanelChange)
+    }
+    
+    disconnectedCallback() {
+        document.removeEventListener('changePanel', this.handlePanelChange)
+    }
+})

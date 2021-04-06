@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/RM logo.png" type="image/png">
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto+Slab:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body data-theme="light">
     <audio id="notification_sound">
@@ -85,7 +85,7 @@
             </div>
             <div class="flex direction-column investor__contribution-container">
                 <h4 class="label color-0-8 weight-500">Contribution</h4>
-                <p class="investor__contribution font-mono weight-700"></p>
+                <p class="investor__contribution weight-700"></p>
             </div>
         </div>
     </template>
@@ -170,7 +170,7 @@
         </div>
         <sm-switch id="theme_switcher"></sm-switch>
     </header>
-    <article id="home_page" class="page grid hide-completely full-bleed">
+    <article id="home_page" class="page hide-completely full-bleed">
         <aside id="floor_line_map" class="grid">
             <div class="flex line-map justify-center">
                 <div id="floor_line_map__circle" class="line-map__circle"></div>
@@ -180,10 +180,16 @@
         </aside>
         <main id="floor_container" class="grid">
             <section id="floor_1" class="floor">
+                <span class="flex align-center margin-bottom-1-5r">
+                    <svg class="icon button__icon--left big-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
+                    <h4 class="h3 weight-500">
+                        Outlets
+                    </h4>
+                </span>
                 <main id="floor_1__outlets" class="grid">
                     <div id="bit_bond_outlet" class="flex direction-column card outlet-preview carousel-container">
                         <div class="flex direction-column common-padding margin-bottom-1-5r">
-                            <h3 class="font-slab h3 outlet__title margin-bottom-1r">bitcoin bonds</h3>
+                            <h3 class="h3 outlet__title margin-bottom-1r">bitcoin bonds</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
@@ -196,7 +202,7 @@
                     </div>
                     <div id="bob_fund_outlet" class="flex direction-column card outlet-preview carousel-container">
                         <div class="flex direction-column margin-bottom-1-5r common-padding">
-                            <h3 class="font-slab h3 outlet__title margin-bottom-1r">Bob's Fund</h3>
+                            <h3 class="h3 outlet__title margin-bottom-1r">Bob's Fund</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
@@ -209,7 +215,7 @@
                     </div>
                     <div id="ico_outlet" class="flex direction-column card outlet-preview carousel-container">
                         <div class="flex direction-column margin-bottom-1-5r common-padding">
-                            <h3 class="font-slab h3 outlet__title margin-bottom-1r">ICO</h3>
+                            <h3 class="h3 outlet__title margin-bottom-1r">ICO</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
@@ -242,108 +248,125 @@
 
     <article id="bitbonds" class="page flex direction-column hide-completely">
         <section class="outlet-hero-section margin-bottom-3r">
-            <h5 class="outlet-label">Outlet</h5>
-            <h2 class="h2 weight-900 margin-bottom-1r">BitCoin Bonds</h2>
+            <h4 class="outlet-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
+                Outlet
+            </h4>
+            <h1 class="h1 weight-900 margin-bottom-1r">BitCoin Bonds</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
-        <h4 class="label">Rooms</h4>
-        <div class="tab-header flex direction-column" data-target-group="bit_bond_page_group">
-            <ul class="grid gap-1 flow-column">
-                <li>
-                    <button class="room-button room-button--active" data-button-group="bit_bond_page_group" data-target="bit_bond_returns_table">Returns</button>
-                </li>
-                <li>
-                    <button class="room-button" data-button-group="bit_bond_page_group" data-target="bit_bond_info">More</button>
-                </li>
-            </ul>
-            <div class="line-map__track flex w-100">
-                <div class="line-map__disc"></div>
-                <div class="line-map__line"></div>
-            </div>
+        <h3 class="h3 margin-bottom-1r">Rooms</h3>
+        <div class="grid grid-2">
+            <scroll-tab-header data-target="bit_bond_page_group">
+                <button class="room-button">
+                    <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M21,8c-1.45,0-2.26,1.44-1.93,2.51l-3.55,3.56c-0.3-0.09-0.74-0.09-1.04,0l-2.55-2.55C12.27,10.45,11.46,9,10,9 c-1.45,0-2.27,1.44-1.93,2.52l-4.56,4.55C2.44,15.74,1,16.55,1,18c0,1.1,0.9,2,2,2c1.45,0,2.26-1.44,1.93-2.51l4.55-4.56 c0.3,0.09,0.74,0.09,1.04,0l2.55,2.55C12.73,16.55,13.54,18,15,18c1.45,0,2.27-1.44,1.93-2.52l3.56-3.55 C21.56,12.26,23,11.45,23,10C23,8.9,22.1,8,21,8z"/><polygon points="15,9 15.94,6.93 18,6 15.94,5.07 15,3 14.08,5.07 12,6 14.08,6.93"/><polygon points="3.5,11 4,9 6,8.5 4,8 3.5,6 3,8 1,8.5 3,9"/></g></g></svg>
+                    <span class="button__label">
+                        Returns
+                    </span>
+                </button>
+                <button class="room-button">
+                    <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                    <span class="button__label">
+                        More
+                    </span>
+                </button>
+            </scroll-tab-header>
+            <scroll-tab-panels id="bit_bond_page_group">
+                <table>
+                    <thead>
+                        <tr class="tr">
+                            <td class="td weight-700 uppercase">Series</td>
+                            <td class="td weight-700 uppercase">Series date</td>
+                            <td class="td weight-700 uppercase">Time Elapsed</td>
+                            <td class="td weight-700 uppercase">Current value</td>
+                            <td class="td weight-700 uppercase">Rate of return</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr">
+                            <td class="td weight-500">$975</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1057</td>
+                         </tr>   
+                         <tr class="tr">
+                             <td class="td weight-500">$1064</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1205</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$1285</td>
+                         </tr>
+                         <tr class="tr">
+                             <td class="td weight-500">$2513</td>
+                         </tr>
+                        </tr>
+                    </tbody>
+                </table>
+                <h1 id="bit_bond_info" class="h1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga inventore error omnis ipsam ut incidunt, doloremque pariatur expedita distinctio itaque.
+                </h1>
+            </scroll-tab-panels>
         </div>
-        <table id="bit_bond_returns_table" data-panel-group="bit_bond_page_group">
-            <thead>
-                <tr class="tr">
-                    <td class="td weight-700 uppercase">Series</td>
-                    <td class="td weight-700 uppercase">Series date</td>
-                    <td class="td weight-700 uppercase">Time Elapsed</td>
-                    <td class="td weight-700 uppercase">Current value</td>
-                    <td class="td weight-700 uppercase">Rate of return</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="tr">
-                    <td class="td weight-500">$975</td>
-                 </tr>
-                 <tr class="tr">
-                     <td class="td weight-500">$1057</td>
-                 </tr>   
-                 <tr class="tr">
-                     <td class="td weight-500">$1064</td>
-                 </tr>
-                 <tr class="tr">
-                     <td class="td weight-500">$1205</td>
-                 </tr>
-                 <tr class="tr">
-                     <td class="td weight-500">$1285</td>
-                 </tr>
-                 <tr class="tr">
-                     <td class="td weight-500">$2513</td>
-                 </tr>
-                </tr>
-            </tbody>
-        </table>
-        <p id="bit_bond_info" class="hide-completely" data-panel-group="bit_bond_page_group"></p>
     </article>
 
     <article id="bob'sfund" class="page flex direction-column hide-completely">
         <section class="outlet-hero-section margin-bottom-3r">
-            <h5 class="outlet-label">Outlet</h5>
-            <h2 class="h2 weight-900 margin-bottom-1r">Bob's Fund</h2>
+            <h5 class="outlet-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
+                Outlet
+            </h5>
+            <h1 class="h1 weight-900 margin-bottom-1r">Bob's Fund</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
-        <h4 class="label">Rooms</h4>
-        <div class="tab-header flex direction-column" data-target-group="bob_fund_page_group">
-            <ul class="grid gap-1 flow-column">
-                <li>
-                    <button class="room-button room-button--active" data-button-group="bob_fund_page_group" data-target="bob_fund_page__carousel">Investors</button>
-                </li>
-                <li>
-                    <button class="room-button" data-button-group="bob_fund_page_group" data-target="bob_fund_info">More</button>
-                </li>
-            </ul>
-            <div class="line-map__track flex w-100">
-                <div class="line-map__disc"></div>
-                <div class="line-map__line"></div>
-            </div>
-        </div>
-        <sm-carousel id="bob_fund_page__carousel" data-panel-group="bob_fund_page_group" indicator autoplay></sm-carousel>
-        <p id="bob_fund_info" class="hide-completely" data-panel-group="bob_fund_page_group"></p>
+        <h3 class="h3 margin-bottom-1r">Rooms</h3>
+        <sm-tab-header target="bob_fund_page_group" variant="tab" class="margin-bottom-1r">
+            <sm-tab class="h4">Investors</sm-tab>
+            <sm-tab class="h4">More</sm-tab>
+        </sm-tab-header>
+        <sm-tab-panels id="bob_fund_page_group">
+            <sm-panel>
+                <!-- <sm-carousel id="bob_fund_page__carousel" indicator autoplay></sm-carousel> -->
+                <h1 class="h1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, modi.</h1>
+                <h1 class="h1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, modi.</h1>
+            </sm-panel>
+            <sm-panel>
+                <p id="bob_fund_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi facere officiis eius iusto quibusdam tenetur illo blanditiis asperiores et corporis!</p>
+            </sm-panel>
+        </sm-tab-panels>
     </article>
 
     <article id="ico" class="page flex direction-column hide-completely">
         <section class="outlet-hero-section grid margin-bottom-3r">
-            <h5 class="outlet-label">Outlet</h5>
-            <h2 class="h2 weight-900 margin-bottom-1r">ICO</h2>
+            <h5 class="outlet-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
+                Outlet
+            </h5>
+            <h1 class="h1 weight-900 margin-bottom-1r">ICO</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
-        <h4 class="label">Rooms</h4>
-        <div class="tab-header flex direction-column" data-target-group="ico_page_group">
-            <ul class="grid gap-1 flow-column">
-                <li>
-                    <button class="room-button room-button--active" data-button-group="ico_page_group" data-target="ico_page__carousel">Investors</button>
-                </li>
-                <li>
-                    <button class="room-button" data-button-group="ico_page_group" data-target="ico_phase_list">Phases</button>
-                </li>
-            </ul>
-            <div class="line-map__track flex w-100">
-                <div class="line-map__disc"></div>
-                <div class="line-map__line"></div>
-            </div>
+        <h3 class="h3 margin-bottom-1r">Rooms</h3>
+        <div class="grid flow-column">
+            <scroll-tab-header data-target="ico_page_group">
+                <button class="room-button" title="Investors">
+                    <svg class="icon icon-only" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M2 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H2zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm8.284 3.703A8.002 8.002 0 0 1 23 22h-2a6.001 6.001 0 0 0-3.537-5.473l.82-1.824zm-.688-11.29A5.5 5.5 0 0 1 21 8.5a5.499 5.499 0 0 1-5 5.478v-2.013a3.5 3.5 0 0 0 1.041-6.609l.555-1.943z"/></svg>
+                </button>
+                <button class="room-button" title="Phases">
+                    <svg class="icon icon-only" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="12" width="4" height="10"/><rect x="10" y="7" width="4" height="15"/><rect x="16" y="2" width="4" height="20"/></svg>
+                </button>
+            </scroll-tab-header>
+            <scroll-tab-panels id="ico_page_group">
+                <div class="grid">
+                    <h4 class="h4 margin-bottom-1-5r">Investors</h4>
+                    <sm-carousel id="ico_page__carousel" indicator autoplay></sm-carousel>
+                </div>
+                <div class="grid">
+                    <h4 class="h4 margin-bottom-1-5r">Phases</h4>
+                    <ul id="ico_phase_list"></ul>
+                </div>
+            </scroll-tab-panels>
         </div>
-        <sm-carousel id="ico_page__carousel" data-panel-group="ico_page_group" indicator autoplay></sm-carousel>
-        <ul id="ico_phase_list" class="hide-completely" data-panel-group="ico_page_group"></ul>
     </article>
 
     <!--  -->
@@ -1165,31 +1188,6 @@
                 const label = e.target.closest('.floor-label')
                 const target = label.dataset.target
                 getRef(target).scrollIntoView({behavior: 'smooth'})
-            }
-            else if(e.target.closest('.room-button')){
-                const button = e.target.closest('.room-button')
-                const buttonDimensions = button.getBoundingClientRect()
-                const target = button.dataset.target
-                const tabHeader = button.closest('.tab-header')
-                const targetGroup = tabHeader.dataset.targetGroup
-                const indicator = tabHeader.querySelector('.line-map__disc')
-                const options = {
-                    duration: 300,
-                    easing: 'ease',
-                    fill: 'forwards'
-                }
-                
-                const activePanel = document.querySelector(`:not(.hide-completely)[data-panel-group="${targetGroup}"]`)
-                activePanel.animate(fadeOut, options).onfinish = () => {
-                    activePanel.classList.add('hide-completely')
-                    getRef(target).classList.remove('hide-completely')
-                    getRef(target).animate(fadeIn, options)
-                }
-                
-                document.querySelector(`.room-button--active[data-button-group="${targetGroup}"]`).classList.remove('room-button--active')
-                button.classList.add('room-button--active')
-                
-                indicator.setAttribute('style', `transform: translateX(${buttonDimensions.left + (buttonDimensions.width / 2) - tabHeader.getBoundingClientRect().left + tabHeader.scrollLeft}px)`)
             }
         })
 
