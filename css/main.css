@@ -646,7 +646,7 @@ sm-carousel {
 
 .investor__image {
   grid-area: img;
-  width: 8rem;
+  width: 5rem;
   border-radius: 0.5rem;
 }
 
@@ -659,8 +659,36 @@ sm-carousel {
   grid-area: para;
 }
 
-.outlet-hero-section {
-  margin-top: 6rem;
+#outlet_switcher {
+  position: absolute;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  background: rgba(var(--foreground-color), 1);
+  -webkit-box-shadow: 1px 0.1rem 0.1rem rgba(0, 0, 0, 0.06), 0 2rem 4rem -1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 0.1rem 0.1rem rgba(0, 0, 0, 0.06), 0 2rem 4rem -1rem rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+  z-index: 2;
+}
+
+.outlet_switcher__button {
+  font-size: 1rem;
+  padding: 0.4rem 0;
+}
+.outlet_switcher__button--active {
+  color: var(--accent-color);
+}
+.outlet_switcher__button:not(:last-of-type)::after {
+  content: "";
+  position: relative;
+  width: 4vw;
+  height: 0.1rem;
+  margin: 0 0.5rem;
+  background: rgba(var(--text-color), 0.8);
 }
 
 .outlet-label {
@@ -670,6 +698,7 @@ sm-carousel {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  justify-self: flex-start;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -685,16 +714,24 @@ scroll-tab-panels {
 }
 
 scroll-tab-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  --gap: 0.5rem;
   --padding: 0.5rem;
   margin-right: 1.5rem;
-  --background: rgba(var(--text-color), 0.04);
+  --background: linear-gradient(rgba(var(--text-color), 0.04), rgba(var(--text-color), 0.04)), rgba(var(--foreground-color), 1);
   --grid-auto-flow: column;
+  justify-self: flex-start;
+  z-index: 1;
 }
 
 scroll-tab-panels {
   --height: max(24rem, 50vh);
   --gap: 4rem;
   --background: transparent;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
 }
 
 .auto-grid-layout {
@@ -715,9 +752,6 @@ scroll-tab-panels {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
   padding: 0.6rem 0.8rem;
-}
-.room-button:not(:last-of-type) {
-  margin-bottom: 0.5rem;
 }
 .room-button[active] {
   background: rgba(var(--text-color), 0.06);
@@ -749,7 +783,7 @@ table {
 }
 
 #ico_page__carousel {
-  width: min(32rem, 100%);
+  width: min(36rem, 100%);
 }
 
 .phase {
@@ -823,6 +857,14 @@ table {
     -webkit-transform: none;
             transform: none;
   }
+
+  #outlet_switcher {
+    width: calc(100% - 2rem);
+  }
+
+  .outlet-hero-section {
+    margin-top: 2rem;
+  }
 }
 @media only screen and (min-width: 640px) {
   .page {
@@ -866,12 +908,24 @@ table {
     grid-template-columns: auto 1fr;
   }
 
+  #outlet_switcher {
+    padding: 1rem 1.5rem;
+  }
+
+  .outlet-hero-section {
+    margin-top: 4rem;
+  }
+
   scroll-tab-header {
     --grid-auto-flow: row;
   }
 
   .auto-grid-layout {
     grid-template-columns: auto 1fr;
+  }
+
+  .investor__image {
+    width: 8rem;
   }
 }
 @media only screen and (min-width: 1280px) {
