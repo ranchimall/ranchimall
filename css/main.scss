@@ -33,6 +33,9 @@ body[data-theme='dark']{
             border-top: dashed 0.5rem rgba(var(--foreground-color), 0.7);
         }
     }
+    #theme_switcher{
+        justify-self: flex-end;
+    }
 }
 
 .full-bleed{
@@ -593,6 +596,10 @@ scroll-tab-panels{
     --gap: 4rem;
     --background: transparent;
     overscroll-behavior: contain;
+    & > *{
+        min-height: max(24rem, 50vh);
+        margin-bottom: 6rem;
+    }
 }
 .auto-grid-layout{
     justify-content: flex-start;
@@ -636,6 +643,7 @@ table{
 
 #ico_page__carousel{
     width: min(36rem ,100%);
+    height: max-content;
 }
 
 

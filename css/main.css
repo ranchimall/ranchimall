@@ -36,6 +36,9 @@ body[data-theme=dark] .outlet-preview {
 body[data-theme=dark] .outlet-preview sm-carousel {
   border-top: dashed 0.5rem rgba(var(--foreground-color), 0.7);
 }
+body[data-theme=dark] #theme_switcher {
+  justify-self: flex-end;
+}
 
 .full-bleed {
   grid-column: 1/4;
@@ -733,6 +736,10 @@ scroll-tab-panels {
   -ms-scroll-chaining: none;
       overscroll-behavior: contain;
 }
+scroll-tab-panels > * {
+  min-height: max(24rem, 50vh);
+  margin-bottom: 6rem;
+}
 
 .auto-grid-layout {
   -webkit-box-pack: start;
@@ -784,6 +791,9 @@ table {
 
 #ico_page__carousel {
   width: min(36rem, 100%);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .phase {

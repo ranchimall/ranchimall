@@ -2484,7 +2484,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
 
     handleIndicatorClick = (e) => {
         if (e.target.closest('.dot')) {
-            const slideNum = parseInt(e.target.closest('.dot').getAttribute('rank'))
+            const slideNum = parseInt(e.target.closest('.dot').dataset.rank)
             if (this.activeSlideNum !== slideNum) {
                 this.showSlide(slideNum)
             }
@@ -2533,7 +2533,7 @@ customElements.define('sm-carousel', class extends HTMLElement {
         const allElementsObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (this.showIndicator) {                    
-                    const activeRank = parseInt(entry.target.attributes.rank.textContent)
+                    const activeRank = parseInt(entry.target.dataset.rank)
                     if (entry.isIntersecting) {
                         this.indicators[activeRank].classList.add('active')
                         this.activeSlideNum = activeRank
@@ -2585,15 +2585,12 @@ customElements.define('sm-carousel', class extends HTMLElement {
                 this.carouselItems.forEach((item, index) => {
                     let dot = document.createElement('div')
                     dot.classList.add('dot')
-                    dot.setAttribute('rank', index)
+                    dot.dataset.rank = index
                     frag.append(dot)
-                    item.setAttribute('rank', index)
+                    item.dataset.rank = index
                 })
                 this.indicatorsContainer.append(frag)
                 this.indicators = this.indicatorsContainer.children
-            }
-            if (this.hasAttribute('autoplay')) {
-                this.autoPlay()
             }
         })
 
@@ -2619,11 +2616,10 @@ customElements.define('sm-carousel', class extends HTMLElement {
                 }
             if (name === 'autoplay') {
                 if (this.hasAttribute('autoplay')) {
-                    if(this.carouselSlot.assignedElements().length > 1)
-                        this.initialTimeout = setTimeout(() => {
-                            this.isAutoPlaying = true
-                                this.autoPlay()
-                        }, this.autoPlayInterval);
+                    this.initialTimeout = setTimeout(() => {
+                        this.isAutoPlaying = true
+                        this.autoPlay()
+                    }, this.autoPlayInterval);
                 }
                 else {
                     this.isAutoPlaying = false
@@ -3408,7 +3404,7 @@ customElements.define('sm-tab-header', class extends HTMLElement {
                 bubbles: true,
                 detail: {
                     target: this.target,
-                    rank: parseInt(element.getAttribute('rank'))
+                    rank: parseInt(element.dataset.rank)
                 }
             })
         )
@@ -3435,7 +3431,7 @@ customElements.define('sm-tab-header', class extends HTMLElement {
 
         this.tabSlot.addEventListener('slotchange', () => {
             this.tabSlot.assignedElements().forEach((tab, index) => {
-                tab.setAttribute('rank', index)
+                tab.dataset.rank = index
             })
         })
         this.allTabs = this.tabSlot.assignedElements();
@@ -3783,7 +3779,7 @@ scrollTabPanels.innerHTML = `
             }
         }
     </style>
-    <div class="tab-panels">
+    <div part="tab-panels" class="tab-panels">
         <slot></slot>
     </div>
 `
@@ -3834,8 +3830,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
             })
         },
             {
-                threshold: 0.8,
-                root: this.tabPanels
+                threshold: 0.8
         })
         this.tabPanels.addEventListener('slotchange', e => {
             this._assignedElements = this.tabPanelsSlot.assignedElements()
