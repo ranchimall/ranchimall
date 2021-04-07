@@ -3825,12 +3825,17 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
                     }
                     this.debounceTimeout = setTimeout(() => {
                         this.fireEvent(entry.target.dataset.index)
-                    }, 300);
+                        if (this.activePanel)
+                            this.activePanel.removeAttribute('active')
+                        this._assignedElements[entry.target.dataset.index].setAttribute('active', '')
+                        this.activePanel = this._assignedElements[entry.target.dataset.index]
+                    }, 100);
                 }
             })
         },
             {
-                threshold: 0.8
+                threshold: 0.8,
+                root: this.tabPanels
         })
         this.tabPanels.addEventListener('slotchange', e => {
             this._assignedElements = this.tabPanelsSlot.assignedElements()

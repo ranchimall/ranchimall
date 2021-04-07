@@ -738,6 +738,12 @@ scroll-tab-panels {
 scroll-tab-panels > * {
   min-height: max(24rem, 50vh);
   margin-bottom: 6rem;
+  opacity: 0.4;
+  -webkit-transition: opacity 0.6s;
+  transition: opacity 0.6s;
+}
+scroll-tab-panels > [active] {
+  opacity: 1;
 }
 
 .auto-grid-layout {
