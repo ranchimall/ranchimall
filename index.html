@@ -1231,6 +1231,20 @@
                 }
             }
         })
+        
+        let mouseOverTimeout
+        document.querySelectorAll('.outlet-label').forEach(label => {
+            label.addEventListener('mouseenter', e => {
+                mouseOverTimeout = setTimeout(() => {
+                    showOutletSwitcher(e.target)
+                }, 300);
+            })
+        })
+        document.querySelectorAll('.outlet-label').forEach(label => {
+            label.addEventListener('mouseleave', e => {
+                clearTimeout(mouseOverTimeout)
+            })
+        })
 
         function showOutletSwitcher(button){
             const buttonDimensions = button.getBoundingClientRect()
