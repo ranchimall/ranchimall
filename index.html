@@ -290,38 +290,40 @@
                 </button>
             </scroll-tab-header>
             <scroll-tab-panels id="bit_bond_page_group">
-                <table>
-                    <thead>
-                        <tr class="tr">
-                            <td class="td weight-700 uppercase">Series</td>
-                            <td class="td weight-700 uppercase">Series date</td>
-                            <td class="td weight-700 uppercase">Time Elapsed</td>
-                            <td class="td weight-700 uppercase">Current value</td>
-                            <td class="td weight-700 uppercase">Rate of return</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="tr">
-                            <td class="td weight-500">$975</td>
-                         </tr>
-                         <tr class="tr">
-                             <td class="td weight-500">$1057</td>
-                         </tr>   
-                         <tr class="tr">
-                             <td class="td weight-500">$1064</td>
-                         </tr>
-                         <tr class="tr">
-                             <td class="td weight-500">$1205</td>
-                         </tr>
-                         <tr class="tr">
-                             <td class="td weight-500">$1285</td>
-                         </tr>
-                         <tr class="tr">
-                             <td class="td weight-500">$2513</td>
-                         </tr>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="flex w-100" style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr class="tr">
+                                <td class="td weight-700 uppercase">Series</td>
+                                <td class="td weight-700 uppercase">Series date</td>
+                                <td class="td weight-700 uppercase">Time Elapsed</td>
+                                <td class="td weight-700 uppercase">Current value</td>
+                                <td class="td weight-700 uppercase">Rate of return</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="tr">
+                                <td class="td weight-500">$975</td>
+                             </tr>
+                             <tr class="tr">
+                                 <td class="td weight-500">$1057</td>
+                             </tr>   
+                             <tr class="tr">
+                                 <td class="td weight-500">$1064</td>
+                             </tr>
+                             <tr class="tr">
+                                 <td class="td weight-500">$1205</td>
+                             </tr>
+                             <tr class="tr">
+                                 <td class="td weight-500">$1285</td>
+                             </tr>
+                             <tr class="tr">
+                                 <td class="td weight-500">$2513</td>
+                             </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <h1 id="bit_bond_info" class="h1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga inventore error omnis ipsam ut incidunt, doloremque pariatur expedita distinctio itaque.
                 </h1>
@@ -1249,7 +1251,7 @@
 
         function showOutletSwitcher(button){
             const buttonDimensions = button.getBoundingClientRect()
-            getRef('outlet_switcher').setAttribute('style', `top: ${buttonDimensions.top}px; left: ${buttonDimensions.left}px;`)
+            getRef('outlet_switcher').setAttribute('style', `top: ${buttonDimensions.top + document.documentElement.scrollTop}px; left: ${buttonDimensions.left}px;`)
             getRef('outlet_switcher').classList.remove('hide')
             getRef('outlet_switcher').classList.add('no-transformations')
             isFloorSwitcherOpen = true

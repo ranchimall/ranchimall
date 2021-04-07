@@ -446,7 +446,6 @@ ul {
   position: relative;
   display: grid;
   grid-template-columns: 1rem 1fr 1rem;
-  padding-bottom: 3rem;
 }
 .page > * {
   grid-column: 2/3;
