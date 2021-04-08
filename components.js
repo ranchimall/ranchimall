@@ -3750,6 +3750,8 @@ scrollTabPanels.innerHTML = `
             background: var(--background);
             scroll-snap-type: y proximity;
             scroll-behavior: smooth;
+            -ms-scroll-chaining: none;
+            overscroll-behavior: contain;
         }
         slot::slotted(*){
             scroll-snap-align: start;
