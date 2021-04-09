@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/RM logo.png" type="image/png">
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Roboto+Slab:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body data-theme="light">
     <audio id="notification_sound">
@@ -37,16 +37,16 @@
     <!-- Component templates -->
 
     <template id="bit_bond_row">
-        <div class="bit-bond-series__row grid grid-3 gap-1 common-padding">
-            <div class="flex direction-column">
+        <div class="bit-bond-series__row grid grid-3 gap-1">
+            <div class="grid">
                 <h5 class="label color-0-8 weight-500">Series</h5>
                 <h3 class="value original-value"></h3>
             </div>
-            <div class="flex direction-column">
+            <div class="grid">
                 <h5 class="label color-0-8 weight-500">Current value</h5>
                 <h3 class="value current-value"></h3>
             </div>
-            <div class="flex direction-column">
+            <div class="grid">
                 <h5 class="label color-0-8 weight-500">Time Elapsed</h5>
                 <h3 class="value time-elapsed"></h3>
             </div>
@@ -54,21 +54,21 @@
     </template>
 
     <template id="bob_fund_row">
-        <div class="bob-fund__row grid gap-1-5 common-padding">
-            <div class="flex direction-column">
+        <div class="bob-fund__row grid gap-1-5">
+            <div class="grid">
                 <h5 class="label color-0-8 weight-500">Investor</h5>
                 <h3 class="value investor__name"></h3>
             </div>
             <div class="grid grid-3 gap-1">
-                <div class="flex direction-column">
+                <div class="grid">
                     <h5 class="label color-0-8 weight-500">Invested</h5>
                     <h3 class="value original-value"></h3>
                 </div>
-                <div class="flex direction-column">
+                <div class="grid">
                     <h4 class="label color-0-8 weight-500">Current value</h4>
                     <h3 class="value current-value"></h3>
                 </div>
-                <div class="flex direction-column">
+                <div class="grid">
                     <h4 class="label color-0-8 weight-500">Time Elapsed</h4>
                     <h3 class="value time-elapsed"></h3>
                 </div>
@@ -77,13 +77,13 @@
     </template>
 
     <template id="ico_investor_row">
-        <div class="investor-card grid gap-1-5 common-padding">
+        <div class="investor-card grid gap-1-5">
             <img class="investor__image" src="" alt="" loading="lazy">
-            <div class="flex direction-column">
+            <div class="grid">
                 <h3 class="investor__name value capitalize"></h3>
                 <p class="investor__bio color-0-8"></p>
             </div>
-            <div class="flex direction-column investor__contribution-container">
+            <div class="grid investor__contribution-container">
                 <h4 class="label color-0-8 weight-500">Contribution</h4>
                 <p class="investor__contribution weight-700"></p>
             </div>
@@ -128,13 +128,13 @@
                 <h5 class="h5 margin-bottom-2r">Floors</h5>
                 <ul id="elevator_button_panel" class="grid">
                     <li>
-                        <button class="button floor__button floor__button--active" data-target="first_floor">1</button>
+                        <button class="button floor__button" data-target="floor_1">1</button>
                     </li>
                     <li>
-                        <button class="button floor__button" data-target="second_floor">2</button>
+                        <button class="button floor__button" data-target="floor_2">2</button>
                     </li>
                     <li>
-                        <button class="button floor__button" data-target="third_floor">3</button>
+                        <button class="button floor__button" data-target="floor_3">3</button>
                     </li>
                 </ul>
             </section>
@@ -163,7 +163,12 @@
     <!--  -->
 
     <header id="main_header" class="grid align-center full-bleed">
-        <button id="elevator_button" class="button" onclick="showPopup('elevator_popup')">Elevator</button>
+        <button id="elevator_button" class="button" onclick="showPopup('elevator_popup')">
+            <svg class="icon button__icon--left" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L16.3301 10.5H7.66987L12 3Z"/><path d="M12 21L7.66987 13.5L16.3301 13.5L12 21Z"/></svg>
+            <span class="button__label">
+                Elevator
+            </span>
+        </button>
         <div id="main_logo" class="flex align-center page-link" data-target="home_page">
             <svg id="main_header__logo" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.46,21.32C20,19.78,18.6,18.59,15.3,17a12.67,12.67,0,0,1-2.64-1.56,4.27,4.27,0,0,1-.79-1,2.6,2.6,0,0,1,0-1.41c.24-.68.49-1,2.43-2.85a7.18,7.18,0,0,0,2.09-2.92,4.25,4.25,0,0,0,0-1.77,6.52,6.52,0,0,0-2.85-3.11c-.56-.36-.81-.4-.81-.15a2.33,2.33,0,0,1-.18.45L12.4,3l-.53-.36c-.28-.21-.64-.41-.77-.49s-.46-.11-.46,0a6.21,6.21,0,0,1-.37.83s-.08,0-.17-.08c-1.15-.83-1.64-1-1.64-.73A7.33,7.33,0,0,1,7.7,3.65C6.48,5.68,5.24,6.7,4,6.7c-.56,0-.54,0-.37.64s.2.58.68.43a3.37,3.37,0,0,0,1.09-.54.86.86,0,0,1,.3-.17,1.34,1.34,0,0,1,.13.39.79.79,0,0,0,.17.4A3.5,3.5,0,0,0,7.37,7.3L7.8,7l.09.34c.12.45.19.51.62.39a4.25,4.25,0,0,0,2.17-1.54l.38-.45,0,.39A5.92,5.92,0,0,1,8.89,9.54L7.67,10.71c-2,1.93-1.89,3.51.37,5a27.41,27.41,0,0,0,2.89,1.51c.17.07.62.32,1,.54C14,19,15,20.23,15,21.48a2,2,0,0,0,0,.49h0c0,.05,0,.05.56-.1a1.89,1.89,0,0,0,.53-.21,2.41,2.41,0,0,0-.34-1.15,7.05,7.05,0,0,0-1.68-1.77,21.91,21.91,0,0,0-3.2-1.83A9.53,9.53,0,0,1,8.16,15.2a2.18,2.18,0,0,1-.74-1.55C7.42,12.79,7.86,12,9,11c1.77-1.64,2.45-2.45,2.92-3.55a2.28,2.28,0,0,0,.26-1.26A2,2,0,0,0,12,5.06l-.2-.45L12,4.3l.28-.49.09-.18L12.6,4a3.69,3.69,0,0,1,.61,1.76A3.47,3.47,0,0,1,12.94,7l-.09.25s-.21.37-.41.69A17.78,17.78,0,0,1,9.91,10.6c-1.07,1-1.43,1.62-1.47,2.47a2.05,2.05,0,0,0,.7,1.73,10.47,10.47,0,0,0,3.28,2.08c2.28,1.13,3.26,1.81,4,2.73a2.94,2.94,0,0,1,.74,1.75,1.26,1.26,0,0,0,.09.57.48.48,0,0,0,.26,0l.51-.13.29-.08,0-.28c-.13-1-1-2-2.47-3a25.52,25.52,0,0,0-3.26-1.77,8.59,8.59,0,0,1-2.23-1.43,2.09,2.09,0,0,1-.5-2.62c.26-.53.5-.83,2.35-2.6,1.51-1.45,2.15-2.58,2.15-3.79A3.67,3.67,0,0,0,13,3.48a3,3,0,0,1-.4-.42A1.85,1.85,0,0,1,13,2.33a6.74,6.74,0,0,1,1.83,1.73,2.62,2.62,0,0,1,.47,1.68,3,3,0,0,1-.55,1.84c-.45.78-.79,1.14-2.67,2.93a5.56,5.56,0,0,0-1.3,1.64,1.77,1.77,0,0,0-.21,1,1.76,1.76,0,0,0,.19.92,6.28,6.28,0,0,0,2.9,2.34,21.6,21.6,0,0,1,3.66,2c1.35,1,2,2,2,3a1.06,1.06,0,0,0,.05.47,2.83,2.83,0,0,0,1-.24C20.56,21.68,20.56,21.66,20.46,21.32ZM7.29,6.4h0a2.23,2.23,0,0,1-.9.28L6,6.72l.43-.53a15.22,15.22,0,0,0,1.89-3,3.52,3.52,0,0,1,.38-.67c.07-.08.49.2,1,.64l.39.35L9.66,4A6.7,6.7,0,0,1,7.29,6.4Zm3.58-1.11A5.8,5.8,0,0,1,9.25,6.51h0a3.3,3.3,0,0,1-.74.17l-.35,0,.39-.49a15.64,15.64,0,0,0,1.32-2,4.63,4.63,0,0,1,.28-.49c.06-.08.33.26.57.77l.28.57Zm1-1.4a1.63,1.63,0,0,1-.28.4A6.63,6.63,0,0,1,11,3.72l-.53-.56.12-.29c.2-.49.24-.51.64-.19a5.57,5.57,0,0,1,.85.78A2.78,2.78,0,0,1,11.87,3.89Z"/></svg>
             <h4 class="h4 header__company-name">RanchiMall</h4>
@@ -174,7 +179,7 @@
             <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
         </label>
     </header>
-    <article id="home_page" class="page hide-completely full-bleed">
+    <article id="home_page" class="page hide-completely">
         <aside id="floor_line_map" class="grid">
             <div class="flex line-map justify-center">
                 <div id="floor_line_map__circle" class="line-map__circle"></div>
@@ -184,51 +189,60 @@
         </aside>
         <main id="floor_container" class="grid">
             <section id="floor_1" class="floor">
-                <span class="flex align-center margin-bottom-1-5r">
+<!--                 <span class="flex align-center margin-bottom-1-5r">
                     <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
                     <h4 class="h4 weight-500">
                         Outlets
                     </h4>
-                </span>
+                </span> -->
                 <main id="floor_1__outlets" class="grid">
-                    <div id="bit_bond_outlet" class="flex direction-column card outlet-preview carousel-container">
-                        <div class="flex direction-column common-padding margin-bottom-1-5r">
-                            <h3 class="h3 outlet__title margin-bottom-1r">bitcoin bonds</h3>
+                    <div id="bit_bond_outlet" class="outlet-preview carousel-container">
+                        <div class="grid outlet-preview__info">
+                            <h3 class="outlet__title">bitcoin bonds</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
-                            <button class="button page-link outlet-preview__button justify-right" data-target="bitbonds">
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
                                 <span class="button__label">VISIT</span>
                                 <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                             </button>
                         </div>
-                        <sm-carousel id="bit_bond_series__container" indicator></sm-carousel>
+                        <div class="grid carousel-holder carousel-holder--right">
+                            <sm-carousel id="bit_bond_series__container" class="outlet-preview__carousel" indicator></sm-carousel>
+                        </div>
+                        <div class="outlet-preview__border"></div>
                     </div>
-                    <div id="bob_fund_outlet" class="flex direction-column card outlet-preview carousel-container">
-                        <div class="flex direction-column margin-bottom-1-5r common-padding">
-                            <h3 class="h3 outlet__title margin-bottom-1r">Bob's Fund</h3>
+                    <div id="bob_fund_outlet" class="outlet-preview carousel-container">
+                        <div class="grid outlet-preview__info">
+                            <h3 class="outlet__title">Bob's Fund</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
-                            <button class="button page-link outlet-preview__button justify-right" data-target="bob'sfund">
+                            <button class="button page-link outlet-preview__button" data-target="bob'sfund">
                                 <span class="button__label">VISIT</span>
                                 <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                             </button>
                         </div>
-                        <sm-carousel id="bob_fund_investors__container" indicator></sm-carousel>
+                        <div class="grid carousel-holder carousel-holder--left">
+                            <sm-carousel id="bob_fund_investors__container" class="outlet-preview__carousel" indicator></sm-carousel>
+                        </div>
+                        <div class="outlet-preview__border"></div>
                     </div>
-                    <div id="ico_outlet" class="flex direction-column card outlet-preview carousel-container">
-                        <div class="flex direction-column margin-bottom-1-5r common-padding">
-                            <h3 class="h3 outlet__title margin-bottom-1r">ICO</h3>
+                    <div id="ico_outlet" class="outlet-preview carousel-container">
+                        <div class="grid outlet-preview__info">
+                            <h3 class="outlet__title">ICO</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
-                            <button class="button page-link outlet-preview__button justify-right" data-target="ico">
+                            <button class="button page-link outlet-preview__button" data-target="ico">
                                 <span class="button__label">VISIT</span>
                                 <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 12l-6 6V6z"/></svg>
                             </button>
                         </div>
-                        <sm-carousel id="ico_investors__container" indicator></sm-carousel>
+                        <div class="grid carousel-holder carousel-holder--right">
+                            <sm-carousel id="ico_investors__container" class="outlet-preview__carousel" indicator></sm-carousel>
+                        </div>
+                        <div class="outlet-preview__border"></div>
                     </div>
                 </main>
             </section>
@@ -262,14 +276,14 @@
         </section>
     </div>
 
-    <article id="bitbonds" class="page flex direction-column hide-completely">
+    <article id="bitbonds" class="page grid hide-completely">
         <section class="outlet-hero-section margin-bottom-3r">
             <button class="outlet-label">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
                 Outlet
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
             </button>
-            <h1 class="h1 weight-900 margin-bottom-1r">BitCoin Bonds</h1>
+            <h2 class="h2 weight-700 margin-bottom-1r">BitCoin Bonds</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
         <h3 class="h3 margin-bottom-1r">Rooms</h3>
@@ -330,14 +344,14 @@
         </div>
     </article>
 
-    <article id="bob'sfund" class="page flex direction-column hide-completely">
+    <article id="bob'sfund" class="page grid hide-completely">
         <section class="outlet-hero-section margin-bottom-3r">
             <button class="outlet-label">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
                 Outlet
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
             </button>
-            <h1 class="h1 weight-900 margin-bottom-1r">Bob's Fund</h1>
+            <h2 class="h2 weight-700 margin-bottom-1r">Bob's Fund</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
         <h3 class="h3 margin-bottom-1r">Rooms</h3>
@@ -368,14 +382,14 @@
         </div>
     </article>
 
-    <article id="ico" class="page flex direction-column hide-completely">
+    <article id="ico" class="page grid hide-completely">
         <section class="outlet-hero-section grid margin-bottom-3r">
             <button class="outlet-label">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
                 Outlet
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
             </button>
-            <h1 class="h1 weight-900 margin-bottom-1r">ICO</h1>
+            <h2 class="h2 weight-700 margin-bottom-1r">ICO</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum cumque aut illum soluta. Inventore nihil quisquam harum quo mollitia sunt!</p>
         </section>
         <h3 class="h3 margin-bottom-1r">Rooms</h3>
@@ -1192,18 +1206,18 @@
 
         const outletObserver = new IntersectionObserver( entries => {
             entries.forEach(entry => {
-                if(window.innerWidth < 640){
+                // if(window.innerWidth < 640){
                     if(entry.isIntersecting){
                         entry.target.querySelector('sm-carousel').startAutoPlay()
                     }
                     else{
                         entry.target.querySelector('sm-carousel').stopAutoPlay()
                     }
-                }
+                // }
             })
         },
         {
-            threshold: 0.9
+            threshold: 1
         })
 
         document.querySelectorAll('.carousel-container').forEach(outlet => outletObserver.observe(outlet))
@@ -1225,9 +1239,16 @@
                 hideOutletSwitcher()
             }
             else{
-                if(e.target.closest('.floor-label')){
-                    const label = e.target.closest('.floor-label')
+                if(e.target.closest('.floor-label, .floor__button')){
+                    const label = e.target.closest('.floor-label, .floor__button')
                     const target = label.dataset.target
+                    if(currentPage !== 'home_page'){
+                        history.pushState({type: 'page', id: 'home_page'}, null, `#${'home_page'}`)
+                        showPage('home_page')
+                    }
+                    if(getRef('elevator_popup').open){
+                        hidePopup()
+                    }
                     getRef('home_page').scrollTo({
                         top: getRef(target).getBoundingClientRect().top - getRef('home_page').getBoundingClientRect().top + getRef('home_page').scrollTop,
                         behavior: 'smooth'
@@ -1280,7 +1301,7 @@
 
         let activeOutletIndex = 0
         const allOutletCarousels = document.querySelectorAll('.outlet-preview sm-carousel')
-        function changeOutletFocus(){
+/*         function changeOutletFocus(){
             allOutletCarousels[activeOutletIndex].nextSlide()
             activeOutletIndex = activeOutletIndex + 1 < allOutletCarousels.length ? activeOutletIndex + 1 : 0 
 
@@ -1292,7 +1313,7 @@
         }
         setTimeout(() => {
             changeOutletFocus()
-        }, 5000);
+        }, 5000); */
 
         let currentPage = ''
 
@@ -1362,6 +1383,7 @@
         getRef('home_page').addEventListener('scroll', e => {
             throttle(updatePos, 1000 / 30)
         }, {passive: true})
+        
         function updatePos(){
             window.requestAnimationFrame(() => {
                 getRef('floor_line_map__circle').setAttribute('style', `transform: translateY(${(getScrollPercent()) * (floorLineMapPercent)}px)`)
@@ -1382,10 +1404,10 @@
         const floorObserver = new IntersectionObserver( entries => {
             entries.forEach(entry => {
                 if(entry.isIntersecting){
-                    document.querySelector(`[data-target="${entry.target.id}"]`).classList.add('floor-label--active')
+                    document.querySelector(`.floor-label[data-target="${entry.target.id}"]`).classList.add('floor-label--active')
                 }
                 else{
-                    document.querySelector(`[data-target="${entry.target.id}"]`).classList.remove('floor-label--active')
+                    document.querySelector(`.floor-label[data-target="${entry.target.id}"]`).classList.remove('floor-label--active')
                 }
             })
         },
