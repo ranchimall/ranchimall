@@ -637,6 +637,7 @@ ul {
 sm-carousel {
   position: relative;
   height: 100%;
+  border-radius: 0.5rem;
   padding: 1.5rem 1.5rem 4rem 1.5rem;
   background: rgba(var(--foreground-color), 1);
   --arrow-left: 1.5rem;
@@ -951,8 +952,6 @@ table {
     -webkit-transform: translateY(-2rem);
             transform: translateY(-2rem);
     z-index: 1;
-  }
-  .carousel-holder sm-carousel {
     border-radius: 0.5rem;
   }
   .carousel-holder--left {
