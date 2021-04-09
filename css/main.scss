@@ -307,11 +307,53 @@ ul{
     cursor: pointer;
 }
 
-
-#elevator_button_panel{
-    gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
+#elevator_popup{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    overflow-y: auto;
+    grid-template-rows: auto 1fr;
+    background: rgba(var(--foreground-color), 1);
 }
+#elevator_sections{
+    align-content: flex-start;
+    padding: 1.5rem;
+    padding-bottom: 4rem;
+}
+.elevator__header{
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+}
+#elevator_button_panel{
+    gap: 2rem;
+    overflow: auto;
+    scroll-snap-type: x proximity;
+    grid-template-columns: repeat(3, min(20rem, 80%));
+    li{
+        display: grid;
+        gap: 2rem;
+        scroll-snap-align: start;
+    }
+}
+.outlet-section{
+    display: grid;
+    user-select: none;
+}
+
+.popup__header__close{
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
 
 .floor__button{
     padding: 1rem;
@@ -510,7 +552,7 @@ ul{
     margin-bottom: 0.3rem;
 }
 .value{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 sm-carousel{
@@ -794,15 +836,11 @@ table{
     .outlet-preview__border{
         width: 66%;
     }
-    #elevator_sections{
-        gap: 3rem;
-        grid-template-columns: auto 1fr;
-    }
     .outlet-preview__info{
         padding: 2rem 3rem;
     }
     .outlet-preview__carousel{
-        padding: 2rem 3rem 5rem 3rem;
+        padding: 2rem 2rem 5rem 2rem;
     }
     #outlet_switcher{
         padding: 1rem 1.5rem;
@@ -823,9 +861,6 @@ table{
 @media only screen and (min-width: 1280px) {
     .page{
         grid-template-columns: 1fr 80vw 1fr;
-    }
-    #elevator_popup{
-        --width: min(100%, 54rem)
     }
     .grid-3{
         justify-content: center;

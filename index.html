@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/RM logo.png" type="image/png">
     <link rel="stylesheet" href="css/main.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Roboto+Slab:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400..900&display=swap" rel="stylesheet">
 </head>
 <body data-theme="light">
     <audio id="notification_sound">
@@ -54,7 +54,7 @@
     </template>
 
     <template id="bob_fund_row">
-        <div class="bob-fund__row grid gap-1-5">
+        <div class="bob-fund__row grid gap-2">
             <div class="grid">
                 <h5 class="label color-0-8 weight-500">Investor</h5>
                 <h3 class="value investor__name"></h3>
@@ -116,54 +116,60 @@
 
     <!-- Popup -->
 
-    <sm-popup id="elevator_popup">
-        <header class="popup__header" slot="header">
-            <button class="close-button" onclick="hidePopup()">
+    <section id="elevator_popup" class="grid hide-completely">
+        <header class="elevator__header">
+            <button class="close-button" onclick="hideSiteMap()">
                 <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
             </button>
             <h4>Elevator</h4>
         </header>
-        <div id="elevator_sections" class="grid">
-            <section id="elevator__panel">
-                <h5 class="h5 margin-bottom-2r">Floors</h5>
-                <ul id="elevator_button_panel" class="grid">
-                    <li>
-                        <button class="button floor__button" data-target="floor_1">1</button>
-                    </li>
-                    <li>
-                        <button class="button floor__button" data-target="floor_2">2</button>
-                    </li>
-                    <li>
-                        <button class="button floor__button" data-target="floor_3">3</button>
-                    </li>
-                </ul>
-            </section>
-            <section id="elevator__floor_plan" class="hide-on-mobile">
-                <h5 class="h5 margin-bottom-2r">Outlets</h5>
-                <section class="grid gap-3" id="first_floor">
-                    <div class="outlet-section">
-                        <h4 class="h4 margin-bottom-0-5r page-link" data-target="bitbonds">BitCoin Bonds</h4>
+        <div id="elevator_sections" class="grid hide-completely">
+            <h4 class="h4 margin-bottom-2r">Floors</h4>
+            <ul id="elevator_button_panel" class="grid">
+                <li>
+                    <button class="button floor__button" data-target="floor_1">
+                        <span>
+                            1<sup>st</sup>
+                        </span>
+                    </button>
+                    <div class="outlet-section page-link interact" data-target="bitbonds">
+                        <h3 class="h3 margin-bottom-0-5r">BitCoin Bonds</h3>
                         <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
+                        <svg class="icon justify-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                     </div>
-                    <div class="outlet-section">
-                        <h4 class="h4 margin-bottom-0-5r page-link" data-target="bob'sfund">Bob's Fund</h4>
+                    <div class="outlet-section page-link interact" data-target="bob'sfund">
+                        <h3 class="h3 margin-bottom-0-5r">Bob's Fund</h3>
                         <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
+                        <svg class="icon justify-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                     </div>
-                    <div class="outlet-section">
-                        <h4 class="h4 margin-bottom-0-5r page-link" data-target="ico">ICO</h4>
+                    <div class="outlet-section page-link interact" data-target="ico">
+                        <h3 class="h3 margin-bottom-0-5r">ICO</h3>
                         <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
+                        <svg class="icon justify-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                     </div>
-                </section>
-                <section id="second_floor"></section>
-                <section id="third_floor"></section>
-            </section>
+                </li>
+                <li>
+                    <button class="button floor__button" data-target="floor_2">
+                        <span>
+                            2<sup>nd</sup>
+                        </span>
+                    </button>
+                </li>
+                <li>
+                    <button class="button floor__button" data-target="floor_3">
+                        <span>
+                            3<sup>rd</sup>
+                        </span>
+                    </button>
+                </li>
+            </ul>
         </div>
-    </sm-popup>
+    </section>
 
     <!--  -->
 
     <header id="main_header" class="grid align-center full-bleed">
-        <button id="elevator_button" class="button" onclick="showPopup('elevator_popup')">
+        <button id="elevator_button" class="button" onclick="showSiteMap()">
             <svg class="icon button__icon--left" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L16.3301 10.5H7.66987L12 3Z"/><path d="M12 21L7.66987 13.5L16.3301 13.5L12 21Z"/></svg>
             <span class="button__label">
                 Elevator
@@ -1231,8 +1237,8 @@
                     history.pushState({type: 'page', id: targetPage}, null, `#${targetPage}`)
                     showPage(targetPage)
                 }
-                if(getRef('elevator_popup').open){
-                    hidePopup()
+                if(isSiteMapOpen){
+                    hideSiteMap()
                 }
             }
             if(isFloorSwitcherOpen){
@@ -1246,8 +1252,8 @@
                         history.pushState({type: 'page', id: 'home_page'}, null, `#${'home_page'}`)
                         showPage('home_page')
                     }
-                    if(getRef('elevator_popup').open){
-                        hidePopup()
+                    if(isSiteMapOpen){
+                        hideSiteMap()
                     }
                     getRef('home_page').scrollTo({
                         top: getRef(target).getBoundingClientRect().top - getRef('home_page').getBoundingClientRect().top + getRef('home_page').scrollTop,
@@ -1415,6 +1421,36 @@
             threshold: 0.2
         })
         document.querySelectorAll('.floor').forEach(floor => floorObserver.observe(floor))
+
+        let isSiteMapOpen = false
+
+        const animeOptions = {
+            duration: 300,
+            fill: 'forwards',
+            easing: 'ease'
+        }
+        function showSiteMap(){
+            isSiteMapOpen = true
+            document.body.style.overflow = 'hidden';
+            document.body.style.top= `-${window.scrollY}px`
+            getRef('elevator_popup').classList.remove('hide-completely')
+            getRef('elevator_popup').animate(slideInDown, animeOptions).onfinish = () => {
+                getRef('elevator_sections').classList.remove('hide-completely')
+                getRef('elevator_sections').animate(slideInUp, animeOptions)
+            }
+        }
+        
+        function hideSiteMap(){
+            const scrollY = document.body.style.top;
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            getRef('elevator_popup').animate(slideOutUp, animeOptions).onfinish = () => {
+                getRef('elevator_popup').classList.add('hide-completely')
+                getRef('elevator_sections').classList.add('hide-completely')
+                document.body.style.overflow = 'auto';
+                document.body.style.top = 'initial'
+                isSiteMapOpen = false   
+            }
+        }
 
     </script>
 </body>
