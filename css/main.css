@@ -216,6 +216,10 @@ ul {
   justify-self: center;
 }
 
+.justify-self-start {
+  justify-self: start;
+}
+
 .direction-column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -407,15 +411,11 @@ ul {
   background: rgba(var(--foreground-color), 1);
 }
 
-#elevator_sections {
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  padding: 1.5rem;
-  padding-bottom: 4rem;
-}
-
 .elevator__header {
-  padding: 1.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 1.2rem 1.5rem;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5rem;
@@ -423,6 +423,16 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  background: rgba(var(--foreground-color), 1);
+  z-index: 1;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#elevator_sections {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  padding: 1.5rem;
+  padding-bottom: 4rem;
 }
 
 #elevator_button_panel {
@@ -430,12 +440,18 @@ ul {
   overflow: auto;
   -ms-scroll-snap-type: x proximity;
       scroll-snap-type: x proximity;
-  grid-template-columns: repeat(3, min(20rem, 80%));
+  grid-template-columns: repeat(3, min(40ch, 80%));
 }
 #elevator_button_panel li {
   display: grid;
   gap: 2rem;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
   scroll-snap-align: start;
+}
+#elevator_button_panel sup {
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .outlet-section {
@@ -452,6 +468,7 @@ ul {
 }
 
 .floor__button {
+  position: relative;
   padding: 1rem;
   height: 4rem;
   width: 4rem;
@@ -469,6 +486,13 @@ ul {
           box-shadow: 0 0 0 0.4rem rgba(var(--text-color), 1) inset;
 }
 
+.elevator__floor-line {
+  width: 100%;
+  height: 0.1rem;
+  margin-left: 2rem;
+  background-color: rgba(var(--text-color), 0.8);
+}
+
 #main_header {
   position: relative;
   padding: 1rem;
@@ -480,7 +504,7 @@ ul {
   margin-left: -1rem;
 }
 
-#main_logo {
+.main-logo {
   justify-self: center;
 }
 
@@ -982,6 +1006,10 @@ table {
     padding: 1.2rem 2rem;
   }
 
+  #elevator_sections {
+    padding: 1.5rem 3rem 4rem 4.6rem;
+  }
+
   #home_page {
     grid-template-columns: 1fr 80vw 1fr;
   }
@@ -1107,6 +1135,19 @@ table {
   }
   .page-link:hover .icon {
     fill: var(--accent-color);
+  }
+
+  .outlet-section .icon {
+    -webkit-transform: translateX(-0.5rem);
+            transform: translateX(-0.5rem);
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s;
+  }
+  .outlet-section:hover .icon {
+    -webkit-transform: none;
+            transform: none;
   }
 
   .floor__button:hover {
