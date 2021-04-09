@@ -33,7 +33,7 @@ body[data-theme=dark] #outlet_switcher {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(var(--text-color), 0.06)), to(rgba(var(--text-color), 0.06))), rgba(var(--foreground-color), 1);
   background: linear-gradient(rgba(var(--text-color), 0.06), rgba(var(--text-color), 0.06)), rgba(var(--foreground-color), 1);
 }
-body[data-theme=dark] .outlet-preview {
+body[data-theme=dark] .outlet-preview__info {
   background-color: #0a0a0a;
 }
 
@@ -586,7 +586,6 @@ ul {
 }
 
 .outlet-preview {
-  background-color: #F3F3F3;
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -596,6 +595,8 @@ ul {
 
 .outlet-preview__info {
   padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #F3F3F3;
 }
 
 .outlet__title {
@@ -613,8 +614,9 @@ ul {
   position: absolute;
   height: 100%;
   width: 100%;
-  -webkit-box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.3) inset;
-          box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.3) inset;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.3);
+          box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.3);
   border-radius: 0.5rem;
 }
 
