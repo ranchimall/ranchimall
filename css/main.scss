@@ -339,8 +339,7 @@ ul{
 }
 #elevator_sections{
     align-content: flex-start;
-    padding: 1.5rem;
-    padding-bottom: 4rem;
+    padding: 0 1.5rem 4rem 1.5rem;
 }
 #elevator_button_panel{
     gap: 2rem;
@@ -385,10 +384,10 @@ ul{
     }
 }
 .elevator__floor-line{
-    width: 100%;
+    flex: 1;
     height: 0.1rem;
     margin-left: 2rem;
-    background-color: rgba(var(--text-color), 0.8);
+    background-color: var(--red);
 }
 
 
@@ -825,7 +824,7 @@ table{
         padding: 1.2rem 2rem;
     }
     #elevator_sections{
-        padding: 1.5rem 3rem 4rem 4.6rem;
+        padding: 0 3rem 4rem 4.6rem;
     }
     #home_page{
         grid-template-columns: 1fr 80vw 1fr;

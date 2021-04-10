@@ -431,8 +431,7 @@ ul {
 #elevator_sections {
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  padding: 1.5rem;
-  padding-bottom: 4rem;
+  padding: 0 1.5rem 4rem 1.5rem;
 }
 
 #elevator_button_panel {
@@ -487,10 +486,12 @@ ul {
 }
 
 .elevator__floor-line {
-  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   height: 0.1rem;
   margin-left: 2rem;
-  background-color: rgba(var(--text-color), 0.8);
+  background-color: var(--red);
 }
 
 #main_header {
@@ -1007,7 +1008,7 @@ table {
   }
 
   #elevator_sections {
-    padding: 1.5rem 3rem 4rem 4.6rem;
+    padding: 0 3rem 4rem 4.6rem;
   }
 
   #home_page {
