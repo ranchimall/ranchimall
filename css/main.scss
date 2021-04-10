@@ -331,10 +331,10 @@ ul{
     grid-template-columns: auto 1fr;
     gap: 0.5rem;
     align-items: center;
+    justify-content: flex-start;
     width: 100%;
     background: rgba(var(--foreground-color), 1);
     z-index: 1;
-    grid-template-columns: repeat(3, 1fr);
 
 }
 #elevator_sections{
@@ -399,9 +399,6 @@ ul{
 #elevator_button{
     justify-self: flex-start;
     margin-left: -1rem;
-}
-.main-logo{
-    justify-self: center;
 }
 #main_header__logo{
     height: 1.8rem;
@@ -833,7 +830,7 @@ table{
         margin-left: 0.8rem;
     }
     #floor_1__outlets{
-        gap: 4rem;
+        gap: 5rem;
     }
     .outlet-preview{
         gap: 1rem;
@@ -890,7 +887,7 @@ table{
         & > .grid{
             width: 100%;
         }
-        & > .grid:not(:last-of-type){
+/*         & > .grid:not(:last-of-type){
             position: relative;
             &::after{
                 content: '';
@@ -900,7 +897,7 @@ table{
                 right: 0.5rem;
                 background-color: var(--red);
             }
-        }
+        } */
     }
 }
 @media only screen and (min-width: 1920px) {

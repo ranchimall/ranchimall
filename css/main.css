@@ -422,10 +422,12 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   width: 100%;
   background: rgba(var(--foreground-color), 1);
   z-index: 1;
-  grid-template-columns: repeat(3, 1fr);
 }
 
 #elevator_sections {
@@ -503,10 +505,6 @@ ul {
 #elevator_button {
   justify-self: flex-start;
   margin-left: -1rem;
-}
-
-.main-logo {
-  justify-self: center;
 }
 
 #main_header__logo {
@@ -1020,7 +1018,7 @@ table {
   }
 
   #floor_1__outlets {
-    gap: 4rem;
+    gap: 5rem;
   }
 
   .outlet-preview {
@@ -1091,20 +1089,20 @@ table {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    /*         & > .grid:not(:last-of-type){
+                position: relative;
+                &::after{
+                    content: '';
+                    position: absolute;
+                    height: 4rem;
+                    width: 1px;
+                    right: 0.5rem;
+                    background-color: var(--red);
+                }
+            } */
   }
   .grid-3 > .grid {
     width: 100%;
-  }
-  .grid-3 > .grid:not(:last-of-type) {
-    position: relative;
-  }
-  .grid-3 > .grid:not(:last-of-type)::after {
-    content: "";
-    position: absolute;
-    height: 4rem;
-    width: 1px;
-    right: 0.5rem;
-    background-color: var(--red);
   }
 }
 @media only screen and (min-width: 1920px) {
