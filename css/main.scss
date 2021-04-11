@@ -12,26 +12,23 @@ body {
     --text-color: 17, 17, 17;
     --text-color-light: 100, 100, 100;
     --foreground-color: 255, 255, 255;
-    --background-color: #efefef;
+    --background-color: #F3F3F3;
     --error-color: red;
     --red: #E84545;
     color: rgba(var(--text-color), 1);
     height: calc(100%);
     font-size: clamp(1rem, 1.2vmax, 3rem);
-    background: #F3F3F3;
+    background: var(--background-color);
 }
 body[data-theme='dark']{
     --accent-color:#2fb3ff;
     --text-color: 240, 240, 240;
     --text-color-light: 170, 170, 170;
     --foreground-color: 20, 20, 20;
+    --background-color: #0a0a0a;
     --error-color: rgb(255, 106, 106);
-    background: #0a0a0a;
     #outlet_switcher{
         background: linear-gradient(rgba(var(--text-color), 0.06), rgba(var(--text-color), 0.06)), rgba(var(--foreground-color), 1);
-    }
-    .outlet-preview__info{
-        background-color: #0a0a0a;
     }
 }
 
@@ -39,9 +36,9 @@ body[data-theme='dark']{
     grid-column: 1/4;
 }
 
-.h1, .h2, .h3, .h4, .h5{
-    // font-family: 'Lorr', serif;
-}
+/* .h1, .h2, .h3, .h4, .h5{
+    // font-family: 'Lora', serif;
+} */
 .h1{
     font-size: 2.5rem;
 }
@@ -534,10 +531,26 @@ ul{
     align-items: center;
     display: grid;
 }
+.outlet-number{
+    display: grid;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    aspect-ratio: 1/1;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    border-radius: 0.2rem;
+    place-content: center;
+    justify-self: flex-start;
+    background: rgba(var(--text-color), 1);
+    color: rgba(var(--foreground-color), 1);
+    box-shadow: 0.2rem 0.2rem 0 var(--red);
+}
 .outlet-preview__info{
+    position: relative;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: #F3F3F3;
 }
 .outlet__title{
     font-weight: 700;
@@ -553,16 +566,16 @@ ul{
     height: 100%;
     width: 100%;
     z-index: -1;
-    box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.3);
+    box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.2);
     border-radius: 0.5rem;
 }
 .outlet-preview__button{
-    justify-self: flex-start;
+    justify-self: flex-end;
 }
 
-.outlet-preview__carousel{
+/* .outlet-preview__carousel{
 }
-
+ */
 .label{
     position: relative;
     font-size: 0.8rem;
@@ -658,29 +671,21 @@ sm-carousel{
     }
 }
 
-scroll-tab-header,
-scroll-tab-panels{
-    --border-radius: 0.5rem;
-}
 scroll-tab-header{
     position: sticky;
     top: 0;
-    --gap: 0.5rem;
-    --padding: 0.5rem;
-    margin-right: 1.5rem;
-    --background: linear-gradient(rgba(var(--text-color), 0.04), rgba(var(--text-color), 0.04)), rgba(var(--foreground-color), 1);
+    --padding: 0.5rem 0;
+    --border-radius: 0.3rem;
+    --background: var(--background-color);
     --grid-auto-flow: column;
-    justify-self: flex-start;
     z-index: 1;
 }
 scroll-tab-panels{
-    --height: max(24rem, 50vh);
-    --gap: 4rem;
     --background: transparent;
     overscroll-behavior: contain;
     & > *{
-        min-height: max(24rem, 50vh);
-        margin-bottom: 6rem;
+        min-height: 100vh;
+        padding-top: 4rem;
         opacity: 0.4;
         transition: opacity 0.6s;
     }
@@ -696,18 +701,28 @@ scroll-tab-panels{
     grid-template-columns: auto 1fr;
 }
 .room-button{
+    position: relative;
+    opacity: 0.6;
+    border-radius: 0;
     font-weight: 500;
     font-size: 1.1rem;
-    opacity: 0.6;
     transition: opacity 0.3s, background-color 0.3s;
     padding: 0.6rem 0.8rem;
     &[active]{
-        background-color: rgba(var(--text-color), 0.06);
         opacity: 1;
-        border-radius: 0.3rem;
         color: var(--accent-color);
         .icon{
             fill: var(--accent-color);
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            height: 0.1rem;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            border-radius: 0.2rem 0.2rem 0 0;
+            background: var(--accent-color);
         }
     }
 
@@ -857,7 +872,7 @@ table{
         width: 66%;
     }
     .outlet-preview__info{
-        padding: 2rem 3rem;
+        padding: 2rem;
     }
     .outlet-preview__carousel{
         padding: 2rem 2rem 5rem 2rem;
@@ -867,9 +882,6 @@ table{
     }
     .outlet-hero-section{
         margin-top: 4rem;
-    }
-    scroll-tab-header{
-        --grid-auto-flow: row;
     }
     .auto-grid-layout{
         grid-template-columns: auto 1fr;

@@ -3744,7 +3744,7 @@ scrollTabPanels.innerHTML = `
         .tab-panels{
             display: grid;
             gap: var(--gap);
-            height: var(--height);
+            // height: var(--height);
             overflow-y: auto;
             border-radius: var(--border-radius);
             background: var(--background);
@@ -3811,10 +3811,11 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
 
     handlePanelChange = (e) => {
         if (e.detail.targetPanelGroup === this.id) {
-            this.tabPanels.scrollTo({
+/*             this.tabPanels.scrollTo({
                 top: (this._assignedElements[e.detail.panelIndex].getBoundingClientRect().top - this.tabPanels.getBoundingClientRect().top + this.tabPanels.scrollTop),
                 behavior: 'smooth'
-            })
+            }) */
+            this._assignedElements[e.detail.panelIndex].scrollIntoView({block: "nearest", inline: 'start', behavior: 'smooth'})
         }
     }
     
@@ -3837,7 +3838,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
         },
             {
                 threshold: 0.8,
-                root: this.tabPanels
+                // root: this.tabPanels
         })
         this.tabPanels.addEventListener('slotchange', e => {
             this._assignedElements = this.tabPanelsSlot.assignedElements()
