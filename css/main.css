@@ -799,7 +799,6 @@ scroll-tab-header {
 
 scroll-tab-panels {
   --background: transparent;
-  overscroll-behavior: contain;
 }
 scroll-tab-panels > * {
   min-height: 100vh;
