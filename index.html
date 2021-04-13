@@ -107,7 +107,10 @@
     <template id="floor_indicator_template">
         <div class="floor-label interact">
             <span class="floor-circle"></span>
-            <span class="floor-title weight-500 color-0-8 h5"></span>
+            <span class="grid floor-title">
+                <h5 class="floor-num weight-400 color-0-7 h5"></h5>
+                <h5 class="floor-name weight-400"></h5>
+            </span>
         </div>
     </template>
 
@@ -126,50 +129,112 @@
                 <h4 class="h4 header__company-name">RanchiMall</h4>
             </div> -->
         </header>
-        <div id="elevator_sections" class="grid">
-            <h4 class="h4 margin-bottom-2r">Floors</h4>
-            <ul id="elevator_button_panel" class="grid">
-                <li>
-                    <div class="flex align-center">
-                        <button class="button floor__button" data-target="floor_1">
-                            <span>
-                                1<sup>st</sup>
-                            </span>
-                        </button>
-                        <div class="elevator__floor-line"></div>
-                    </div>
-                    <div class="outlet-section page-link interact" data-target="bitbonds">
-                        <h3 class="h3 margin-bottom-0-5r">1. BitCoin Bonds</h3>
-                        <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
-                    </div>
-                    <div class="outlet-section page-link interact" data-target="bob'sfund">
-                        <h3 class="h3 margin-bottom-0-5r">2. Bob's Fund</h3>
-                        <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
-                    </div>
-                    <div class="outlet-section page-link interact" data-target="ico">
-                        <h3 class="h3 margin-bottom-0-5r">3. ICO</h3>
-                        <p class="color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quae!</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="flex align-center">
-                        <button class="button floor__button" data-target="floor_2">
-                            <span>
-                                2<sup>nd</sup>
-                            </span>
-                        </button>
-                        <div class="elevator__floor-line"></div>
-                    </div>
-                </li>
-                <li>
-                    <button class="button floor__button" data-target="floor_3">
-                        <span>
-                            3<sup>rd</sup>
-                        </span>
-                    </button>
-                </li>
-            </ul>
-        </div>
+        <ul id="floor_list" class="grid">
+            <li class="floor_list__item">
+                <div class="item__title">
+                    <h5 class="h5 floor-num">Floor</h5>
+                    <h4 class="h3">Current Products</h4>
+                </div>
+                <ul class="outlet-list grid">
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="bitbonds">
+                        <h4 class="outlet-title">BitCoin Bonds</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="bob'sfund">
+                        <h4 class="outlet-title">Bob's Fund</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="ico">
+                        <h4 class="outlet-title">ICO</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="floor_list__item">
+                <div class="item__title">
+                    <h5 class="h5 floor-num">Floor</h5>
+                    <h4 class="h3">Blockchain Contracts</h4>
+                </div>
+                <ul class="outlet-list grid">
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Incorporation Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Internship Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">FLO Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Startup Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Real Estate Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Painting Blockchain Contract</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="floor_list__item">
+                <div class="item__title">
+                    <h5 class="h5 floor-num">Floor</h5>
+                    <h4 class="h3">Blockchain Apps</h4>
+                </div>
+                <ul class="outlet-list grid">
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Web Wallet</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="floor_list__item">
+                <div class="item__title">
+                    <h5 class="h5 floor-num">Floor</h5>
+                    <h4 class="h3">Experimental Ideas</h4>
+                </div>
+                <ul class="outlet-list grid">
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Blockchain Cloud</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">UPI on Blockchain</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">E-Commerce on Blockchain</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                </ul>
+            </li>
+            <li class="floor_list__item">
+                <div class="item__title">
+                    <h5 class="h5 floor-num">Floor</h5>
+                    <h4 class="h3">Statistics and Administration</h4>
+                </div>
+                <ul class="outlet-list grid">
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Incorporation</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Team</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                    <li class="outlet-section page-link interact" tabindex="0" data-target="">
+                        <h4 class="outlet-title">Operational Statistics</h4>
+                        <p class="outlet-brief">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, praesentium.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </section>
 
     <!--  -->
@@ -201,13 +266,13 @@
         </aside>
         <main id="floor_container" class="grid">
             <section id="floor_1" class="floor">
-<!--                 <span class="flex align-center margin-bottom-1-5r">
-                    <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg>
-                    <h4 class="h4 weight-500">
-                        Outlets
+                <span class="grid align-center margin-bottom-1-5r">
+                    <h5 class="h5">Floor</h5>
+                    <h4 class="h4 weight-700">
+                        Current Projects
                     </h4>
-                </span> -->
-                <main id="floor_1__outlets" class="grid">
+                </span>
+                <main id="floor_1__outlets" class="grid outlets-container">
                     <div id="bit_bond_outlet" class="outlet-preview carousel-container">
                         <div class="grid outlet-preview__info">
                             <div class="outlet-number">1</div>
@@ -217,7 +282,6 @@
                             </p>
                             <button class="button page-link outlet-preview__button" data-target="bitbonds">
                                 <span class="button__label">Visit</span>
-                                <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                             </button>
                         </div>
                         <div class="grid carousel-holder carousel-holder--right">
@@ -234,7 +298,6 @@
                             </p>
                             <button class="button page-link outlet-preview__button" data-target="bob'sfund">
                                 <span class="button__label">Visit</span>
-                                <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                             </button>
                         </div>
                         <div class="grid carousel-holder carousel-holder--left">
@@ -251,7 +314,6 @@
                             </p>
                             <button class="button page-link outlet-preview__button" data-target="ico">
                                 <span class="button__label">Visit</span>
-                                <svg class="icon button__icon--right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                             </button>
                         </div>
                         <div class="grid carousel-holder carousel-holder--right">
@@ -262,10 +324,226 @@
                 </main>
             </section>
             <section id="floor_2" class="floor">
-                <h4 class="h2">Under construction</h4>
+                <span class="grid align-center margin-bottom-1-5r">
+                    <h5 class="h5">Floor 2</h5>
+                    <h4 class="h4 weight-700">
+                        Blockchain Contracts
+                    </h4>
+                </span>
+                <main id="floor_2__outlets" class="grid outlets-container">
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">1</div>
+                            <h3 class="outlet__title">Internship Blockchain Contract</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">2</div>
+                            <h3 class="outlet__title">FLO Blockchain Contract</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bob'sfund">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">3</div>
+                            <h3 class="outlet__title">Startup Blockchain Contract</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="ico">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">4</div>
+                            <h3 class="outlet__title">Real Estate Blockchain Contract</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="ico">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">5</div>
+                            <h3 class="outlet__title">Painting Blockchain Contract</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="ico">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                </main>
             </section>
             <section id="floor_3" class="floor">
-                <h4 class="h2">Under construction</h4>
+                <span class="grid align-center margin-bottom-1-5r">
+                    <h5 class="h5">Floor 3</h5>
+                    <h4 class="h4 weight-700">
+                        Blockchain Apps
+                    </h4>
+                </span>
+                <main id="floor_3__outlets" class="grid outlets-container">
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">1</div>
+                            <h3 class="outlet__title">Web Wallet</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">2</div>
+                            <h3 class="outlet__title">Messenger</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">3</div>
+                            <h3 class="outlet__title">Content Collaboration</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                </main>
+            </section>
+            <section id="floor_4" class="floor">
+                <span class="grid align-center margin-bottom-1-5r">
+                    <h5 class="h5">Floor 4</h5>
+                    <h4 class="h4 weight-700">
+                        Experimental Ideas
+                    </h4>
+                </span>
+                <main id="floor_4__outlets" class="grid outlets-container">
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">1</div>
+                            <h3 class="outlet__title">Blockchain Cloud</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">2</div>
+                            <h3 class="outlet__title">UPI on Blockchain</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bob'sfund">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">3</div>
+                            <h3 class="outlet__title">E-Commerce on Blockchain</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="ico">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                </main>
+            </section>
+            <section id="floor_5" class="floor">
+                <span class="grid align-center margin-bottom-1-5r">
+                    <h5 class="h5">Floor 5</h5>
+                    <h4 class="h4 weight-700">
+                        Statistics and Administration
+                    </h4>
+                </span>
+                <main id="floor_5__outlets" class="grid outlets-container">
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">1</div>
+                            <h3 class="outlet__title">Incorporation</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bitbonds">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">2</div>
+                            <h3 class="outlet__title">Team</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="bob'sfund">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                    <div id="" class="outlet-preview">
+                        <div class="grid outlet-preview__info">
+                            <div class="outlet-number">3</div>
+                            <h3 class="outlet__title">Operational Statistics</h3>
+                            <p class="outlet__description margin-bottom-1-5r">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
+                            </p>
+                            <button class="button page-link outlet-preview__button" data-target="ico">
+                                <span class="button__label">Visit</span>
+                            </button>
+                        </div>
+                        <div class="outlet-preview__border"></div>
+                    </div>
+                </main>
             </section>
         </main>
     </article>
@@ -429,7 +707,6 @@
     <!--  -->
     <script src="components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <script id="standard_UI_functions">
 
         const domRefs = {}
@@ -855,7 +1132,6 @@
     </script>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
         const render = {
             bitBondRow(obj){
                 const {series, currentValue, timeElapsed} = obj
@@ -904,10 +1180,13 @@
                 const floorLabel = getRef('floor_indicator_template').content.cloneNode(true).firstElementChild
                 floorLabel.setAttribute('style', `top: ${offsetTop}px`)
                 floorLabel.dataset.target = `floor_${floorNumber}`
-                floorLabel.querySelector('.floor-title').textContent = `Floor ${floorNumber}`
+                floorLabel.querySelector('.floor-num').textContent = `Floor ${floorNumber}`
+                floorLabel.querySelector('.floor-name').textContent = floors[floorNumber - 1]
                 return floorLabel
             }
         }
+
+        const floors = ['Current Products', 'Blockchain Contracts', 'Blockchain Applications', 'Experimental Ideas', 'Statistics and Administration']
 
 
         /* 
@@ -1435,24 +1714,30 @@
             easing: 'ease'
         }
 
-        const siteMapTimeline = gsap.timeline({defaults: {ease: 'power2'}, onReverseComplete: resumeScrolling, paused: true})
-        siteMapTimeline.from('#elevator_popup', {opacity: 0})
+        const siteMapTimeline = gsap.timeline({defaults: {ease: 'power3'}, onReverseComplete: resumeScrolling, paused: true})
+        siteMapTimeline.from('#elevator_popup', {duration: 0.3, opacity: 0})
                         .from('.close-button', {scale: 0}, '-= 0.2')
-                        .from('#elevator_sections', {opacity: 0, y: 10})
-                        .from('.outlet-section', {opacity: 0, x: 10, stagger: 0.1}, '-=0.1')
+                        .from('.floor_list__item', {opacity: 0, y: 16, stagger: 0.1})
+                        .from('.outlet-section', {opacity: 0, y: 16, stagger: 0.1}, '-=0.7')
 
         function showSiteMap(){
+            document.querySelectorAll('.page').forEach(page => {
+                page.setAttribute('aria-hidden', 'true')
+            })
             isSiteMapOpen = true
             document.body.style.overflow = 'hidden';
             document.body.style.top= `-${window.scrollY}px`
             getRef('elevator_popup').classList.remove('hide-completely')
-            siteMapTimeline.duration(1).play()
+            siteMapTimeline.duration(2).play()
         }
         
         function hideSiteMap(){
             const scrollY = document.body.style.top;
             window.scrollTo(0, parseInt(scrollY || '0') * -1);
             siteMapTimeline.duration(0.4).reverse()
+            document.querySelectorAll('.page').forEach(page => {
+                page.removeAttribute('aria-hidden')
+            })
         }
 
         function resumeScrolling(){
