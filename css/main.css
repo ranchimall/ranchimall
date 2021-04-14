@@ -637,6 +637,22 @@ ul {
   padding: 0.5rem 0;
   background: var(--background-color);
 }
+.floor__header::before {
+  content: "";
+  position: absolute;
+  left: -1%;
+  width: 1%;
+  height: 100%;
+  background: var(--background-color);
+}
+.floor__header::after {
+  content: "";
+  position: absolute;
+  right: -1%;
+  width: 1%;
+  height: 100%;
+  background: var(--background-color);
+}
 
 .big-icon {
   height: 2rem;
@@ -993,20 +1009,12 @@ table {
   }
 
   .floor__header::before {
-    content: "";
-    position: absolute;
     left: -10%;
     width: 10%;
-    height: 100%;
-    background: var(--background-color);
   }
   .floor__header::after {
-    content: "";
-    position: absolute;
     right: -10%;
     width: 10%;
-    height: 100%;
-    background: var(--background-color);
   }
 
   .outlets-container {
