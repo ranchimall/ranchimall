@@ -496,6 +496,10 @@ ul {
   justify-self: flex-start;
   margin-left: -1rem;
 }
+#elevator_button .icon {
+  width: 1.7rem;
+  height: 1.7rem;
+}
 
 #main_header__logo {
   height: 1.8rem;
@@ -542,7 +546,7 @@ ul {
 #home_page {
   will-change: scroll-position;
   overflow-y: auto;
-  max-height: calc(100vh - 5rem);
+  max-height: calc(100vh - 5.2rem);
   grid-template-columns: 2rem 1fr;
 }
 
