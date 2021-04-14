@@ -378,7 +378,7 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 15;
   grid-template-rows: auto 1fr;
   background: rgba(var(--foreground-color), 1);
 }
@@ -549,8 +549,8 @@ ul {
 #floor_line_map {
   position: sticky;
   top: 1rem;
-  height: 60vh;
-  z-index: 5;
+  height: 40vh;
+  z-index: 10;
   grid-template-columns: 2rem 1fr;
   grid-column: 1/2;
 }
@@ -583,31 +583,30 @@ ul {
   display: flex;
   align-items: center;
   left: 0.75rem;
-  margin-top: -1.4rem;
+  margin-top: -0.4rem;
   padding-bottom: 1rem;
   user-select: none;
   transition: transform 0.3s;
-}
-.floor-label .floor-title {
-  opacity: 0;
-  transform: translateX(-1rem);
-  transition: opacity 0.3s, transform 0.3s;
-}
-.floor-label--active {
-  opacity: 1;
-}
-.floor-label--active .floor-title {
-  opacity: 1;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-  transform: none;
+  /*     .floor-title{
+          opacity: 0;
+          transform: translateX(-1rem);
+          transition: opacity 0.3s, transform 0.3s;
+      }
+      &--active{
+          opacity: 1;
+          .floor-title{
+              opacity: 1;
+              box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+              transform: none;
+          }
+      } */
 }
 
 .floor-circle {
-  position: absolute;
   height: 0.5rem;
   width: 0.5rem;
-  background: rgba(var(--text-color), 1);
   border-radius: 1rem;
+  background: rgba(var(--text-color), 1);
 }
 
 .floor-title {
@@ -630,13 +629,22 @@ ul {
   width: 100%;
 }
 
+.floor__header {
+  position: sticky;
+  top: 0;
+  transform: translateY(-0.1rem);
+  z-index: 8;
+  padding: 0.5rem 0;
+  background: var(--background-color);
+}
+
 .big-icon {
   height: 2rem;
   width: 2rem;
 }
 
 .outlets-container {
-  margin: 3rem 0;
+  margin: 1.5rem 0;
   gap: 1.5rem;
 }
 
@@ -982,6 +990,23 @@ table {
 
   #home_page {
     grid-template-columns: 1fr 80vw 1fr;
+  }
+
+  .floor__header::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    width: 10%;
+    height: 100%;
+    background: var(--background-color);
+  }
+  .floor__header::after {
+    content: "";
+    position: absolute;
+    right: -10%;
+    width: 10%;
+    height: 100%;
+    background: var(--background-color);
   }
 
   .outlets-container {

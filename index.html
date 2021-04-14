@@ -107,10 +107,10 @@
     <template id="floor_indicator_template">
         <div class="floor-label interact">
             <span class="floor-circle"></span>
-            <span class="grid floor-title">
+<!--             <span class="grid floor-title">
                 <h5 class="floor-num weight-400 color-0-7 h5"></h5>
                 <h5 class="floor-name weight-400"></h5>
-            </span>
+            </span> -->
         </div>
     </template>
 
@@ -266,12 +266,12 @@
         </aside>
         <main id="floor_container" class="grid">
             <section id="floor_1" class="floor">
-                <span class="grid align-center margin-bottom-1-5r">
-                    <h5 class="h5">Floor</h5>
-                    <h4 class="h4 weight-700">
+                <header class="floor__header grid align-center">
+                    <h5 class="h5 color-0-7">Floor 1</h5>
+                    <h3 class="h3 weight-700">
                         Current Projects
-                    </h4>
-                </span>
+                    </h3>
+                </header>
                 <main id="floor_1__outlets" class="grid outlets-container">
                     <div id="bit_bond_outlet" class="outlet-preview carousel-container">
                         <div class="grid outlet-preview__info">
@@ -324,12 +324,12 @@
                 </main>
             </section>
             <section id="floor_2" class="floor">
-                <span class="grid align-center margin-bottom-1-5r">
-                    <h5 class="h5">Floor 2</h5>
-                    <h4 class="h4 weight-700">
+                <header class="floor__header grid align-center">
+                    <h5 class="h5 color-0-7">Floor 2</h5>
+                    <h3 class="h3 weight-700">
                         Blockchain Contracts
-                    </h4>
-                </span>
+                    </h3>
+                </header>
                 <main id="floor_2__outlets" class="grid outlets-container">
                     <div id="" class="outlet-preview">
                         <div class="grid outlet-preview__info">
@@ -399,12 +399,12 @@
                 </main>
             </section>
             <section id="floor_3" class="floor">
-                <span class="grid align-center margin-bottom-1-5r">
-                    <h5 class="h5">Floor 3</h5>
-                    <h4 class="h4 weight-700">
+                <header class="floor__header grid align-center">
+                    <h5 class="h5 color-0-7">Floor 3</h5>
+                    <h3 class="h3 weight-700">
                         Blockchain Apps
-                    </h4>
-                </span>
+                    </h3>
+                </header>
                 <main id="floor_3__outlets" class="grid outlets-container">
                     <div id="" class="outlet-preview">
                         <div class="grid outlet-preview__info">
@@ -448,12 +448,12 @@
                 </main>
             </section>
             <section id="floor_4" class="floor">
-                <span class="grid align-center margin-bottom-1-5r">
-                    <h5 class="h5">Floor 4</h5>
-                    <h4 class="h4 weight-700">
+                <header class="floor__header grid align-center">
+                    <h5 class="h5 color-0-7">Floor 4</h5>
+                    <h3 class="h3 weight-700">
                         Experimental Ideas
-                    </h4>
-                </span>
+                    </h3>
+                </header>
                 <main id="floor_4__outlets" class="grid outlets-container">
                     <div id="" class="outlet-preview">
                         <div class="grid outlet-preview__info">
@@ -497,12 +497,12 @@
                 </main>
             </section>
             <section id="floor_5" class="floor">
-                <span class="grid align-center margin-bottom-1-5r">
-                    <h5 class="h5">Floor 5</h5>
-                    <h4 class="h4 weight-700">
+                <header class="floor__header grid align-center">
+                    <h5 class="h5 color-0-7">Floor 5</h5>
+                    <h3 class="h3 weight-700">
                         Statistics and Administration
-                    </h4>
-                </span>
+                    </h3>
+                </header>
                 <main id="floor_5__outlets" class="grid outlets-container">
                     <div id="" class="outlet-preview">
                         <div class="grid outlet-preview__info">
@@ -707,6 +707,7 @@
     <!--  -->
     <script src="components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <script id="standard_UI_functions">
 
         const domRefs = {}
@@ -1124,7 +1125,7 @@
             timerId  =  setTimeout(function () {
                 func()
                 
-                // Once setTimeout function execution is finished, timerId = undefined so that in <br>
+                // Once setTimeout function execution is finished, timerId = undefined so that in
                 // the next scroll event function execution can be scheduled by the setTimeout
                 timerId  =  undefined;
             }, delay)
@@ -1132,6 +1133,7 @@
     </script>
 
     <script>
+        gsap.registerPlugin(ScrollTrigger);
         const render = {
             bitBondRow(obj){
                 const {series, currentValue, timeElapsed} = obj
@@ -1180,8 +1182,8 @@
                 const floorLabel = getRef('floor_indicator_template').content.cloneNode(true).firstElementChild
                 floorLabel.setAttribute('style', `top: ${offsetTop}px`)
                 floorLabel.dataset.target = `floor_${floorNumber}`
-                floorLabel.querySelector('.floor-num').textContent = `Floor ${floorNumber}`
-                floorLabel.querySelector('.floor-name').textContent = floors[floorNumber - 1]
+                // floorLabel.querySelector('.floor-num').textContent = `Floor ${floorNumber}`
+                // floorLabel.querySelector('.floor-name').textContent = floors[floorNumber - 1]
                 return floorLabel
             }
         }
@@ -1680,6 +1682,7 @@
             })
         }
 
+
         function renderAllFloorLabels(){
             const frag = document.createDocumentFragment()
             document.querySelectorAll('.floor').forEach((floor, index) => {
@@ -1714,11 +1717,14 @@
             easing: 'ease'
         }
 
-        const siteMapTimeline = gsap.timeline({defaults: {ease: 'power3'}, onReverseComplete: resumeScrolling, paused: true})
+        const siteMapTimeline = gsap.timeline({
+            defaults: {ease: 'power3'},
+            onReverseComplete: resumeScrolling,
+            paused: true
+        })
         siteMapTimeline.from('#elevator_popup', {duration: 0.3, opacity: 0})
-                        .from('.close-button', {scale: 0}, '-= 0.2')
                         .from('.floor_list__item', {opacity: 0, y: 16, stagger: 0.1})
-                        .from('.outlet-section', {opacity: 0, y: 16, stagger: 0.1}, '-=0.7')
+                        .from('.outlet-section', {opacity: 0, y: 16, stagger: 0.1}, '-=0.8')
 
         function showSiteMap(){
             document.querySelectorAll('.page').forEach(page => {
