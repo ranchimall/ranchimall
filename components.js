@@ -3837,7 +3837,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
             })
         },
             {
-                threshold: 0.8,
+                threshold: 0.2,
                 // root: this.tabPanels
         })
         this.tabPanels.addEventListener('slotchange', e => {

@@ -71,6 +71,14 @@ img{
     object-fit: cover;
 }
 
+a:any-link{
+    color: inherit;
+    text-decoration: none;
+    &:focus-visible{
+        box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 1) inset;
+    }
+}
+
 button{
     position: relative;
     overflow: hidden;
@@ -352,7 +360,7 @@ ul{
         padding-bottom: 25vh;
     }
 }
-.item__title{
+.floor_list__header{
     position: sticky;
     top: 0;
     padding-bottom: 0.5rem;
@@ -366,7 +374,7 @@ ul{
     border-left: 0.15rem solid var(--accent-color);
     counter-reset: outlet-counter;
 }
-.outlet-section{
+.outlet-list__item{
     display: grid;
     user-select: none;
     width: min(50ch, 100%);
@@ -494,7 +502,7 @@ ul{
     border-radius: 1rem;
     width: 1rem;
     height: 1rem;
-    margin-top: -0.5rem;
+    margin-top: -0.7rem;
     background: rgba(var(--foreground-color), 1);
     border: solid 0.2rem var(--accent-color);
     transition: transform 0.1s linear;
@@ -726,9 +734,13 @@ sm-carousel{
     box-shadow:  0 2rem 4rem -1rem rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
+.outlet_switcher__floor{
+    overflow-x: auto;
+}
 .outlet_switcher__button{
     font-size: 1rem;
     padding: 0.4rem 0;
+    flex-shrink: 0;
     &--active{
         color: var(--primary-color);
     }

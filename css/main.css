@@ -77,6 +77,14 @@ img {
   object-fit: cover;
 }
 
+a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+a:any-link:focus-visible {
+  box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 1) inset;
+}
+
 button {
   position: relative;
   overflow: hidden;
@@ -418,7 +426,7 @@ ul {
   padding-bottom: 25vh;
 }
 
-.item__title {
+.floor_list__header {
   position: sticky;
   top: 0;
   padding-bottom: 0.5rem;
@@ -433,13 +441,13 @@ ul {
   counter-reset: outlet-counter;
 }
 
-.outlet-section {
+.outlet-list__item {
   display: grid;
   user-select: none;
   width: min(50ch, 100%);
   counter-increment: outlet-counter;
 }
-.outlet-section .outlet-title::before {
+.outlet-list__item .outlet-title::before {
   content: counter(outlet-counter) ". ";
 }
 
@@ -568,7 +576,7 @@ ul {
   border-radius: 1rem;
   width: 1rem;
   height: 1rem;
-  margin-top: -0.5rem;
+  margin-top: -0.7rem;
   background: rgba(var(--foreground-color), 1);
   border: solid 0.2rem var(--accent-color);
   transition: transform 0.1s linear;
@@ -816,9 +824,14 @@ sm-carousel {
   z-index: 2;
 }
 
+.outlet_switcher__floor {
+  overflow-x: auto;
+}
+
 .outlet_switcher__button {
   font-size: 1rem;
   padding: 0.4rem 0;
+  flex-shrink: 0;
 }
 .outlet_switcher__button--active {
   color: var(--primary-color);
