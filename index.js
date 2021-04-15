@@ -233,15 +233,15 @@ const siteMap = [
     floor: "Current Products",
     outlets: [
       {
-        name: "bitcoin bonds",
+        name: "Bitcoin Bonds",
         url: "bitcoinbonds",
       },
       {
-        name: `bob's fund`,
+        name: `Bob's Fund`,
         url: `bob'sfund`,
       },
       {
-        name: "ico",
+        name: "ICO",
         url: "ico",
       },
     ],
@@ -307,7 +307,7 @@ const siteMap = [
         url: "blockchaincloud",
       },
       {
-        name: `Upi On Blockchain`,
+        name: `UPI On Blockchain`,
         url: `upionblockchain`,
       },
       {
@@ -431,6 +431,17 @@ const render = {
 
     li.querySelector('.outlet-list').append(frag)
     return li
+  },
+  outletSwitcherButton(outletObj, activeOutlet) {
+    const { name, url} = outletObj
+    const button = document.createElement('a')
+    button.classList.add('outlet_switcher__button')
+    if (activeOutlet === url) {
+      button.classList.add('outlet_switcher__button--active')
+    }
+    button.href = url
+    button.textContent = name
+    return button;
   }
 };
 
@@ -641,8 +652,25 @@ function renderSiteMap() {
   const frag = document.createDocumentFragment()
   siteMap.forEach(floor => frag.append(render.floorListitem(floor)))
   getRef('floor_list').append(frag)
+  const pathArray = location.pathname.split('/')
+  for (floor of siteMap) {
+    for (outlet of floor.outlets) {
+      if (pathArray[pathArray.length - 1].indexOf(outlet.url) > -1) {
+        renderFloorOutlets(floor, outlet.url)
+        break;
+      }
+    }
+  }
 }
 renderSiteMap()
+
+function renderFloorOutlets(floorObj, activeOutlet) {
+  const { floor, outlets } = floorObj
+  const frag = document.createDocumentFragment()
+  outlets.forEach(outlet => frag.append(render.outletSwitcherButton(outlet, activeOutlet)))
+  getRef('outlet_switcher__outlet_container').append(frag)
+  getRef('outlet_switcher__floor_num').textContent = floor
+}
 
 let isSiteMapOpen = false;
 
@@ -687,3 +715,4 @@ function resumeScrolling() {
   isSiteMapOpen = false;
   getRef("elevator_popup").classList.add("hide-completely");
 }
+

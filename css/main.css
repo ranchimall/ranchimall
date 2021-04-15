@@ -594,9 +594,8 @@ ul {
   position: absolute;
   display: flex;
   align-items: center;
-  left: 0.75rem;
-  margin-top: -0.4rem;
-  padding-bottom: 1rem;
+  left: 0.2rem;
+  margin-top: -1rem;
   user-select: none;
   transition: transform 0.3s;
   /*     .floor-title{
@@ -615,10 +614,19 @@ ul {
 }
 
 .floor-circle {
-  height: 0.5rem;
-  width: 0.5rem;
+  position: relative;
   border-radius: 1rem;
+  padding: 0.8rem;
+}
+.floor-circle::after {
+  content: "";
+  position: absolute;
+  padding: 0.3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: rgba(var(--text-color), 1);
+  border-radius: 1rem;
 }
 
 .floor-title {
@@ -829,12 +837,15 @@ sm-carousel {
 }
 
 .outlet_switcher__button {
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   padding: 0.4rem 0;
   flex-shrink: 0;
+  font-weight: 500;
 }
 .outlet_switcher__button--active {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 .outlet_switcher__button:not(:last-of-type)::after {
   content: "";
