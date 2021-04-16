@@ -340,10 +340,10 @@ const siteMap = [
 const floorListitemTemplate = document.createElement('template')
 floorListitemTemplate.innerHTML = `
 <li class="floor_list__item">
-  <header class="floor_list__header">
+  <button class="floor_list__header floor__button">
       <h5 class="h5 floor-num">Floor</h5>
       <h4 class="h3"></h4>
-  </header>
+  </button>
   <ul class="outlet-list grid"></ul>
 </li>
 `
@@ -421,9 +421,10 @@ const render = {
     li.querySelector('.outlet-brief').textContent = brief ? brief: ''
     return li
   },
-  floorListitem(floorObj) {
+  floorListitem(floorObj, index) {
     const { floor, outlets} = floorObj
     const li = floorListitemTemplate.content.cloneNode(true).firstElementChild
+    li.firstElementChild.dataset.target = `floor_${index + 1}`;
     li.querySelector('.h3').textContent = floor
 
     const frag = document.createDocumentFragment()
@@ -549,6 +550,18 @@ const easeOutOvershoot = `cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
 
 //////////////////
 
+
+document.addEventListener('click', e => {
+  if(e.target.closest('.floor-label, .floor__button')){
+    const label = e.target.closest('.floor-label, .floor__button')
+    const target = label.dataset.target
+    window.open(`index.html#${target}`, '_self')
+    if(isSiteMapOpen){
+        hideSiteMap()
+    }
+  }
+})
+
 const outletObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -624,37 +637,15 @@ function hideOutletSwitcher() {
   };
 }
 
-let currentPage = "";
-
-function showPage(pageId) {
-  if (currentPage !== pageId) {
-    if (pageId !== "home_page") {
-      const activeOutlet = getRef("outlet_switcher").querySelector(
-        ".outlet_switcher__button--active"
-      );
-      activeOutlet
-        .closest(".outlet_switcher__floor")
-        .classList.add("hide-completely");
-      activeOutlet.classList.remove("outlet_switcher__button--active");
-      const targetButton = getRef("outlet_switcher").querySelector(
-        `[data-target="${pageId}"]`
-      );
-      targetButton
-        .closest(".outlet_switcher__floor")
-        .classList.remove("hide-completely");
-      targetButton.classList.add("outlet_switcher__button--active");
-      hideOutletSwitcher();
-    }
-  }
-}
-
+let currentPage 
 function renderSiteMap() {
   const frag = document.createDocumentFragment()
-  siteMap.forEach(floor => frag.append(render.floorListitem(floor)))
+  siteMap.forEach((floor, index) => frag.append(render.floorListitem(floor, index)))
   getRef('floor_list').append(frag)
   const pathArray = location.pathname.split('/')
   for (floor of siteMap) {
     for (outlet of floor.outlets) {
+      currentPage = pathArray[pathArray.length - 1]
       if (pathArray[pathArray.length - 1].indexOf(outlet.url) > -1) {
         renderFloorOutlets(floor, outlet.url)
         break;

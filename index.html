@@ -279,7 +279,7 @@
                     <div id="" class="outlet-preview">
                         <div class="grid outlet-preview__info">
                             <div class="outlet-number">2</div>
-                            <h3 class="outlet__title">Messenger</h3>
+                            <h3 class="outlet__title">FLO Messenger</h3>
                             <p class="outlet__description margin-bottom-1-5r">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam reprehenderit cumque sequi earum.
                             </p>
@@ -418,9 +418,9 @@
         </main>
     </article>
 
-    <script src="components.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/index.js"></script>
 
     <script>
 
@@ -599,25 +599,6 @@
         renderAllIcoInvestors()
         renderAllSeries()
         renderAllFundInvestors()
-
-    
-        document.addEventListener('click', e => {
-            if(e.target.closest('.floor-label, .floor__button')){
-                const label = e.target.closest('.floor-label, .floor__button')
-                const target = label.dataset.target
-                if(currentPage !== 'home_page'){
-                    history.pushState({type: 'page', id: 'home_page'}, null, `#${'home_page'}`)
-                    showPage('home_page')
-                }
-                if(isSiteMapOpen){
-                    hideSiteMap()
-                }
-                getRef('home_page').scrollTo({
-                    top: getRef(target).getBoundingClientRect().top - getRef('home_page').getBoundingClientRect().top + getRef('home_page').scrollTop,
-                    behavior: 'smooth'
-                })
-            }
-        })
         
 
         function showOutletSwitcher(button){
