@@ -678,8 +678,8 @@ const siteMapTimeline = gsap.timeline({
   paused: true,
 });
 siteMapTimeline
-  .from("#elevator_popup", { duration: 0.3, opacity: 0, y: 16 })
-  .from(".floor_list__item", { opacity: 0, y: 16});
+  .from("#elevator_popup", { duration: 0.3, opacity: 0 })
+  .from(".floor_list__item", { opacity: 0, y: 16, stagger: 0.1 });
 
 
   
@@ -691,13 +691,13 @@ function showSiteMap() {
   document.body.style.overflow = "hidden";
   document.body.style.top = `-${window.scrollY}px`;
   getRef("elevator_popup").classList.remove("hide-completely");
-  siteMapTimeline.duration(0.6).play();
+  siteMapTimeline.duration(1).play();
 }
 
 function hideSiteMap() {
   const scrollY = document.body.style.top;
   window.scrollTo(0, parseInt(scrollY || "0") * -1);
-  siteMapTimeline.duration(0.3).reverse();
+  siteMapTimeline.duration(0.4).reverse();
   document.querySelectorAll(".page").forEach((page) => {
     page.removeAttribute("aria-hidden");
   });
