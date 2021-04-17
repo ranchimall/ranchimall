@@ -7,14 +7,13 @@
 }
 
 body {
-  --primary-color: #115FF0;
+  --accent-color: #e72c45;
   --light-shade: rgba(var(--text-color), 0.06);
   --text-color: 17, 17, 17;
   --text-color-light: 100, 100, 100;
   --foreground-color: 255, 255, 255;
   --background-color: #F6f6f6;
   --error-color: red;
-  --accent-color: #F55B5D;
   color: rgba(var(--text-color), 1);
   height: calc(100%);
   font-size: clamp(1rem, 1.2vmax, 3rem);
@@ -22,7 +21,7 @@ body {
 }
 
 body[data-theme=dark] {
-  --primary-color:#79A5F6;
+  --accent-color: #ff3949;
   --text-color: 240, 240, 240;
   --text-color-light: 170, 170, 170;
   --foreground-color: 20, 20, 20;
@@ -80,11 +79,11 @@ img {
   object-fit: cover;
 }
 
-a:any-link {
+a {
   color: inherit;
   text-decoration: none;
 }
-a:any-link:focus-visible {
+a:focus-visible {
   box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 1) inset;
 }
 
@@ -108,7 +107,7 @@ button {
 }
 
 .button--primary {
-  background: var(--primary-color);
+  background: var(--accent-color);
   color: rgba(var(--foreground-color), 1);
 }
 .button--primary .icon {
@@ -551,7 +550,7 @@ ul {
 }
 
 .tag {
-  background: var(--primary-color);
+  background: var(--accent-color);
   padding: 0.4rem 0.6rem;
 }
 
@@ -694,12 +693,6 @@ ul {
   align-items: center;
   display: grid;
 }
-.outlet-preview:nth-of-type(even) .outlet-preview__info {
-  grid-column: 2/3;
-}
-.outlet-preview:nth-of-type(even) .outlet-preview__border {
-  right: 0;
-}
 
 .outlet-number {
   display: grid;
@@ -740,15 +733,17 @@ ul {
   height: 100%;
   width: 100%;
   z-index: -1;
-  box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 0.2);
   border-radius: 0.5rem;
+  background: var(--background-color);
+  box-shadow: 0 0 0 1px rgba(var(--text-color), 0.2) inset, 0 2rem 3rem -2rem rgba(0, 0, 0, 0.1);
 }
 
 .outlet-preview__button {
   justify-self: flex-start;
   border-radius: 0.2rem;
   padding: 0.3rem 1rem;
-  box-shadow: 0 0 0 1px rgba(var(--text-color), 1);
+  color: white;
+  background-color: var(--accent-color);
 }
 
 /* .outlet-preview__carousel{
@@ -792,7 +787,7 @@ sm-carousel {
   --arrow-box-shadow: none;
   --arrow-bottom: -3.5rem;
   --indicator-bottom: -2.5rem;
-  --active-indicator-color: var(--primary-color);
+  --active-indicator-color: var(--accent-color);
 }
 
 .bit-bond-series__row,
@@ -856,7 +851,7 @@ sm-carousel {
   font-weight: 500;
 }
 .outlet_switcher__button--active {
-  color: var(--primary-color) !important;
+  color: var(--accent-color) !important;
 }
 .outlet_switcher__button:not(:last-of-type)::after {
   content: "";
@@ -871,12 +866,12 @@ sm-carousel {
   display: flex;
   align-items: center;
   justify-self: flex-start;
-  color: var(--primary-color);
+  color: var(--accent-color);
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
 .outlet-label .icon {
-  fill: var(--primary-color);
+  fill: var(--accent-color);
   margin-right: 0.5rem;
 }
 
@@ -894,9 +889,9 @@ scroll-tab-panels {
   --background: transparent;
 }
 scroll-tab-panels > * {
-  min-height: 100vh;
-  padding-top: 4rem;
   opacity: 0.4;
+  padding-top: 4rem;
+  min-height: 100vh;
   transition: opacity 0.6s;
 }
 scroll-tab-panels > [active] {
@@ -923,10 +918,10 @@ scroll-tab-panels > [active] {
 }
 .room-button[active] {
   opacity: 1;
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 .room-button[active] .icon {
-  fill: var(--primary-color);
+  fill: var(--accent-color);
 }
 .room-button[active]::after {
   content: "";
@@ -936,7 +931,7 @@ scroll-tab-panels > [active] {
   bottom: 0;
   left: 0;
   border-radius: 0.2rem 0.2rem 0 0;
-  background: var(--primary-color);
+  background: var(--accent-color);
 }
 
 table {
@@ -1064,6 +1059,12 @@ table {
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
   }
+  .outlet-preview:nth-of-type(even) .outlet-preview__info {
+    grid-column: 2/3;
+  }
+  .outlet-preview:nth-of-type(even) .outlet-preview__border {
+    right: 0;
+  }
 
   .carousel-holder {
     align-self: flex-start;
@@ -1158,10 +1159,10 @@ table {
     transition: color 0.3s;
   }
   .page-link:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
   }
   .page-link:hover .icon {
-    fill: var(--primary-color);
+    fill: var(--accent-color);
   }
 
   .floor__button:hover {
