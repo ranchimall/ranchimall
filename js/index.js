@@ -678,7 +678,7 @@ const siteMapTimeline = gsap.timeline({
 });
 siteMapTimeline
   .from("#elevator_popup", { duration: 0.3, opacity: 0 })
-  .from(".floor_list__item", { opacity: 0, y: 16, stagger: 0.1 });
+  .from(".floor_list__item", { opacity: 0, x: -16, stagger: 0.1 });
 
 function showSiteMap() {
   document.querySelectorAll(".page").forEach((page) => {
