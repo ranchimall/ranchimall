@@ -348,15 +348,11 @@ ul{
     gap: 2rem;
     overflow-y: auto;
     transform-origin: top;
-    counter-reset: floor-counter;
 }
 .floor_list__item{
     display: grid;
     gap: 1.5rem;
-    counter-increment: floor-counter;
-    .floor-num::after{
-        content: " " counter(floor-counter);
-    }
+    transform-origin: top;
     &:last-of-type{
         padding-bottom: 25vh;
     }

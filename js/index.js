@@ -426,6 +426,7 @@ const render = {
     const li = floorListitemTemplate.content.cloneNode(true).firstElementChild
     li.firstElementChild.dataset.target = `floor_${index + 1}`;
     li.querySelector('.h3').textContent = floor
+    li.querySelector('.h5').textContent = `floor ${index + 1}`
 
     const frag = document.createDocumentFragment()
     outlets.forEach(outlet => frag.append(render.outletListItem(outlet)))
@@ -678,7 +679,7 @@ const siteMapTimeline = gsap.timeline({
 });
 siteMapTimeline
   .from("#elevator_popup", { duration: 0.3, opacity: 0 })
-  .from(".floor_list__item", { opacity: 0, x: -16, stagger: 0.1 });
+  .from(".floor_list__item", { opacity: 0, scaleY: 0.95, stagger: 0.1 });
 
 function showSiteMap() {
   document.querySelectorAll(".page").forEach((page) => {
