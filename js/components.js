@@ -3743,15 +3743,13 @@ scrollTabPanels.innerHTML = `
         }
         .tab-panels{
             display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
             gap: var(--gap);
-            // height: var(--height);
-            overflow-y: auto;
             border-radius: var(--border-radius);
             background: var(--background);
-            scroll-snap-type: y proximity;
+            scroll-snap-type: x proximity;
             scroll-behavior: smooth;
-            -ms-scroll-chaining: none;
-            overscroll-behavior: contain;
         }
         slot::slotted(*){
             scroll-snap-align: start;
@@ -3764,6 +3762,10 @@ scrollTabPanels.innerHTML = `
             ::-webkit-scrollbar {
                 height: 0;
                 background-color: transparent;
+            }
+            .tab-panels{
+                scrollbar-height: none;
+                overflow-x: auto;
             }
         }
         @media (any-hover: hover){
@@ -3778,6 +3780,9 @@ scrollTabPanels.innerHTML = `
                 &:hover{
                     background: rgba(var(--text-color), 0.5);
                 }
+            }
+            .tab-panels{
+                overflow-x: hidden;
             }
         }
     </style>
@@ -3797,6 +3802,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
         this._assignedElements
         this.activePanel
         this.debounceTimeout
+        this.timerId;
     }
 
     fireEvent = (tabIndex) => {
@@ -3811,12 +3817,40 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
 
     handlePanelChange = (e) => {
         if (e.detail.targetPanelGroup === this.id) {
-/*             this.tabPanels.scrollTo({
-                top: (this._assignedElements[e.detail.panelIndex].getBoundingClientRect().top - this.tabPanels.getBoundingClientRect().top + this.tabPanels.scrollTop),
+            this.tabPanels.scrollTo({
+                left: (this._assignedElements[e.detail.panelIndex].getBoundingClientRect().left - this.tabPanels.getBoundingClientRect().left + this.tabPanels.scrollLeft),
                 behavior: 'smooth'
-            }) */
-            this._assignedElements[e.detail.panelIndex].scrollIntoView({block: "nearest", inline: 'start', behavior: 'smooth'})
+            })
+            // this._assignedElements[e.detail.panelIndex].scrollIntoView({block: "nearest", inline: 'start', behavior: 'smooth'})
         }
+    }
+
+    scrollHorizontally = e => {
+        e.preventDefault()
+        this.throttle(() => {
+            const width = this.tabPanels.getBoundingClientRect().width
+            const scrollBy = e.deltaY > 0 ? width : -width
+            this.tabPanels.scrollBy({
+                left: scrollBy,
+                behavior: 'smooth'
+            })   
+        }, 100)
+    }
+
+    throttle = (func, delay) => {
+        // If setTimeout is already scheduled, no need to do anything
+        if (timerId) {
+            return;
+        }
+        
+        // Schedule a setTimeout after delay seconds
+        timerId = setTimeout(function () {
+            func();
+        
+            // Once setTimeout function execution is finished, timerId = undefined so that in
+            // the next scroll event function execution can be scheduled by the setTimeout
+            timerId = undefined;
+        }, delay);
     }
     
     connectedCallback() {
@@ -3837,8 +3871,8 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
             })
         },
             {
-                threshold: 0.2,
-                // root: this.tabPanels
+                threshold: 0.8,
+                root: this.tabPanels
         })
         this.tabPanels.addEventListener('slotchange', e => {
             this._assignedElements = this.tabPanelsSlot.assignedElements()
@@ -3851,6 +3885,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
                 panelObserver.observe(elem)
             })
         })
+        this.tabPanels.addEventListener('wheel', this.scrollHorizontally)
         document.addEventListener('changePanel', this.handlePanelChange)
     }
     

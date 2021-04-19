@@ -691,9 +691,7 @@ function showSiteMap() {
   document.body.style.overflow = "hidden";
   document.body.style.top = `-${window.scrollY}px`;
   getRef("elevator_popup").classList.remove("hide-completely");
-  setTimeout(() => {
-    siteMapTimeline.duration(0.9).play();
-  }, 0);
+  siteMapTimeline.duration(0.9).play();
 }
 
 function hideSiteMap() {

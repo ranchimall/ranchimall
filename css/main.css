@@ -465,16 +465,14 @@ ul {
 }
 
 .floor__button {
-  position: relative;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   flex-direction: column;
   text-align: left;
   align-items: flex-start;
-  justify-self: flex-start;
   border-radius: 0.2rem;
   font-size: 1.5rem;
   font-weight: 900;
-  background: rgba(var(--text-color), 0.06);
+  background: rgba(var(--foreground-color), 1);
 }
 .floor__button--active {
   background: rgba(var(--text-color), 0.2);
@@ -872,13 +870,10 @@ sm-carousel {
 }
 
 scroll-tab-header {
-  position: sticky;
-  top: 0;
   --padding: 0.5rem 0;
   --border-radius: 0.3rem;
-  --background: var(--background-color);
+  --background: transparent;
   --grid-auto-flow: column;
-  z-index: 1;
 }
 
 scroll-tab-panels {
@@ -886,8 +881,8 @@ scroll-tab-panels {
 }
 scroll-tab-panels > * {
   opacity: 0.4;
-  padding-top: 4rem;
-  min-height: 100vh;
+  flex-shrink: 0;
+  min-width: 100%;
   transition: opacity 0.6s;
 }
 scroll-tab-panels > [active] {
@@ -903,14 +898,51 @@ scroll-tab-panels > [active] {
   grid-template-columns: auto 1fr;
 }
 
+.rooms__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: var(--background-color);
+  box-shadow: 0 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+}
+
+.room__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  padding-right: 1.5rem;
+}
+.room__label::after {
+  content: "";
+  position: absolute;
+  height: 150%;
+  width: 0.1rem;
+  right: 0;
+  background-color: rgba(var(--text-color), 0.5);
+}
+
 .room-button {
   position: relative;
   opacity: 0.6;
+  flex-shrink: 0;
   border-radius: 0;
   font-weight: 500;
   font-size: 1.1rem;
   transition: opacity 0.3s, background-color 0.3s;
   padding: 0.6rem 0.8rem;
+}
+.room-button:not(:last-of-type)::after {
+  content: "";
+  height: 0.1rem;
+  width: 4rem;
+  margin-left: 1rem;
+  align-self: center;
+  background: var(--accent-color);
 }
 .room-button[active] {
   opacity: 1;
@@ -918,16 +950,6 @@ scroll-tab-panels > [active] {
 }
 .room-button[active] .icon {
   fill: var(--accent-color);
-}
-.room-button[active]::after {
-  content: "";
-  position: absolute;
-  height: 0.1rem;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  border-radius: 0.2rem 0.2rem 0 0;
-  background: var(--accent-color);
 }
 
 table {
@@ -1162,6 +1184,6 @@ table {
   }
 
   .floor__button:hover {
-    background: rgba(var(--text-color), 0.2);
+    background: var(--background-color);
   }
 }
