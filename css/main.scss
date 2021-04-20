@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: 'Roboto Slab', serif;
 }
+:root{
+    font-size: clamp(1rem, 1.2vmax, 3rem);
+}
 body {
     --accent-color: #e72c45;
     --light-shade: rgba(var(--text-color), 0.06);
@@ -13,9 +16,9 @@ body {
     --foreground-color: 255, 255, 255;
     --background-color: #F6f6f6;
     --error-color: red;
+    --green: #1DC838;
     color: rgba(var(--text-color), 1);
     height: calc(100%);
-    font-size: clamp(1rem, 1.2vmax, 3rem);
     background: var(--background-color);
 }
 body[data-theme='dark']{
@@ -150,6 +153,9 @@ ul{
 }
 .pos-relative{
     position: relative;
+}
+.text-align-right{
+    text-align: right;
 }
 .align-start{
     align-items: flex-start;
@@ -601,7 +607,7 @@ ul{
 }
 
 .outlets-container{
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     gap: 1.5rem;
 }
 
@@ -670,7 +676,14 @@ ul{
     font-size: 1.3rem;
 }
 
-#bit_bond_series__container{
+.series-container{
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    .bit-bond-series__row{
+        padding: 1.5rem;
+    }
+}
+/* #bit_bond_series__container{
     background: url(../assets/bg/bitbonds-bg.png) bottom right no-repeat, rgba(var(--foreground-color), 1);
     background-size: 60%;
 }
@@ -681,7 +694,7 @@ ul{
 #ico_investors__container{
     background: url(../assets/bg/ico-bg.png) top right no-repeat, rgba(var(--foreground-color), 1);
     background-size: 60%;
-}
+} */
 
 sm-carousel{
     position: relative;
@@ -704,6 +717,26 @@ sm-carousel{
 .investor-card{
     min-width: 100%;
 }
+.bit-bond-series__row{
+    gap: 1rem;
+    border-radius: 0.5rem;
+    grid-auto-flow: column;
+    align-items: flex-start;
+    box-shadow: 0 0.5rem 1rem -0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.up-arrow{
+    height: 1.2em;
+    width: 1.2em;
+    fill: var(--green);
+    margin-right: 0.1em;
+}
+.percent-gain{
+    color: var(--green);
+    font-weight: 500;
+    margin-right: 0.5em;
+}
+
 
 .investor-card{
     align-items: flex-start;
@@ -784,7 +817,9 @@ scroll-tab-header{
     --grid-auto-flow: column;
 }
 scroll-tab-panels{
+    --gap: 1.5rem;
     --background: transparent;
+    margin-bottom: 6rem;
     & > *{
         opacity: 0.4;
         flex-shrink: 0;
@@ -854,21 +889,6 @@ scroll-tab-panels{
         }
     }
 
-}
-
-table{
-    border-collapse: collapse;
-    width: max-content;
-}
-.tr{
-    margin: 0.5rem;
-    &:nth-of-type(even){
-        background: rgba(var(--text-color), 0.1);
-    }
-}
-.td{
-    padding: 0.6rem 0.8rem;
-    white-space: nowrap;
 }
 
 #ico_page__carousel{
@@ -978,6 +998,9 @@ table{
             }
         }
     }
+    .bit-bond-series__row{
+        grid-auto-flow: column;
+    }
     .carousel-holder{
         align-self: flex-start;
         transform: translateY(-2rem);
@@ -1026,17 +1049,6 @@ table{
         & > .grid{
             width: 100%;
         }
-/*         & > .grid:not(:last-of-type){
-            position: relative;
-            &::after{
-                content: '';
-                position: absolute;
-                height: 4rem;
-                width: 1px;
-                right: 0.5rem;
-                background-color: var(--accent-color);
-            }
-        } */
     }
 }
 @media only screen and (min-width: 1920px) {

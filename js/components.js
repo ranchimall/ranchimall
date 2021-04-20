@@ -3744,11 +3744,11 @@ scrollTabPanels.innerHTML = `
         .tab-panels{
             display: grid;
             grid-auto-flow: column;
-            grid-auto-columns: 100%;
+            grid-auto-columns: calc(100% - 3rem);
             gap: var(--gap);
             border-radius: var(--border-radius);
             background: var(--background);
-            scroll-snap-type: x proximity;
+            scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
         }
         slot::slotted(*){
@@ -3827,31 +3827,14 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
 
     scrollHorizontally = e => {
         e.preventDefault()
-        this.throttle(() => {
-            const width = this.tabPanels.getBoundingClientRect().width
-            const scrollBy = e.deltaY > 0 ? width : -width
-            this.tabPanels.scrollBy({
-                left: scrollBy,
-                behavior: 'smooth'
-            })   
-        }, 100)
+        const width = this.tabPanels.getBoundingClientRect().width
+        const scrollBy = e.deltaY > 0 ? width : -width
+        this.tabPanels.scrollBy({
+            left: scrollBy,
+            behavior: 'smooth'
+        })   
     }
 
-    throttle = (func, delay) => {
-        // If setTimeout is already scheduled, no need to do anything
-        if (timerId) {
-            return;
-        }
-        
-        // Schedule a setTimeout after delay seconds
-        timerId = setTimeout(function () {
-            func();
-        
-            // Once setTimeout function execution is finished, timerId = undefined so that in
-            // the next scroll event function execution can be scheduled by the setTimeout
-            timerId = undefined;
-        }, delay);
-    }
     
     connectedCallback() {
         const panelObserver = new IntersectionObserver(entries => {

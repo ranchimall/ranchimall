@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <sm-notifications id="notification_drawer"></sm-notifications>
+
     <section id="elevator_popup" class="grid hide-completely">
         <header class="elevator__header">
             <button class="close-button justify-self-start" onclick="hideSiteMap()">
@@ -116,40 +118,7 @@
             </scroll-tab-header>
         </div>
         <scroll-tab-panels id="bit_bond_page_group">
-            <div class="flex w-100" style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr class="tr">
-                            <td class="td weight-700 uppercase">Series</td>
-                            <td class="td weight-700 uppercase">Series date</td>
-                            <td class="td weight-700 uppercase">Time Elapsed</td>
-                            <td class="td weight-700 uppercase">Current value</td>
-                            <td class="td weight-700 uppercase">Rate of return</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="tr">
-                            <td class="td weight-500">$975</td>
-                        </tr>
-                        <tr class="tr">
-                            <td class="td weight-500">$1057</td>
-                        </tr>
-                        <tr class="tr">
-                            <td class="td weight-500">$1064</td>
-                        </tr>
-                        <tr class="tr">
-                            <td class="td weight-500">$1205</td>
-                        </tr>
-                        <tr class="tr">
-                            <td class="td weight-500">$1285</td>
-                        </tr>
-                        <tr class="tr">
-                            <td class="td weight-500">$2513</td>
-                        </tr>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div id="bit_bond_series__container" class="grid series-container"></div>
             <p id="bit_bond_info">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga inventore error omnis ipsam ut incidunt,
                 doloremque pariatur expedita distinctio itaque.
@@ -159,5 +128,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/components.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        function renderAllSeries(){
+            const frag = document.createDocumentFragment()
+            getRef('bit_bond_series__container').innerHTML = ''
+            bitBondSerieses.forEach((series, index) => {
+                frag.append(render.bitBondRow(series))
+            })
+            getRef('bit_bond_series__container').append(frag)
+        }
+        renderAllSeries()
+    </script>
 </body>
 </html>

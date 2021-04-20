@@ -335,7 +335,60 @@ const siteMap = [
   },
 ];
 
+const bitBondSerieses = [
+  {
+      series: '$975',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+  {
+      series: '$1057',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+  {
+      series: '$1064',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+  {
+      series: '$1205',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+  {
+      series: '$1285',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+  {
+      series: '$2513',
+      currentValue: '$XXXXX',
+      timeElapsed: '2 years'
+  },
+]
+
 // templates
+
+const bitBondRowTemplate = document.createElement('template')
+bitBondRowTemplate.innerHTML = `
+<div class="bit-bond-series__row grid">
+    <div class="grid">
+        <h5 class="label color-0-8 weight-500">Series</h5>
+        <h3 class="value original-value"></h3>
+    </div>
+    <div class="grid justify-right text-align-right">
+        <h5 class="label color-0-8 weight-500">Current value</h5>
+        <h3 class="value current-value"></h3>
+        <div class="flex align-center">
+            <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
+            <span class="percent-gain">2000%</span>
+            <span class="time-elapsed"></span>
+        </div>
+    </div>
+</div>
+`
+
 
 const floorListitemTemplate = document.createElement('template')
 floorListitemTemplate.innerHTML = `
@@ -364,10 +417,10 @@ outletListitemTemplate.innerHTML = `
 const render = {
   bitBondRow(obj) {
     const { series, currentValue, timeElapsed } = obj;
-    const row = getRef("bit_bond_row").content.cloneNode(true);
+    const row = bitBondRowTemplate.content.cloneNode(true);
     row.querySelector(".original-value").textContent = series;
     row.querySelector(".current-value").textContent = currentValue;
-    row.querySelector(".time-elapsed").textContent = timeElapsed;
+    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed}`;
     return row;
   },
   bobFundRow(obj) {
@@ -414,15 +467,15 @@ const render = {
     return floorLabel;
   },
   outletListItem(outletObj) {
-    const { name, brief, url} = outletObj
+    const { name, brief, url } = outletObj
     const li = outletListitemTemplate.content.cloneNode(true).firstElementChild
     li.querySelector('a').href = `${url}.html`
     li.querySelector('.outlet-title').textContent = name
-    li.querySelector('.outlet-brief').textContent = brief ? brief: ''
+    li.querySelector('.outlet-brief').textContent = brief ? brief : ''
     return li
   },
   floorListitem(floorObj, index) {
-    const { floor, outlets} = floorObj
+    const { floor, outlets } = floorObj
     const li = floorListitemTemplate.content.cloneNode(true).firstElementChild
     li.firstElementChild.dataset.target = `floor_${index + 1}`;
     li.querySelector('.h3').textContent = floor
@@ -435,7 +488,7 @@ const render = {
     return li
   },
   outletSwitcherButton(outletObj, activeOutlet) {
-    const { name, url} = outletObj
+    const { name, url } = outletObj
     const button = document.createElement('a')
     button.classList.add('outlet_switcher__button')
     if (activeOutlet === url) {
@@ -553,12 +606,12 @@ const easeOutOvershoot = `cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
 
 
 document.addEventListener('click', e => {
-  if(e.target.closest('.floor-label, .floor__button')){
+  if (e.target.closest('.floor-label, .floor__button')) {
     const label = e.target.closest('.floor-label, .floor__button')
     const target = label.dataset.target
     window.open(`index.html#${target}`, '_self')
-    if(isSiteMapOpen){
-        hideSiteMap()
+    if (isSiteMapOpen) {
+      hideSiteMap()
     }
   }
 })
@@ -638,7 +691,7 @@ function hideOutletSwitcher() {
   };
 }
 
-let currentPage 
+let currentPage
 function renderSiteMap() {
   const frag = document.createDocumentFragment()
   siteMap.forEach((floor, index) => frag.append(render.floorListitem(floor, index)))
@@ -682,7 +735,7 @@ siteMapTimeline
   .from(".floor_list__item", { opacity: 0, y: 16, stagger: 0.1 });
 
 
-  
+
 function showSiteMap() {
   document.querySelectorAll(".page").forEach((page) => {
     page.setAttribute("aria-hidden", "true");

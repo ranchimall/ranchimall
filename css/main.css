@@ -6,6 +6,10 @@
   font-family: "Roboto Slab", serif;
 }
 
+:root {
+  font-size: clamp(1rem, 1.2vmax, 3rem);
+}
+
 body {
   --accent-color: #e72c45;
   --light-shade: rgba(var(--text-color), 0.06);
@@ -14,9 +18,9 @@ body {
   --foreground-color: 255, 255, 255;
   --background-color: #F6f6f6;
   --error-color: red;
+  --green: #1DC838;
   color: rgba(var(--text-color), 1);
   height: calc(100%);
-  font-size: clamp(1rem, 1.2vmax, 3rem);
   background: var(--background-color);
 }
 
@@ -174,6 +178,10 @@ ul {
 
 .pos-relative {
   position: relative;
+}
+
+.text-align-right {
+  text-align: right;
 }
 
 .align-start {
@@ -678,7 +686,7 @@ ul {
 }
 
 .outlets-container {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   gap: 1.5rem;
 }
 
@@ -753,21 +761,26 @@ ul {
   font-size: 1.3rem;
 }
 
-#bit_bond_series__container {
-  background: url(../assets/bg/bitbonds-bg.png) bottom right no-repeat, rgba(var(--foreground-color), 1);
-  background-size: 60%;
+.series-container {
+  gap: 2rem 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+.series-container .bit-bond-series__row {
+  padding: 1.5rem;
 }
 
-#bob_fund_investors__container {
-  background: url(../assets/bg/bobsfund-bg.png) bottom left no-repeat, rgba(var(--foreground-color), 1);
-  background-size: 60%;
+/* #bit_bond_series__container{
+    background: url(../assets/bg/bitbonds-bg.png) bottom right no-repeat, rgba(var(--foreground-color), 1);
+    background-size: 60%;
 }
-
-#ico_investors__container {
-  background: url(../assets/bg/ico-bg.png) top right no-repeat, rgba(var(--foreground-color), 1);
-  background-size: 60%;
+#bob_fund_investors__container{
+    background: url(../assets/bg/bobsfund-bg.png) bottom left no-repeat, rgba(var(--foreground-color), 1);
+    background-size: 60%;
 }
-
+#ico_investors__container{
+    background: url(../assets/bg/ico-bg.png) top right no-repeat, rgba(var(--foreground-color), 1);
+    background-size: 60%;
+} */
 sm-carousel {
   position: relative;
   height: 100%;
@@ -788,6 +801,27 @@ sm-carousel {
 .bob-fund__row,
 .investor-card {
   min-width: 100%;
+}
+
+.bit-bond-series__row {
+  gap: 1rem;
+  border-radius: 0.5rem;
+  grid-auto-flow: column;
+  align-items: flex-start;
+  box-shadow: 0 0.5rem 1rem -0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.up-arrow {
+  height: 1.2em;
+  width: 1.2em;
+  fill: var(--green);
+  margin-right: 0.1em;
+}
+
+.percent-gain {
+  color: var(--green);
+  font-weight: 500;
+  margin-right: 0.5em;
 }
 
 .investor-card {
@@ -877,7 +911,9 @@ scroll-tab-header {
 }
 
 scroll-tab-panels {
+  --gap: 1.5rem;
   --background: transparent;
+  margin-bottom: 6rem;
 }
 scroll-tab-panels > * {
   opacity: 0.4;
@@ -950,23 +986,6 @@ scroll-tab-panels > [active] {
 }
 .room-button[active] .icon {
   fill: var(--accent-color);
-}
-
-table {
-  border-collapse: collapse;
-  width: max-content;
-}
-
-.tr {
-  margin: 0.5rem;
-}
-.tr:nth-of-type(even) {
-  background: rgba(var(--text-color), 0.1);
-}
-
-.td {
-  padding: 0.6rem 0.8rem;
-  white-space: nowrap;
 }
 
 #ico_page__carousel {
@@ -1084,6 +1103,10 @@ table {
     right: 0;
   }
 
+  .bit-bond-series__row {
+    grid-auto-flow: column;
+  }
+
   .carousel-holder {
     align-self: flex-start;
     transform: translateY(-2rem);
@@ -1137,17 +1160,6 @@ table {
 
   .grid-3 {
     justify-content: center;
-    /*         & > .grid:not(:last-of-type){
-                position: relative;
-                &::after{
-                    content: '';
-                    position: absolute;
-                    height: 4rem;
-                    width: 1px;
-                    right: 0.5rem;
-                    background-color: var(--accent-color);
-                }
-            } */
   }
   .grid-3 > .grid {
     width: 100%;

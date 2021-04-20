@@ -15,23 +15,6 @@
     <sm-notifications id="notification_drawer"></sm-notifications>
     <!-- Component templates -->
 
-    <template id="bit_bond_row">
-        <div class="bit-bond-series__row grid grid-3 gap-1">
-            <div class="grid">
-                <h5 class="label color-0-8 weight-500">Series</h5>
-                <h3 class="value original-value"></h3>
-            </div>
-            <div class="grid">
-                <h5 class="label color-0-8 weight-500">Current value</h5>
-                <h3 class="value current-value"></h3>
-            </div>
-            <div class="grid">
-                <h5 class="label color-0-8 weight-500">Time Elapsed</h5>
-                <h3 class="value time-elapsed"></h3>
-            </div>
-        </div>
-    </template>
-
     <template id="bob_fund_row">
         <div class="bob-fund__row grid gap-2">
             <div class="grid">
@@ -424,40 +407,6 @@
 
     <script>
 
-        const bitBondSerieses = [
-            {
-                series: '$975',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                series: '$1057',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                series: '$1064',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                series: '$1205',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                series: '$1285',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                series: '$2513',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-        ]
-
-
         const bobFund = [
             {
                 investorName: 'John Doe',
@@ -575,7 +524,7 @@
         function renderAllSeries(){
             const frag = document.createDocumentFragment()
             getRef('bit_bond_series__container').innerHTML = ''
-            bitBondSerieses.forEach(series => {
+            bitBondSerieses.forEach((series, index) => {
                 frag.append(render.bitBondRow(series))
             })
             getRef('bit_bond_series__container').append(frag)
