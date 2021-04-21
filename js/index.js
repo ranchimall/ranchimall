@@ -368,6 +368,27 @@ const bitBondSerieses = [
   },
 ]
 
+const bobFund = [
+  {
+      investorName: 'John Doe',
+      invested: '₹20000',
+      currentValue: '$XXXXX',
+      timeElapsed: '2years'
+  },
+  {
+      investorName: 'Jane Doe',
+      invested: '₹10000',
+      currentValue: '$XXXXX',
+      timeElapsed: '2years'
+  },
+  {
+      investorName: 'james Doe',
+      invested: '₹15000',
+      currentValue: '$XXXXX',
+      timeElapsed: '2years'
+  },
+]
+
 // templates
 
 const bitBondRowTemplate = document.createElement('template')
@@ -384,6 +405,31 @@ bitBondRowTemplate.innerHTML = `
             <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
             <span class="percent-gain">2000%</span>
             <span class="time-elapsed"></span>
+        </div>
+    </div>
+</div>
+`
+
+const bobsFundRowTemplate = document.createElement('template')
+bobsFundRowTemplate.innerHTML = `
+<div class="bob-fund__row grid">
+    <div class="grid">
+        <h5 class="label color-0-8 weight-500">Investor</h5>
+        <h3 class="value investor__name"></h3>
+    </div>
+    <div class="flex">
+        <div class="grid">
+            <h5 class="label color-0-8 weight-500">Invested</h5>
+            <h3 class="value original-value"></h3>
+        </div>
+        <div class="grid justify-right text-align-right">
+            <h4 class="label color-0-8 weight-500">Current value</h4>
+            <h3 class="value current-value"></h3>
+            <div class="flex align-center">
+              <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
+              <span class="percent-gain">2000%</span>
+              <span class="time-elapsed"></span>
+          </div>
         </div>
     </div>
 </div>
@@ -425,11 +471,11 @@ const render = {
   },
   bobFundRow(obj) {
     const { investorName, invested, currentValue, timeElapsed } = obj;
-    const row = getRef("bob_fund_row").content.cloneNode(true);
+    const row = bobsFundRowTemplate.content.cloneNode(true);
     row.querySelector(".investor__name").textContent = investorName;
     row.querySelector(".original-value").textContent = invested;
     row.querySelector(".current-value").textContent = currentValue;
-    row.querySelector(".time-elapsed").textContent = timeElapsed;
+    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed}`;
     return row;
   },
   icoInvestorRow(obj, options) {

@@ -92,10 +92,10 @@
             </scroll-tab-header>
         </div>
         <scroll-tab-panels id="bob_fund_page_group">
-            <div>
-                <!-- <sm-carousel id="bob_fund_page__carousel" indicator autoplay></sm-carousel> -->
-                <h1 class="h1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, modi.</h1>
-            </div>
+            <section class="grid">
+                <h3 class="h3 margin-bottom-1-5r">Investors</h3>
+                <div id="bob_fund_investors__container" class="grid series-container"></div>
+            </section>
             <div>
                 <p id="bob_fund_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi facere officiis eius iusto quibusdam tenetur illo blanditiis asperiores et corporis!</p>
             </div>
@@ -105,5 +105,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/components.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        function renderAllFundInvestors(){
+            const frag = document.createDocumentFragment()
+            getRef('bob_fund_investors__container').innerHTML = ''
+            bobFund.forEach(investor => {
+                frag.append(render.bobFundRow(investor))
+            })
+            getRef('bob_fund_investors__container').append(frag)
+        }
+        renderAllFundInvestors()
+    </script>
 </body>
 </html>

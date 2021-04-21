@@ -15,29 +15,6 @@
     <sm-notifications id="notification_drawer"></sm-notifications>
     <!-- Component templates -->
 
-    <template id="bob_fund_row">
-        <div class="bob-fund__row grid gap-2">
-            <div class="grid">
-                <h5 class="label color-0-8 weight-500">Investor</h5>
-                <h3 class="value investor__name"></h3>
-            </div>
-            <div class="grid grid-3 gap-1">
-                <div class="grid">
-                    <h5 class="label color-0-8 weight-500">Invested</h5>
-                    <h3 class="value original-value"></h3>
-                </div>
-                <div class="grid">
-                    <h4 class="label color-0-8 weight-500">Current value</h4>
-                    <h3 class="value current-value"></h3>
-                </div>
-                <div class="grid">
-                    <h4 class="label color-0-8 weight-500">Time Elapsed</h4>
-                    <h3 class="value time-elapsed"></h3>
-                </div>
-            </div>
-        </div>
-    </template>
-
     <template id="ico_investor_row">
         <div class="investor-card grid gap-1-5">
             <img class="investor__image" src="" alt="" loading="lazy">
@@ -406,27 +383,6 @@
     <script src="js/index.js"></script>
 
     <script>
-
-        const bobFund = [
-            {
-                investorName: 'John Doe',
-                invested: '₹20000',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                investorName: 'Jane Doe',
-                invested: '₹10000',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-            {
-                investorName: 'james Doe',
-                invested: '₹15000',
-                currentValue: '$XXXXX',
-                timeElapsed: '2years'
-            },
-        ]
 
         const icoInvestors = [
             {

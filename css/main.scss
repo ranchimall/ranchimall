@@ -16,7 +16,7 @@ body {
     --foreground-color: 255, 255, 255;
     --background-color: #F6f6f6;
     --error-color: red;
-    --green: #1DC838;
+    --green: #007936;
     color: rgba(var(--text-color), 1);
     height: calc(100%);
     background: var(--background-color);
@@ -678,9 +678,11 @@ ul{
 }
 
 .series-container{
-    gap: 2rem 1.5rem;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    .bit-bond-series__row{
+    .bit-bond-series__row,
+    .bob-fund__row{
         padding: 1.5rem;
     }
 }
@@ -719,10 +721,21 @@ sm-carousel{
     min-width: 100%;
 }
 .bit-bond-series__row{
+    grid-auto-flow: column;
+}
+
+.bob-fund__row{
+    .grid{
+        align-content: flex-start;
+    }
+}
+
+.bob-fund__row,
+.bit-bond-series__row{
     gap: 1rem;
     border-radius: 0.5rem;
-    grid-auto-flow: column;
     align-items: flex-start;
+    background-color: rgba(var(--foreground-color), 1);
     box-shadow: 0 0.5rem 1rem -0.5rem rgba(0, 0, 0, 0.1);
 }
 
@@ -733,12 +746,12 @@ sm-carousel{
     margin-right: 0.1em;
 }
 .percent-gain{
+    font-weight: 500;
     color: var(--green);
     margin-right: 0.5em;
 }
 .percent-gain,
 .time-elapsed{
-    font-weight: 400;
     font-size: 0.8rem;
 }
 .time-elapsed{
@@ -954,6 +967,9 @@ scroll-tab-panels{
     }
     .outlet-hero-section{
         margin-top: 2rem;
+    }
+    .series-container{
+        gap: 1rem;
     }
 }
 @media only screen and (min-width: 640px) {
