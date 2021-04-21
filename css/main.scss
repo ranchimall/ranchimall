@@ -23,6 +23,7 @@ body {
 }
 body[data-theme='dark']{
     --accent-color: #ff3949;
+    --green: #13ff5a;
     --text-color: 240, 240, 240;
     --text-color-light: 170, 170, 170;
     --foreground-color: 20, 20, 20;
@@ -726,15 +727,22 @@ sm-carousel{
 }
 
 .up-arrow{
-    height: 1.2em;
-    width: 1.2em;
+    height: 1em;
+    width: 1em;
     fill: var(--green);
     margin-right: 0.1em;
 }
 .percent-gain{
     color: var(--green);
-    font-weight: 500;
     margin-right: 0.5em;
+}
+.percent-gain,
+.time-elapsed{
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+.time-elapsed{
+    color: rgba(var(--text-color), 0.8);
 }
 
 

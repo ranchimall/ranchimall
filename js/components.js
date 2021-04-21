@@ -3744,7 +3744,7 @@ scrollTabPanels.innerHTML = `
         .tab-panels{
             display: grid;
             grid-auto-flow: column;
-            grid-auto-columns: calc(100% - 3rem);
+            grid-auto-columns: 100%;
             gap: var(--gap);
             border-radius: var(--border-radius);
             background: var(--background);
