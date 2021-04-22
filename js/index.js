@@ -440,8 +440,8 @@ const floorListitemTemplate = document.createElement('template')
 floorListitemTemplate.innerHTML = `
 <li class="floor_list__item">
   <button class="floor_list__header floor__button">
-      <h5 class="h5 floor-num">Floor</h5>
-      <h4 class="h3"></h4>
+      <h2 class="h2 floor-num">Floor</h2>
+      <h3 class="h3 accent-color"></h3>
   </button>
   <ul class="outlet-list grid"></ul>
 </li>
@@ -450,9 +450,12 @@ floorListitemTemplate.innerHTML = `
 const outletListitemTemplate = document.createElement('template')
 outletListitemTemplate.innerHTML = `
   <li class="outlet-list__item interact">
-    <a>
-      <h4 class="outlet-title"></h4>
-      <p class="outlet-brief"></p>
+    <a class="grid align-center flow-column gap-1 justify-start">
+      <div>
+        <h4 class="outlet-title"></h4>
+        <p class="outlet-brief"></p>
+      </div>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
     </a>
   </li>
 `
@@ -508,8 +511,6 @@ const render = {
     ).firstElementChild;
     floorLabel.setAttribute("style", `top: ${offsetTop}px`);
     floorLabel.dataset.target = `floor_${floorNumber}`;
-    // floorLabel.querySelector('.floor-num').textContent = `Floor ${floorNumber}`
-    // floorLabel.querySelector('.floor-name').textContent = floors[floorNumber - 1]
     return floorLabel;
   },
   outletListItem(outletObj) {
@@ -525,12 +526,16 @@ const render = {
     const li = floorListitemTemplate.content.cloneNode(true).firstElementChild
     li.firstElementChild.dataset.target = `floor_${index + 1}`;
     li.querySelector('.h3').textContent = floor
-    li.querySelector('.h5').textContent = `floor ${index + 1}`
+    li.querySelector('.floor-num').textContent = `floor ${index + 1}`
+
+    const h3 = document.createElement('h3')
+    h3.classList.add('h3', 'weight-900', 'floor-list__outlet')
+    h3.textContent = 'Outlets'
 
     const frag = document.createDocumentFragment()
     outlets.forEach(outlet => frag.append(render.outletListItem(outlet)))
 
-    li.querySelector('.outlet-list').append(frag)
+    li.querySelector('.outlet-list').append(h3, frag)
     return li
   },
   outletSwitcherButton(outletObj, activeOutlet) {
@@ -665,13 +670,11 @@ document.addEventListener('click', e => {
 const outletObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      // if(window.innerWidth < 640){
       if (entry.isIntersecting) {
         entry.target.querySelector("sm-carousel").startAutoPlay();
       } else {
         entry.target.querySelector("sm-carousel").stopAutoPlay();
       }
-      // }
     });
   },
   {
@@ -761,6 +764,21 @@ function renderFloorOutlets(floorObj, activeOutlet) {
   outlets.forEach(outlet => frag.append(render.outletSwitcherButton(outlet, activeOutlet)))
   getRef('outlet_switcher__outlet_container').append(frag)
   getRef('outlet_switcher__floor_num').textContent = floor
+  let floorNum = -1
+  let outletNum = -1
+  for (let i = 0; i < siteMap.length; i++){
+    if (siteMap[i].floor === floor) {
+      floorNum = i      
+      break
+    }
+  }
+  for (let i = 0; i < outlets.length; i++){
+    if (outlets[i].url === activeOutlet) {
+      outletNum = i      
+      break
+    }
+  }
+  document.querySelector('.outlet-label__name').textContent = floorNum > -1 ? `Floor ${floorNum + 1} outlet ${outletNum + 1}` : ''
 }
 
 let isSiteMapOpen = false;
