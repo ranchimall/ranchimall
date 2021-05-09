@@ -3750,6 +3750,7 @@ scrollTabPanels.innerHTML = `
             background: var(--background);
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
+            content-visibility: auto;
         }
         slot::slotted(*){
             scroll-snap-align: start;
@@ -3868,7 +3869,7 @@ customElements.define('scroll-tab-panels', class extends HTMLElement {
                 panelObserver.observe(elem)
             })
         })
-        this.tabPanels.addEventListener('wheel', this.scrollHorizontally)
+        // this.tabPanels.addEventListener('wheel', this.scrollHorizontally)
         document.addEventListener('changePanel', this.handlePanelChange)
     }
     

@@ -1,4 +1,4 @@
-* {
+* :not(ol) {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -44,8 +44,8 @@ body[data-theme=dark] .outlet__title {
   grid-column: 1/4;
 }
 
-/* .h1, .h2, .h3, .h4, .h5{
-    // font-family: 'Lora', serif;
+/* h1, h2, h3, h4, h5{
+    font-family: 'Manrope', sans-serif;
 } */
 .h1 {
   font-size: 2.5rem;
@@ -76,7 +76,7 @@ body[data-theme=dark] .outlet__title {
 }
 
 p {
-  max-width: 60ch;
+  max-width: 70ch;
   line-height: 1.7;
 }
 
@@ -90,6 +90,10 @@ a {
 }
 a:focus-visible {
   box-shadow: 0 0 0 0.1rem rgba(var(--text-color), 1) inset;
+}
+
+p a {
+  color: var(--accent-color);
 }
 
 button {
@@ -139,6 +143,11 @@ sm-tab-header {
 
 ul {
   list-style: none;
+}
+
+ol[type="1"] {
+  display: grid;
+  gap: 2rem;
 }
 
 .accent-color {
@@ -624,19 +633,6 @@ ul {
   margin-top: -1rem;
   user-select: none;
   transition: transform 0.3s;
-  /*     .floor-title{
-          opacity: 0;
-          transform: translateX(-1rem);
-          transition: opacity 0.3s, transform 0.3s;
-      }
-      &--active{
-          opacity: 1;
-          .floor-title{
-              opacity: 1;
-              box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-              transform: none;
-          }
-      } */
 }
 
 .floor-circle {
@@ -678,9 +674,9 @@ ul {
 .floor__header {
   position: sticky;
   top: 0;
-  transform: translateY(-0.1rem);
   z-index: 8;
   padding: 0.5rem 0;
+  transform: translateY(-0.1rem);
   background: var(--background-color);
 }
 .floor__header::before {
@@ -706,14 +702,18 @@ ul {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 0.5rem;
 }
-.floor__num::before {
+.floor__num::after {
   content: "";
-  width: 0.2rem;
-  height: 1.2rem;
+  width: 4rem;
+  height: 0.1rem;
   background: var(--accent-color);
-  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.floor__title {
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .big-icon {
@@ -976,6 +976,7 @@ scroll-tab-panels > * {
   flex-shrink: 0;
   min-width: 100%;
   transition: opacity 0.6s;
+  align-self: start;
 }
 scroll-tab-panels > [active] {
   opacity: 1;

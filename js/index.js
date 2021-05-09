@@ -241,7 +241,7 @@ const siteMap = [
         url: `bob'sfund`,
       },
       {
-        name: "ICO",
+        name: "Initial Coin Offering",
         url: "ico",
       },
     ],
@@ -260,19 +260,7 @@ const siteMap = [
       {
         name: "FLO Blockchain Contract",
         url: "floblockchaincontract",
-      },
-      {
-        name: "Startup Blockchain Contract",
-        url: "startupblockchaincontract",
-      },
-      {
-        name: "Real Estate Blockchain Contract",
-        url: "realestateblockchaincontract",
-      },
-      {
-        name: "Painting Blockchain Contract",
-        url: "paintingblockchaincontract",
-      },
+      }
     ],
   },
   {
@@ -678,7 +666,7 @@ const outletObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 1,
+    threshold: 0.6,
   }
 );
 
