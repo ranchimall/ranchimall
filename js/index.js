@@ -263,7 +263,7 @@ const siteMap = [
       }
     ],
   },
-  {
+/*   {
     floor: 'Blockchain Apps',
     outlets: [
       {
@@ -320,7 +320,7 @@ const siteMap = [
         url: "operationalstatistic",
       }
     ],
-  },
+  }, */
 ];
 
 const bitBondSerieses = [
@@ -737,7 +737,8 @@ function renderSiteMap() {
   for (floor of siteMap) {
     for (outlet of floor.outlets) {
       currentPage = pathArray[pathArray.length - 1]
-      if (pathArray[pathArray.length - 1].indexOf(outlet.url) > -1) {
+      if (pathArray[pathArray.length - 1].includes(outlet.url)) {
+        console.log(pathArray[pathArray.length - 1], outlet.url)
         renderFloorOutlets(floor, outlet.url)
         break;
       }
@@ -748,6 +749,7 @@ renderSiteMap()
 
 function renderFloorOutlets(floorObj, activeOutlet) {
   const { floor, outlets } = floorObj
+  console.log(floor)
   const frag = document.createDocumentFragment()
   outlets.forEach(outlet => frag.append(render.outletSwitcherButton(outlet, activeOutlet)))
   getRef('outlet_switcher__outlet_container').append(frag)

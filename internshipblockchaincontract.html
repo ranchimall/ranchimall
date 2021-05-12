@@ -15,34 +15,6 @@
 <body>
     <sm-notifications id="notification_drawer"></sm-notifications>
 
-    <template id="ico_phase_template">
-        <li class="phase grid">
-            <div class="progress-bar pos-relative direction-column align-center">
-                <div class="progress-bar__circle"></div>
-                <div class="progress-bar__line"></div>
-            </div>
-            <div class="grid">
-                <h4 class="h4 phase__title"></h4>
-                <h5 class="h5 phase__date weight-500 color-0-8"></h5>
-                <p class="phase__description color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nihil doloremque, mollitia dolor minima et.</p>
-            </div>
-        </li>
-    </template>
-
-    <template id="ico_investor_row">
-        <div class="investor-card grid gap-1-5">
-            <img class="investor__image" src="" alt="" loading="lazy">
-            <div class="grid">
-                <h3 class="investor__name value capitalize"></h3>
-                <p class="investor__bio color-0-8"></p>
-            </div>
-            <div class="grid investor__contribution-container">
-                <h4 class="label color-0-8 weight-500">Contribution</h4>
-                <p class="investor__contribution weight-700"></p>
-            </div>
-        </div>
-    </template>
-
     <section id="elevator_popup" class="grid hide-completely">
         <header class="elevator__header">
             <button class="close-button justify-self-start" onclick="hideSiteMap()">
@@ -99,12 +71,9 @@
                 <span class="outlet-label__name">Outlet</span>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
             </button>
-            <h2 class="h2 weight-700 margin-bottom-1r">Initial Coin Offering</h2>
+            <h2 class="h2 weight-700 margin-bottom-1r">Internship Blockchain Contract</h2>
             <p>
-                The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million
-                tokens over 14 phases over 3 years. However we paused the ICO after 2 phases were executed
-                selling 100000 tokens. Unanticipated Risks emerged due to rapid price increase of our tokens in
-                trading in our own custom exchange. The ICO will resume after de-risking process is complete.
+                Internship Blockchain Contract tokenizes all our internship initiatives. This is ownedby Incorporation Blockchain Contract.
             </p>
         </section>
         <div class="rooms__header">
@@ -187,137 +156,10 @@
                     whole course of journey. You will not regret it.
                 </p>
             </section>
-            <!-- <ul id="ico_phase_list"></ul> -->
         </scroll-tab-panels>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/components.js"></script>
     <script src="js/index.js"></script>
-    <script>
-        const icoPhases = [
-            {
-                phase: 1,
-                date: 'Aug 17',
-                info: ''
-            },
-            {
-                phase: 2,
-                date: 'Oct 17',
-                info: ''
-            }
-        ]
-        const icoInvestors = [
-            {
-                extension: 'jpg',
-                investorName: 'Abhijeet Das Gupta',
-                bio: 'Product and Technology Solutions Architect at 366Pi Technologies',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Amit Jagetia',
-                bio: 'IT Professional in FinTech Industry',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Amitesh Anand',
-                bio: 'Co-founder and CEO, 366Pi Technologies and Director of Technology, Fennex Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Atul Agarwal',
-                bio: 'Entrepreneur, Real Estate Developer, Blockchain Entrepreneur, Iconoclast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Barun Kumar',
-                bio: 'Cybersecurity Professional, Founder of Mantran Consulting, Singapore',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Janardan Tiwary',
-                bio: 'Retd. General Manager Coal India, Ranchi, Mining Engineer from IIT Dhanbad',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Kanwal Koul',
-                bio: 'Working Professional in the power sector',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Mansoor Ahmed',
-                bio: 'Cybersecurity Expert, Founder, and Director Winged World',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Meghna Patel',
-                bio: 'Marketing Professional turned Blockchain Enthusiast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Nikhil Kulkarni',
-                bio: 'CTO and Co-Founder of tripDarwin.com',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Pankaj Miglani',
-                bio: 'Professional Services Consultant at AWS Cybersecurity',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Rajeev Kumar Gupta',
-                bio: 'Curator cum Organizer, TEDx Kanke, and Former DGM-Corporate & Regulatory Affairs at JWS Steel ',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Sudhir Taneja',
-                bio: 'Sales and Marketing Professional, Associate Vice President, HDFC Life',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Varucchi Dubey',
-                bio: 'Founder and Managing Director, DNV Security Solutions Pvt Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Venkat Narayanan',
-                bio: 'Business Excellence Professional, Sr. Manager at Tata Consultancy Services',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-        ]
-
-        function renderAllIcoPhases(){
-            getRef('ico_phase_list').innerHTML = ''
-            const frag = document.createDocumentFragment()
-            icoPhases.forEach(phase => {
-                frag.append(render.icoPhase(phase))
-            })
-            getRef('ico_phase_list').append(frag)
-        }
-        // renderAllIcoPhases()
-
-        function renderAllIcoInvestors(){
-            const frag = document.createDocumentFragment()
-            getRef('ico_page__carousel').innerHTML = ''
-            icoInvestors.forEach(investor => {
-                frag.append(render.icoInvestorRow(investor, {thumbnail: false}))
-            })
-            getRef('ico_page__carousel').append(frag)
-        }
-        renderAllIcoInvestors()
-    </script>
 </body>
 </html>

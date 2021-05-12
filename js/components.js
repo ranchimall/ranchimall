@@ -3639,20 +3639,20 @@ scrollTabHeader.innerHTML = `
                     box-sizing: border-box;
         }   
         :host{
-            gap: 1rem;
+            --gap: 0;
             --padding: 0;
             --border-radius: 0.3rem;
-            --grid-auto-flow: auto;
             --background: rgba(var(--foreground-color), 1);
+            display: flex;
         }
         .tab-header{
-            display: grid;
+            display: flex;
             gap: var(--gap);
-            grid-auto-flow: var(--grid-auto-flow);
             justify-content: flex-start;
             padding: var(--padding);
             border-radius: var(--border-radius);
             background: var(--background);
+            overflow-x: auto;
         }
     </style>
     <div part="tab-header" class="tab-header">

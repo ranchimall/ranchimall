@@ -180,144 +180,17 @@
                 <h3 class="h3 margin-bottom-1-5r">Purchase</h3>
                 <p>
                     Currently we are not selling any RanchiMall Tokens (RMT). You can buy nominal tokens at
-                    our last valuation in <a href="https://www.ranchimall.net/exchange/">our exchange</a> for USD 10 or Rs 500 if you want to become a
+                    our last valuation in <a href="ranchimall.net/exchange">our exchange</a> for USD 10 or Rs 500 if you want to become a
                     tokenholder, and be part of the learning process through our community. Our rules are designed to
                     favour long term investors.
                     <br> Once you initiate a tokenholder relationship, please be patient to stay the
                     whole course of journey. You will not regret it.
                 </p>
             </section>
-            <!-- <ul id="ico_phase_list"></ul> -->
         </scroll-tab-panels>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/components.js"></script>
     <script src="js/index.js"></script>
-    <script>
-        const icoPhases = [
-            {
-                phase: 1,
-                date: 'Aug 17',
-                info: ''
-            },
-            {
-                phase: 2,
-                date: 'Oct 17',
-                info: ''
-            }
-        ]
-        const icoInvestors = [
-            {
-                extension: 'jpg',
-                investorName: 'Abhijeet Das Gupta',
-                bio: 'Product and Technology Solutions Architect at 366Pi Technologies',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Amit Jagetia',
-                bio: 'IT Professional in FinTech Industry',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Amitesh Anand',
-                bio: 'Co-founder and CEO, 366Pi Technologies and Director of Technology, Fennex Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Atul Agarwal',
-                bio: 'Entrepreneur, Real Estate Developer, Blockchain Entrepreneur, Iconoclast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Barun Kumar',
-                bio: 'Cybersecurity Professional, Founder of Mantran Consulting, Singapore',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Janardan Tiwary',
-                bio: 'Retd. General Manager Coal India, Ranchi, Mining Engineer from IIT Dhanbad',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Kanwal Koul',
-                bio: 'Working Professional in the power sector',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Mansoor Ahmed',
-                bio: 'Cybersecurity Expert, Founder, and Director Winged World',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Meghna Patel',
-                bio: 'Marketing Professional turned Blockchain Enthusiast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Nikhil Kulkarni',
-                bio: 'CTO and Co-Founder of tripDarwin.com',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Pankaj Miglani',
-                bio: 'Professional Services Consultant at AWS Cybersecurity',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Rajeev Kumar Gupta',
-                bio: 'Curator cum Organizer, TEDx Kanke, and Former DGM-Corporate & Regulatory Affairs at JWS Steel ',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Sudhir Taneja',
-                bio: 'Sales and Marketing Professional, Associate Vice President, HDFC Life',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Varucchi Dubey',
-                bio: 'Founder and Managing Director, DNV Security Solutions Pvt Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-            {
-                extension: 'jpg',
-                investorName: 'Venkat Narayanan',
-                bio: 'Business Excellence Professional, Sr. Manager at Tata Consultancy Services',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
-            },
-        ]
-
-        function renderAllIcoPhases(){
-            getRef('ico_phase_list').innerHTML = ''
-            const frag = document.createDocumentFragment()
-            icoPhases.forEach(phase => {
-                frag.append(render.icoPhase(phase))
-            })
-            getRef('ico_phase_list').append(frag)
-        }
-        // renderAllIcoPhases()
-
-        function renderAllIcoInvestors(){
-            const frag = document.createDocumentFragment()
-            getRef('ico_page__carousel').innerHTML = ''
-            icoInvestors.forEach(investor => {
-                frag.append(render.icoInvestorRow(investor, {thumbnail: false}))
-            })
-            getRef('ico_page__carousel').append(frag)
-        }
-        renderAllIcoInvestors()
-    </script>
 </body>
 </html>
