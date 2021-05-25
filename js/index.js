@@ -231,40 +231,55 @@ function throttle(func, delay) {
 const siteMap = [
   {
     floor: "Current Products",
+    brief: ``,
     outlets: [
       {
         name: "Bitcoin Bonds",
         url: "bitcoinbonds",
+        brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
+        Bitcoin prices fall below acquisition price.`,
+        isSold: true
       },
       {
         name: `Bob's Fund`,
         url: `bob'sfund`,
+        brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they most hold for 20 years.`,
+        isSold: true
       },
       {
         name: "Initial Coin Offering",
         url: "ico",
+        brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
+        isSold: true
       },
     ],
   },
   {
     floor: "Blockchain Contracts",
+    brief: `Blockchain Contracts are one of RanchiMall's flagship innovations.
+      We believe each blockchain contract will be transformational in its area and will add
+      tremendously to our enterprise value.`,
     outlets: [
       {
         name: "Incorporation Blockchain Contract",
         url: "incorporationblockchaincontract",
+        brief: `RanchiMall is incorporated on the blockchain and structured as Incorporation Blockchain Contract. Incorporation Blockchain Contract owns all the other blockchain contracts of RanchiMall.`
       },
       {
         name: `Internship Blockchain Contract`,
         url: `internshipblockchaincontract`,
+        brief: `Internship Blockchain Contract tokenizes all our internship initiatives. This is owned by Incorporation Blockchain Contract.`
       },
       {
         name: "FLO Blockchain Contract",
         url: "floblockchaincontract",
+        brief: `FLO Blockchain contract consists of all projects RanchiMall performs on FLO Blockchain (previously called Florincoin).`
       }
     ],
   },
 /*   {
     floor: 'Blockchain Apps',
+    brief: ``,
     outlets: [
       {
         name: "Web Wallet",
@@ -289,6 +304,7 @@ const siteMap = [
   },
   {
     floor: 'Experimental Ideas',
+    brief: ``,
     outlets: [
       {
         name: "Blockchain Cloud",
@@ -306,6 +322,7 @@ const siteMap = [
   },
   {
     floor: 'Statistics and Administration',
+    brief: ``,
     outlets: [
       {
         name: "Incorporation",
@@ -506,7 +523,7 @@ const render = {
     const li = outletListitemTemplate.content.cloneNode(true).firstElementChild
     li.querySelector('a').href = `${url}.html`
     li.querySelector('.outlet-title').textContent = name
-    li.querySelector('.outlet-brief').textContent = brief ? brief : ''
+    // li.querySelector('.outlet-brief').textContent = brief ? brief : ''
     return li
   },
   floorListitem(floorObj, index) {
@@ -670,9 +687,9 @@ const outletObserver = new IntersectionObserver(
   }
 );
 
-document
+/* document
   .querySelectorAll(".carousel-container")
-  .forEach((outlet) => outletObserver.observe(outlet));
+  .forEach((outlet) => outletObserver.observe(outlet)); */
 
 let isOutletSwitcherOpen = false;
 document.addEventListener("click", (e) => {
@@ -738,7 +755,6 @@ function renderSiteMap() {
     for (outlet of floor.outlets) {
       currentPage = pathArray[pathArray.length - 1]
       if (pathArray[pathArray.length - 1].includes(outlet.url)) {
-        console.log(pathArray[pathArray.length - 1], outlet.url)
         renderFloorOutlets(floor, outlet.url)
         break;
       }
