@@ -30,15 +30,17 @@
     </template>
 
     <template id="ico_investor_row">
-        <div class="investor-card grid gap-1-5">
+        <div class="investor-card grid">
             <img class="investor__image" src="" alt="" loading="lazy">
-            <div class="grid">
-                <h3 class="investor__name value capitalize"></h3>
-                <p class="investor__bio color-0-8"></p>
-            </div>
-            <div class="grid investor__contribution-container">
-                <h4 class="label color-0-8 weight-500">Contribution</h4>
-                <p class="investor__contribution weight-700"></p>
+            <div class="investor-card__overlay grid gap-1-5">
+                <div class="grid">
+                    <h4 class="investor__name capitalize"></h4>
+                    <p class="investor__bio color-0-8"></p>
+                </div>
+                <div class="grid investor__contribution-container">
+                    <h4 class="label color-0-8 weight-500">Contribution</h4>
+                    <p class="investor__contribution"></p>
+                </div>
             </div>
         </div>
     </template>
@@ -133,7 +135,8 @@
         <scroll-tab-panels id="ico_page_group">
             <section class="grid carousel-container">
                 <h3 class="h3 margin-bottom-1-5r">Contributing Investors</h3>
-                <sm-carousel id="ico_page__carousel" indicator autoplay></sm-carousel>
+                <!-- <sm-carousel id="ico_investors" indicator autoplay></sm-carousel> -->
+                <section id="ico_investors" class="masonry-layout"></section>
             </section>
             <section>
                 <h3 class="h3 margin-bottom-1-5r">Product</h3>
@@ -211,91 +214,116 @@
                 extension: 'jpg',
                 investorName: 'Abhijeet Das Gupta',
                 bio: 'Product and Technology Solutions Architect at 366Pi Technologies',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Helps us with designs in FLO blockchain application 
+                    creation, and Twitter support.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Amit Jagetia',
                 bio: 'IT Professional in FinTech Industry',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Contributor and believer since inception, helpful 
+                    in Ohio area, resourceful in international taxation, 
+                    and help with social media.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Amitesh Anand',
                 bio: 'Co-founder and CEO, 366Pi Technologies and Director of Technology, Fennex Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Long term believer in RanchiMall, helpful in UAE, and 
+                    assistance in logistical and technical issues.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Atul Agarwal',
                 bio: 'Entrepreneur, Real Estate Developer, Blockchain Entrepreneur, Iconoclast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `A core and passionate supporter, one of largest 
+                    tokenholders, helpful with social media in Facebook 
+                    and Twiiter, and a lot of varied assistance to 
+                    RanchiMall.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Barun Kumar',
                 bio: 'Cybersecurity Professional, Founder of Mantran Consulting, Singapore',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Helpful in Singapore area, early Phase 1 ICO investor,
+                    one of largest tokenholders, helping us in social 
+                    media.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Janardan Tiwary',
                 bio: 'Retd. General Manager Coal India, Ranchi, Mining Engineer from IIT Dhanbad',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Inspiration to the Founder (he is father of the founder),
+                    support in management of bank accounts, and 
+                    support in Twitter.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Kanwal Koul',
                 bio: 'Working Professional in the power sector',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Passionate investor, and helps with increasing the 
+                    reach of Twitter.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Mansoor Ahmed',
                 bio: 'Cybersecurity Expert, Founder, and Director Winged World',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Helpful with Cybersecurity aspects, logistical support 
+                    and helpful in increasing reach of Twitter`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Meghna Patel',
                 bio: 'Marketing Professional turned Blockchain Enthusiast',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Very passionate supporter, contributor in lot of 
+                    activities, attends all our online events, and support 
+                    in Twitter.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Nikhil Kulkarni',
                 bio: 'CTO and Co-Founder of tripDarwin.com',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Comes with lot of management and technical skills, 
+                    helps us with strategy and risk management, and 
+                    helps us with social media.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Pankaj Miglani',
                 bio: 'Professional Services Consultant at AWS Cybersecurity',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Long term believer and supporter, help 
+                    in Australia, and assistance in our social media 
+                    initiatives.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Rajeev Kumar Gupta',
                 bio: 'Curator cum Organizer, TEDx Kanke, and Former DGM-Corporate & Regulatory Affairs at JWS Steel ',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Very passionate supporter and believer, team 
+                    motivator, active participant in all our activities, 
+                    and help in social media.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Sudhir Taneja',
                 bio: 'Sales and Marketing Professional, Associate Vice President, HDFC Life',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Long term believer and supporter, support with 
+                    logistics and ideas, lot of support in every domain.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Varucchi Dubey',
                 bio: 'Founder and Managing Director, DNV Security Solutions Pvt Ltd.',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `Contributions in vision of RanchiMall, incredible team 
+                    member, undiluted support in social media.`,
             },
             {
                 extension: 'jpg',
                 investorName: 'Venkat Narayanan',
                 bio: 'Business Excellence Professional, Sr. Manager at Tata Consultancy Services',
-                contribution: 'Helping us in social media with increasing reach of Twitter',
+                contribution: `One of our superstars, and one of most energetic 
+                    supporter in every activity, one of the dream 
+                    investors, and lot of active help in our projects.`,
             },
         ]
 
@@ -311,11 +339,11 @@
 
         function renderAllIcoInvestors(){
             const frag = document.createDocumentFragment()
-            getRef('ico_page__carousel').innerHTML = ''
+            getRef('ico_investors').innerHTML = ''
             icoInvestors.forEach(investor => {
                 frag.append(render.icoInvestorRow(investor, {thumbnail: false}))
             })
-            getRef('ico_page__carousel').append(frag)
+            getRef('ico_investors').append(frag)
         }
         renderAllIcoInvestors()
     </script>
