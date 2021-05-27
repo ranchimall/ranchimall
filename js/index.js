@@ -420,7 +420,7 @@ bobsFundRowTemplate.innerHTML = `
 <div class="bob-fund__row grid">
     <div class="grid">
         <h5 class="label color-0-8 weight-500">Investor</h5>
-        <h3 class="value investor__name"></h3>
+        <h3 class="value person__name"></h3>
     </div>
     <div class="flex">
         <div class="grid">
@@ -480,7 +480,7 @@ const render = {
   bobFundRow(obj) {
     const { investorName, invested, currentValue, timeElapsed } = obj;
     const row = bobsFundRowTemplate.content.cloneNode(true);
-    row.querySelector(".investor__name").textContent = investorName;
+    row.querySelector(".person__name").textContent = investorName;
     row.querySelector(".original-value").textContent = invested;
     row.querySelector(".current-value").textContent = currentValue;
     row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed}`;
@@ -490,17 +490,28 @@ const render = {
     const { extension, investorName, bio, contribution } = obj;
     const { thumbnail } = options;
     const row = getRef("ico_investor_row").content.cloneNode(true);
-    const card = row.querySelector(".investor-card");
+    const card = row.querySelector(".person-card");
     const folder = thumbnail ? "investors-thumbnail" : "investors";
-    const investorImage = row.querySelector(".investor__image");
-    if (thumbnail) card.classList.add("investor-card--small");
-    else card.classList.add("investor-card--big");
+    const investorImage = row.querySelector(".person__image");
+    if (thumbnail) card.classList.add("person-card--small");
+    else card.classList.add("person-card--big");
     investorImage.src = `assets/${folder}/${investorName}.${extension}`;
     investorImage.setAttribute("alt", `${investorName} profile picture`);
-    row.querySelector(".investor__name").textContent = investorName;
+    row.querySelector(".person__name").textContent = investorName;
     row.querySelector(".investor__bio").textContent = bio;
     row.querySelector(".investor__contribution").textContent = contribution;
     return row;
+  },
+  internCard(obj) {
+    const { extension, internName, floId, project } = obj;
+    const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
+    const investorImage = card.querySelector(".person__image");
+    investorImage.src = `assets/interns/${internName}.${extension}`;
+    investorImage.setAttribute("alt", `${internName} profile picture`);
+    card.querySelector(".person__name").textContent = internName;
+    card.querySelector(".intern-flo-id").textContent = floId;
+    card.querySelector(".intern__project").textContent = project;
+    return card;
   },
   icoPhase(obj) {
     const { phase, date, info } = obj;

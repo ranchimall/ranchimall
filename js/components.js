@@ -3688,6 +3688,10 @@ customElements.define('scroll-tab-header', class extends HTMLElement{
         if (this.activeTab)
             this.activeTab.removeAttribute('active')
         this._assignedElements[tabIndex].setAttribute('active', '')
+        this.tabHeader.scrollTo({
+            left: (this._assignedElements[tabIndex].getBoundingClientRect().left - this.tabHeader.getBoundingClientRect().left + this.tabHeader.scrollLeft),
+            behavior: 'smooth'
+        })
         if(fire)
             this.fireEvent(tabIndex)
         this.activeTab = this._assignedElements[tabIndex]

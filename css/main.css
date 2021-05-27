@@ -317,6 +317,17 @@ ol[type="1"] {
   -webkit-tap-highlight-color: transparent;
 }
 
+.breakable {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 .observe-empty-state:empty {
   display: none;
 }
@@ -827,7 +838,7 @@ sm-carousel {
 
 .bit-bond-series__row,
 .bob-fund__row,
-.investor-card {
+.person-card {
   min-width: 100%;
 }
 
@@ -870,13 +881,13 @@ sm-carousel {
   color: rgba(var(--text-color), 0.8);
 }
 
-.investor-card {
+.person-card {
   position: relative;
   gap: 1rem;
   grid-template-columns: 1fr;
   /*     &--small{
           grid-template-areas: 'img .' 'para para';
-          .investor__image{
+          .person__image{
               width: 4rem;
               height: 4rem;
               border-radius: 50%;
@@ -885,12 +896,26 @@ sm-carousel {
       &--big{
           grid-template-areas: 'img .' 'img para';
       } */
+  /*     &--intern{
+          text-align: center;
+          justify-items: center;
+      } */
 }
 
-.investor__image {
+.person__image {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
+  /*     &--intern{
+          height: 10rem;
+          width: 10rem;
+          object-position: top;
+          border-radius: 50%;
+      } */
+}
+
+.person__name {
+  font-size: 1.1rem;
 }
 
 .investor__bio {
@@ -900,6 +925,10 @@ sm-carousel {
 
 .investor__contribution {
   font-size: 0.85rem;
+}
+
+.intern-flo-id {
+  font-size: 0.75rem;
 }
 
 #outlet_switcher {
@@ -1084,7 +1113,7 @@ scroll-tab-panels > [active] {
   column-gap: 1rem;
 }
 .masonry-layout > * {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   page-break-inside: avoid;
 }
 
