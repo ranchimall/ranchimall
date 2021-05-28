@@ -808,10 +808,10 @@ sm-carousel{
     &--big{
         grid-template-areas: 'img .' 'img para';
     } */
-/*     &--intern{
+    &--intern{
         text-align: center;
         justify-items: center;
-    } */
+    }
 }
 .investor-card__overlay{
     // position: absolute;
@@ -821,12 +821,12 @@ sm-carousel{
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
-/*     &--intern{
+    &--intern{
         height: 10rem;
         width: 10rem;
         object-position: top;
         border-radius: 50%;
-    } */
+    }
 }
 .person__name{
     font-size: 1.1rem;
@@ -840,6 +840,43 @@ sm-carousel{
 }
 .intern-flo-id{
     font-size: 0.75rem;
+}
+.intern__project{
+    margin-top: 0.5rem;
+}
+.intern__level{
+    position: absolute;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    margin-bottom: 0.3rem;
+    padding: 0.3rem 0.5rem;
+    justify-self: flex-end;
+    font-weight: calc(500 * var(--font-weight-factor));
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+.starter{
+    background-color: rgba(var(--foreground-color), 1);
+}
+.motivated{
+    color: black;
+    background-color: #FFCA28;
+}
+.passionate{
+    color: black;
+    background-color: #00E676;
+}
+#intern_level_popup{
+    --width: min(48rem, 100%);
+}
+.table{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 6rem 1fr;
+    p{
+        font-size: 0.9rem;
+        color: rgba(var(--text-color), 0.9);
+    }
 }
 
 #outlet_switcher{
@@ -1242,6 +1279,12 @@ scroll-tab-panels{
         &:hover .icon{
             opacity: 1;
             transform: translateX(0);
+        }
+    }
+    .intern__level{
+        transition: transform 0.3s;
+        &:hover{
+            transform: scale(1.1);
         }
     }
 }

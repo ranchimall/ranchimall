@@ -18,13 +18,55 @@
     <template id="intern_card_template">
         <div class="person-card person-card--intern grid">
             <img class="person__image person__image--intern" src="" alt="" loading="lazy">
-            <div class="grid intern__bio-container gap-0-5">
+            <div class="grid intern__bio-container">
+                <div class="intern__level" title="Click to see details"></div>
                 <h4 class="person__name capitalize"></h4>
                 <p class="intern-flo-id color-0-8 breakable"></p>
                 <p class="intern__project"></p>
             </div>
         </div>
     </template>
+
+    <sm-popup id="intern_level_popup">
+        <header class="popup__header" slot="header">
+            <button class="close-button" onclick="getRef('intern_level_popup').hide()">
+                <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
+            </button>
+            <h4>Intern level information</h4>
+        </header>
+        <section class="grid">
+            <header class="table margin-bottom-1-5r">
+                <h4>Level</h4>
+                <h4 >Details</h4>
+            </header>
+            <section class="table">
+                <div>
+                    Starter
+                </div>
+                <p>
+                    Starter Level is the qualification level. This is learning stage and will lead to award of certificates to those who clear this level. In general we do not want to pay at this at level because money changes motivations. And we want to identify most passionate interns at their level, who would love their work even if no monetary consideration is involved
+                </p>
+                <div>
+                    Motivated
+                </div>
+                <p>
+                    Motivated is one time rewards stage. The complexity of projects will increase in this stage. If projects are successfully completed, then one time rewards will be given. All this will be known before hand. Project details, acceptance criteria, and amounts will be notified in advance to interns. 
+                </p>
+                <div>
+                    Passionate
+                </div>
+                <p>
+                    Passionate is the first regular fixed stipend stage. The projects complexity will increase still further. This will be full scale commercial grade project. if 3 such projects are completed then one of the criteria to move into self driven stage will be met. Now we are looking for interns who in addition to being passionate are self driven, and can independently take on and complete full projects without day to day supervision.
+                </p>
+                <div>
+                    Self Driven
+                </div>
+                <p>
+                    Self Driven interns is the stage where are we are considering interns for permanent employment with Ranchi Mall. The internship stipends will be higher. Some of self driven interns will be guide interns in other levels. The key criteria is ability of complete jobs with high quality, and them taking self initiative. 
+                </p>
+            </section>
+        </section>
+    </sm-popup>
     
     <section id="elevator_popup" class="grid hide-completely">
         <header class="elevator__header">
@@ -110,7 +152,7 @@
                 <section id="interns_container" class="masonry-layout"></section>
             </section>
             <section>
-                <h3 class="h3 margin-bottom-1-5r">Product</h3>
+                <h3 class="h3 margin-bottom-1-5r">Projects</h3>
                 <p class="margin-bottom-3r">
                     Please refer to the whitepaper <a href="https://www.ranchimall.net/ICO/">here</a> for detailed terms.
                     RanchiMall Initial Coin Offering (ICO) abides by the terms we offered in our ICO whitepaper available
@@ -238,6 +280,12 @@
             getRef('interns_container').append(frag)
         }
         renderAllInterns()
+
+        document.addEventListener('click', e=> {
+            if(e.target.closest('.intern__level')){
+                getRef('intern_level_popup').show()
+            }
+        })
     </script>
 </body>
 </html>

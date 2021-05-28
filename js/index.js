@@ -503,11 +503,13 @@ const render = {
     return row;
   },
   internCard(obj) {
-    const { extension, internName, floId, project } = obj;
+    const { extension, internName, level, floId, project } = obj;
     const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
     const investorImage = card.querySelector(".person__image");
     investorImage.src = `assets/interns/${internName}.${extension}`;
     investorImage.setAttribute("alt", `${internName} profile picture`);
+    card.querySelector(".intern__level").classList.add(level.toLowerCase())
+    card.querySelector(".intern__level").textContent = level;
     card.querySelector(".person__name").textContent = internName;
     card.querySelector(".intern-flo-id").textContent = floId;
     card.querySelector(".intern__project").textContent = project;
@@ -708,6 +710,7 @@ document.addEventListener("click", (e) => {
     hideOutletSwitcher();
   } else {
     if (e.target.closest(".outlet-label")) {
+      clearTimeout(mouseOverTimeout);
       showOutletSwitcher(e.target.closest(".outlet-label"));
     }
   }
