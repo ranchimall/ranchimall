@@ -417,6 +417,24 @@ ol[type="1"] {
   cursor: pointer;
 }
 
+.banner {
+  display: grid;
+  gap: 1rem;
+  padding: 0.2rem 1rem;
+  align-items: center;
+  background-color: #1E88E5;
+  grid-template-columns: 1fr auto;
+}
+.banner .close-icon {
+  fill: white;
+}
+
+.banner__text {
+  max-width: unset;
+  font-size: 0.9rem;
+  color: white;
+}
+
 #elevator_popup {
   position: absolute;
   width: 100%;
@@ -928,6 +946,7 @@ sm-carousel {
 }
 
 .intern-flo-id {
+  margin-top: 0.3rem;
   font-size: 0.75rem;
 }
 
