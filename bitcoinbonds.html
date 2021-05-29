@@ -100,7 +100,7 @@
         </section>
         <div class="rooms__header">
             <h4 class="room__label">Rooms</h4>
-            <scroll-tab-header data-target="bit_bond_page_group">
+            <scroll-tab-header data-target="bit_bond_page_group" class="hide-completely">
                 <button class="room-button">
                     <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24"
                         height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
@@ -144,7 +144,25 @@
                 </button>
             </scroll-tab-header>
         </div>
-        <scroll-tab-panels id="bit_bond_page_group">
+        <section class="rooms-layout">
+            <div id="expanding_tile" class="hide-completely"></div>
+            <div class="room-tile room-tile--main">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Performance</h4>
+                </div>
+            </div>
+            <div class="room-tile">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Product</h4>
+                </div>
+            </div>
+            <div class="room-tile">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Purchase</h4>
+                </div>
+            </div>
+        </section>
+        <scroll-tab-panels id="bit_bond_page_group" class="hide-completely">
             <section class="grid">
                 <h3 class="h3 margin-bottom-1-5r">Performance</h3>
                 <div id="bit_bond_series__container" class="grid series-container"></div>
@@ -279,6 +297,39 @@
             getRef('bit_bond_series__container').append(frag)
         }
         renderAllSeries()
+
+        document.addEventListener('click', e => {
+            if(e.target.closest('.room-tile')){
+                const tile = e.target.closest('.room-tile')
+                const tileParent = tile.parentNode
+                const tileDimensions = tile.getBoundingClientRect()
+                const tileParentDimensions = tileParent.getBoundingClientRect()
+                getRef('expanding_tile').classList.remove('hide-completely')
+                getRef('expanding_tile').animate([
+                    {
+                        height: `${tileDimensions.height}px`,
+                        width: `${tileDimensions.width}px`,
+                        transform: `translate(${tileDimensions.left - tileParentDimensions.left}px, ${tileDimensions.top - tileParentDimensions.top - window.pageYOffset}px)`
+                    },
+                    {
+                        height: `${window.innerHeight}px`,
+                        width: `${document.querySelector('main').getBoundingClientRect().width}px`,
+                        transform: `translate(${- tileParentDimensions.left}px, ${- tileParentDimensions.top - window.pageYOffset}px)`
+                    },
+                ],
+                {
+                    duration: 300,
+                    fill: 'forwards',
+                    easing: 'ease'
+                })
+                .onfinish = () => {
+                    setTimeout(() => {
+                        getRef('expanding_tile').classList.add('hide-completely')
+        
+                    }, 500);
+                }
+            }
+        })
     </script>
 </body>
 </html>

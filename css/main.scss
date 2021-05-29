@@ -351,12 +351,14 @@ ol[type="1"]{
 .banner{
     display: grid;
     gap: 1rem;
-    padding: 0.2rem 1rem;
+    padding: 0.2rem 0 0.2rem 1rem;
     align-items: center;
     background-color: #1E88E5;
     grid-template-columns: 1fr auto;
     .close-icon{
         fill: white;
+        width: 2.2rem;
+        height: 2.2rem;
     }
 }
 .banner__text{
@@ -1077,6 +1079,41 @@ scroll-tab-panels{
     }
 }
 
+.rooms-layout{
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 4rem;
+}
+.room-tile{
+    display: flex;
+    position: relative;
+    border-radius: 0.5rem;
+    transition: transform 0.3s;
+    background-color: rgba(var(--foreground-color), 1);
+    &--main{
+        padding-top: 100%;
+        grid-row: span 2;
+        .tile-content{
+            position: absolute;
+            top: 0;
+        }
+    }
+    .tile-content{
+        padding: 1rem;
+    }
+    &:active{
+        transform: scale(0.9);
+    }
+}
+#expanding_tile{
+    position: fixed;
+    border-radius: 0.5rem;
+    background-color: rgba(var(--foreground-color), 1);
+    z-index: 5;
+}
+
 @media only screen and (max-width: 640px) {
     .hide-on-mobile{
         display: none;
@@ -1111,6 +1148,16 @@ scroll-tab-panels{
         align-items: flex-start;
         scroll-tab-header{
             width: calc(100vw - 2rem);
+        }
+    }
+    .room-tile{
+        padding-top: 100%;
+        &--main{
+            grid-column: span 2;
+        }
+        .tile-content{
+            top: 0;
+            position: absolute;
         }
     }
 }
@@ -1244,6 +1291,9 @@ scroll-tab-panels{
     .masonry-layout{
         columns: 3;
         column-gap: 2rem;
+    }
+    .rooms-layout{
+        grid-template-rows: 1fr 1fr;
     }
 }
 @media only screen and (min-width: 1280px) {
