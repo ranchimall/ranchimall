@@ -277,7 +277,7 @@ const siteMap = [
       }
     ],
   },
-/*   {
+  {
     floor: 'Blockchain Apps',
     brief: ``,
     outlets: [
@@ -337,7 +337,7 @@ const siteMap = [
         url: "operationalstatistic",
       }
     ],
-  }, */
+  },
 ];
 
 const bitBondSerieses = [
@@ -825,8 +825,7 @@ function showSiteMap() {
     page.setAttribute("aria-hidden", "true");
   });
   isSiteMapOpen = true;
-  document.body.style.overflow = "hidden";
-  document.body.style.top = `-${window.scrollY}px`;
+  pauseScrolling()
   getRef("elevator_popup").classList.remove("hide-completely");
   siteMapTimeline.duration(0.9).play();
 }
@@ -838,6 +837,11 @@ function hideSiteMap() {
   document.querySelectorAll(".page").forEach((page) => {
     page.removeAttribute("aria-hidden");
   });
+}
+
+function pauseScrolling() {
+  document.body.style.overflow = "hidden";
+  document.body.style.top = `-${window.scrollY}px`;
 }
 
 function resumeScrolling() {

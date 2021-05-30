@@ -526,7 +526,8 @@ ol[type="1"]{
     }
 }
 
-.page{
+.page,
+.page-layout{
     position: relative;
     display: grid;
     grid-template-columns: 1rem 1fr 1rem;
@@ -1092,6 +1093,7 @@ scroll-tab-panels{
     border-radius: 0.5rem;
     transition: transform 0.3s;
     background-color: rgba(var(--foreground-color), 1);
+    box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.1);
     &--main{
         padding-top: 100%;
         grid-row: span 2;
@@ -1104,7 +1106,7 @@ scroll-tab-panels{
         padding: 1rem;
     }
     &:active{
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
 }
 #expanding_tile{
@@ -1112,6 +1114,29 @@ scroll-tab-panels{
     border-radius: 0.5rem;
     background-color: rgba(var(--foreground-color), 1);
     z-index: 5;
+}
+
+.room-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    align-content: flex-start;
+}
+.room{
+    padding-bottom: 4rem;
+}
+
+.room-container__header{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: inherit;
+    padding: 1rem 0;
 }
 
 @media only screen and (max-width: 640px) {
@@ -1162,7 +1187,8 @@ scroll-tab-panels{
     }
 }
 @media only screen and (min-width: 640px) {
-    #home_page,.page{
+    #home_page,.page,
+    .page-layout{
         grid-template-columns: 1fr 90vw 1fr;
     }
     .h1{
@@ -1295,9 +1321,13 @@ scroll-tab-panels{
     .rooms-layout{
         grid-template-rows: 1fr 1fr;
     }
+    .room-container__header{
+        padding: 1.5rem 0;
+    }
 }
 @media only screen and (min-width: 1280px) {
-    #home_page, .page{
+    #home_page, .page,
+    .page-layout{
         grid-template-columns: 1fr 85vw 1fr;
     }
     .grid-3{
@@ -1308,6 +1338,10 @@ scroll-tab-panels{
     }
     .masonry-layout{
         columns: 4;
+    }
+    .rooms-layout{
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-flow: column;
     }
 }
 @media (any-hover: hover){
