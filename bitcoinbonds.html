@@ -103,21 +103,21 @@
         </div>
         <section class="rooms-layout">
             <div id="expanding_tile" class="hide-completely"></div>
-            <div class="room-tile room-tile--main">
+            <a class="room-tile room-tile--main" href="#performance_room">
                 <div class="tile-content">
                     <h4 class="room-tile__title">Performance</h4>
                 </div>
-            </div>
-            <div class="room-tile">
+            </a>
+            <a class="room-tile" href="#product_room">
                 <div class="tile-content">
                     <h4 class="room-tile__title">Product</h4>
                 </div>
-            </div>
-            <div class="room-tile">
+            </a>
+            <a class="room-tile" href="#purchase_room">
                 <div class="tile-content">
                     <h4 class="room-tile__title">Purchase</h4>
                 </div>
-            </div>
+            </a>
         </section>
         <section class="room-container hide-completely page-layout">
             <header class="room-container__header">
@@ -126,10 +126,10 @@
                     <h3 class="room-title"></h3>
                 </button>
             </header>
-            <section class="grid room">
+            <section id="performance_room" class="grid room">
                 <div id="bit_bond_series__container" class="grid series-container"></div>
             </section>
-            <section class="grid room">
+            <section id="product_room" class="grid room">
                 <h4 class="h4 margin-bottom-1r">Description of different bonds</h4>
                 <ol type="1" class="margin-bottom-3r">
                     <li>
@@ -233,7 +233,7 @@
                     </li>
                 </ol>
             </section>
-            <section class="grid room">
+            <section id="purchase_room" class="grid room">
                 <p>
                     The purchase of this product is open only during specified time when we are confident we can
                     give guarantees. It was last open from February 2017 to June 2017.Currently we are doing blockchain
@@ -270,14 +270,24 @@
             easing: 'ease'
         }
 
-        document.addEventListener('click', e => {
-            if(e.target.closest('.room-tile')){
-                pauseScrolling()
-                tile = e.target.closest('.room-tile')
-                tileParent = tile.parentNode
-                tileDimensions = tile.getBoundingClientRect()
-                tileParentDimensions = tileParent.getBoundingClientRect()
-                getRef('expanding_tile').classList.remove('hide-completely')
+        window.addEventListener('load', e => {
+            if(window.location.hash !== '')
+                showRoom(window.location.hash, false)
+        })
+
+        window.addEventListener('hashchange', e => {
+            showRoom(window.location.hash)
+        })
+        
+        function showRoom(roomId, animate = true){
+            if(roomId === '') return
+            pauseScrolling()
+            tile = document.querySelector(`[href="${roomId}"]`)
+            tileParent = tile.parentNode
+            tileDimensions = tile.getBoundingClientRect()
+            tileParentDimensions = tileParent.getBoundingClientRect()
+            getRef('expanding_tile').classList.remove('hide-completely')
+            if(animate){
                 getRef('expanding_tile').animate([
                     {
                         height: `${tileDimensions.height}px`,
@@ -290,23 +300,29 @@
                         transform: `translate(${- tileParentDimensions.left}px, ${- tileParentDimensions.top - window.pageYOffset}px)`
                     },
                 ],
-                animeInOptions)
+                animeInOptions) 
                 .onfinish = () => {
-                    const index = [...tileParent.querySelectorAll('.room-tile')].findIndex(elem => elem === tile)
-                    const roomContainer = document.querySelector('.room-container')
-                    roomContainer.querySelectorAll('.room').forEach(child => child.classList.add('hide-completely'))
-                    roomContainer.children[index + 1].classList.remove('hide-completely')
-                    document.querySelector('.room-title').textContent = tile.querySelector('.room-tile__title').textContent
-                    roomContainer.classList.remove('hide-completely')
-                    roomContainer.animate(slideInDown, animeInOptions)
-                    .onfinish = () => {
-                        getRef('expanding_tile').classList.add('hide-completely')
-                    }
+                    revealRoom()
                 }
             }
-        })
+            else{
+                revealRoom()
+            }
+            function revealRoom(){
+                const roomContainer = document.querySelector('.room-container')
+                roomContainer.querySelectorAll('.room').forEach(child => child.classList.add('hide-completely'))
+                document.querySelector(roomId).classList.remove('hide-completely')
+                document.querySelector('.room-title').textContent = tile.querySelector('.room-tile__title').textContent
+                roomContainer.classList.remove('hide-completely')
+                roomContainer.animate(slideInDown, animeInOptions)
+                .onfinish = () => {
+                    getRef('expanding_tile').classList.add('hide-completely')
+                }
+            }
+        }
 
         function hideRoom(){
+            history.replaceState(null, null, ' ');
             const roomContainer = document.querySelector('.room-container')
             roomContainer.animate(fadeOut, animeOutOption)
             .onfinish = () => {

@@ -1198,7 +1198,7 @@ scroll-tab-panels > [active] {
   border-radius: 0.5rem;
   transition: transform 0.3s;
   background-color: rgba(var(--foreground-color), 1);
-  box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.2);
 }
 .room-tile--main {
   padding-top: 100%;
@@ -1213,6 +1213,9 @@ scroll-tab-panels > [active] {
 }
 .room-tile:active {
   transform: scale(0.95);
+}
+.room-tile:focus-visible {
+  outline: auto;
 }
 
 #expanding_tile {

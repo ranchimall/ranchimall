@@ -305,7 +305,7 @@
         renderAllFloors()
 
         function renderOutletPreview(obj){
-            const {outletNo, name, brief, url, isSold} = obj
+            const {outletNo, name, brief, url, buyUrl, isSold} = obj
             const preview = document.createElement('section')
             preview.classList.add('outlet-preview', 'carousel-container')
             let composed = `
@@ -316,7 +316,7 @@
             `
             if(isSold){
                 composed += `
-                    <a href="${url}" class="button outlet-preview__button">
+                    <a href="${url}#${buyUrl}" class="button outlet-preview__button">
                         <span class="button__label">Buy</span>
                     </a>
                 `

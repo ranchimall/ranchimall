@@ -238,19 +238,22 @@ const siteMap = [
         url: "bitcoinbonds",
         brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
         Bitcoin prices fall below acquisition price.`,
-        isSold: true
+        isSold: true,
+        buyUrl: `purchase_room`
       },
       {
         name: `Bob's Fund`,
         url: `bob'sfund`,
         brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they most hold for 20 years.`,
-        isSold: true
+        isSold: true,
+        buyUrl: `purchase_room`
       },
       {
         name: "Initial Coin Offering",
         url: "ico",
         brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
-        isSold: true
+        isSold: true,
+        buyUrl: `purchase_room`
       },
     ],
   },
