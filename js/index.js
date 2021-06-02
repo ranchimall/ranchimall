@@ -166,6 +166,8 @@ window.addEventListener("load", () => {
       createRipple(e, e.target.closest("button, sm-button, .interact"));
     }
   });
+  if (window.location.hash !== '')
+    showRoom(window.location.hash, false)
 });
 function createRipple(event, target) {
   const circle = document.createElement("span");
@@ -239,7 +241,8 @@ const siteMap = [
         brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
         Bitcoin prices fall below acquisition price.`,
         isSold: true,
-        buyUrl: `purchase_room`
+        buyUrl: `purchase_room`,
+        status: `We are servicing current customers only. A new Blockchain-based version of Bitcoin Bonds will be available soon.`
       },
       {
         name: `Bob's Fund`,
@@ -248,155 +251,100 @@ const siteMap = [
         isSold: true,
         buyUrl: `purchase_room`
       },
-      {
-        name: "Initial Coin Offering",
-        url: "ico",
-        brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
-        isSold: true,
-        buyUrl: `purchase_room`
-      },
+      /*       {
+              name: "Initial Coin Offering",
+              url: "ico",
+              brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
+              isSold: true,
+              buyUrl: `purchase_room`
+            }, */
     ],
   },
-  {
-    floor: "Blockchain Contracts",
-    brief: `Blockchain Contracts are one of RanchiMall's flagship innovations.
-      We believe each blockchain contract will be transformational in its area and will add
-      tremendously to our enterprise value.`,
-    outlets: [
-      {
-        name: "Incorporation Blockchain Contract",
-        url: "incorporationblockchaincontract",
-        brief: `RanchiMall is incorporated on the blockchain and structured as Incorporation Blockchain Contract. Incorporation Blockchain Contract owns all the other blockchain contracts of RanchiMall.`
-      },
-      {
-        name: `Internship Blockchain Contract`,
-        url: `internshipblockchaincontract`,
-        brief: `Internship Blockchain Contract tokenizes all our internship initiatives. This is owned by Incorporation Blockchain Contract.`
-      },
-      {
-        name: "FLO Blockchain Contract",
-        url: "floblockchaincontract",
-        brief: `FLO Blockchain contract consists of all projects RanchiMall performs on FLO Blockchain (previously called Florincoin).`
-      }
-    ],
-  },
-  {
-    floor: 'Blockchain Apps',
-    brief: ``,
-    outlets: [
-      {
-        name: "Web Wallet",
-        brief: `Purely web-based blockchain wallet.`,
-        url: 'webwallet'
-      },
-      {
-        name: `FLO Messenger`,
-        url: `flomessenger`,
-      },
-      {
-        name: "Content Collaboration",
-        brief: `A way for anonymous users across the Internet to collaborate and create beautiful articles.`,
-        url: "contentcollaboration",
-      },
-      {
-        name: "Ranchimall Times",
-        brief: `Article publication platform of RanchiMall`,
-        url: "ranchimalltimes",
-      },
-    ],
-  },
-  {
-    floor: 'Experimental Ideas',
-    brief: ``,
-    outlets: [
-      {
-        name: "Blockchain Cloud",
-        url: "blockchaincloud",
-      },
-      {
-        name: `UPI On Blockchain`,
-        url: `upionblockchain`,
-      },
-      {
-        name: "E-Commerce On Blockchain",
-        url: "e-commerceonblockchain"
-      }
-    ],
-  },
-  {
-    floor: 'Statistics and Administration',
-    brief: ``,
-    outlets: [
-      {
-        name: "Incorporation",
-        url: "incorporation",
-      },
-      {
-        name: `Team`,
-        url: `team`,
-      },
-      {
-        name: "Operational Statistic",
-        url: "operationalstatistic",
-      }
-    ],
-  },
+  /*   {
+      floor: "Blockchain Contracts",
+      brief: `Blockchain Contracts are one of RanchiMall's flagship innovations.
+        We believe each blockchain contract will be transformational in its area and will add
+        tremendously to our enterprise value.`,
+      outlets: [
+        {
+          name: "Incorporation Blockchain Contract",
+          url: "incorporationblockchaincontract",
+          brief: `RanchiMall is incorporated on the blockchain and structured as Incorporation Blockchain Contract. Incorporation Blockchain Contract owns all the other blockchain contracts of RanchiMall.`
+        },
+        {
+          name: `Internship Blockchain Contract`,
+          url: `internshipblockchaincontract`,
+          brief: `Internship Blockchain Contract tokenizes all our internship initiatives. This is owned by Incorporation Blockchain Contract.`
+        },
+        {
+          name: "FLO Blockchain Contract",
+          url: "floblockchaincontract",
+          brief: `FLO Blockchain contract consists of all projects RanchiMall performs on FLO Blockchain (previously called Florincoin).`
+        }
+      ],
+    },
+    {
+      floor: 'Blockchain Apps',
+      brief: ``,
+      outlets: [
+        {
+          name: "Web Wallet",
+          brief: `Purely web-based blockchain wallet.`,
+          url: 'webwallet'
+        },
+        {
+          name: `FLO Messenger`,
+          url: `flomessenger`,
+        },
+        {
+          name: "Content Collaboration",
+          brief: `A way for anonymous users across the Internet to collaborate and create beautiful articles.`,
+          url: "contentcollaboration",
+        },
+        {
+          name: "Ranchimall Times",
+          brief: `Article publication platform of RanchiMall`,
+          url: "ranchimalltimes",
+        },
+      ],
+    },
+    {
+      floor: 'Experimental Ideas',
+      brief: ``,
+      outlets: [
+        {
+          name: "Blockchain Cloud",
+          url: "blockchaincloud",
+        },
+        {
+          name: `UPI On Blockchain`,
+          url: `upionblockchain`,
+        },
+        {
+          name: "E-Commerce On Blockchain",
+          url: "e-commerceonblockchain"
+        }
+      ],
+    },
+    {
+      floor: 'Statistics and Administration',
+      brief: ``,
+      outlets: [
+        {
+          name: "Incorporation",
+          url: "incorporation",
+        },
+        {
+          name: `Team`,
+          url: `team`,
+        },
+        {
+          name: "Operational Statistic",
+          url: "operationalstatistic",
+        }
+      ],
+    }, */
 ];
-
-const bitBondSerieses = [
-  {
-      series: '$975',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-  {
-      series: '$1057',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-  {
-      series: '$1064',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-  {
-      series: '$1205',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-  {
-      series: '$1285',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-  {
-      series: '$2513',
-      currentValue: '$XXXXX',
-      timeElapsed: '2 years'
-  },
-]
-
-const bobFund = [
-  {
-      investorName: 'John Doe',
-      invested: '₹20000',
-      currentValue: '$XXXXX',
-      timeElapsed: '2years'
-  },
-  {
-      investorName: 'Jane Doe',
-      invested: '₹10000',
-      currentValue: '$XXXXX',
-      timeElapsed: '2years'
-  },
-  {
-      investorName: 'james Doe',
-      invested: '₹15000',
-      currentValue: '$XXXXX',
-      timeElapsed: '2years'
-  },
-]
-
 // templates
 
 const bitBondRowTemplate = document.createElement('template')
@@ -411,7 +359,7 @@ bitBondRowTemplate.innerHTML = `
         <h3 class="value current-value"></h3>
         <div class="flex align-center">
             <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
-            <span class="percent-gain">2000%</span>
+            <span class="percent-gain"></span>
             <span class="time-elapsed"></span>
         </div>
     </div>
@@ -422,7 +370,6 @@ const bobsFundRowTemplate = document.createElement('template')
 bobsFundRowTemplate.innerHTML = `
 <div class="bob-fund__row grid">
     <div class="grid">
-        <h5 class="label color-0-8 weight-500">Investor</h5>
         <h3 class="value person__name"></h3>
     </div>
     <div class="flex">
@@ -432,10 +379,10 @@ bobsFundRowTemplate.innerHTML = `
         </div>
         <div class="grid justify-right text-align-right">
             <h4 class="label color-0-8 weight-500">Current value</h4>
-            <h3 class="value current-value"></h3>
+            <h3 class="value current-value" style="color: var(--green)"></h3>
             <div class="flex align-center">
               <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
-              <span class="percent-gain">2000%</span>
+              <span class="percent-gain"></span>
               <span class="time-elapsed"></span>
           </div>
         </div>
@@ -473,20 +420,22 @@ outletListitemTemplate.innerHTML = `
 
 const render = {
   bitBondRow(obj) {
-    const { series, currentValue, timeElapsed } = obj;
+    const { series, currentValue, timeElapsed, percentGain } = obj;
     const row = bitBondRowTemplate.content.cloneNode(true);
-    row.querySelector(".original-value").textContent = series;
-    row.querySelector(".current-value").textContent = currentValue;
-    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed}`;
+    row.querySelector(".original-value").textContent = series.toLocaleString(`en-US`, { style: 'currency', currency: 'USD' });
+    row.querySelector(".current-value").textContent = currentValue.toLocaleString(`en-US`, { style: 'currency', currency: 'USD' });
+    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed} years`;
+    row.querySelector(".percent-gain").textContent = `${percentGain}%`;
     return row;
   },
   bobFundRow(obj) {
-    const { investorName, invested, currentValue, timeElapsed } = obj;
+    const { investorName, invested, currentValue, timeElapsed, gain } = obj;
     const row = bobsFundRowTemplate.content.cloneNode(true);
     row.querySelector(".person__name").textContent = investorName;
-    row.querySelector(".original-value").textContent = invested;
-    row.querySelector(".current-value").textContent = currentValue;
-    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed}`;
+    row.querySelector(".original-value").textContent = `${invested.toLocaleString(`en-US`, { style: 'currency', currency: 'INR' })}`;
+    row.querySelector(".current-value").textContent = `${currentValue.toLocaleString(`en-US`, { style: 'currency', currency: 'INR' })}`;
+    row.querySelector(".percent-gain").textContent = `${gain}%`;
+    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed} years`;
     return row;
   },
   icoInvestorRow(obj, options) {
@@ -569,6 +518,17 @@ const render = {
     button.href = url
     button.textContent = name
     return button;
+  },
+  statusBanner(bannerMsg) {
+    const banner = document.createElement('section')
+    banner.classList.add('banner')
+    banner.innerHTML = `
+      <p class="banner__text">${bannerMsg}</p>
+      <button class="close-button" onclick="this.parentNode.remove()">
+          <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
+      </button>
+    `
+    return banner
   }
 };
 
@@ -789,19 +749,22 @@ function renderFloorOutlets(floorObj, activeOutlet) {
   getRef('outlet_switcher__floor_num').textContent = floor
   let floorNum = -1
   let outletNum = -1
-  for (let i = 0; i < siteMap.length; i++){
+  for (let i = 0; i < siteMap.length; i++) {
     if (siteMap[i].floor === floor) {
-      floorNum = i      
+      floorNum = i
       break
     }
   }
-  for (let i = 0; i < outlets.length; i++){
+  for (let i = 0; i < outlets.length; i++) {
     if (outlets[i].url === activeOutlet) {
-      outletNum = i      
+      outletNum = i
       break
     }
   }
   document.querySelector('.outlet-label__name').textContent = floorNum > -1 ? `Floor ${floorNum + 1} outlet ${outletNum + 1}` : ''
+  if (outlets[outletNum].hasOwnProperty('status')) {
+    getRef('main_header').after(render.statusBanner(outlets[outletNum].status))
+  }
 }
 
 let isSiteMapOpen = false;
@@ -854,3 +817,116 @@ function resumeScrolling() {
   getRef("elevator_popup").classList.add("hide-completely");
 }
 
+
+let tile, tileParent, tileDimensions, tileParentDimensions
+const animeInOptions = {
+  duration: 300,
+  fill: 'forwards',
+  easing: 'ease'
+}
+const animeOutOption = {
+  duration: 300,
+  fill: 'forwards',
+  easing: 'ease'
+}
+
+window.addEventListener('hashchange', e => {
+  showRoom(window.location.hash, true)
+  if (allRooms.length) {
+    renderRoomShorcuts()
+  }
+})
+
+let isRoomOpen = false
+
+function showRoom(roomId, animate = false) {
+  if (roomId === '') return
+  pauseScrolling()
+  tile = document.querySelector(`[href="${roomId}"]`)
+  tileParent = tile.parentNode
+  tileDimensions = tile.getBoundingClientRect()
+  tileParentDimensions = tileParent.getBoundingClientRect()
+  getRef('expanding_tile').classList.remove('hide-completely')
+  if (animate && !isRoomOpen) {
+    getRef('expanding_tile').animate([
+      {
+        height: `${tileDimensions.height}px`,
+        width: `${tileDimensions.width}px`,
+        transform: `translate(${tileDimensions.left - tileParentDimensions.left}px, ${tileDimensions.top - tileParentDimensions.top - window.pageYOffset}px)`
+      },
+      {
+        height: `${window.innerHeight}px`,
+        width: `${document.querySelector('main').getBoundingClientRect().width}px`,
+        transform: `translate(${- tileParentDimensions.left}px, ${- tileParentDimensions.top - window.pageYOffset}px)`
+      },
+    ],
+      animeInOptions)
+      .onfinish = () => {
+        revealRoom(animate)
+      }
+  }
+  else {
+    revealRoom(animate)
+  }
+  function revealRoom(animate) {
+    const roomContainer = document.querySelector('.room-container')
+    roomContainer.querySelectorAll('.room').forEach(child => child.classList.add('hide-completely'))
+    document.querySelector(roomId).classList.remove('hide-completely')
+    document.querySelector('.room-title').textContent = tile.querySelector('.room-tile__title').textContent
+    roomContainer.classList.remove('hide-completely')
+    if (animate && !isRoomOpen) {
+      roomContainer.animate(slideInDown, animeInOptions)
+      .onfinish = () => {
+        getRef('expanding_tile').classList.add('hide-completely')
+      }
+    }
+    isRoomOpen = true
+  }
+}
+
+function hideRoom() {
+  history.replaceState(null, null, ' ');
+  const roomContainer = document.querySelector('.room-container')
+  roomContainer.animate(fadeOut, animeOutOption)
+    .onfinish = () => {
+      roomContainer.classList.add('hide-completely')
+    }
+  getRef('expanding_tile').classList.remove('hide-completely')
+  getRef('expanding_tile').animate([
+    {
+      height: `${window.innerHeight}px`,
+      width: `${document.querySelector('main').getBoundingClientRect().width}px`,
+      transform: `translate(${- tileParentDimensions.left}px, ${- tileParentDimensions.top - window.pageYOffset}px)`
+    },
+    {
+      height: `${tileDimensions.height}px`,
+      width: `${tileDimensions.width}px`,
+      transform: `translate(${tileDimensions.left - tileParentDimensions.left}px, ${tileDimensions.top - tileParentDimensions.top - window.pageYOffset}px)`
+    },
+  ], animeOutOption)
+    .onfinish = () => {
+      getRef('expanding_tile').classList.add('hide-completely')
+      resumeScrolling()
+      isRoomOpen = false
+    }
+}
+
+const allRooms = document.querySelectorAll('.room-tile')
+
+function renderRoomShorcuts() {
+  getRef('room_switcher').innerHTML = ''
+  const frag = document.createDocumentFragment()
+  allRooms.forEach(room => {
+    if (room.href.split('#').pop() !== window.location.hash.split('#').pop()) {
+      const clone = room.cloneNode(true)
+      clone.classList.remove('room-tile', 'room-tile--main')
+      clone.classList.add('room-shortcut')
+      frag.append(clone)
+    }
+  })
+  getRef('room_switcher').append(frag)
+}
+
+if (allRooms.length) {
+  renderRoomShorcuts()
+}

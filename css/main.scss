@@ -17,6 +17,7 @@ body {
     --background-color: #F6f6f6;
     --error-color: red;
     --green: #007936;
+    --banner-color: #1E88E5;
     --font-weight-factor: 1;
     color: rgba(var(--text-color), 1);
     height: calc(100%);
@@ -30,6 +31,7 @@ body[data-theme='dark']{
     --foreground-color: 20, 20, 20;
     --background-color: #0a0a0a;
     --error-color: rgb(255, 106, 106);
+    --banner-color: #0166be;
     --font-weight-factor: 0.9;
     #outlet_switcher{
         background: linear-gradient(rgba(var(--text-color), 0.06), rgba(var(--text-color), 0.06)), rgba(var(--foreground-color), 1);
@@ -353,7 +355,7 @@ ol[type="1"]{
     gap: 1rem;
     padding: 0.2rem 0 0.2rem 1rem;
     align-items: center;
-    background-color: #1E88E5;
+    background-color: var(--banner-color);
     grid-template-columns: 1fr auto;
     .close-icon{
         fill: white;
@@ -599,7 +601,6 @@ ol[type="1"]{
     transition: transform 0.3s;
 }
 .floor-circle{
-    // position: absolute;
     position: relative;
     border-radius: 1rem;
     padding: 0.8rem;
@@ -636,28 +637,9 @@ ol[type="1"]{
 
 .floor__header{
     position: relative;
-/*     position: sticky;
-    top: 0;
-    z-index: 8; */
     padding: 0.5rem 0;
     transform: translateY(-0.1rem);
     background: var(--background-color);
-/*     &::before{
-        content: '';
-        position: absolute;
-        left: -1%;
-        width: 1%;
-        height: 100%;
-        background: var(--background-color);
-    }
-    &::after{
-        content: '';
-        position: absolute;
-        right: -1%;
-        width: 1%;
-        height: 100%;
-        background: var(--background-color);
-    } */
 }
 
 .floor__num{
@@ -692,7 +674,7 @@ ol[type="1"]{
     background-color: rgba(var(--foreground-color), 1);
 }
 .outlet__title{
-    line-height: 1.1;
+    line-height: 1.2;
     max-width: 18ch;
     font-size: 1.8rem;
     margin-bottom: 1rem;
@@ -722,11 +704,12 @@ ol[type="1"]{
     font-weight: 900;
     -webkit-text-stroke: 1rem var(--accent-color);
     -webkit-text-fill-color: rgba(var(--foreground-color), 1);
+    margin: 0 0.5rem;
     &::after{
         content: attr(data-number);
         position: absolute;
         line-height: 1;
-        font-size: 8rem;
+        font-size: 1em;
         font-weight: 900;
         -webkit-text-stroke: 0;
         color: rgba(var(--foreground-color), 1);
@@ -739,7 +722,7 @@ ol[type="1"]{
     margin-bottom: 0.3rem;
 }
 .value{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 .series-container{
@@ -799,9 +782,8 @@ sm-carousel{
     margin-right: 0.1em;
 }
 .percent-gain{
-    font-weight: calc(500 * var(--font-weight-factor));
-    color: var(--green);
     margin-right: 0.5em;
+    font-weight: calc(500 * var(--font-weight-factor));
 }
 .percent-gain,
 .time-elapsed{
@@ -815,41 +797,23 @@ sm-carousel{
 .person-card{
     position: relative;
     gap: 1rem;
-    // text-align: center;
+    text-align: center;
+    justify-items: center;
+    align-content: flex-start;
     grid-template-columns: 1fr;
-/*     &--small{
-        grid-template-areas: 'img .' 'para para';
-        .person__image{
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-        }
-    }
-    &--big{
-        grid-template-areas: 'img .' 'img para';
-    } */
-    &--intern{
-        text-align: center;
-        justify-items: center;
-    }
-}
-.investor-card__overlay{
-    // position: absolute;
-    // background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,1));
 }
 .person__image{
     width: 100%;
     height: auto;
     border-radius: 0.5rem;
-    &--intern{
-        height: 10rem;
-        width: 10rem;
-        object-position: top;
-        border-radius: 50%;
-    }
+    height: 10rem;
+    width: 10rem;
+    object-position: top;
+    border-radius: 50%;
 }
 .person__name{
     font-size: 1.1rem;
+    text-transform: capitalize;
 }
 .investor__bio{
     font-size: 0.85rem;
@@ -989,14 +953,6 @@ scroll-tab-panels{
     font-weight: calc(500 * var(--font-weight-factor));
     margin-right: 0.5rem;
     padding-right: 1.5rem;
-    &::after{
-        content: '';
-        position: absolute;
-        height: 150%;
-        width: 0.1rem;
-        right: 0;
-        background-color: rgba(var(--text-color), 0.5);
-    }
 }
 .room-button{
     position: relative;
@@ -1029,22 +985,6 @@ scroll-tab-panels{
     width: min(36rem ,100%);
     height: max-content;
 }
-
-
-
-.phase{
-    grid-template-columns: 4rem 1fr;
-    &:not(:last-of-type){
-        .phase__description{
-            padding-bottom: 1.5rem;
-        }
-    } 
-    &:last-of-type{
-        .progress-bar__line{
-            height: 0;
-        }
-    }
-}
 .progress-bar__circle,
 .progress-bar__line{
     position: absolute;
@@ -1064,20 +1004,11 @@ scroll-tab-panels{
     width: 0.1rem;
     background: rgba(var(--text-color), 0.9);
 }
-.phase__date{
-    margin-top: 0.3rem;
-}
-.phase__description{
-    margin-top: 1rem;
-}
 
-.masonry-layout{
-    columns: 2;
-    column-gap: 1rem;
-    & > * {
-        margin-bottom: 3rem;
-        page-break-inside: avoid;
-    }
+.people-grid{
+    display: grid;
+    gap: 3rem 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
 }
 
 .rooms-layout{
@@ -1094,6 +1025,7 @@ scroll-tab-panels{
     transition: transform 0.3s;
     background-color: rgba(var(--foreground-color), 1);
     box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent;
     &--main{
         padding-top: 100%;
         grid-row: span 2;
@@ -1135,11 +1067,40 @@ scroll-tab-panels{
 }
 
 .room-container__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 2;
     background-color: inherit;
     padding: 1rem 0;
+}
+
+.room-container__footer{
+    position: sticky;
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    bottom: 0;
+    z-index: 2;
+    margin-top: auto;
+    padding: 0.5rem;
+    background-color: inherit;
+}
+#room_switcher{
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+}
+
+.room-shortcut{
+    padding: 0.5em 0.8rem;
+    border-radius: 0.3rem;
+    background-color: rgba(var(--text-color), 0.06);
 }
 
 @media only screen and (max-width: 640px) {
@@ -1151,11 +1112,12 @@ scroll-tab-panels{
     }
     .outlet-preview__number-container{
         grid-row: 1/2;
-        text-align: right;
-        justify-content: right;
     }
     .outlet-preview__number::after{
-        right: 0;
+        left: 0;
+    }
+    .outlet-preview__number{
+        font-size: 5rem;
     }
     #outlet_switcher{
         width: calc(100% - 2rem);
@@ -1266,7 +1228,7 @@ scroll-tab-panels{
         border: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 4rem 3rem -2rem rgba(0, 0, 0, 0.06);
         &:nth-of-type(even){
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 2fr;
             .outlet-preview__info{
                 grid-column: 2/3;
             } 
@@ -1291,20 +1253,6 @@ scroll-tab-panels{
     .bit-bond-series__row{
         grid-auto-flow: column;
     }
-/*     .carousel-holder{
-        align-self: flex-start;
-        transform: translateY(-2rem);
-        z-index: 1;
-        border-radius: 0.5rem;
-        &--left{
-            grid-row: 1/2;
-            grid-column: 1/2;
-            box-shadow: 1px 0.1rem 0.1rem rgba(0, 0, 0, 0.06), -2rem 5rem 4rem -2rem rgba(0, 0, 0, 0.2);  
-        }
-        &--right{
-            box-shadow: 1px 0.1rem 0.1rem rgba(0, 0, 0, 0.06), 2rem 5rem 4rem -2rem rgba(0, 0, 0, 0.2);
-        }
-    } */
     .outlet-preview__carousel{
         padding: 2rem 2rem 5rem 2rem;
     }
@@ -1317,15 +1265,14 @@ scroll-tab-panels{
     .auto-grid-layout{
         grid-template-columns: auto 1fr;
     }
-    .masonry-layout{
-        columns: 3;
-        column-gap: 2rem;
-    }
     .rooms-layout{
         grid-template-rows: 1fr 1fr;
     }
     .room-container__header{
         padding: 1.5rem 0;
+    }
+    .people-grid{
+        gap: 5rem 3rem;
     }
 }
 @media only screen and (min-width: 1280px) {
@@ -1338,9 +1285,6 @@ scroll-tab-panels{
         & > .grid{
             width: 100%;
         }
-    }
-    .masonry-layout{
-        columns: 4;
     }
     .rooms-layout{
         grid-template-columns: repeat(3, 1fr);

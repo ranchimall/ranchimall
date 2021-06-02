@@ -90,34 +90,36 @@
         </section>
         <div class="rooms__header">
             <h4 class="room__label">Rooms</h4>
-            <scroll-tab-header data-target="bob_fund_page_group">
-                <button class="room-button">
-                    <svg class="icon button__icon--left" xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>People</title><path d='M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M336 304c-65.17 0-127.84 32.37-143.54 95.41-2.08 8.34 3.15 16.59 11.72 16.59h263.65c8.57 0 13.77-8.25 11.72-16.59C463.85 335.36 401.18 304 336 304z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path d='M200 185.94c-2.34 32.48-26.72 58.06-53 58.06s-50.7-25.57-53-58.06C91.61 152.15 115.34 128 147 128s55.39 24.77 53 57.94z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M206 306c-18.05-8.27-37.93-11.45-59-11.45-52 0-102.1 25.85-114.65 76.2-1.65 6.66 2.53 13.25 9.37 13.25H154' fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32'/></svg>
-                    <span class="button__label">
-                        Performance
-                    </span>
-                </button>
-                <button class="room-button">
-                    <svg class="icon button__icon--left" xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'><title>People</title><path d='M402 168c-2.93 40.67-33.1 72-66 72s-63.12-31.32-66-72c-3-42.31 26.37-72 66-72s69 30.46 66 72z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M336 304c-65.17 0-127.84 32.37-143.54 95.41-2.08 8.34 3.15 16.59 11.72 16.59h263.65c8.57 0 13.77-8.25 11.72-16.59C463.85 335.36 401.18 304 336 304z' fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32'/><path d='M200 185.94c-2.34 32.48-26.72 58.06-53 58.06s-50.7-25.57-53-58.06C91.61 152.15 115.34 128 147 128s55.39 24.77 53 57.94z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/><path d='M206 306c-18.05-8.27-37.93-11.45-59-11.45-52 0-102.1 25.85-114.65 76.2-1.65 6.66 2.53 13.25 9.37 13.25H154' fill='none' stroke='currentColor' stroke-linecap='round' stroke-miterlimit='10' stroke-width='32'/></svg>
-                    <span class="button__label">
-                        Product
-                    </span>
-                </button>
-                <button class="room-button">
-                    <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                    <span class="button__label">
-                        Purchase
-                    </span>
-                </button>
-            </scroll-tab-header>
         </div>
-        <scroll-tab-panels id="bob_fund_page_group">
-            <section class="grid">
-                <h3 class="h3 margin-bottom-1-5r">Investors</h3>
-                <div id="bob_fund_investors__container" class="grid series-container"></div>
+        <section class="rooms-layout">
+            <div id="expanding_tile" class="hide-completely"></div>
+            <a class="room-tile room-tile--main" href="#performance_room">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Performance</h4>
+                </div>
+            </a>
+            <a class="room-tile" href="#product_room">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Product</h4>
+                </div>
+            </a>
+            <a class="room-tile" href="#purchase_room">
+                <div class="tile-content">
+                    <h4 class="room-tile__title">Purchase</h4>
+                </div>
+            </a>
+        </section>
+        <section class="room-container hide-completely page-layout">
+            <header class="room-container__header">
+                <button class="grid flow-column gap-1 align-center" onclick="hideRoom()">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/></svg>
+                    <h3 class="room-title"></h3>
+                </button>
+            </header>
+            <section id="performance_room" class="grid room">
+                <div id="bob_fund_investors__container" class="grid series-container series-container--bobs-fund"></div>
             </section>
-            <section class="grid">
-                <h3 class="h3 margin-bottom-1-5r">Product</h3>
+            <section id="product_room" class="grid room">
                 <p class="margin-bottom-3r">
                     Bobs Fund allows customers to take a direct share in Bitcoin and they are automatically guided into a
                     long term investment plan. Bitcoin is a long term investors paradise with supply artificially
@@ -145,25 +147,234 @@
                     collateral for DeFi products, and that gives us an additional earning stream.
                 </p>
             </section>
-            <section>
+            <section id="purchase_room" class="grid room">
                 <sm-button variant="primary">Buy here</sm-button>
             </section>
-        </scroll-tab-panels>
+        </section>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
     <script src="js/components.js"></script>
     <script src="js/index.js"></script>
     <script>
+        const bobFund = [
+            {
+                investorName: 'Amit gupta',
+                invested: 20000,
+            },
+            {
+                investorName: 'Vijay sarda',
+                invested: 20000,
+            },
+            {
+                investorName: 'Vijesh Raikar',
+                invested: 20000,
+            },
+            {
+                investorName: 'Ajit Varshney',
+                invested: 20000,
+            },
+            {
+                investorName: 'barun Kumar',
+                invested: 10000,
+            },
+            {
+                investorName: 'Kunal Dikshit',
+                invested: 20000,
+            },
+            {
+                investorName: 'Sundeep Pandey',
+                invested: 20000,
+            },
+            {
+                investorName: 'Kusumakar Dwivedi',
+                invested: 20000,
+            },
+            {
+                investorName: 'Surojeet Sengupta',
+                invested: 20000,
+            },
+            {
+                investorName: 'Akash Srivastava',
+                invested: 20000,
+            },
+            {
+                investorName: 'V Jayaram',
+                invested: 20000,
+            },
+            {
+                investorName: 'Mayank Agrawal',
+                invested: 20000,
+            },
+            {
+                investorName: 'Bhaskar Bhowmik',
+                invested: 10000,
+            },
+            {
+                investorName: 'Rajesh Agrawal',
+                invested: 20000,
+            },
+            {
+                investorName: 'Chetan Kulkarni',
+                invested: 20000,
+            },
+            {
+                investorName: 'Amar More',
+                invested: 20000,
+            },
+            {
+                investorName: 'Navin Chandiramani',
+                invested: 20000,
+            },
+            {
+                investorName: 'Gopal Krishnamurthy',
+                invested: 20000,
+            },
+            {
+                investorName: 'Shivi',
+                invested: 20000,
+            },
+            {
+                investorName: 'Shankar RS',
+                invested: 20000,
+            },
+            {
+                investorName: 'Vikram Gupta',
+                invested: 20000,
+            },
+            {
+                investorName: 'Rohit Tripathy',
+                invested: 20000,
+            },
+            {
+                investorName: 'P. Unnikrishnan',
+                invested: 20000,
+            },
+            {
+                investorName: 'Arup Vithal',
+                invested: 20000,
+            },
+            {
+                investorName: 'Rahul Pundir',
+                invested: 20000,
+            },
+            {
+                investorName: 'Ankur Jain',
+                invested: 20000,
+            },
+            {
+                investorName: 'Pankaj Shete',
+                invested: 20000,
+            },
+            {
+                investorName: 'Sameer Nagpal',
+                invested: 20000,
+            },
+            {
+                investorName: 'George Abraham',
+                invested: 20000,
+            },
+            {
+                investorName: 'Samujjwal Ghosh',
+                invested: 20000,
+            },
+            {
+                investorName: 'Aniruddha Karnataki',
+                invested: 20000,
+            },
+            {
+                investorName: 'Mohammed Raffe Samathu',
+                invested: 20000,
+            },
+            {
+                investorName: 'Ruchir Gupta',
+                invested: 10000,
+            },
+            {
+                investorName: 'Santosh Nair',
+                invested: 20000,
+            },
+            {
+                investorName: 'Samit Arora',
+                invested: 20000,
+            },
+            {
+                investorName: 'Sumeet Doshi',
+                invested: 20000,
+            },
+            {
+                investorName: 'Pradeep Rao',
+                invested: 10000,
+            },
+            {
+                investorName: 'Gaurav Sadhir',
+                invested: 14000,
+            },
+            {
+                investorName: 'Sudhanshu Fadnis',
+                invested: 20000,
+            },
+            {
+                investorName: 'Natesh Rao',
+                invested: 20000,
+            },
+            {
+                investorName: 'Kapil Chaturvedi',
+                invested: 6000,
+            },
+        ]
+
+        function getCurrentRates() {
+            let fetchData = api => new Promise((resolve, reject) => {
+                fetch(api).then(response => {
+                    if (response.ok)
+                        response.json().then(data => resolve(data))
+                    else
+                        reject(response)
+                }).catch(error => reject(error))
+            })
+            return new Promise((resolve, reject) => {
+                fetchData(`https://bitpay.com/api/rates`).then(result => {
+                    let BTC_USD, BTC_INR, USD_INR
+                    for (let i of result)
+                        i.code == "USD" ? BTC_USD = i.rate : i.code == "INR" ? BTC_INR = i.rate : null;
+                    USD_INR = BTC_INR / BTC_USD;
+                    resolve({
+                        BTC_USD,
+                        BTC_INR,
+                        USD_INR
+                    })
+                }).catch(error => reject(error))
+            })
+        }
+        let USD_current, BTC_current
+        getCurrentRates().then(async (rates) => {
+            USD_current = rates.USD_INR;
+            BTC_current = rates.BTC_USD;
+            renderAllFundInvestors()
+        }).catch(error => console.error(error))
+
+        function calcNetValue(BTC_base, USD_base, amount, fee) {
+            let gain, interest, net;
+            gain = (BTC_current - BTC_base) / BTC_base;
+            interest = gain * (1 - fee)
+            net = amount / USD_base;
+            net += net * interest;
+            percentGain = (((net * USD_current) - amount) / amount) * 100
+            //console.info(gain, interest, net)
+            return [net * USD_current, percentGain.toFixed(0)];
+        }
         function renderAllFundInvestors(){
             const frag = document.createDocumentFragment()
             getRef('bob_fund_investors__container').innerHTML = ''
             bobFund.forEach(investor => {
-                frag.append(render.bobFundRow(investor))
+                let [currentValue, gain] = calcNetValue(2676.5, 64.46, investor.invested, 0)
+                currentValue = parseFloat(currentValue.toFixed(2))
+                timeElapsed = (new Date().getFullYear() - 2017)
+                frag.append(render.bobFundRow({...investor, currentValue, gain, timeElapsed}))
             })
             getRef('bob_fund_investors__container').append(frag)
         }
-        renderAllFundInvestors()
     </script>
 </body>
 </html>
