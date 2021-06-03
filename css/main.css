@@ -826,22 +826,6 @@ ol[type="1"] {
   padding: 1.5rem;
 }
 
-sm-carousel {
-  position: relative;
-  height: 100%;
-  border-radius: 0.5rem;
-  padding: 1.5rem 1.5rem 4rem 1.5rem;
-  background: rgba(var(--foreground-color), 1);
-  --arrow-left: 1.5rem;
-  --arrow-right: 1.5rem;
-  --arrow-fill: rgba(var(--text-color), 1);
-  --arrow-background: transparent;
-  --arrow-box-shadow: none;
-  --arrow-bottom: -3.5rem;
-  --indicator-bottom: -2.5rem;
-  --active-indicator-color: var(--accent-color);
-}
-
 .bit-bond-series__row,
 .bob-fund__row,
 .person-card {
@@ -1092,11 +1076,6 @@ scroll-tab-panels > [active] {
   fill: var(--accent-color);
 }
 
-#ico_page__carousel {
-  width: min(36rem, 100%);
-  height: max-content;
-}
-
 .progress-bar__circle,
 .progress-bar__line {
   position: absolute;
@@ -1156,9 +1135,6 @@ scroll-tab-panels > [active] {
 .room-tile:active {
   transform: scale(0.95);
 }
-.room-tile:focus-visible {
-  outline: auto;
-}
 
 #expanding_tile {
   position: fixed;
@@ -1185,13 +1161,16 @@ scroll-tab-panels > [active] {
 
 .room-container__header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 2;
   background-color: inherit;
   padding: 1rem 0;
+}
+
+#hero_title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .room-container__footer {
@@ -1382,10 +1361,6 @@ scroll-tab-panels > [active] {
 
   .bit-bond-series__row {
     grid-auto-flow: column;
-  }
-
-  .outlet-preview__carousel {
-    padding: 2rem 2rem 5rem 2rem;
   }
 
   #outlet_switcher {

@@ -113,9 +113,10 @@
             <header class="room-container__header">
                 <button class="grid flow-column gap-1 align-center" onclick="hideRoom()">
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/></svg>
-                    <h3 class="room-title"></h3>
+                    <h3 id="room_title" class="hide-completely"></h3>
                 </button>
             </header>
+            <h1 id="hero_title"></h1>
             <section id="performance_room" class="grid room">
                 <div id="bob_fund_investors__container" class="grid series-container series-container--bobs-fund"></div>
             </section>
@@ -150,6 +151,10 @@
             <section id="purchase_room" class="grid room">
                 <sm-button variant="primary">Buy here</sm-button>
             </section>
+            <footer class="room-container__footer">
+                <h4>Related rooms</h4>
+                <div id="room_switcher"></div>
+            </footer>
         </section>
     </main>
 

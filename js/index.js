@@ -158,7 +158,12 @@ function getFormatedTime(time, relative) {
 window.addEventListener("load", () => {
   document.addEventListener("keyup", (e) => {
     if (e.code === "Escape") {
-      hideSiteMap();
+      if (isSiteMapOpen) {
+        hideSiteMap();
+      }
+      else if (isRoomOpen) {
+        hideRoom()
+      }
     }
   });
   document.addEventListener("pointerdown", (e) => {
@@ -356,7 +361,7 @@ bitBondRowTemplate.innerHTML = `
     </div>
     <div class="grid justify-right text-align-right">
         <h5 class="label color-0-8 weight-500">Current value</h5>
-        <h3 class="value current-value"></h3>
+        <h3 class="value current-value" style="color: var(--green)"></h3>
         <div class="flex align-center">
             <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
             <span class="percent-gain"></span>
@@ -831,8 +836,8 @@ const animeOutOption = {
 }
 
 window.addEventListener('hashchange', e => {
-  showRoom(window.location.hash, true)
   if (allRooms.length) {
+    showRoom(window.location.hash, true)
     renderRoomShorcuts()
   }
 })
@@ -872,15 +877,19 @@ function showRoom(roomId, animate = false) {
     const roomContainer = document.querySelector('.room-container')
     roomContainer.querySelectorAll('.room').forEach(child => child.classList.add('hide-completely'))
     document.querySelector(roomId).classList.remove('hide-completely')
-    document.querySelector('.room-title').textContent = tile.querySelector('.room-tile__title').textContent
+    getRef('room_title').textContent = tile.querySelector('.room-tile__title').textContent
+    getRef('hero_title').textContent = tile.querySelector('.room-tile__title').textContent
     roomContainer.classList.remove('hide-completely')
     if (animate && !isRoomOpen) {
       roomContainer.animate(slideInDown, animeInOptions)
       .onfinish = () => {
         getRef('expanding_tile').classList.add('hide-completely')
+        isRoomOpen = true
       }
     }
-    isRoomOpen = true
+    else {
+      isRoomOpen = true
+    }
   }
 }
 
@@ -929,4 +938,30 @@ function renderRoomShorcuts() {
 
 if (allRooms.length) {
   renderRoomShorcuts()
+}
+
+const heroTitleObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      getRef('room_title').animate(slideOutDown, animeInOptions)
+      .onfinish = () => {
+        getRef('room_title').classList.add('hide-completely')
+      }
+      // getRef('hero_title').animate(slideInDown, animeOutOption)
+    }
+    else {
+        if (isRoomOpen)
+      getRef('room_title').classList.remove('hide-completely')
+      getRef('room_title').animate(slideInUp, animeInOptions)
+      // getRef('hero_title').animate(slideOutDown, animeOutOption)
+    }
+  })
+},
+  {
+  threshold: 1
+  }
+)
+
+if (getRef('hero_title')) {
+  heroTitleObserver.observe(getRef('hero_title'))
 }
