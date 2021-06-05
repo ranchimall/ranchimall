@@ -707,12 +707,14 @@ function showOutletSwitcher(button) {
     `top: ${buttonDimensions.top + document.documentElement.scrollTop
     }px; left: ${buttonDimensions.left}px;`
   );
-  getRef("outlet_switcher").classList.remove("hide");
+  getRef("outlet_switcher").classList.remove("hide-completely");
   getRef("outlet_switcher").animate(slideInDown, {
     duration: 300,
     easing: easeOutOvershoot,
     fill: "forwards",
   });
+  getRef("outlet_switcher").setAttribute('tabindex', '-1')
+  getRef("outlet_switcher").focus()
 }
 
 function hideOutletSwitcher() {
@@ -722,7 +724,7 @@ function hideOutletSwitcher() {
     easing: easeInOvershoot,
     fill: "forwards",
   }).onfinish = () => {
-    getRef("outlet_switcher").classList.add("hide");
+    getRef("outlet_switcher").classList.add("hide-completely");
     isOutletSwitcherOpen = false;
   };
 }
@@ -929,6 +931,8 @@ function renderRoomShorcuts() {
     if (room.href.split('#').pop() !== window.location.hash.split('#').pop()) {
       const clone = room.cloneNode(true)
       clone.classList.remove('room-tile', 'room-tile--main')
+      if(clone.querySelector('img, svg'))
+        clone.querySelector('img, svg').remove()
       clone.classList.add('room-shortcut')
       frag.append(clone)
     }
