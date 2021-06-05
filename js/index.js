@@ -987,10 +987,10 @@ if (roomContainer) {
   const hammertime = new Hammer(roomContainer);
   hammertime.on('swipe', (e) => {
     if (e.direction === 2 && getRef(currentRoomId).nextElementSibling) {
-      showRoom(`#${getRef(currentRoomId).nextElementSibling.id}`)
+      roomContainer.querySelector(`[href="#${getRef(currentRoomId).nextElementSibling.id}"]`).click()
     }
     else if (e.direction === 4 && getRef(currentRoomId).previousElementSibling) {
-      showRoom(`#${getRef(currentRoomId).previousElementSibling.id}`)
+      roomContainer.querySelector(`[href="#${getRef(currentRoomId).previousElementSibling.id}"]`).click()
     }
   })
 }

@@ -1024,7 +1024,7 @@ scroll-tab-panels{
         display: flex;
         width: 100%;
         height: 100%;
-        padding: 1rem;
+        padding: 1.5rem;
         align-self: flex-end;
         flex-direction: column;
         justify-content: flex-end;
@@ -1078,6 +1078,7 @@ scroll-tab-panels{
     margin-bottom: 2rem;
     font-weight: calc(700 * var(--font-weight-factor));
 }
+
 .room-container__footer{
     position: sticky;
     display: flex;
@@ -1197,6 +1198,7 @@ scroll-tab-panels{
         }
         .tile-content{
             top: 0;
+            padding: 1rem;
             position: absolute;
             align-items: center;
         }
