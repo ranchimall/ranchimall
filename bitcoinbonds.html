@@ -47,43 +47,46 @@
     </header>
     <div id="outlet_switcher" class="grid gap-1-5 hide-completely">
         <div class="flex align-center">
-            <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            <!-- <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                 height="24">
                 <path fill="none" d="M0 0h24v24H0z" />
                 <path
                     d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z" />
-            </svg>
+            </svg> -->
             <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
-            <button class="justify-right" onclick="hideOutletSwitcher()">
+<!--             <button class="justify-right" onclick="hideOutletSwitcher()">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
                         d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" />
                 </svg>
-            </button>
+            </button> -->
         </div>
-        <section id="outlet_switcher__outlet_container" class="outlet_switcher__floor flex align-center"></section>
+        <section id="outlet_switcher__outlet_container" class="outlet_switcher__floor"></section>
     </div>
     <main class="page">
         <section class="outlet-hero-section margin-bottom-3r">
+            <div class="grid">
+                <h2 class="h2 weight-700 margin-bottom-2r">Bitcoin Bonds</h2>
+                <h4 class="margin-bottom-1r">How does it work?</h4>
+                <p class="margin-bottom-3r">
+                    Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher.
+                    It offers full capital protection if Bitcoin prices fall below acquisition price.
+                </p>
+            </div>
             <button class="outlet-label">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+<!--                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path
                         d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z" />
-                </svg>
+                </svg> -->
                 <span class="outlet-label__name">Outlet</span>
+                <span class="outlet-label__no">Outlet</span>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
                 </svg>
             </button>
-            <h2 class="h2 weight-700 margin-bottom-2r">Bitcoin Bonds</h2>
-            <h4 class="margin-bottom-1r">How does it work?</h4>
-            <p class="margin-bottom-3r">
-                Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher.
-                It offers full capital protection if Bitcoin prices fall below acquisition price.
-            </p>
         </section>
         <header class="rooms__header">
             <h4 class="room__label">Rooms</h4>
@@ -93,7 +96,6 @@
             <a class="room-tile room-tile--main" href="#performance_room">
                 <div class="tile-content">
                     <svg class="room-tile__icon" id="b23be00b-0d64-4bed-9d99-6f7aaf421af4" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M44.53,26.6a7.17,7.17,0,1,1,5.07-2.1h0A7.16,7.16,0,0,1,44.53,26.6Zm0-11.47a4.31,4.31,0,1,0,3,1.26A4.31,4.31,0,0,0,44.53,15.13Z"/><path d="M62.58,1.38A4.7,4.7,0,0,0,58.35.09L45.09,2.66a14.61,14.61,0,0,0-7.56,4L19.92,24.29l-9,2.23a8.75,8.75,0,0,0-4.1,2.31L.46,35.2a1.43,1.43,0,0,0,1,2.44h.08L10,37.2l1.67,1.68L6.85,41.23a1.43,1.43,0,0,0-.38,2.3l14,14a1.44,1.44,0,0,0,1,.42l.24,0a1.47,1.47,0,0,0,1.05-.78l2.35-4.79,1.61,1.6-.45,8.58a1.43,1.43,0,0,0,.85,1.38,1.51,1.51,0,0,0,.58.12,1.44,1.44,0,0,0,1-.42l6.37-6.36a8.75,8.75,0,0,0,2.31-4.1l2.23-9,17.7-17.7a14.5,14.5,0,0,0,4-7.56L63.87,5.61A4.7,4.7,0,0,0,62.58,1.38ZM21,54.05,9.91,42.92,13.78,41,23,50.18ZM8.85,30.86a5.82,5.82,0,0,1,2.76-1.56L16,28.21,10.23,34l-.37.37-4.74.25ZM34.58,52.43A5.89,5.89,0,0,1,33,55.19l-3.74,3.73.25-4.74,6.13-6.13Zm20.68-28-18,18h0l-9,9-7.85-7.86-5.31-5.3h0l-2.55-2.54,27-27a11.72,11.72,0,0,1,5.38-3L58.3,19A11.64,11.64,0,0,1,55.26,24.41Zm5.8-19.34L59,15.68,48.28,5,58.89,2.9a1.85,1.85,0,0,1,2.17,2.17Z"/><path d="M2.63,62.76a1.41,1.41,0,0,1-1-.41,1.44,1.44,0,0,1,0-2l8.12-8.13a1.44,1.44,0,0,1,2,2L3.64,62.35A1.42,1.42,0,0,1,2.63,62.76Z"/><path d="M10.75,62.76a1.43,1.43,0,0,1-1-2.44l4.06-4.07a1.43,1.43,0,0,1,2,2l-4.06,4.06A1.43,1.43,0,0,1,10.75,62.76Z"/><path d="M2.63,54.64a1.43,1.43,0,0,1-1-2.44l4.07-4.06a1.43,1.43,0,0,1,2,2L3.65,54.22A1.44,1.44,0,0,1,2.63,54.64Z"/></svg>
-                    <!-- <img class="room-tile__icon" src="./assets/illustrations/performance.svg" alt=""> -->
                     <h4 class="room-tile__title">Performance</h4>
                 </div>
             </a>
@@ -106,7 +108,6 @@
             <a class="room-tile" href="#purchase_room">
                 <div class="tile-content">
                     <svg class="room-tile__icon" id="bb329e59-3d30-49a7-ac0d-b164d3b3b631" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M42.74,64a14,14,0,1,1,14-14A14,14,0,0,1,42.74,64Zm0-24.73A10.7,10.7,0,1,0,53.44,50,10.71,10.71,0,0,0,42.74,39.27Z"/><path d="M28.7,50H14.08a3.43,3.43,0,0,1-3.42-3.58l1.4-31.51h4.85V17.8a1.71,1.71,0,1,0,3.42,0V14.88H33V17.8a1.71,1.71,0,1,0,3.42,0V14.88h4.84L42.2,36c.18,0,.35,0,.54,0a13.92,13.92,0,0,1,2.9.31l-1.1-24.8H36.42V9.76a9.76,9.76,0,1,0-19.51,0v1.69H8.79L7.24,46.24a6.85,6.85,0,0,0,6.84,7.15H29.14A14.24,14.24,0,0,1,28.7,50ZM20.33,9.76A6.34,6.34,0,1,1,33,9.76v1.69H20.33Z"/><path d="M41.23,54.65a1.69,1.69,0,0,1-1.18-.49l-3-3a1.67,1.67,0,0,1,2.35-2.36l1.84,1.84,4.85-4.85a1.66,1.66,0,0,1,2.35,2.35l-6,6A1.67,1.67,0,0,1,41.23,54.65Z"/></svg>
-                    <!-- <img class="room-tile__icon" src="./assets/illustrations/purchase.svg" alt=""> -->
                     <h4 class="room-tile__title">Buy</h4>
                 </div>
             </a>
@@ -121,7 +122,8 @@
             <h1 id="hero_title"></h1>
             <section class="room-carousel">
                 <section id="performance_room" class="grid room">
-                    <div id="bit_bond_series__container" class="grid series-container"></div>
+                    <p>Bitcoin bonds different series release timeline</p>
+                    <ul id="bit_bond_series__container" class="timeline-container"></ul>
                 </section>
                 <section id="product_room" class="grid room">
                     <h4 class="h4 margin-bottom-1r">Description of different bonds</h4>
@@ -232,7 +234,7 @@
                         The purchase of this product is open only during specified time when we are confident we can
                         give guarantees. It was last open from February 2017 to June 2017.Currently we are doing blockchain
                         version of the product in test mode.If you are interested, please generate your FLO ID while keeping
-                        your private key very safe.FLO ID can be generated <a href="https://ranchimall.github.io/flo-webwallet/">here</a> in a single click.We can message
+                        your private key very safe.FLO ID can be generated <a href="https://ranchimall.github.io/flo-webwallet/" target="_blank">here</a> in a single click.We can message
                         directly on that FLO ID. Please drop your name and phone number along with FLO ID.
                     </p>
                 </section>
@@ -340,7 +342,7 @@
             const frag = document.createDocumentFragment()
             getRef('bit_bond_series__container').innerHTML = ''
             bitBondSerieses.forEach((series, index) => {
-                const [currentValue, percentGain] = calcNetValue(series.series, series.startDate, 0.13, 5, 0.5, 6400, 64)
+                const [currentValue, percentGain] = calcNetValue(series.series, series.startDate, 0.13, 5, 0.5, 100, 64)
                 const obj = {
                     series: series.series,
                     percentGain,
@@ -348,7 +350,15 @@
                     currentValue,
                     percentGain: percentGain.toFixed(0)
                 }
-                frag.append(render.bitBondRow(obj))
+                const timelineItem = document.createElement('li')
+                timelineItem.classList.add('timeline-item')
+
+                const tilelineItemHeader = document.createElement('header')
+                tilelineItemHeader.classList.add('timeline-item__header')
+                tilelineItemHeader.textContent = getFormatedTime(series.startDate, true)
+
+                timelineItem.append(tilelineItemHeader, render.bitBondRow(obj))
+                frag.prepend(timelineItem)
             })
             getRef('bit_bond_series__container').append(frag)
         }

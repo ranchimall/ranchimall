@@ -68,6 +68,10 @@ body[data-theme='dark']{
     text-transform: capitalize;
 }
 
+#my_popup{
+    --width: min(24rem, 100%);
+}
+
 p {
     font-weight: calc(400 * var(--font-weight-factor));
     max-width: 70ch;
@@ -107,12 +111,18 @@ button{
 .button{
     border-radius: 0.2rem;
     padding: 0.5rem 0.6rem;
-}
-.button--primary{
-    background: var(--accent-color);
-    color: rgba(var(--foreground-color), 1);
-    .icon{
-        fill: rgba(var(--foreground-color), 1);
+    &--primary{
+        background: var(--accent-color);
+        color: rgba(var(--foreground-color), 1);
+        .icon{
+            fill: rgba(var(--foreground-color), 1);
+        }
+    }
+    &--outlined{
+        box-shadow: 0 0 0 1px rgba(var(--text-color), 0.5);
+    }
+    &--filled{
+        background-color: rgba(var(--text-color), 0.2);
     }
 }
 button:focus-visible{
@@ -714,7 +724,7 @@ ol[type="1"]{
         position: absolute;
         line-height: 1;
         font-size: 1em;
-        font-weight: 900;
+        font-weight: inherit;
         -webkit-text-stroke: 0;
         color: rgba(var(--foreground-color), 1);
     }
@@ -733,19 +743,17 @@ ol[type="1"]{
     gap: 1.5rem;
     padding-bottom: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    .bit-bond-series__row,
-    .bob-fund__row{
-        padding: 1.5rem;
-    }
+}
+.bit-bond-series__row,
+.bob-fund__row,
+.card{
+    padding: 1.5rem;
 }
 
 .bit-bond-series__row,
 .bob-fund__row,
 .person-card{
     min-width: 100%;
-}
-.bit-bond-series__row{
-    grid-auto-flow: column;
 }
 
 .bob-fund__row{
@@ -755,7 +763,8 @@ ol[type="1"]{
 }
 
 .bob-fund__row,
-.bit-bond-series__row{
+.bit-bond-series__row,
+.card{
     gap: 1rem;
     border-radius: 0.5rem;
     align-items: flex-start;
@@ -800,7 +809,7 @@ ol[type="1"]{
     border-radius: 50%;
 }
 .person__name{
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     text-transform: capitalize;
 }
 .investor__bio{
@@ -863,65 +872,66 @@ ol[type="1"]{
     outline: none;
 }
 .outlet_switcher__floor{
-    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 .outlet_switcher__button{
     display: flex;
     align-items: center;
     font-size: 1rem;
-    padding: 0.4rem 0;
-    flex-shrink: 0;
+    padding: 0.6rem 0;
     font-weight: calc(500 * var(--font-weight-factor));
     &--active{
         color: var(--accent-color) !important;
     }
-    &:not(:last-of-type)::after{
-        content: '';
-        position: relative;
-        width: 4vw;
-        height: 0.1rem;
-        margin: 0 0.5rem;
-        background: var(--accent-color);
-    }
 }
 .outlet-label{
-    display: flex;
-    align-items: center;
-    justify-self: flex-start;
-    color: var(--accent-color);
-    // background-color: rgba(var(--text-color), 0.06);
-    // border-radius: 0.2rem;
-    // padding: 0.8rem 0.8rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    display: grid;
     gap: 0.5rem;
+    text-align: left;
+    align-items: center;
+    min-width: 8rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;    
+    // border-radius: 0.5rem;
+    // padding: 0.8rem 0.8rem;
+    // background-color: rgba(var(--text-color), 0.06);
+    grid-template-areas: 'label icon' 'num num';
     .icon{
+        grid-area: icon;
         height: 1.6rem;
         width: 1.6rem;
         fill: var(--accent-color);
+        justify-self: flex-end;
     }
 }
-
-/* scroll-tab-header{
-    --padding: 0.5rem 0;
-    --border-radius: 0.3rem;
-    --background: transparent;
+.outlet-label__name{
+    font-size: 1.7rem;
+    color: rgba(var(--text-color), 0.5);
+    font-weight: calc(900 * var(--font-weight-factor));
 }
-scroll-tab-panels{
-    --gap: 1.5rem;
-    --background: transparent;
-    margin-bottom: 6rem;
-    & > *{
-        opacity: 0.4;
-        flex-shrink: 0;
-        min-width: 100%;
-        transition: opacity 0.6s;
-        align-self: start;
+.outlet-label__no{
+    grid-area: num;
+    display: flex;
+    position: relative;
+    line-height: 1;
+    font-size: 8rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1rem var(--accent-color);
+    -webkit-text-fill-color: var(--background-color);
+    margin: 0 0.5rem;
+    &::after{
+        content: attr(data-number);
+        position: absolute;
+        line-height: 1;
+        font-size: 1em;
+        font-weight: inherit;
+        -webkit-text-stroke: 0;
+        color: var(--background-color);
     }
-    & > [active]{
-        opacity: 1;
-    }
-} */
+}
 .auto-grid-layout{
     justify-content: flex-start;
     overflow-x: auto;
@@ -1036,10 +1046,15 @@ scroll-tab-panels{
     }
 }
 .room-tile__icon{
+    margin-bottom: 1rem;
     height: 3rem;
     width: 3rem;
-    margin-bottom: 1rem;
-    fill: rgba(var(--text-color), 1);
+    &:not(.room-tile__icon--colored){
+        fill: rgba(var(--text-color), 1);
+    }
+    &--colored{
+        filter: drop-shadow(0 1rem 0.5rem rgba(0,0,0,0.2));
+    }
 }
 .room-tile__title{
     font-size: 1.2rem;
@@ -1074,6 +1089,15 @@ scroll-tab-panels{
     z-index: 2;
     background-color: inherit;
     padding: 1rem 0;
+    &::before{
+        position: absolute;
+        content: '';
+        width: 1rem;
+        height: 100%;
+        left: -1rem;
+        top: 0;
+        background-color: inherit;
+    }
 }
 #hero_title{
     font-size: 2rem;
@@ -1102,7 +1126,8 @@ scroll-tab-panels{
     z-index: 2;
     overflow-x: auto;
     align-items: center;
-    padding: 2rem 0.5rem 0.5rem 0.5rem;
+    padding: 2rem 0.5rem 0.5rem 3rem;
+    margin-left: -3rem;
     background: linear-gradient(0deg, var(--background-color) 70%, rgba(0,0,0,0) 100%);
 }
 #room_switcher{
@@ -1181,6 +1206,46 @@ scroll-tab-panels{
     z-index: 1;
 }
 
+.timeline-container{
+    display: grid;
+    padding: 3rem 0;
+    gap: 4rem;
+}
+.timeline-item{
+    position: relative;
+    display: grid;
+    padding-left: 1rem;
+    &:not(:last-of-type):before{
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: calc(100% + 4rem);
+        top: 0;
+        left: 0;
+        background-color: rgba(var(--text-color), 0.7);
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        padding: 0.3rem;
+        border-radius: 50%;
+        top: 0;
+        left: -0.3rem;
+        background-color: rgba(var(--text-color), 1);
+    }
+}
+.timeline-item__header{
+    display: flex;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.2rem;
+    justify-self: flex-start;
+    transform: translateY(-0.8rem);
+    box-shadow: 0 0 0 1px rgba(var(--text-color), 0.6);
+    background-color: rgba(var(--foreground-color), 1);
+    
+}
+
 @media only screen and (max-width: 640px) {
     .hide-on-mobile{
         display: none;
@@ -1194,7 +1259,8 @@ scroll-tab-panels{
     .outlet-preview__number::after{
         left: 0;
     }
-    .outlet-preview__number{
+    .outlet-preview__number,
+    .outlet-label__no{
         font-size: 5rem;
     }
     #outlet_switcher{
@@ -1202,6 +1268,9 @@ scroll-tab-panels{
     }
     .outlet-hero-section{
         margin-top: 2rem;
+    }
+    .outlet-label__no{
+        margin-bottom: 2rem;
     }
     .series-container{
         gap: 1rem;
@@ -1279,7 +1348,6 @@ scroll-tab-panels{
         justify-content: center;
         .floor_list__header{
             display: grid;
-            // justify-content: center;
         }
         &:not(:last-of-type){
             padding-bottom: 8vw;
@@ -1347,14 +1415,26 @@ scroll-tab-panels{
             }
         }
     }
-    .bit-bond-series__row{
-        grid-auto-flow: column;
+    .outlet__title{
+        font-size: 2.5rem;
     }
     #outlet_switcher{
         padding: 1rem 1.5rem;
     }
+    .outlet-label{
+        grid-column: 2/3;
+        justify-self: right;
+    }
+    .outlet-label__no{
+        justify-content: flex-end;
+    }
     .outlet-hero-section{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 1.5rem;
         margin-top: 4rem;
+        // justify-content: center;
     }
     .auto-grid-layout{
         grid-template-columns: auto 1fr;
