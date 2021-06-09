@@ -19,6 +19,14 @@ function getRef(elementId) {
   }
 }
 
+function create(tagName, obj) {
+  const {className, text} = obj
+  const elem = document.createElement(tagName)
+  elem.className = className
+  elem.textContent = text
+  return elem
+}
+
 //Checks for internet connection status
 if (!navigator.onLine)
   notify(

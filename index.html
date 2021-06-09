@@ -277,10 +277,8 @@
 
 
         function renderFloor(obj){
-            console.log(obj)
             const {floorNo, floor, brief, outlets} = obj
-            const floorSection = document.createElement('section')
-            floorSection.classList.add('floor')
+            const floorSection = create('section', {className: 'floor'})
             floorSection.id = `floor_${floorNo + 1}`
             floorSection.innerHTML = `
                 <header class="floor__header grid align-center">
@@ -306,8 +304,9 @@
 
         function renderOutletPreview(obj){
             const {outletNo, name, brief, url, buyUrl, isSold} = obj
-            const preview = document.createElement('section')
-            preview.classList.add('outlet-preview', 'carousel-container')
+            const preview = create('section', {
+                className: 'outlet-preview carousel-container'
+            })
             let composed = `
                 <div class="grid outlet-preview__info">
                     <h3 class="outlet__title">${name}</h3>

@@ -350,12 +350,12 @@
                     currentValue,
                     percentGain: percentGain.toFixed(0)
                 }
-                const timelineItem = document.createElement('li')
-                timelineItem.classList.add('timeline-item')
+                const timelineItem = create('li', {className: 'timeline-item'})
 
-                const tilelineItemHeader = document.createElement('header')
-                tilelineItemHeader.classList.add('timeline-item__header')
-                tilelineItemHeader.textContent = getFormatedTime(series.startDate, true)
+                const tilelineItemHeader = create('header', {
+                    className: 'timeline-item__header',
+                    text: getFormatedTime(series.startDate, true)
+                })
 
                 timelineItem.append(tilelineItemHeader, render.bitBondRow(obj))
                 frag.prepend(timelineItem)

@@ -861,6 +861,10 @@ ol[type="1"]{
     }
 }
 
+.outlet-hero-section{
+    display: grid;
+}
+
 #outlet_switcher{
     position: absolute;
     top: 0;
@@ -1266,6 +1270,9 @@ ol[type="1"]{
     #outlet_switcher{
         width: calc(100% - 2rem);
     }
+    .outlet-label{
+        grid-row: 1/2;
+    }
     .outlet-hero-section{
         margin-top: 2rem;
     }
@@ -1430,7 +1437,6 @@ ol[type="1"]{
     }
     .outlet-hero-section{
         position: relative;
-        display: grid;
         grid-template-columns: 1fr auto;
         gap: 1.5rem;
         margin-top: 4rem;

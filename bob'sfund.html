@@ -452,13 +452,12 @@
             bobFund.forEach(fund => {
                 const {release, invested, investors, href} = fund
                 console.log(release, invested, investors, href)
-                const timelineItem = document.createElement('li')
-                timelineItem.classList.add('timeline-item')
+                const timelineItem = create('li', {className: 'timeline-item'})
 
-                const tilelineItemHeader = document.createElement('header')
-                tilelineItemHeader.classList.add('timeline-item__header')
-                tilelineItemHeader.textContent = getFormatedTime(release, true)
-                console.log(new Date(release))
+                const tilelineItemHeader = create('header', {
+                    className: 'timeline-item__header',
+                    text: getFormatedTime(release, true)
+                })
 
                 if(fund.hasOwnProperty('investors')){
                     investors.forEach(investor => {
@@ -467,19 +466,22 @@
                         timeElapsed = (new Date().getFullYear() - 2017)
                         frag.append(render.bobFundRow({...investor, currentValue, gain, timeElapsed}))
                     })
-                    const fundContainer = document.createElement('div')
-                    fundContainer.classList.add('grid', 'series-container', 'series-container--bobs-fund')
+                    const fundContainer = create('div', {
+                        className: 'grid series-container series-container--bobs-fund'
+                    })
 
-                    const heading = document.createElement('h4')
-                    heading.classList.add('margin-bottom-1r', 'margin-top-1-5')
-                    heading.textContent = 'Fund investors'
+                    const heading = create('h4', {
+                        className: 'margin-bottom-1r margin-top-1-5',
+                        text: 'Fund investors'
+                    })
 
                     fundContainer.append(frag)
                     timelineItem.append(heading, fundContainer)
                 }
                 else{
-                    const fundCard = document.createElement('div')
-                    fundCard.classList.add('grid', 'card')
+                    const fundCard = create('div', {
+                        className: 'grid card'
+                    })
                     let [currentValue, gain] = calcNetValue(37488, 72.56, invested, 0)
                         currentValue = parseFloat(currentValue.toFixed(2))
                     fundCard.innerHTML = `
