@@ -254,7 +254,7 @@ const siteMap = [
         url: "bitcoinbonds.html",
         brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
         Bitcoin prices fall below acquisition price.`,
-        isSold: true,
+        // isSold: true,
         buyUrl: `purchase_room`,
         status: `We are servicing current customers only. A new Blockchain-based version of Bitcoin Bonds will be available soon.`
       },
@@ -262,7 +262,7 @@ const siteMap = [
         name: `Bob's Fund`,
         url: `bob'sfund.html`,
         brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they most hold for 20 years.`,
-        isSold: true,
+        // isSold: true,
         buyUrl: `purchase_room`
       },
 /*       {
@@ -489,14 +489,6 @@ const render = {
     card.querySelector(".intern__project").textContent = project;
     return card;
   },
-  icoPhase(obj) {
-    const { phase, date, info } = obj;
-    const template = getRef("ico_phase_template").content.cloneNode(true);
-    template.querySelector(".phase__title").textContent = `Phase ${phase}`;
-    template.querySelector(".phase__date").textContent = date;
-    template.querySelector(".phase__description").textContent = info;
-    return template;
-  },
   floorLabel(floorNumber, offsetTop) {
     const floorLabel = getRef("floor_indicator_template").content.cloneNode(
       true
@@ -508,7 +500,7 @@ const render = {
   outletListItem(outletObj) {
     const { name, brief, url } = outletObj
     const li = outletListitemTemplate.content.cloneNode(true).firstElementChild
-    li.querySelector('a').href = `${url}.html`
+    li.querySelector('a').href = `${url}`
     li.querySelector('.outlet-title').textContent = name
     // li.querySelector('.outlet-brief').textContent = brief ? brief : ''
     return li

@@ -828,19 +828,13 @@ ol[type="1"] {
 }
 
 .value {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .series-container {
   gap: 1.5rem;
   padding-bottom: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-}
-
-.bit-bond-series__row,
-.bob-fund__row,
-.card {
-  padding: 1.5rem;
 }
 
 .bit-bond-series__row,
@@ -857,10 +851,15 @@ ol[type="1"] {
 .bit-bond-series__row,
 .card {
   gap: 1rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
   align-items: flex-start;
   background-color: rgba(var(--foreground-color), 1);
   box-shadow: 0 0.5rem 1rem -0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.bit-bond-series__row .original-value {
+  font-size: 0.85rem;
 }
 
 .up-arrow {
@@ -1141,7 +1140,6 @@ ol[type="1"] {
 }
 
 .room-tile__icon {
-  margin-top: auto;
   margin-bottom: 1rem;
   height: 3rem;
   width: 3rem;
@@ -1158,7 +1156,7 @@ ol[type="1"] {
 }
 
 #performance_preview {
-  margin-bottom: auto;
+  margin-top: auto;
 }
 #performance_preview > * {
   padding: 0;
