@@ -251,7 +251,7 @@ const siteMap = [
     outlets: [
       {
         name: "Bitcoin Bonds",
-        url: "bitcoinbonds",
+        url: "bitcoinbonds.html",
         brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
         Bitcoin prices fall below acquisition price.`,
         isSold: true,
@@ -260,7 +260,7 @@ const siteMap = [
       },
       {
         name: `Bob's Fund`,
-        url: `bob'sfund`,
+        url: `bob'sfund.html`,
         brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they most hold for 20 years.`,
         isSold: true,
         buyUrl: `purchase_room`
