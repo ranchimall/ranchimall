@@ -1208,7 +1208,7 @@ ol[type="1"]{
     &:not(:last-of-type):before{
         content: '';
         position: absolute;
-        width: 1px;
+        width: 0.1rem;
         height: calc(100% + 4rem);
         top: 0;
         left: 0;
@@ -1217,10 +1217,11 @@ ol[type="1"]{
     &:after{
         content: '';
         position: absolute;
-        padding: 0.3rem;
+        height: 0.6rem;
+        width: 0.6rem;
         border-radius: 50%;
         top: 0;
-        left: -0.3rem;
+        left: -0.25rem;
         background-color: rgba(var(--text-color), 1);
     }
 }
