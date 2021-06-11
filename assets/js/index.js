@@ -261,15 +261,16 @@ const siteMap = [
       {
         name: `Bob's Fund`,
         url: `bob'sfund.html`,
-        brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they most hold for 20 years.`,
+        brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they must hold for 20 years.`,
         // isSold: true,
-        buyUrl: `purchase_room`
+        buyUrl: `purchase_room`,
+        status: `We are servicing current customers only. A new Blockchain-based version of Bob's Fund will be available soon.`
       },
 /*       {
         name: "Initial Coin Offering",
         url: "ico",
         brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
-        isSold: true,
+        // isSold: true,
         buyUrl: `purchase_room`
       }, */
     ],
