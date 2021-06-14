@@ -435,19 +435,20 @@ ol[type="1"] {
   gap: 1rem;
   padding: 0.5rem 0 0.5rem 1rem;
   align-items: center;
-  background-color: var(--banner-color);
+  border: 0.1rem solid var(--banner-color);
   grid-template-columns: 1fr auto;
+  border-radius: 0.5rem;
+  margin: 0 1rem;
 }
 .banner .close-icon {
-  fill: white;
   width: 2.2rem;
   height: 2.2rem;
+  color: rgba(var(--text-color), 0.7);
 }
 
 .banner__text {
   max-width: unset;
   font-size: 0.9rem;
-  color: white;
 }
 
 #elevator_popup {
@@ -1140,18 +1141,23 @@ ol[type="1"] {
 }
 
 .room-tile__icon {
-  height: 2.5rem;
-  width: 2.5rem;
-  margin-bottom: 1rem;
+  position: absolute;
+  height: 8rem;
+  width: 8rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .room-tile__icon:not(.room-tile__icon--colored) {
-  fill: rgba(var(--text-color), 1);
+  fill: rgba(var(--text-color), 0.1);
 }
 
 .room-tile__title {
-  font-size: 1.2rem;
-  border-bottom: 1px solid;
-  align-self: flex-start;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: solid 0.1rem var(--secondary-text-color);
+  color: var(--secondary-text-color);
+  border-radius: 0.3rem;
 }
 
 #performance_preview {
@@ -1259,7 +1265,7 @@ ol[type="1"] {
   background-size: contain;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--banner-color);
+  border: solid 0.1rem var(--banner-color);
   box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.2);
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
@@ -1288,15 +1294,14 @@ ol[type="1"] {
 .tile__title {
   font-size: 1.25rem;
   line-height: 1;
-  color: white;
   font-weight: calc(500 * var(--font-weight-factor));
   z-index: 1;
 }
 
 .tile__brief {
   margin-top: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
   z-index: 1;
+  color: rgba(var(--text-color), 0.7);
 }
 
 .round {
@@ -1304,8 +1309,8 @@ ol[type="1"] {
   flex-shrink: 0;
   padding: 0.4rem 1rem;
   border-radius: 0.3rem;
-  background-color: white;
-  color: var(--banner-color);
+  color: white;
+  background-color: var(--banner-color);
   font-weight: 700 !important;
   font-size: 1rem;
   z-index: 1;
