@@ -45,31 +45,8 @@
             <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
         </label>
     </header>
-    <section class="banner">
-        <p class="banner__text">
-            We are servicing current customers only. A new Blockchain-based version of Bob's Fund will be available soon.
-        </p>
-        <button class="close-button" onclick="this.parentNode.remove()">
-            <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
-        </button>
-    </section>
     <div id="outlet_switcher" class="grid gap-1-5 hide-completely">
-        <div class="flex align-center">
-<!--             <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                height="24">
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                    d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z" />
-            </svg> -->
-            <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
-<!--             <button class="justify-right" onclick="hideOutletSwitcher()">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" />
-                </svg>
-            </button> -->
-        </div>
+        <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
         <section id="outlet_switcher__outlet_container" class="outlet_switcher__floor"></section>
     </div>
     <main class="page">
@@ -78,16 +55,15 @@
                 <h2 class="h2 weight-700 margin-bottom-1r">Bob's Fund</h2>
                 <p>
                     Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100 percent
-                    of Bitcoin price gains, but they most hold for 20 years. Over a very long time period, investor returns
+                    of Bitcoin price gains, but they must hold for 20 years. Over a very long time period, investor returns
                     on an asset like Bitcoin should outstrip returns on conventional assets like real estate and stocks. The
                     management fees on this product is zero. RanchiMall earns by having invested an equal amount as
                     every investor, thus the interests of fund manager, and fund investors are totally aligned.
                 </p>
             </div>
             <button class="outlet-label">
-                <!-- <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z"/></svg> -->
                 <span class="outlet-label__name">Outlet</span>
-                <span class="outlet-label__no">Outlet</span>
+                <span class="outlet-label__no"></span>
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
             </button>
         </section>
@@ -98,15 +74,20 @@
             <div id="expanding_tile" class="hide-completely"></div>
             <a class="room-tile room-tile--main" href="#performance_room">
                 <div class="tile-content">
+                    <div class="grid flow-column gap-1 justify-start align-center">
+                        <svg class="room-tile__icon" id="b23be00b-0d64-4bed-9d99-6f7aaf421af4" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M44.53,26.6a7.17,7.17,0,1,1,5.07-2.1h0A7.16,7.16,0,0,1,44.53,26.6Zm0-11.47a4.31,4.31,0,1,0,3,1.26A4.31,4.31,0,0,0,44.53,15.13Z"/><path d="M62.58,1.38A4.7,4.7,0,0,0,58.35.09L45.09,2.66a14.61,14.61,0,0,0-7.56,4L19.92,24.29l-9,2.23a8.75,8.75,0,0,0-4.1,2.31L.46,35.2a1.43,1.43,0,0,0,1,2.44h.08L10,37.2l1.67,1.68L6.85,41.23a1.43,1.43,0,0,0-.38,2.3l14,14a1.44,1.44,0,0,0,1,.42l.24,0a1.47,1.47,0,0,0,1.05-.78l2.35-4.79,1.61,1.6-.45,8.58a1.43,1.43,0,0,0,.85,1.38,1.51,1.51,0,0,0,.58.12,1.44,1.44,0,0,0,1-.42l6.37-6.36a8.75,8.75,0,0,0,2.31-4.1l2.23-9,17.7-17.7a14.5,14.5,0,0,0,4-7.56L63.87,5.61A4.7,4.7,0,0,0,62.58,1.38ZM21,54.05,9.91,42.92,13.78,41,23,50.18ZM8.85,30.86a5.82,5.82,0,0,1,2.76-1.56L16,28.21,10.23,34l-.37.37-4.74.25ZM34.58,52.43A5.89,5.89,0,0,1,33,55.19l-3.74,3.73.25-4.74,6.13-6.13Zm20.68-28-18,18h0l-9,9-7.85-7.86-5.31-5.3h0l-2.55-2.54,27-27a11.72,11.72,0,0,1,5.38-3L58.3,19A11.64,11.64,0,0,1,55.26,24.41Zm5.8-19.34L59,15.68,48.28,5,58.89,2.9a1.85,1.85,0,0,1,2.17,2.17Z"/><path d="M2.63,62.76a1.41,1.41,0,0,1-1-.41,1.44,1.44,0,0,1,0-2l8.12-8.13a1.44,1.44,0,0,1,2,2L3.64,62.35A1.42,1.42,0,0,1,2.63,62.76Z"/><path d="M10.75,62.76a1.43,1.43,0,0,1-1-2.44l4.06-4.07a1.43,1.43,0,0,1,2,2l-4.06,4.06A1.43,1.43,0,0,1,10.75,62.76Z"/><path d="M2.63,54.64a1.43,1.43,0,0,1-1-2.44l4.07-4.06a1.43,1.43,0,0,1,2,2L3.65,54.22A1.44,1.44,0,0,1,2.63,54.64Z"/></svg>
+                        <h4 class="room-tile__title">Performance</h4>
+                    </div>
                     <div id="performance_preview"></div>
-                    <svg class="room-tile__icon" id="b23be00b-0d64-4bed-9d99-6f7aaf421af4" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M44.53,26.6a7.17,7.17,0,1,1,5.07-2.1h0A7.16,7.16,0,0,1,44.53,26.6Zm0-11.47a4.31,4.31,0,1,0,3,1.26A4.31,4.31,0,0,0,44.53,15.13Z"/><path d="M62.58,1.38A4.7,4.7,0,0,0,58.35.09L45.09,2.66a14.61,14.61,0,0,0-7.56,4L19.92,24.29l-9,2.23a8.75,8.75,0,0,0-4.1,2.31L.46,35.2a1.43,1.43,0,0,0,1,2.44h.08L10,37.2l1.67,1.68L6.85,41.23a1.43,1.43,0,0,0-.38,2.3l14,14a1.44,1.44,0,0,0,1,.42l.24,0a1.47,1.47,0,0,0,1.05-.78l2.35-4.79,1.61,1.6-.45,8.58a1.43,1.43,0,0,0,.85,1.38,1.51,1.51,0,0,0,.58.12,1.44,1.44,0,0,0,1-.42l6.37-6.36a8.75,8.75,0,0,0,2.31-4.1l2.23-9,17.7-17.7a14.5,14.5,0,0,0,4-7.56L63.87,5.61A4.7,4.7,0,0,0,62.58,1.38ZM21,54.05,9.91,42.92,13.78,41,23,50.18ZM8.85,30.86a5.82,5.82,0,0,1,2.76-1.56L16,28.21,10.23,34l-.37.37-4.74.25ZM34.58,52.43A5.89,5.89,0,0,1,33,55.19l-3.74,3.73.25-4.74,6.13-6.13Zm20.68-28-18,18h0l-9,9-7.85-7.86-5.31-5.3h0l-2.55-2.54,27-27a11.72,11.72,0,0,1,5.38-3L58.3,19A11.64,11.64,0,0,1,55.26,24.41Zm5.8-19.34L59,15.68,48.28,5,58.89,2.9a1.85,1.85,0,0,1,2.17,2.17Z"/><path d="M2.63,62.76a1.41,1.41,0,0,1-1-.41,1.44,1.44,0,0,1,0-2l8.12-8.13a1.44,1.44,0,0,1,2,2L3.64,62.35A1.42,1.42,0,0,1,2.63,62.76Z"/><path d="M10.75,62.76a1.43,1.43,0,0,1-1-2.44l4.06-4.07a1.43,1.43,0,0,1,2,2l-4.06,4.06A1.43,1.43,0,0,1,10.75,62.76Z"/><path d="M2.63,54.64a1.43,1.43,0,0,1-1-2.44l4.07-4.06a1.43,1.43,0,0,1,2,2L3.65,54.22A1.44,1.44,0,0,1,2.63,54.64Z"/></svg>
-                    <h4 class="room-tile__title">Performance</h4>
                 </div>
             </a>
             <a class="room-tile" href="#product_room">
                 <div class="tile-content">
-                    <svg class="room-tile__icon" id="b76bf456-6b89-4220-8b44-f4f7d833bad6" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M61.28,22.11c0-.05,0-.09,0-.14L58.62,6A1.68,1.68,0,0,0,57,4.6H7A1.68,1.68,0,0,0,5.38,6L2.72,22c0,.05,0,.09,0,.14s0,.09,0,.14V57.72A1.68,1.68,0,0,0,4.38,59.4H59.62a1.68,1.68,0,0,0,1.68-1.68V22.25C61.3,22.2,61.28,22.16,61.28,22.11Zm-3.64-1.54H39.34L38.51,8h17ZM27.92,23.93h8.16v6.64L33,28.41a1.7,1.7,0,0,0-1.9,0l-3.13,2.16ZM35.15,8,36,20.57H28L28.91,8ZM8.46,8H25.55l-.88,12.61H6.36ZM57.94,56H6.06V23.93h18.5v9.84a1.67,1.67,0,0,0,2.63,1.38L32,31.84l4.81,3.31a1.65,1.65,0,0,0,.95.3,1.76,1.76,0,0,0,.78-.19,1.68,1.68,0,0,0,.9-1.49V23.93h18.5Z"/></svg>
-                    <h4 class="room-tile__title">Product</h4>
+                    <div class="grid flow-column gap-1 justify-start align-center">
+                        <svg class="room-tile__icon" id="b76bf456-6b89-4220-8b44-f4f7d833bad6" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M61.28,22.11c0-.05,0-.09,0-.14L58.62,6A1.68,1.68,0,0,0,57,4.6H7A1.68,1.68,0,0,0,5.38,6L2.72,22c0,.05,0,.09,0,.14s0,.09,0,.14V57.72A1.68,1.68,0,0,0,4.38,59.4H59.62a1.68,1.68,0,0,0,1.68-1.68V22.25C61.3,22.2,61.28,22.16,61.28,22.11Zm-3.64-1.54H39.34L38.51,8h17ZM27.92,23.93h8.16v6.64L33,28.41a1.7,1.7,0,0,0-1.9,0l-3.13,2.16ZM35.15,8,36,20.57H28L28.91,8ZM8.46,8H25.55l-.88,12.61H6.36ZM57.94,56H6.06V23.93h18.5v9.84a1.67,1.67,0,0,0,2.63,1.38L32,31.84l4.81,3.31a1.65,1.65,0,0,0,.95.3,1.76,1.76,0,0,0,.78-.19,1.68,1.68,0,0,0,.9-1.49V23.93h18.5Z"/></svg>
+                        <h4 class="room-tile__title">Product</h4>
+                    </div>
+
                 </div>
             </a>
 <!--             <a class="room-tile" href="#purchase_room">
@@ -126,6 +107,7 @@
             <h1 id="hero_title"></h1>
             <section class="room-carousel">
                 <section id="performance_room" class="grid room">
+                    <canvas id="performance_graph"></canvas>
                     <p>Bobs fund different fund release timeline</p>
                     <ul id="bobs_fund_timeline" class="timeline-container"></ul>
                 </section>
@@ -215,6 +197,7 @@
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/index.js"></script>
     <script>
@@ -476,15 +459,27 @@
             renderAllFundInvestors()
         }).catch(error => console.error(error))
 
-        function calcNetValue(BTC_base, USD_base, amount, fee) {
-            let gain, interest, net;
-            gain = (BTC_current - BTC_base) / BTC_base;
+        function calcNetValue(obj) {
+            let {isHistorical = false, BTC_base, USD_base, amount, fee, histBtc, histUsd} = obj
+            let gain, interest, net = 0, currentValue = 0;
+            console.info(obj)
+            if(isHistorical){
+                gain = (histBtc - BTC_base) / BTC_base;
+            }
+            else{
+                gain = (BTC_current - BTC_base) / BTC_base;
+            }
             interest = gain * (1 - fee)
             net = amount / USD_base;
             net += net * interest;
-            percentGain = (((net * USD_current) - amount) / amount) * 100
-            //console.info(gain, interest, net)
-            return [net * USD_current, percentGain.toFixed(0)];
+            if(isHistorical){
+                currentValue = net * histUsd
+            }
+            else{
+                currentValue = net * USD_current
+            }
+            percentGain = ((currentValue - amount) / amount) * 100
+            return [currentValue, percentGain.toFixed(0)];
         }
         function renderAllFundInvestors(){
             const frag = document.createDocumentFragment()
@@ -502,7 +497,13 @@
 
                 if(fund.hasOwnProperty('investors')){
                     investors.forEach(investor => {
-                        let [currentValue, gain] = calcNetValue(BTC_base, USD_base, investor.invested, 0)
+                        let obj = {
+                            BTC_base,
+                            USD_base,
+                            amount: investor.invested,
+                            fee: 0
+                        }
+                        let [currentValue, gain] = calcNetValue(obj)
                         currentValue = parseFloat(currentValue.toFixed(2))
                         timeElapsed = (new Date().getFullYear() - 2017)
                         frag.append(render.bobFundRow({...investor, currentValue, gain, timeElapsed}))
@@ -523,7 +524,13 @@
                     const fundCard = create('div', {
                         className: 'grid card'
                     })
-                    let [currentValue, gain] = calcNetValue(BTC_base, USD_base, invested, 0)
+                    let obj = {
+                            BTC_base,
+                            USD_base,
+                            amount: invested,
+                            fee: 0
+                        }
+                    let [currentValue, gain] = calcNetValue(obj)
                         currentValue = parseFloat(currentValue.toFixed(2))
                     fundCard.innerHTML = `
                         <div class="flex space-between">
@@ -541,13 +548,20 @@
                     timelineItem.append(fundCard)
                 }
                 timelineItem.prepend(tilelineItemHeader)
-                timelineItemsFrag.prepend(timelineItem)
+                timelineItemsFrag.append(timelineItem)
                 
-                if(randIndex === index){
+                if(index === 0){
+                    let obj = {
+                        BTC_base,
+                        USD_base,
+                        amount: invested,
+                        fee: 0,
+                    }
+                    renderGraph(obj)
                     const fundCard = create('div', {
                         className: 'grid card'
                     })
-                    let [currentValue, gain] = calcNetValue(BTC_base, USD_base, invested, 0)
+                    let [currentValue, gain] = calcNetValue(obj)
                         currentValue = parseFloat(currentValue.toFixed(2))
                     fundCard.innerHTML = `
                         <div class="grid">
@@ -569,6 +583,98 @@
                 }
             })
             getRef('bobs_fund_timeline').append(timelineItemsFrag)
+        }
+
+        async function getPrices() {
+            return [btcPrices, inrPrices] = await Promise.all([
+                fetch('https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=USD&apikey=DDN5S53DXQ4QH4V4').then(res => res.json()),
+                fetch('https://www.alphavantage.co/query?function=FX_MONTHLY&from_symbol=USD&to_symbol=INR&apikey=DDN5S53DXQ4QH4V4').then(res => res.json()),
+            ])
+        }
+
+        let dates = []
+        let historicalData = []
+        let tableOfData = []
+            
+        async function getData(obj) {
+            let [btcPrices, inrPrices] = await getPrices()
+            btcPrices = btcPrices['Time Series (Digital Currency Monthly)']
+            inrPrices = inrPrices['Time Series FX (Monthly)']
+            let allBtcPrices = []
+            let counter = 0
+            for (let dataPoint in btcPrices) {
+                if (counter < 12) {
+                    let BTC_base = btcPrices[dataPoint]['1a. open (USD)']
+                    allBtcPrices.push(BTC_base)
+                    dates.push(dataPoint.split('-').join('/'))
+                    counter++
+                }
+                else {
+                    break
+                }
+            }
+            let index = 0
+            for (let dataPoint in inrPrices) {
+                if (allBtcPrices[index]) {
+                    let histBtc = parseFloat(allBtcPrices[index])
+                    let histUsd = parseFloat(inrPrices[dataPoint]['1. open'])
+                    obj.isHistorical = true
+                    let [currentValue, gain] = calcNetValue({...obj, histBtc, histUsd})
+                    // console.log(currentValue)
+                    historicalData.push(currentValue)
+                    index++
+                }
+                else {
+                    break
+                }
+            }
+        }
+        let ctx = getRef('performance_graph').getContext('2d');
+
+        let gradientFill = ctx.createLinearGradient(200, 0, 200, 400);
+        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0.6)");
+        gradientFill.addColorStop(1, "transparent");
+
+        async function renderGraph(obj) {
+            await getData(obj)
+            
+            let myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates.reverse(),
+                    datasets: [{
+                        label: `Bob's fund performace($)`,
+                        data: historicalData.reverse(),
+                        borderColor: '#034baa',
+                        fill: true,
+                        backgroundColor: gradientFill,
+                        pointBackgroundColor: 'white',
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointHoverBorderWidth: 4,
+                        borderWidth: 2,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        } 
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
         }
     </script>
 </body>
