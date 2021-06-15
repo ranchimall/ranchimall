@@ -107,7 +107,9 @@
             <h1 id="hero_title"></h1>
             <section class="room-carousel">
                 <section id="performance_room" class="grid room">
-                    <canvas id="performance_graph"></canvas>
+                    <section class="graph-container">
+                        <canvas id="performance_graph"></canvas>
+                    </section>
                     <p>Bobs fund different fund release timeline</p>
                     <ul id="bobs_fund_timeline" class="timeline-container"></ul>
                 </section>
@@ -556,6 +558,7 @@
                         USD_base,
                         amount: invested,
                         fee: 0,
+                        release
                     }
                     renderGraph(obj)
                     const fundCard = create('div', {
@@ -606,7 +609,7 @@
                 if (counter < 12) {
                     let BTC_base = btcPrices[dataPoint]['1a. open (USD)']
                     allBtcPrices.push(BTC_base)
-                    dates.push(dataPoint.split('-').join('/'))
+                    dates.push(dataPoint.split('-').reverse().join('/'))
                     counter++
                 }
                 else {
@@ -631,43 +634,62 @@
         }
         let ctx = getRef('performance_graph').getContext('2d');
 
-        let gradientFill = ctx.createLinearGradient(200, 0, 200, 400);
-        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0.6)");
-        gradientFill.addColorStop(1, "transparent");
 
+        let gradientFill
+        let lineColor
+        let textColor
+
+        function selectGraphColors(){
+            gradientFill = ctx.createLinearGradient(200, 0, 200, 400);
+            let cssTextColor = getComputedStyle(document.body).getPropertyValue('--text-color')
+            gradientFill.addColorStop(0, `rgba(${cssTextColor}, 0.2)`);
+            gradientFill.addColorStop(1, "transparent");
+            lineColor = ctx.createLinearGradient(500, 0, 100, 0)
+            lineColor.addColorStop(0, "#80b6f4");
+            lineColor.addColorStop(1, "#f49080");
+            // lineColor = getComputedStyle(document.body).getPropertyValue('--secondary-text-color');
+            textColor = `rgba(${cssTextColor}, 0.8)`
+        }
+        selectGraphColors()
+
+        let myChart
         async function renderGraph(obj) {
             await getData(obj)
             
-            let myChart = new Chart(ctx, {
+            myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: dates.reverse(),
                     datasets: [{
-                        label: `Bob's fund performace($)`,
+                        label: `${getFormatedTime(obj.release, true)} fund performace($)`,
                         data: historicalData.reverse(),
-                        borderColor: '#034baa',
+                        borderColor: lineColor,
                         fill: true,
                         backgroundColor: gradientFill,
                         pointBackgroundColor: 'white',
                         pointRadius: 4,
                         pointHoverRadius: 6,
                         pointHoverBorderWidth: 4,
-                        borderWidth: 2,
-                        tension: 0.3
+                        borderWidth: 4,
+                        tension: 0.3,
+                        color: textColor
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        } 
-                    },
                     scales: {
                         y: {
+                            ticks: {
+                                color: textColor
+                            },
+                            // display: false,
                             beginAtZero: true
                         },
                         x: {
+                            ticks: {
+                                color: textColor
+                            },
+                            // display: false,
                             grid: {
                                 display: false
                             }
@@ -676,6 +698,15 @@
                 }
             });
         }
+
+        getRef("theme_switcher").addEventListener("change", function (e) {
+            selectGraphColors()
+            myChart.data.datasets[0].borderColor = lineColor
+            myChart.data.datasets[0].backgroundColor = gradientFill
+            myChart.options.scales.x.ticks.color = textColor;
+            myChart.options.scales.y.ticks.color = textColor;
+            myChart.update()
+        });
     </script>
 </body>
 </html>
