@@ -48,23 +48,21 @@ window.addEventListener("online", () => {
   notify("We are back online.", "success");
 });
 
-const themeSwitcher = getRef("theme_switcher");
-
-if (themeSwitcher) {
+if (getRef("theme_switcher")) {
   if (localStorage.theme === "dark") {
     nightlight();
-    themeSwitcher.checked = true;
+    getRef("theme_switcher").checked = true;
   } else if (localStorage.theme === "light"){
     daylight();
-    themeSwitcher.checked = false;
+    getRef("theme_switcher").checked = false;
   }
   else {
     if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
       nightlight();
-      themeSwitcher.checked = true;
+      getRef("theme_switcher").checked = true;
     } else {
       daylight();
-      themeSwitcher.checked = false;
+      getRef("theme_switcher").checked = false;
     }
   }
 
@@ -75,7 +73,7 @@ if (themeSwitcher) {
   function nightlight() {
     document.body.setAttribute("data-theme", "dark");
   }
-  themeSwitcher.addEventListener("change", function (e) {
+  getRef("theme_switcher").addEventListener("change", function (e) {
     if (this.checked) {
       nightlight();
       localStorage.setItem("theme", "dark");
@@ -266,13 +264,13 @@ const siteMap = [
         buyUrl: `purchase_room`,
         status: `We are servicing current customers only. A new Blockchain-based version of Bob's Fund will be available soon.`
       },
-/*       {
+      {
         name: "Initial Coin Offering",
         url: "ico",
         brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
-        // isSold: true,
+        isSold: true,
         buyUrl: `purchase_room`
-      }, */
+      },
     ],
   },
   /*   {

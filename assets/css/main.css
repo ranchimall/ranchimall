@@ -1142,14 +1142,19 @@ ol[type="1"] {
 
 .room-tile__icon {
   position: absolute;
-  height: 8rem;
-  width: 8rem;
+  height: 6rem;
+  width: 6rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .room-tile__icon:not(.room-tile__icon--colored) {
   fill: rgba(var(--text-color), 0.1);
+}
+
+.investors-icon {
+  height: 8rem;
+  width: 8rem;
 }
 
 .room-tile__title {
@@ -1247,11 +1252,6 @@ ol[type="1"] {
   justify-content: flex-start;
 }
 
-.room-shortcut {
-  padding: 0.5em 0.8rem;
-  border-radius: 0.3rem;
-  background-color: rgba(var(--text-color), 0.06);
-}
 .room-shortcut .room-tile__title {
   font-weight: 500;
   font-size: 0.9rem;
@@ -1269,26 +1269,6 @@ ol[type="1"] {
   box-shadow: 0 1rem 3rem -1rem rgba(0, 0, 0, 0.2);
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
-}
-.grid .ext-link-tile::after, .ext-link-tile::before {
-  position: absolute;
-  content: "";
-  border-radius: 50%;
-  z-index: 0;
-}
-.ext-link-tile::before {
-  top: 5rem;
-  right: -2rem;
-  height: 4rem;
-  width: 4rem;
-  background-color: rgba(var(--text-color), 0.5);
-}
-.ext-link-tile::after {
-  top: -2rem;
-  right: -3rem;
-  height: 10rem;
-  width: 10rem;
-  background-color: rgba(var(--text-color), 0.2);
 }
 
 .tile__title {
@@ -1401,6 +1381,10 @@ ol[type="1"] {
   color: rgba(var(--text-color), 0.8);
 }
 
+.graph-container {
+  margin: 1rem 0 4rem 0;
+}
+
 @media only screen and (max-width: 640px) {
   .hide-on-mobile {
     display: none;
@@ -1468,9 +1452,13 @@ ol[type="1"] {
   }
 
   .room-tile__icon {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-bottom: 1rem;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .investors-icon {
+    height: 6rem;
+    width: 6rem;
   }
 
   #hero_title {
@@ -1640,6 +1628,11 @@ ol[type="1"] {
 
   .features-grid {
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
+
+  .graph-container {
+    width: 80%;
+    justify-self: center;
   }
 }
 @media only screen and (min-width: 1280px) {
