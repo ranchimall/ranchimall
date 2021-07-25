@@ -266,7 +266,7 @@ const siteMap = [
       },
       {
         name: "Initial Coin Offering",
-        url: "ico",
+        url: "ico.html",
         brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
         isSold: true,
         buyUrl: `purchase_room`

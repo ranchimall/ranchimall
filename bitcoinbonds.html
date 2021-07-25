@@ -114,6 +114,10 @@
             <h1 id="hero_title"></h1>
             <section class="room-carousel">
                 <section id="performance_room" class="grid room">
+                    <div class="legend-container flex align-center justify-center margin-bottom-1r">
+                        <div id="line_sample" class="hide-completely"></div>
+                        <h4 id="graph_legend"></h4>
+                    </div>
                     <section class="graph-container">
                         <canvas id="performance_graph"></canvas>
                     </section>
@@ -263,13 +267,16 @@
             </footer>
         </section>
         <section>
-            <a class="ext-link-tile" href="https://ranchimall.github.io/blockchain-bonds/" target="_blank" >
+            <div class="ext-link-tile">
                 <div class="grid">
                     <h4 class="tile__title">See Bitcoin Bonds in action</h4>
                     <p class="tile__brief">Visit the website to see investors and asset performance</p>
                 </div>
-                <button class="round">Visit</button>
-            </a>
+                <div class="link-container">
+                    <a class="round" href="https://www.ranchimall.net/BitBonds/" target="_blank">2017 release</a>
+                    <a class="round" href="https://ranchimall.github.io/blockchain-bonds/" target="_blank">Blockchain version</a>
+                </div>
+            </div>
         </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
@@ -455,30 +462,36 @@
 
         let gradientFill
         let lineColor
+        let myChart
 
         function selectGraphColors(){
             gradientFill = ctx.createLinearGradient(200, 0, 200, 400);
             let cssTextColor = getComputedStyle(document.body).getPropertyValue('--text-color')
             gradientFill.addColorStop(0, `rgba(${cssTextColor}, 0.2)`);
             gradientFill.addColorStop(1, "transparent");
-            lineColor = ctx.createLinearGradient(500, 0, 100, 0)
-            lineColor.addColorStop(0, "#80b6f4");
-            lineColor.addColorStop(1, "#f49080");
+            if(myChart){
+                lineColor = ctx.createLinearGradient(0, 0, myChart.chartArea.width, 0)
+            }else{
+                lineColor = ctx.createLinearGradient(0, 0, 500, 0)
+            }
+            lineColor.addColorStop(0, "#f49080");
+            lineColor.addColorStop(1, "#80b6f4");
             // lineColor = getComputedStyle(document.body).getPropertyValue('--secondary-text-color');
-            textColor = `rgba(${cssTextColor}, 0.8)`
+            textColor = `rgba(${cssTextColor}, 0.7)`
         }
-        selectGraphColors()
-
-        let myChart
+        
         async function renderGraph(obj) {
             await getData(obj)
+            selectGraphColors()
+            getRef('line_sample').classList.remove('hide-completely')
+            getRef('graph_legend').textContent = `Growth of $100 in $${obj.BTC_base} series`
             
             myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: dates.reverse(),
                     datasets: [{
-                        label: `$${obj.BTC_base} series performace($)`,
+                        labels: '',
                         data: historicalData.reverse(),
                         borderColor: lineColor,
                         fill: true,
@@ -494,6 +507,12 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
                     scales: {
                         y: {
                             ticks: {
@@ -521,6 +540,7 @@
             myChart.data.datasets[0].backgroundColor = gradientFill
             myChart.options.scales.x.ticks.color = textColor;
             myChart.options.scales.y.ticks.color = textColor;
+            myChart.options.plugins.legend.labels.color = textColor;
             myChart.update()
         });
     </script>

@@ -1060,6 +1060,7 @@ ol[type="1"]{
     margin-top: auto;
     & > *{
         padding: 0;
+        box-shadow: none;
     }
 }
 #expanding_tile{
@@ -1167,7 +1168,7 @@ ol[type="1"]{
     z-index: 1;
 }
 .tile__brief{
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     z-index: 1;
     color: rgba(var(--text-color), 0.7);
 }
@@ -1263,8 +1264,21 @@ ol[type="1"]{
     font-size: 0.9rem;
     color: rgba(var(--text-color), 0.8);
 }
+#line_sample{
+    width: 2rem;
+    height: 0.2rem;
+    margin-right: 1rem;
+    background: linear-gradient(90deg, #f49080, #80b6f4);
+}
 .graph-container{
+    min-height: 16rem;
     margin: 1rem 0 4rem 0;
+}
+.link-container{
+    display: grid;
+    gap: 1rem;
+    justify-items: flex-start;
+    align-items: center;
 }
 
 @media only screen and (max-width: 640px) {
@@ -1339,8 +1353,8 @@ ol[type="1"]{
         flex-direction: column;
         align-items: flex-start;
     }
-    .round{
-        margin-top: 1rem;
+    .link-container{
+        margin-top: 1.5rem;
     }
 }
 @media only screen and (min-width: 640px) {
@@ -1483,6 +1497,7 @@ ol[type="1"]{
     }
     .graph-container{
         width: 80%;
+        min-height: 60vh;
         justify-self: center;
     }
 }
@@ -1500,6 +1515,9 @@ ol[type="1"]{
     .rooms-layout{
         grid-template-columns: repeat(3, 1fr);
         grid-auto-flow: column;
+    }
+    .link-container{
+        grid-template-columns: auto auto;
     }
 }
 @media (any-hover: hover){
