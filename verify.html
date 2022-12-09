@@ -5,16 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bob's Fund</title>
+    <title>Verify certificate</title>
     <link rel="shortcut icon" href="assets/RM logo.png" type="image/png">
     <link rel="stylesheet" href="assets/css/main.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        sm-input {
+            --border-radius: 0.5rem 0 0 0.5rem;
+            flex: 1;
+        }
+
+        button[type="submit"] {
+            font-size: 1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 0 .5rem 0.5rem 0;
+        }
+
+        sm-form {
+            --gap: 0;
+            width: min(26rem, 100%);
+        }
+    </style>
 </head>
 
 <body>
     <sm-notifications id="notification_drawer"></sm-notifications>
-
     <section id="elevator_popup" class="grid hide-completely">
         <header class="elevator__header">
             <button class="close-button justify-self-start" onclick="hideSiteMap()">
@@ -48,40 +64,19 @@
         <theme-toggle></theme-toggle>
     </header>
     <div id="outlet_switcher" class="grid gap-1-5 hide-completely">
-        <div class="flex align-center">
-            <!--             <svg class="icon button__icon--left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-                height="24">
-                <path fill="none" d="M0 0h24v24H0z" />
-                <path
-                    d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z" />
-            </svg> -->
-            <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
-            <!--             <button class="justify-right" onclick="hideOutletSwitcher()">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z" />
-                </svg>
-            </button> -->
-        </div>
+        <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
         <section id="outlet_switcher__outlet_container" class="outlet_switcher__floor"></section>
     </div>
     <main class="page">
         <section class="outlet-hero-section margin-bottom-3r">
-            <h2 class="h2 weight-900 margin-bottom-1r text-center">Bob's Fund</h2>
-            <button class="outlet-label">
-                <!--                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path
-                        d="M21 13.242V20h1v2H2v-2h1v-6.758A4.496 4.496 0 0 1 1 9.5c0-.827.224-1.624.633-2.303L4.345 2.5a1 1 0 0 1 .866-.5H18.79a1 1 0 0 1 .866.5l2.702 4.682A4.496 4.496 0 0 1 21 13.242zm-2 .73a4.496 4.496 0 0 1-3.75-1.36A4.496 4.496 0 0 1 12 14.001a4.496 4.496 0 0 1-3.25-1.387A4.496 4.496 0 0 1 5 13.973V20h14v-6.027zM5.789 4L3.356 8.213a2.5 2.5 0 0 0 4.466 2.216c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 0 0 4.644 0c.335-.837 1.52-.837 1.856 0a2.5 2.5 0 1 0 4.457-2.232L18.21 4H5.79z" />
-                </svg> -->
-                <span class="outlet-label__name">Outlet</span>
-                <span class="outlet-label__no"></span>
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
-                </svg>
-            </button>
+            <div class="grid">
+                <h2 class="h2 weight-900 margin-bottom-1r">Verify certificate</h2>
+                <p>Enter transaction ID of issued certificate to check genuinity.</p>
+                <sm-form class="flex margin-top-1-5">
+                    <sm-input id="tx_id_input" type="search" placeholder="Transaction ID"></sm-input>
+                    <button class="button button--primary" type="submit" onclick="checkId(event)">Check</button>
+                </sm-form>
+            </div>
         </section>
     </main>
 
@@ -90,6 +85,35 @@
     <script src="https://unpkg.com/uhtml@3.0.1/es.js"></script>
     <script src="assets/js/index.js"></script>
     <script>
+        function checkId(e) {
+            e.preventDefault()
+            const toVerify = getRef('tx_id_input').value.trim()
+            if (toVerify === '')
+                return notify('Please enter a transaction ID', 'error')
+            fetch(`https://flosight.duckdns.org/api/tx/${toVerify}`).then(async res => {
+                if (res.status === 404) return notify('Invalid transaction ID', 'error')
+                const { floData } = await res.json()
+                const certType = floData.split(' ').slice(0, 3).join(' ');
+                let certificateVerification
+                switch (certType) {
+                    case "CERTIFICATE OF INTERNSHIP":
+                        certificateVerification = 'internCertificate';
+                        break;
+                    case "CERTIFICATE OF EMPLOYMENT":
+                        certificateVerification = 'employeeCertificate';
+                        break;
+                    case "CERTIFICATE OF VOLUNTEERSHIP":
+                        certificateVerification = 'volunteerCertificate';
+                        break;
+                    case "CERTIFICATE OF PARTICIPATION":
+                        certificateVerification = 'participationCertificate';
+                        break;
+                }
+                window.open(`https://www.ranchimall.net/verify/?${certificateVerification}=${toVerify}`, '_blank').focus();
+            }).catch(err => {
+                console.error(err)
+            })
+        }
     </script>
 </body>
 
