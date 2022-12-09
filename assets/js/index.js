@@ -1,5 +1,18 @@
-const domRefs = {};
 
+"use strict";
+// Global variables
+const { html, render: renderElem } = uhtml;
+//Checks for internet connection status
+if (!navigator.onLine)
+  floGlobals.connectionErrorNotification = notify('There seems to be a problem connecting to the internet, Please check you internet connection.', 'error')
+window.addEventListener('offline', () => {
+  floGlobals.connectionErrorNotification = notify('There seems to be a problem connecting to the internet, Please check you internet connection.', 'error')
+})
+window.addEventListener('online', () => {
+  getRef('notification_drawer').remove(floGlobals.connectionErrorNotification)
+  notify('We are back online.', 'success')
+})
+const domRefs = {};
 function getRef(elementId) {
   if (!domRefs.hasOwnProperty(elementId)) {
     domRefs[elementId] = {
@@ -20,68 +33,11 @@ function getRef(elementId) {
 }
 
 function create(tagName, obj) {
-  const {className, text} = obj
+  const { className, text } = obj
   const elem = document.createElement(tagName)
   elem.className = className
   elem.textContent = text
   return elem
-}
-
-//Checks for internet connection status
-if (!navigator.onLine)
-  notify(
-    "There seems to be a problem connecting to the internet, Please check you internet connection.",
-    "error",
-    "",
-    true
-  );
-window.addEventListener("offline", () => {
-  notify(
-    "There seems to be a problem connecting to the internet, Please check you internet connection.",
-    "error",
-    true,
-    true
-  );
-});
-window.addEventListener("online", () => {
-  getRef("notification_drawer").clearAll();
-  notify("We are back online.", "success");
-});
-
-if (getRef("theme_switcher")) {
-  if (localStorage.theme === "dark") {
-    nightlight();
-    getRef("theme_switcher").checked = true;
-  } else if (localStorage.theme === "light"){
-    daylight();
-    getRef("theme_switcher").checked = false;
-  }
-  else {
-    if (window.matchMedia(`(prefers-color-scheme: dark)`).matches) {
-      nightlight();
-      getRef("theme_switcher").checked = true;
-    } else {
-      daylight();
-      getRef("theme_switcher").checked = false;
-    }
-  }
-
-  function daylight() {
-    document.body.setAttribute("data-theme", "light");
-  }
-
-  function nightlight() {
-    document.body.setAttribute("data-theme", "dark");
-  }
-  getRef("theme_switcher").addEventListener("change", function (e) {
-    if (this.checked) {
-      nightlight();
-      localStorage.setItem("theme", "dark");
-    } else {
-      daylight();
-      localStorage.setItem("theme", "light");
-    }
-  });
 }
 
 function setAttributes(el, attrs) {
@@ -121,14 +77,21 @@ function randomColor() {
 }
 
 //Function for displaying toast notifications. pass in error for mode param if you want to show an error.
-function notify(message, mode, pinned, sound) {
-  if (mode === "error") console.error(message);
-  else console.log(message);
-  getRef("notification_drawer").push(message, mode, pinned);
-  if (navigator.onLine && sound) {
-    getRef("notification_sound").currentTime = 0;
-    getRef("notification_sound").play();
+function notify(message, mode, options = {}) {
+  let icon
+  switch (mode) {
+    case 'success':
+      icon = `<svg class="icon icon--success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/></svg>`
+      break;
+    case 'error':
+      icon = `<svg class="icon icon--error" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>`
+      options.pinned = true
+      break;
   }
+  if (mode === 'error') {
+    console.error(message)
+  }
+  return getRef("notification_drawer").push(message, { icon, ...options });
 }
 
 const currentYear = new Date().getFullYear();
@@ -249,27 +212,40 @@ const siteMap = [
     outlets: [
       {
         name: "Bitcoin Bonds",
-        url: "bitcoinbonds.html",
+        outletLinks: [
+          {
+            label: "Explore",
+            url: "bitcoinbonds.html",
+          }
+        ],
         brief: `Bondholders get a minimum guarantee of 13% interest per annum during the lock-in period or 50% of all Bitcoin price gains whichever is higher. It offers full capital protection if
         Bitcoin prices fall below acquisition price.`,
-        // isSold: true,
-        buyUrl: `purchase_room`,
         status: `We are servicing current customers only. A new Blockchain-based version of Bitcoin Bonds will be available soon.`
       },
       {
         name: `Bob's Fund`,
-        url: `bob'sfund.html`,
+        outletLinks: [
+          {
+            label: "Explore",
+            url: "bob'sfund.html",
+          }
+        ],
         brief: `Bobs Fund is a 20 year long term Bitcoin price linked product. Investors are entitled to 100% of Bitcoin price gains, but they must hold for 20 years.`,
-        // isSold: true,
-        buyUrl: `purchase_room`,
         status: `We are servicing current customers only. A new Blockchain-based version of Bob's Fund will be available soon.`
       },
       {
         name: "Initial Coin Offering",
-        url: "ico.html",
+        outletLinks: [
+          {
+            label: "Explore",
+            url: "ico.html",
+          },
+          {
+            label: "Buy",
+            url: "ico.html#purchase_room",
+          },
+        ],
         brief: `The Initial Coin Offering (ICO) of RanchiMall was launched in 2017. It was envisioned to sell 21 million tokens over 14 phases over 3 years.`,
-        isSold: true,
-        buyUrl: `purchase_room`
       },
     ],
   },
@@ -357,191 +333,190 @@ const siteMap = [
         }
       ],
     }, */
+  {
+    floor: 'Internship',
+    brief: ``,
+    outlets: [
+      {
+        name: "RanchiMall Internship Blockchain contract",
+        brief: `This outlet has the list of all active projects being executed through our internship program. Interns can apply or they can join active projects here.`,
+        outletLinks: [
+          {
+            label: "Explore",
+            url: "https://ranchimall.github.io/RIBC/",
+            outbound: true,
+          }
+        ],
+      },
+      {
+        name: `Certificates`,
+        brief: `This outlet has access to blockchain verification to all of RanchiMall issued Internship & Employment  certificates`,
+        outletLinks: [
+            {
+                label: "See Intern Payments",
+                url: "https://ranchimall.github.io/ribcpayments/",
+                outbound: true,
+            },
+            {
+                label: "Verify Certificate",
+                url: "verify.html",
+            },
+            {
+                label: "Check issued certificates",
+                url: "https://www.ranchimall.net/certify/",
+                outbound: true,
+          }
+        ],
+      }
+    ],
+  },
 ];
-// templates
 
-const bitBondRowTemplate = document.createElement('template')
-bitBondRowTemplate.innerHTML = `
-<div class="bit-bond-series__row grid">
-    <div class="grid">
-        <h5 class="label color-0-8 weight-500">Series</h5>
-        <h3 class="value original-value"></h3>
-    </div>
-    <div class="flex align-center space-between">
-        <div class="grid">
-            <h5 class="label color-0-8 weight-500">Invested</h5>
-            <h3 class="value">$100</h3>
-        </div>
-        <div class="grid justify-right text-align-right">
-            <h5 class="label color-0-8 weight-500">Current value</h5>
-            <h3 class="value current-value" style="color: var(--green)"></h3>
-            <div class="flex align-center">
-                <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
-                <span class="percent-gain"></span>
-                <span class="time-elapsed"></span>
-            </div>
-        </div>
-    </div>
-
-</div>
-`
-
-const bobsFundRowTemplate = document.createElement('template')
-bobsFundRowTemplate.innerHTML = `
-<div class="bob-fund__row grid">
-    <div class="grid">
-        <h5 class="label color-0-8 weight-500">FLO ID</h5>
-        <h3 class="person__name breakable"></h3>
-    </div>
-    <div class="flex">
-        <div class="grid">
-            <h5 class="label color-0-8 weight-500">Invested</h5>
-            <h3 class="value original-value"></h3>
-        </div>
-        <div class="grid justify-right text-align-right">
-            <h4 class="label color-0-8 weight-500">Current value</h4>
-            <h3 class="value current-value" style="color: var(--green)"></h3>
-            <div class="flex align-center">
-              <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
-              <span class="percent-gain"></span>
-              <span class="time-elapsed"></span>
-            </div>
-        </div>
-    </div>
-</div>
-`
-
-
-const floorListitemTemplate = document.createElement('template')
-floorListitemTemplate.innerHTML = `
-<li class="floor_list__item">
-  <button class="floor_list__header floor__button">
-      <h2 class="h2 floor-num">Floor</h2>
-      <h3 class="h3 accent-color"></h3>
-  </button>
-  <ul class="outlet-list grid"></ul>
-</li>
-`
-
-const outletListitemTemplate = document.createElement('template')
-outletListitemTemplate.innerHTML = `
-  <li class="outlet-list__item interact">
-    <a class="grid align-center flow-column gap-1 justify-start">
-      <div>
-        <h4 class="outlet-title"></h4>
-        <p class="outlet-brief"></p>
-      </div>
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
-    </a>
-  </li>
-`
-
-
+function formatAmount(amount, currency = 'USD') {
+  return amount.toLocaleString(currency === 'USD'? 'en-US': 'en-IN', { style: 'currency', currency: currency });
+} 
 
 
 const render = {
-  bitBondRow(obj) {
-    const { series, currentValue, timeElapsed, percentGain } = obj;
-    const row = bitBondRowTemplate.content.cloneNode(true);
-    row.querySelector(".original-value").textContent = series.toLocaleString(`en-US`, { style: 'currency', currency: 'USD' });
-    row.querySelector(".current-value").textContent = currentValue.toLocaleString(`en-US`, { style: 'currency', currency: 'USD' });
-    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed} years`;
-    row.querySelector(".percent-gain").textContent = `${percentGain}%`;
-    return row;
+    bitBondRow(obj) {
+        const { series, currentValue, timeElapsed, percentGain } = obj;
+        return html`
+            <div class="bit-bond-series__row grid">
+                <div class="grid">
+                    <h5 class="label color-0-8 weight-500">Series</h5>
+                    <h3 class="value original-value">${formatAmount(series)}</h3>
+                </div>
+                <div class="flex align-center space-between">
+                    <div class="grid">
+                        <h5 class="label color-0-8 weight-500">Invested</h5>
+                        <h3 class="value">$100</h3>
+                    </div>
+                    <div class="grid justify-right text-align-right">
+                        <h5 class="label color-0-8 weight-500">Current value</h5>
+                        <h3 class="value current-value" style="color: var(--green)">${formatAmount(currentValue)}</h3>
+                        <div class="flex align-center">
+                            <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
+                            <span class="percent-gain">${ `${percentGain}%`}</span>
+                            <span class="time-elapsed">${`In last ${timeElapsed} years`}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+    bobFundRow(obj) {
+        const { invested, floId, currentValue, timeElapsed, gain } = obj;
+        return html`
+            <div class="bob-fund__row grid">
+                <div class="grid">
+                    <h5 class="label color-0-8 weight-500">FLO ID</h5>
+                    <h3 class="person__name breakable">${floId}</h3>
+                </div>
+                <div class="flex">
+                    <div class="grid">
+                        <h5 class="label color-0-8 weight-500">Invested</h5>
+                        <h3 class="value original-value">${formatAmount(invested, 'INR')}</h3>
+                    </div>
+                    <div class="grid justify-right text-align-right">
+                        <h4 class="label color-0-8 weight-500">Current value</h4>
+                        <h3 class="value current-value" style="color: var(--green)">${formatAmount(currentValue)}</h3>
+                        <div class="flex align-center">
+                            <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
+                            <span class="percent-gain">${`${gain}%`}</span>
+                            <span class="time-elapsed">${`In last ${timeElapsed} years`}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+    icoInvestorRow(obj, options) {
+        const { extension, investorName, bio, contribution } = obj;
+        const { thumbnail } = options;
+        const folder = thumbnail ? "investors-thumbnail" : "investors";
+        return html`
+        <div class=${`person-card investor-card grid gap-1-5 ${thumbnail? 'person-card--small': 'person-card--big'}`} >
+            <img class="person__image" src=${`assets/${folder}/${investorName}.${extension}`} alt=${`${investorName} profile picture`} loading="lazy">
+            <div class="grid">
+                <h3 class="person__name value capitalize">${investorName}</h3>
+                <p class="investor__bio color-0-8">${bio}</p>
+            </div>
+            <div class="grid investor__contribution-container">
+                <p class="investor__contribution weight-700">${contribution}</p>
+            </div>
+        </div>
+    `;
   },
-  bobFundRow(obj) {
-    const { investorName, invested, floId, currentValue, timeElapsed, gain } = obj;
-    const row = bobsFundRowTemplate.content.cloneNode(true);
-    row.querySelector(".person__name").textContent = floId;
-    row.querySelector(".original-value").textContent = `${invested.toLocaleString(`en-IN`, { style: 'currency', currency: 'INR' })}`;
-    row.querySelector(".current-value").textContent = `${currentValue.toLocaleString(`en-IN`, { style: 'currency', currency: 'INR' })}`;
-    row.querySelector(".percent-gain").textContent = `${gain}%`;
-    row.querySelector(".time-elapsed").textContent = `In last ${timeElapsed} years`;
-    return row;
-  },
-  icoInvestorRow(obj, options) {
-    const { extension, investorName, bio, contribution } = obj;
-    const { thumbnail } = options;
-    const row = getRef("ico_investor_row").content.cloneNode(true);
-    const card = row.querySelector(".person-card");
-    const folder = thumbnail ? "investors-thumbnail" : "investors";
-    const investorImage = row.querySelector(".person__image");
-    if (thumbnail) card.classList.add("person-card--small");
-    else card.classList.add("person-card--big");
-    investorImage.src = `assets/${folder}/${investorName}.${extension}`;
-    investorImage.setAttribute("alt", `${investorName} profile picture`);
-    row.querySelector(".person__name").textContent = investorName;
-    row.querySelector(".investor__bio").textContent = bio;
-    row.querySelector(".investor__contribution").textContent = contribution;
-    return row;
-  },
-  internCard(obj) {
-    const { extension, internName, level, floId, project } = obj;
-    const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
-    const investorImage = card.querySelector(".person__image");
-    investorImage.src = `assets/interns/${internName}.${extension}`;
-    investorImage.setAttribute("alt", `${internName} profile picture`);
-    card.querySelector(".intern__level").classList.add(level.toLowerCase())
-    card.querySelector(".intern__level").textContent = level;
-    card.querySelector(".person__name").textContent = internName;
-    card.querySelector(".intern-flo-id").textContent = floId;
-    card.querySelector(".intern__project").textContent = project;
-    return card;
-  },
+//   internCard(obj) {
+//     const { extension, internName, level, floId, project } = obj;
+//     const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
+//     const investorImage = card.querySelector(".person__image");
+//     investorImage.src = `assets/interns/${internName}.${extension}`;
+//     investorImage.setAttribute("alt", `${internName} profile picture`);
+//     card.querySelector(".intern__level").classList.add(level.toLowerCase())
+//     card.querySelector(".intern__level").textContent = level;
+//     card.querySelector(".person__name").textContent = internName;
+//     card.querySelector(".intern-flo-id").textContent = floId;
+//     card.querySelector(".intern__project").textContent = project;
+//     return card;
+//   },
   floorLabel(floorNumber, offsetTop) {
-    const floorLabel = getRef("floor_indicator_template").content.cloneNode(
-      true
-    ).firstElementChild;
-    floorLabel.setAttribute("style", `top: ${offsetTop}px`);
-    floorLabel.dataset.target = `floor_${floorNumber}`;
-    return floorLabel;
+    return html`
+        <div class="floor-label interact" style=${`top: ${offsetTop}px`} data-target=${`floor_${floorNumber}`}>
+            <span class="floor-circle"></span>
+        </div>
+    `;
   },
   outletListItem(outletObj) {
-    const { name, brief, url } = outletObj
-    const li = outletListitemTemplate.content.cloneNode(true).firstElementChild
-    li.querySelector('a').href = `${url}`
-    li.querySelector('.outlet-title').textContent = name
-    // li.querySelector('.outlet-brief').textContent = brief ? brief : ''
-    return li
+    const { name, brief, outletLinks } = outletObj
+    return html`
+      <li class="outlet-list__item interact">
+        <a href=${outletLinks[0].url} class="grid align-center flow-column gap-1 justify-start">
+          <div>
+            <h4 class="outlet-title">${name}</h4>
+            ${brief ? html`<p class="outlet-brief">${brief}</p>` : ''}
+          </div>
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+        </a>
+      </li>
+    `;
   },
-  floorListitem(floorObj, index) {
+  floorListItem(floorObj, index) {
     const { floor, outlets } = floorObj
-    const li = floorListitemTemplate.content.cloneNode(true).firstElementChild
-    li.firstElementChild.dataset.target = `floor_${index + 1}`;
-    li.querySelector('.h3').textContent = floor
-    li.querySelector('.floor-num').textContent = `floor ${index + 1}`
-
-    const h3 = document.createElement('h3')
-    h3.classList.add('h3', 'weight-900', 'floor-list__outlet')
-    h3.textContent = 'Outlets'
-
-    const frag = document.createDocumentFragment()
-    outlets.forEach(outlet => frag.append(render.outletListItem(outlet)))
-
-    li.querySelector('.outlet-list').append(h3, frag)
+    const li = html`
+    <li class="floor_list__item">
+      <button class="floor_list__header floor__button" data-target=${`floor_${index + 1}`}>
+          <h2 class="h2 floor-num">${`floor ${index + 1}`}</h2>
+          <h3 class="h3 accent-color">${floor}</h3>
+      </button>
+      <ul class="outlet-list grid">
+        <h3 class="h3 weight-900 floor-list__outlet">Outlets</h3>
+        ${outlets.map(outlet => render.outletListItem(outlet))}
+      </ul>
+    </li>
+    `;
     return li
   },
   outletSwitcherButton(outletObj, activeOutlet) {
-    const { name, url } = outletObj
+    const { name, outletLinks } = outletObj
     const button = document.createElement('a')
     button.classList.add('outlet_switcher__button')
-    if (activeOutlet === url) {
+    if (activeOutlet === outletLinks[0].url) {
       button.classList.add('outlet_switcher__button--active')
     }
-    button.href = url
+    button.href = outletLinks[0].url
     button.textContent = name
     return button;
   },
-  statusBanner(bannerMsg) {
-    const banner = document.createElement('section')
-    banner.classList.add('banner')
-    banner.innerHTML = `
-      <p class="banner__text">${bannerMsg}</p>
-      <button class="close-button" onclick="this.parentNode.remove()">
-          <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
-      </button>
+  statusBanner(bannerMsg) {    
+      return html.node`
+        <section class="banner">
+            <p class="banner__text">${bannerMsg}</p>
+            <button class="close-button" onclick="this.parentNode.remove()">
+                <svg class="icon icon-only close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>
+            </button>
+        </section>
     `
-    return banner
   }
 };
 
@@ -739,44 +714,23 @@ function hideOutletSwitcher() {
 
 let currentPage
 function renderSiteMap() {
-  const frag = document.createDocumentFragment()
-  siteMap.forEach((floor, index) => frag.append(render.floorListitem(floor, index)))
-  getRef('floor_list').append(frag)
+  getRef('floor_list').append(html.node`${siteMap.map((floor, index) =>render.floorListItem(floor, index))}`)
   const pathArray = location.pathname.split('/')
-  for (floor of siteMap) {
-    for (outlet of floor.outlets) {
-      currentPage = pathArray[pathArray.length - 1]
-      if (pathArray[pathArray.length - 1].includes(outlet.url)) {
-        renderFloorOutlets(floor, outlet.url)
-        break;
-      }
-    }
-  }
+  siteMap.forEach((floor) => {
+    const matchedOutlet = floor.outlets.find(outlet => pathArray[pathArray.length - 1].includes(outlet.outletLinks[0].url))
+    if (matchedOutlet) 
+      renderFloorOutlets(floor, matchedOutlet.outletLinks[0].url)
+  })
 }
 renderSiteMap()
 
 function renderFloorOutlets(floorObj, activeOutlet) {
   const { floor, outlets } = floorObj
-  console.log(floor)
   const frag = document.createDocumentFragment()
   outlets.forEach(outlet => frag.append(render.outletSwitcherButton(outlet, activeOutlet)))
   getRef('outlet_switcher__outlet_container').append(frag)
   getRef('outlet_switcher__floor_num').textContent = floor
-  let floorNum = -1
-  let outletNum = -1
-  for (let i = 0; i < siteMap.length; i++) {
-    if (siteMap[i].floor === floor) {
-      floorNum = i
-      break
-    }
-  }
-  for (let i = 0; i < outlets.length; i++) {
-    if (outlets[i].url === activeOutlet) {
-      outletNum = i
-      break
-    }
-  }
-  // document.querySelector('.outlet-label__name').textContent = floorNum > -1 ? `Floor ${floorNum + 1} outlet ${outletNum + 1}` : ''
+  const outletNum = outlets.findIndex(o => o.outletLinks[0].url === activeOutlet)
   document.querySelector('.outlet-label__no').textContent = outletNum + 1
   document.querySelector('.outlet-label__no').dataset.number = outletNum + 1
   if (outlets[outletNum].hasOwnProperty('status')) {
@@ -900,10 +854,10 @@ function showRoom(roomId, animate = false) {
     roomContainer.classList.remove('hide-completely')
     if (animate && !isRoomOpen) {
       roomContainer.animate(slideInDown, animeInOptions)
-      .onfinish = () => {
-        getRef('expanding_tile').classList.add('hide-completely')
-        isRoomOpen = true
-      }
+        .onfinish = () => {
+          getRef('expanding_tile').classList.add('hide-completely')
+          isRoomOpen = true
+        }
     }
     else {
       isRoomOpen = true
@@ -947,7 +901,7 @@ function renderRoomShorcuts() {
     if (room.href.split('#').pop() !== window.location.hash.split('#').pop()) {
       const clone = room.cloneNode(true)
       clone.classList.remove('room-tile', 'room-tile--main')
-      if(clone.querySelector('img, svg, #performance_preview'))
+      if (clone.querySelector('img, svg, #performance_preview'))
         clone.querySelectorAll('img, svg, #performance_preview').forEach(elem => elem.remove())
       clone.classList.add('room-shortcut')
       frag.append(clone)
@@ -964,19 +918,19 @@ const heroTitleObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       getRef('room_title').animate(slideOutDown, animeInOptions)
-      .onfinish = () => {
-        getRef('room_title').classList.add('hide-completely')
-      }
+        .onfinish = () => {
+          getRef('room_title').classList.add('hide-completely')
+        }
     }
     else {
-        if (isRoomOpen)
-      getRef('room_title').classList.remove('hide-completely')
+      if (isRoomOpen)
+        getRef('room_title').classList.remove('hide-completely')
       getRef('room_title').animate(slideInUp, animeInOptions)
     }
   })
 },
   {
-  threshold: 1
+    threshold: 1
   }
 )
 
@@ -984,6 +938,6 @@ if (getRef('hero_title')) {
   heroTitleObserver.observe(getRef('hero_title'))
 }
 
-function getRandom(min, max){
+function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }

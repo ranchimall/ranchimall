@@ -24,25 +24,10 @@
             <div class="grid">
                 <h4 class="h4 phase__title"></h4>
                 <h5 class="h5 phase__date weight-500 color-0-8"></h5>
-                <p class="phase__description color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nihil doloremque, mollitia dolor minima et.</p>
+                <p class="phase__description color-0-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                    nihil doloremque, mollitia dolor minima et.</p>
             </div>
         </li>
-    </template>
-
-    <template id="ico_investor_row">
-        <div class="person-card grid">
-            <img class="person__image" src="" alt="" loading="lazy">
-            <div class="investor-card__overlay grid gap-1-5">
-                <div class="grid investor__bio-container">
-                    <h4 class="person__name capitalize"></h4>
-                    <p class="investor__bio color-0-8"></p>
-                </div>
-                <div class="grid investor__contribution-container">
-                    <!-- <h4 class="label color-0-8 weight-500">Contribution</h4> -->
-                    <p class="investor__contribution"></p>
-                </div>
-            </div>
-        </div>
     </template>
 
     <section id="elevator_popup" class="grid hide-completely">
@@ -58,22 +43,24 @@
         </header>
         <ul id="floor_list" class="grid"></ul>
     </section>
-    <header id="main_header" class="grid align-center full-bleed">
+    <header id="main_header" class="full-bleed">
         <button id="elevator_button" class="button" onclick="showSiteMap()">
-            <svg class="icon button__icon--left" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L16.3301 10.5H7.66987L12 3Z"/><path d="M12 21L7.66987 13.5L16.3301 13.5L12 21Z"/></svg>
+            <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3L16.3301 10.5H7.66987L12 3Z" />
+                <path d="M12 21L7.66987 13.5L16.3301 13.5L12 21Z" />
+            </svg>
             <span class="button__label">
                 Elevator
             </span>
         </button>
         <a href="index.html" class="main-logo flex align-center page-link justify-self-center" data-target="home_page">
-            <svg id="main_header__logo" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.46,21.32C20,19.78,18.6,18.59,15.3,17a12.67,12.67,0,0,1-2.64-1.56,4.27,4.27,0,0,1-.79-1,2.6,2.6,0,0,1,0-1.41c.24-.68.49-1,2.43-2.85a7.18,7.18,0,0,0,2.09-2.92,4.25,4.25,0,0,0,0-1.77,6.52,6.52,0,0,0-2.85-3.11c-.56-.36-.81-.4-.81-.15a2.33,2.33,0,0,1-.18.45L12.4,3l-.53-.36c-.28-.21-.64-.41-.77-.49s-.46-.11-.46,0a6.21,6.21,0,0,1-.37.83s-.08,0-.17-.08c-1.15-.83-1.64-1-1.64-.73A7.33,7.33,0,0,1,7.7,3.65C6.48,5.68,5.24,6.7,4,6.7c-.56,0-.54,0-.37.64s.2.58.68.43a3.37,3.37,0,0,0,1.09-.54.86.86,0,0,1,.3-.17,1.34,1.34,0,0,1,.13.39.79.79,0,0,0,.17.4A3.5,3.5,0,0,0,7.37,7.3L7.8,7l.09.34c.12.45.19.51.62.39a4.25,4.25,0,0,0,2.17-1.54l.38-.45,0,.39A5.92,5.92,0,0,1,8.89,9.54L7.67,10.71c-2,1.93-1.89,3.51.37,5a27.41,27.41,0,0,0,2.89,1.51c.17.07.62.32,1,.54C14,19,15,20.23,15,21.48a2,2,0,0,0,0,.49h0c0,.05,0,.05.56-.1a1.89,1.89,0,0,0,.53-.21,2.41,2.41,0,0,0-.34-1.15,7.05,7.05,0,0,0-1.68-1.77,21.91,21.91,0,0,0-3.2-1.83A9.53,9.53,0,0,1,8.16,15.2a2.18,2.18,0,0,1-.74-1.55C7.42,12.79,7.86,12,9,11c1.77-1.64,2.45-2.45,2.92-3.55a2.28,2.28,0,0,0,.26-1.26A2,2,0,0,0,12,5.06l-.2-.45L12,4.3l.28-.49.09-.18L12.6,4a3.69,3.69,0,0,1,.61,1.76A3.47,3.47,0,0,1,12.94,7l-.09.25s-.21.37-.41.69A17.78,17.78,0,0,1,9.91,10.6c-1.07,1-1.43,1.62-1.47,2.47a2.05,2.05,0,0,0,.7,1.73,10.47,10.47,0,0,0,3.28,2.08c2.28,1.13,3.26,1.81,4,2.73a2.94,2.94,0,0,1,.74,1.75,1.26,1.26,0,0,0,.09.57.48.48,0,0,0,.26,0l.51-.13.29-.08,0-.28c-.13-1-1-2-2.47-3a25.52,25.52,0,0,0-3.26-1.77,8.59,8.59,0,0,1-2.23-1.43,2.09,2.09,0,0,1-.5-2.62c.26-.53.5-.83,2.35-2.6,1.51-1.45,2.15-2.58,2.15-3.79A3.67,3.67,0,0,0,13,3.48a3,3,0,0,1-.4-.42A1.85,1.85,0,0,1,13,2.33a6.74,6.74,0,0,1,1.83,1.73,2.62,2.62,0,0,1,.47,1.68,3,3,0,0,1-.55,1.84c-.45.78-.79,1.14-2.67,2.93a5.56,5.56,0,0,0-1.3,1.64,1.77,1.77,0,0,0-.21,1,1.76,1.76,0,0,0,.19.92,6.28,6.28,0,0,0,2.9,2.34,21.6,21.6,0,0,1,3.66,2c1.35,1,2,2,2,3a1.06,1.06,0,0,0,.05.47,2.83,2.83,0,0,0,1-.24C20.56,21.68,20.56,21.66,20.46,21.32ZM7.29,6.4h0a2.23,2.23,0,0,1-.9.28L6,6.72l.43-.53a15.22,15.22,0,0,0,1.89-3,3.52,3.52,0,0,1,.38-.67c.07-.08.49.2,1,.64l.39.35L9.66,4A6.7,6.7,0,0,1,7.29,6.4Zm3.58-1.11A5.8,5.8,0,0,1,9.25,6.51h0a3.3,3.3,0,0,1-.74.17l-.35,0,.39-.49a15.64,15.64,0,0,0,1.32-2,4.63,4.63,0,0,1,.28-.49c.06-.08.33.26.57.77l.28.57Zm1-1.4a1.63,1.63,0,0,1-.28.4A6.63,6.63,0,0,1,11,3.72l-.53-.56.12-.29c.2-.49.24-.51.64-.19a5.57,5.57,0,0,1,.85.78A2.78,2.78,0,0,1,11.87,3.89Z"/></svg>
+            <svg id="main_header__logo" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M20.46,21.32C20,19.78,18.6,18.59,15.3,17a12.67,12.67,0,0,1-2.64-1.56,4.27,4.27,0,0,1-.79-1,2.6,2.6,0,0,1,0-1.41c.24-.68.49-1,2.43-2.85a7.18,7.18,0,0,0,2.09-2.92,4.25,4.25,0,0,0,0-1.77,6.52,6.52,0,0,0-2.85-3.11c-.56-.36-.81-.4-.81-.15a2.33,2.33,0,0,1-.18.45L12.4,3l-.53-.36c-.28-.21-.64-.41-.77-.49s-.46-.11-.46,0a6.21,6.21,0,0,1-.37.83s-.08,0-.17-.08c-1.15-.83-1.64-1-1.64-.73A7.33,7.33,0,0,1,7.7,3.65C6.48,5.68,5.24,6.7,4,6.7c-.56,0-.54,0-.37.64s.2.58.68.43a3.37,3.37,0,0,0,1.09-.54.86.86,0,0,1,.3-.17,1.34,1.34,0,0,1,.13.39.79.79,0,0,0,.17.4A3.5,3.5,0,0,0,7.37,7.3L7.8,7l.09.34c.12.45.19.51.62.39a4.25,4.25,0,0,0,2.17-1.54l.38-.45,0,.39A5.92,5.92,0,0,1,8.89,9.54L7.67,10.71c-2,1.93-1.89,3.51.37,5a27.41,27.41,0,0,0,2.89,1.51c.17.07.62.32,1,.54C14,19,15,20.23,15,21.48a2,2,0,0,0,0,.49h0c0,.05,0,.05.56-.1a1.89,1.89,0,0,0,.53-.21,2.41,2.41,0,0,0-.34-1.15,7.05,7.05,0,0,0-1.68-1.77,21.91,21.91,0,0,0-3.2-1.83A9.53,9.53,0,0,1,8.16,15.2a2.18,2.18,0,0,1-.74-1.55C7.42,12.79,7.86,12,9,11c1.77-1.64,2.45-2.45,2.92-3.55a2.28,2.28,0,0,0,.26-1.26A2,2,0,0,0,12,5.06l-.2-.45L12,4.3l.28-.49.09-.18L12.6,4a3.69,3.69,0,0,1,.61,1.76A3.47,3.47,0,0,1,12.94,7l-.09.25s-.21.37-.41.69A17.78,17.78,0,0,1,9.91,10.6c-1.07,1-1.43,1.62-1.47,2.47a2.05,2.05,0,0,0,.7,1.73,10.47,10.47,0,0,0,3.28,2.08c2.28,1.13,3.26,1.81,4,2.73a2.94,2.94,0,0,1,.74,1.75,1.26,1.26,0,0,0,.09.57.48.48,0,0,0,.26,0l.51-.13.29-.08,0-.28c-.13-1-1-2-2.47-3a25.52,25.52,0,0,0-3.26-1.77,8.59,8.59,0,0,1-2.23-1.43,2.09,2.09,0,0,1-.5-2.62c.26-.53.5-.83,2.35-2.6,1.51-1.45,2.15-2.58,2.15-3.79A3.67,3.67,0,0,0,13,3.48a3,3,0,0,1-.4-.42A1.85,1.85,0,0,1,13,2.33a6.74,6.74,0,0,1,1.83,1.73,2.62,2.62,0,0,1,.47,1.68,3,3,0,0,1-.55,1.84c-.45.78-.79,1.14-2.67,2.93a5.56,5.56,0,0,0-1.3,1.64,1.77,1.77,0,0,0-.21,1,1.76,1.76,0,0,0,.19.92,6.28,6.28,0,0,0,2.9,2.34,21.6,21.6,0,0,1,3.66,2c1.35,1,2,2,2,3a1.06,1.06,0,0,0,.05.47,2.83,2.83,0,0,0,1-.24C20.56,21.68,20.56,21.66,20.46,21.32ZM7.29,6.4h0a2.23,2.23,0,0,1-.9.28L6,6.72l.43-.53a15.22,15.22,0,0,0,1.89-3,3.52,3.52,0,0,1,.38-.67c.07-.08.49.2,1,.64l.39.35L9.66,4A6.7,6.7,0,0,1,7.29,6.4Zm3.58-1.11A5.8,5.8,0,0,1,9.25,6.51h0a3.3,3.3,0,0,1-.74.17l-.35,0,.39-.49a15.64,15.64,0,0,0,1.32-2,4.63,4.63,0,0,1,.28-.49c.06-.08.33.26.57.77l.28.57Zm1-1.4a1.63,1.63,0,0,1-.28.4A6.63,6.63,0,0,1,11,3.72l-.53-.56.12-.29c.2-.49.24-.51.64-.19a5.57,5.57,0,0,1,.85.78A2.78,2.78,0,0,1,11.87,3.89Z" />
+            </svg>
             <h4 class="h4 header__company-name">RanchiMall</h4>
         </a>
-        <label class="theme-switcher" title="Change theme">
-            <input id="theme_switcher" class="theme-switcher__checkbox" type="checkbox">
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M10 6a8 8 0 0 0 11.955 6.956C21.474 18.03 17.2 22 12 22 6.477 22 2 17.523 2 12c0-5.2 3.97-9.474 9.044-9.955A7.963 7.963 0 0 0 10 6zm-6 6a8 8 0 0 0 8 8 8.006 8.006 0 0 0 6.957-4.045c-.316.03-.636.045-.957.045-5.523 0-10-4.477-10-10 0-.321.015-.64.045-.957A8.006 8.006 0 0 0 4 12zm14.164-9.709L19 2.5v1l-.836.209a2 2 0 0 0-1.455 1.455L16.5 6h-1l-.209-.836a2 2 0 0 0-1.455-1.455L13 3.5v-1l.836-.209A2 2 0 0 0 15.29.836L15.5 0h1l.209.836a2 2 0 0 0 1.455 1.455zm5 5L24 7.5v1l-.836.209a2 2 0 0 0-1.455 1.455L21.5 11h-1l-.209-.836a2 2 0 0 0-1.455-1.455L18 8.5v-1l.836-.209a2 2 0 0 0 1.455-1.455L20.5 5h1l.209.836a2 2 0 0 0 1.455 1.455z"/></svg>
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-        </label>
+        <theme-toggle></theme-toggle>
     </header>
     <div id="outlet_switcher" class="grid gap-1-5 hide-completely">
         <span id="outlet_switcher__floor_num" class="weight-500 color-0-8"></span>
@@ -93,7 +80,10 @@
             <button class="outlet-label">
                 <span class="outlet-label__name">Outlet</span>
                 <span class="outlet-label__no"></span>
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/></svg>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" />
+                </svg>
             </button>
         </section>
         <section class="rooms-layout">
@@ -101,7 +91,21 @@
             <a class="room-tile room-tile--main" href="#investor_room">
                 <div class="tile-content">
                     <div class="grid flow-column gap-1 justify-start align-center">
-                        <svg class="room-tile__icon investors-icon" id="f4f25b2f-c031-4b25-9376-2f5094dcb7eb" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M14,14.23h0a4.36,4.36,0,0,1,4.36,4.12,19.55,19.55,0,0,1-1.12,6.43,8.16,8.16,0,0,1-3.55,2.42,8.16,8.16,0,0,1-3.52-2.42A19.5,19.5,0,0,1,9,18.24,4.31,4.31,0,0,1,10,15.42a4.86,4.86,0,0,1,3.61-1.19H14m0-2h-.32C6.69,12.23,7,18.3,7,18.3A21.51,21.51,0,0,0,8.3,25.62c.61,1.23,3.7,3.58,5.33,3.58h0c1.63,0,4.71-2.35,5.33-3.58a21.51,21.51,0,0,0,1.3-7.32h0A6.38,6.38,0,0,0,14,12.23Z"/><path d="M50.71,14.23h0a4.36,4.36,0,0,1,4.36,4.11,19.62,19.62,0,0,1-1.18,6.44A8.19,8.19,0,0,1,50.4,27.2a8.25,8.25,0,0,1-3.53-2.42,20,20,0,0,1-1.17-6.5v-.06a4.35,4.35,0,0,1,1-2.78,4.87,4.87,0,0,1,3.64-1.21h.32m0-2h-.32c-7,0-6.69,6.07-6.69,6.07a22.05,22.05,0,0,0,1.35,7.32c.62,1.23,3.7,3.58,5.34,3.58s4.72-2.35,5.33-3.58a21.76,21.76,0,0,0,1.35-7.32v0a6.36,6.36,0,0,0-6.35-6.05Z"/><path d="M32,11.9a6.51,6.51,0,0,1,7,6.25,27.22,27.22,0,0,1-1.66,9c-.67,1.19-4.1,3.65-5.36,3.65h-.19a11.61,11.61,0,0,1-5.15-3.62A27.19,27.19,0,0,1,25,18.1V18a6.62,6.62,0,0,1,1.64-4.32A7.18,7.18,0,0,1,32,11.9m0-2c-9.35,0-9,8.2-9,8.2A29.19,29.19,0,0,0,24.81,28c.83,1.66,5,4.82,7.2,4.82l0,0c2.2,0,6.37-3.16,7.19-4.82A29.05,29.05,0,0,0,41,18.11s-.32-8.2-9-8.2Z"/><path d="M37.72,36.28c2,2,4.82,3.18,7.58,4.31l2,.82a14.53,14.53,0,0,1,1.1,6.47A31.12,31.12,0,0,1,32.78,52.1H31.24a31.13,31.13,0,0,1-15.62-4.23,14.49,14.49,0,0,1,1.1-6.46l1.94-.82c2.77-1.13,5.6-2.3,7.58-4.3a14,14,0,0,0,5.2,2.65A1.81,1.81,0,0,0,32,39a2.22,2.22,0,0,0,.51-.06,14,14,0,0,0,5.25-2.67m.23-3A11.93,11.93,0,0,1,32,37,12,12,0,0,1,26,33.28c-1.77,3.32-6.18,4.57-10.34,6.4-1.69.71-3.1,9.88-1.12,9.88a33.06,33.06,0,0,0,16.69,4.53h1.54a33,33,0,0,0,16.64-4.52c2,0,.58-9.18-1.13-9.89-4.16-1.83-8.57-3.08-10.34-6.4Z"/><path d="M17.82,32.42a10,10,0,0,0,1.53,1.12c-1,.49-2.06.92-3,1.28l-.05,0,0,0c-.5.23-1,.44-1.5.65l-.74.32c-2.5,1-3.65,4.22-4.17,6.86A22.54,22.54,0,0,1,2,40a11,11,0,0,1,.7-4.06L4,35.4a18.53,18.53,0,0,0,5.43-3,10.89,10.89,0,0,0,3.67,1.78l.51.13.52-.13a10.87,10.87,0,0,0,3.7-1.79m.19-2.9a8.77,8.77,0,0,1-4.4,2.75,8.73,8.73,0,0,1-4.4-2.75C7.9,32,4.63,32.89,1.55,34.25c-1.26.52-2.3,7.31-.84,7.31a24.5,24.5,0,0,0,10.86,3.31c.34-3,1.31-6.38,3.27-7.2.75-.33,1.53-.65,2.29-1,2.49-1,4.85-2,6.22-3.44-2.27-.9-4.34-1.87-5.34-3.71Z"/><path d="M54.58,32.43a18.28,18.28,0,0,0,5.43,3l1.29.53a11.32,11.32,0,0,1,.7,4.12,22.58,22.58,0,0,1-7.85,2.68C53.67,40.28,52.56,37,50,35.9c-.8-.4-1.62-.74-2.35-1-1-.43-2-.85-3-1.31a9.45,9.45,0,0,0,1.53-1.13,10.93,10.93,0,0,0,3.66,1.78l.52.13.52-.13a11,11,0,0,0,3.67-1.78m.21-2.91a8.77,8.77,0,0,1-4.4,2.75A8.77,8.77,0,0,1,46,29.52c-1,1.84-3,2.81-5.32,3.75,1.37,1.43,3.73,2.41,6.22,3.44.76.31,1.54.63,2.26,1,2,.83,3,4.25,3.29,7.21A24.5,24.5,0,0,0,63.3,41.61c1.44,0,.4-6.84-.86-7.36-3.08-1.36-6.34-2.27-7.65-4.73Z"/></svg>
+                        <svg class="room-tile__icon investors-icon" id="f4f25b2f-c031-4b25-9376-2f5094dcb7eb"
+                            data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                            <path
+                                d="M14,14.23h0a4.36,4.36,0,0,1,4.36,4.12,19.55,19.55,0,0,1-1.12,6.43,8.16,8.16,0,0,1-3.55,2.42,8.16,8.16,0,0,1-3.52-2.42A19.5,19.5,0,0,1,9,18.24,4.31,4.31,0,0,1,10,15.42a4.86,4.86,0,0,1,3.61-1.19H14m0-2h-.32C6.69,12.23,7,18.3,7,18.3A21.51,21.51,0,0,0,8.3,25.62c.61,1.23,3.7,3.58,5.33,3.58h0c1.63,0,4.71-2.35,5.33-3.58a21.51,21.51,0,0,0,1.3-7.32h0A6.38,6.38,0,0,0,14,12.23Z" />
+                            <path
+                                d="M50.71,14.23h0a4.36,4.36,0,0,1,4.36,4.11,19.62,19.62,0,0,1-1.18,6.44A8.19,8.19,0,0,1,50.4,27.2a8.25,8.25,0,0,1-3.53-2.42,20,20,0,0,1-1.17-6.5v-.06a4.35,4.35,0,0,1,1-2.78,4.87,4.87,0,0,1,3.64-1.21h.32m0-2h-.32c-7,0-6.69,6.07-6.69,6.07a22.05,22.05,0,0,0,1.35,7.32c.62,1.23,3.7,3.58,5.34,3.58s4.72-2.35,5.33-3.58a21.76,21.76,0,0,0,1.35-7.32v0a6.36,6.36,0,0,0-6.35-6.05Z" />
+                            <path
+                                d="M32,11.9a6.51,6.51,0,0,1,7,6.25,27.22,27.22,0,0,1-1.66,9c-.67,1.19-4.1,3.65-5.36,3.65h-.19a11.61,11.61,0,0,1-5.15-3.62A27.19,27.19,0,0,1,25,18.1V18a6.62,6.62,0,0,1,1.64-4.32A7.18,7.18,0,0,1,32,11.9m0-2c-9.35,0-9,8.2-9,8.2A29.19,29.19,0,0,0,24.81,28c.83,1.66,5,4.82,7.2,4.82l0,0c2.2,0,6.37-3.16,7.19-4.82A29.05,29.05,0,0,0,41,18.11s-.32-8.2-9-8.2Z" />
+                            <path
+                                d="M37.72,36.28c2,2,4.82,3.18,7.58,4.31l2,.82a14.53,14.53,0,0,1,1.1,6.47A31.12,31.12,0,0,1,32.78,52.1H31.24a31.13,31.13,0,0,1-15.62-4.23,14.49,14.49,0,0,1,1.1-6.46l1.94-.82c2.77-1.13,5.6-2.3,7.58-4.3a14,14,0,0,0,5.2,2.65A1.81,1.81,0,0,0,32,39a2.22,2.22,0,0,0,.51-.06,14,14,0,0,0,5.25-2.67m.23-3A11.93,11.93,0,0,1,32,37,12,12,0,0,1,26,33.28c-1.77,3.32-6.18,4.57-10.34,6.4-1.69.71-3.1,9.88-1.12,9.88a33.06,33.06,0,0,0,16.69,4.53h1.54a33,33,0,0,0,16.64-4.52c2,0,.58-9.18-1.13-9.89-4.16-1.83-8.57-3.08-10.34-6.4Z" />
+                            <path
+                                d="M17.82,32.42a10,10,0,0,0,1.53,1.12c-1,.49-2.06.92-3,1.28l-.05,0,0,0c-.5.23-1,.44-1.5.65l-.74.32c-2.5,1-3.65,4.22-4.17,6.86A22.54,22.54,0,0,1,2,40a11,11,0,0,1,.7-4.06L4,35.4a18.53,18.53,0,0,0,5.43-3,10.89,10.89,0,0,0,3.67,1.78l.51.13.52-.13a10.87,10.87,0,0,0,3.7-1.79m.19-2.9a8.77,8.77,0,0,1-4.4,2.75,8.73,8.73,0,0,1-4.4-2.75C7.9,32,4.63,32.89,1.55,34.25c-1.26.52-2.3,7.31-.84,7.31a24.5,24.5,0,0,0,10.86,3.31c.34-3,1.31-6.38,3.27-7.2.75-.33,1.53-.65,2.29-1,2.49-1,4.85-2,6.22-3.44-2.27-.9-4.34-1.87-5.34-3.71Z" />
+                            <path
+                                d="M54.58,32.43a18.28,18.28,0,0,0,5.43,3l1.29.53a11.32,11.32,0,0,1,.7,4.12,22.58,22.58,0,0,1-7.85,2.68C53.67,40.28,52.56,37,50,35.9c-.8-.4-1.62-.74-2.35-1-1-.43-2-.85-3-1.31a9.45,9.45,0,0,0,1.53-1.13,10.93,10.93,0,0,0,3.66,1.78l.52.13.52-.13a11,11,0,0,0,3.67-1.78m.21-2.91a8.77,8.77,0,0,1-4.4,2.75A8.77,8.77,0,0,1,46,29.52c-1,1.84-3,2.81-5.32,3.75,1.37,1.43,3.73,2.41,6.22,3.44.76.31,1.54.63,2.26,1,2,.83,3,4.25,3.29,7.21A24.5,24.5,0,0,0,63.3,41.61c1.44,0,.4-6.84-.86-7.36-3.08-1.36-6.34-2.27-7.65-4.73Z" />
+                        </svg>
                         <h4 class="room-tile__title">Investors</h4>
                     </div>
                 </div>
@@ -109,7 +113,11 @@
             <a class="room-tile" href="#product_room">
                 <div class="tile-content">
                     <div class="grid flow-column gap-1 justify-start align-center">
-                        <svg class="room-tile__icon" id="b76bf456-6b89-4220-8b44-f4f7d833bad6" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M61.28,22.11c0-.05,0-.09,0-.14L58.62,6A1.68,1.68,0,0,0,57,4.6H7A1.68,1.68,0,0,0,5.38,6L2.72,22c0,.05,0,.09,0,.14s0,.09,0,.14V57.72A1.68,1.68,0,0,0,4.38,59.4H59.62a1.68,1.68,0,0,0,1.68-1.68V22.25C61.3,22.2,61.28,22.16,61.28,22.11Zm-3.64-1.54H39.34L38.51,8h17ZM27.92,23.93h8.16v6.64L33,28.41a1.7,1.7,0,0,0-1.9,0l-3.13,2.16ZM35.15,8,36,20.57H28L28.91,8ZM8.46,8H25.55l-.88,12.61H6.36ZM57.94,56H6.06V23.93h18.5v9.84a1.67,1.67,0,0,0,2.63,1.38L32,31.84l4.81,3.31a1.65,1.65,0,0,0,.95.3,1.76,1.76,0,0,0,.78-.19,1.68,1.68,0,0,0,.9-1.49V23.93h18.5Z"/></svg>
+                        <svg class="room-tile__icon" id="b76bf456-6b89-4220-8b44-f4f7d833bad6" data-name="Layer 1"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                            <path
+                                d="M61.28,22.11c0-.05,0-.09,0-.14L58.62,6A1.68,1.68,0,0,0,57,4.6H7A1.68,1.68,0,0,0,5.38,6L2.72,22c0,.05,0,.09,0,.14s0,.09,0,.14V57.72A1.68,1.68,0,0,0,4.38,59.4H59.62a1.68,1.68,0,0,0,1.68-1.68V22.25C61.3,22.2,61.28,22.16,61.28,22.11Zm-3.64-1.54H39.34L38.51,8h17ZM27.92,23.93h8.16v6.64L33,28.41a1.7,1.7,0,0,0-1.9,0l-3.13,2.16ZM35.15,8,36,20.57H28L28.91,8ZM8.46,8H25.55l-.88,12.61H6.36ZM57.94,56H6.06V23.93h18.5v9.84a1.67,1.67,0,0,0,2.63,1.38L32,31.84l4.81,3.31a1.65,1.65,0,0,0,.95.3,1.76,1.76,0,0,0,.78-.19,1.68,1.68,0,0,0,.9-1.49V23.93h18.5Z" />
+                        </svg>
                         <h4 class="room-tile__title">Product</h4>
                     </div>
 
@@ -118,7 +126,15 @@
             <a class="room-tile" href="#purchase_room">
                 <div class="tile-content">
                     <div class="grid flow-column gap-1 justify-start align-center">
-                        <svg class="room-tile__icon" id="bb329e59-3d30-49a7-ac0d-b164d3b3b631" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M42.74,64a14,14,0,1,1,14-14A14,14,0,0,1,42.74,64Zm0-24.73A10.7,10.7,0,1,0,53.44,50,10.71,10.71,0,0,0,42.74,39.27Z"/><path d="M28.7,50H14.08a3.43,3.43,0,0,1-3.42-3.58l1.4-31.51h4.85V17.8a1.71,1.71,0,1,0,3.42,0V14.88H33V17.8a1.71,1.71,0,1,0,3.42,0V14.88h4.84L42.2,36c.18,0,.35,0,.54,0a13.92,13.92,0,0,1,2.9.31l-1.1-24.8H36.42V9.76a9.76,9.76,0,1,0-19.51,0v1.69H8.79L7.24,46.24a6.85,6.85,0,0,0,6.84,7.15H29.14A14.24,14.24,0,0,1,28.7,50ZM20.33,9.76A6.34,6.34,0,1,1,33,9.76v1.69H20.33Z"/><path d="M41.23,54.65a1.69,1.69,0,0,1-1.18-.49l-3-3a1.67,1.67,0,0,1,2.35-2.36l1.84,1.84,4.85-4.85a1.66,1.66,0,0,1,2.35,2.35l-6,6A1.67,1.67,0,0,1,41.23,54.65Z"/></svg>
+                        <svg class="room-tile__icon" id="bb329e59-3d30-49a7-ac0d-b164d3b3b631" data-name="Layer 1"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                            <path
+                                d="M42.74,64a14,14,0,1,1,14-14A14,14,0,0,1,42.74,64Zm0-24.73A10.7,10.7,0,1,0,53.44,50,10.71,10.71,0,0,0,42.74,39.27Z" />
+                            <path
+                                d="M28.7,50H14.08a3.43,3.43,0,0,1-3.42-3.58l1.4-31.51h4.85V17.8a1.71,1.71,0,1,0,3.42,0V14.88H33V17.8a1.71,1.71,0,1,0,3.42,0V14.88h4.84L42.2,36c.18,0,.35,0,.54,0a13.92,13.92,0,0,1,2.9.31l-1.1-24.8H36.42V9.76a9.76,9.76,0,1,0-19.51,0v1.69H8.79L7.24,46.24a6.85,6.85,0,0,0,6.84,7.15H29.14A14.24,14.24,0,0,1,28.7,50ZM20.33,9.76A6.34,6.34,0,1,1,33,9.76v1.69H20.33Z" />
+                            <path
+                                d="M41.23,54.65a1.69,1.69,0,0,1-1.18-.49l-3-3a1.67,1.67,0,0,1,2.35-2.36l1.84,1.84,4.85-4.85a1.66,1.66,0,0,1,2.35,2.35l-6,6A1.67,1.67,0,0,1,41.23,54.65Z" />
+                        </svg>
                         <h4 class="room-tile__title">Buy</h4>
                     </div>
 
@@ -128,7 +144,10 @@
         <section class="room-container hide-completely page-layout">
             <header class="room-container__header">
                 <button class="grid flow-column gap-1 align-center" onclick="hideRoom()">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/></svg>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="none" d="M0 0h24v24H0z" />
+                        <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" />
+                    </svg>
                     <h3 id="room_title" class="hide-completely"></h3>
                 </button>
             </header>
@@ -139,8 +158,10 @@
                 </section>
                 <section id="product_room" class="grid room">
                     <p class="margin-bottom-3r">
-                        Please refer to the whitepaper <a href="https://www.ranchimall.net/ICO/" target="_blank">here</a> for detailed terms.
-                        RanchiMall Initial Coin Offering (ICO) abides by the terms we offered in our ICO whitepaper available
+                        Please refer to the whitepaper <a href="https://www.ranchimall.net/ICO/"
+                            target="_blank">here</a> for detailed terms.
+                        RanchiMall Initial Coin Offering (ICO) abides by the terms we offered in our ICO whitepaper
+                        available
                         at link above. We have made certain changes in our terms as our learning has improved. All
                         these changes are to support the interests of our long term investors.
                     </p>
@@ -148,7 +169,8 @@
                     <ol type="1">
                         <li>
                             <p>
-                                RanchiMall Tokens (RMT) now own the financial gains emerging from all our blockchain contracts
+                                RanchiMall Tokens (RMT) now own the financial gains emerging from all our blockchain
+                                contracts
                             </p>
                         </li>
                         <li>
@@ -164,14 +186,16 @@
                         <li>
                             <p>
                                 Number of RMTs tokens in circulation has been paused to
-                                10000 instead of a release schedule of 21 million in 3 years. The un-issued tokens will stay vested
+                                10000 instead of a release schedule of 21 million in 3 years. The un-issued tokens will
+                                stay vested
                                 with the Founder of RanchiMall.
                             </p>
                         </li>
                         <li>
                             <p>
                                 The price discovery during active phase has been USD 1500 per
-                                token giving RMTs in circulation a valuation of 150 million USD. Unless this price is realised in open
+                                token giving RMTs in circulation a valuation of 150 million USD. Unless this price is
+                                realised in open
                                 makets on sustainable basis, new tokens will not be put in circulation.
                             </p>
                         </li>
@@ -180,8 +204,10 @@
                 <section id="purchase_room" class="grid room">
                     <p>
                         Currently we are not selling any RanchiMall Tokens (RMT). <br> You can buy tokens at
-                        our last valuation in <a href="https://www.ranchimall.net/exchange/" target="_blank">our exchange</a> to become a
-                        token holder and be part of our community’s learning process. Our products are aimed at long term investors. 
+                        our last valuation in <a href="https://www.ranchimall.net/exchange/" target="_blank">our
+                            exchange</a> to become a
+                        token holder and be part of our community’s learning process. Our products are aimed at long
+                        term investors.
                         <br> Once you become a token holder, please be patient and be prepared to stay the
                         whole course of journey. You will not regret it.
                     </p>
@@ -193,8 +219,9 @@
             </footer>
         </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <script src="assets/js/components.js"></script>
+    <script src="https://unpkg.com/uhtml@3.0.1/es.js"></script>
     <script src="assets/js/index.js"></script>
     <script>
         const icoPhases = [
@@ -297,6 +324,12 @@ Social media`,
             },
             {
                 extension: 'jpg',
+                investorName: 'Puneet Sondh',
+                bio: 'Financial Services Professional, Double post-graduation in Finance from India and Netherlands, Believer in the power of Transformative Technology',
+                contribution: `Advice on strategic matters, Amplifying the voice on social media, Helps in the UAE region.`,
+            },
+            {
+                extension: 'jpg',
                 investorName: 'Rajeev Kumar Gupta',
                 bio: 'Curator cum Organizer, TEDx Kanke, and Former DGM-Corporate & Regulatory Affairs at JWS Steel ',
                 contribution: `Very passionate supporter and believer, team 
@@ -334,9 +367,15 @@ Social media`,
                 bio: 'Business Excellence Professional, Sr. Manager at Tata Consultancy Services',
                 contribution: `One of our superstars, and one of the most energetic supporters in every activity,One of our dream investors, Very active help in our projects.`,
             },
+            {
+                extension: 'jpg',
+                investorName: 'Vikash Saw',
+                bio: 'Taxation Head (India & Mauritius) with Times Innovative Media Limited (Times of India Group)',
+                contribution: `A Long-term believer, helps with ideas, supports in social media growth.`,
+            },
         ]
 
-        function renderAllIcoPhases(){
+        function renderAllIcoPhases() {
             getRef('ico_phase_list').innerHTML = ''
             const frag = document.createDocumentFragment()
             icoPhases.forEach(phase => {
@@ -346,15 +385,14 @@ Social media`,
         }
         // renderAllIcoPhases()
 
-        function renderAllIcoInvestors(){
-            const frag = document.createDocumentFragment()
-            getRef('ico_investors').innerHTML = ''
-            icoInvestors.forEach(investor => {
-                frag.append(render.icoInvestorRow(investor, {thumbnail: false}))
+        function renderAllIcoInvestors() {
+            const investors = icoInvestors.map(investor => {
+                return render.icoInvestorRow(investor, { thumbnail: false })
             })
-            getRef('ico_investors').append(frag)
+            renderElem(getRef('ico_investors'), html`${investors}`)
         }
         renderAllIcoInvestors()
     </script>
 </body>
+
 </html>
