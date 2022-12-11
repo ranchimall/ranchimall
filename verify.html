@@ -26,6 +26,16 @@
             --gap: 0;
             width: min(26rem, 100%);
         }
+
+        dt {
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        dd {
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 
@@ -76,6 +86,17 @@
                     <sm-input id="tx_id_input" type="search" placeholder="Transaction ID"></sm-input>
                     <button class="button button--primary" type="submit" onclick="checkId(event)">Check</button>
                 </sm-form>
+                <div class="grid gap-1 margin-top-1-5">
+                    <h4>Sample transaction IDs</h4>
+                    <dl>
+                        <dt>Internship certificate</dt>
+                        <dd class="breakable">Transaction ID:
+                            8a56f42b495a7df3757ce7a8ca271e29eed39f78f09392d1ec6e0de7ebcedef2</dd>
+                        <dt>Employment certificate</dt>
+                        <dd class="breakable">Transaction ID:
+                            f938cc7af934154a47a12bf10068587e8617a7753c61ee8347b2d550dfe68186</dd>
+                    </dl>
+                </div>
             </div>
         </section>
     </main>
@@ -108,6 +129,8 @@
                     case "CERTIFICATE OF PARTICIPATION":
                         certificateVerification = 'participationCertificate';
                         break;
+                    default:
+                        return notify('Certificate transaction ID is not valid', 'error')
                 }
                 window.open(`https://www.ranchimall.net/verify/?${certificateVerification}=${toVerify}`, '_blank').focus();
             }).catch(err => {

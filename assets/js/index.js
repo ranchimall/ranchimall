@@ -353,8 +353,8 @@ const siteMap = [
         brief: `This outlet has access to blockchain verification to all of RanchiMall issued Internship & Employment  certificates`,
         outletLinks: [
             {
-                label: "See Intern Payments",
-                url: "https://ranchimall.github.io/ribcpayments/",
+                label: "Certificate list",
+                url: "https://www.ranchimall.net/certify/",
                 outbound: true,
             },
             {
@@ -362,10 +362,10 @@ const siteMap = [
                 url: "verify.html",
             },
             {
-                label: "Check issued certificates",
-                url: "https://www.ranchimall.net/certify/",
+                label: "See Intern Payments",
+                url: "https://ranchimall.github.io/ribcpayments/",
                 outbound: true,
-          }
+            },
         ],
       }
     ],

@@ -16,7 +16,7 @@ body {
   --text-color-light: 100, 100, 100;
   --foreground-color: 255, 255, 255;
   --background-color: #f6f6f6;
-  --error-color: red;
+  --danger-color: red;
   --green: #007936;
   --banner-color: #1e88e5;
   --secondary-text-color: #034baa;
@@ -33,7 +33,7 @@ body[data-theme=dark] {
   --text-color-light: 170, 170, 170;
   --foreground-color: 20, 20, 20;
   --background-color: #0a0a0a;
-  --error-color: rgb(255, 106, 106);
+  --danger-color: rgb(255, 106, 106);
   --banner-color: #0166be;
   --secondary-text-color: #4393fc;
   --font-weight-factor: 0.9;
