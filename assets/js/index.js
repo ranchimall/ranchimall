@@ -373,7 +373,7 @@ const siteMap = [
 ];
 
 function formatAmount(amount, currency = 'USD') {
-  return amount.toLocaleString(currency === 'USD'? 'en-US': 'en-IN', { style: 'currency', currency: currency });
+  return amount.toLocaleString(currency === 'USD'? 'en-US': 'en-IN', { style: 'currency', currency });
 } 
 
 
@@ -404,7 +404,8 @@ const render = {
             </div>
         `;
     },
-    bobFundRow(obj) {
+  bobFundRow(obj) {
+      console.log(obj);
         const { invested, floId, currentValue, timeElapsed, gain } = obj;
         return html`
             <div class="bob-fund__row grid">
@@ -419,7 +420,7 @@ const render = {
                     </div>
                     <div class="grid justify-right text-align-right">
                         <h4 class="label color-0-8 weight-500">Current value</h4>
-                        <h3 class="value current-value" style="color: var(--green)">${formatAmount(currentValue)}</h3>
+                        <h3 class="value current-value" style="color: var(--green)">${formatAmount(currentValue, 'INR')}</h3>
                         <div class="flex align-center">
                             <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
                             <span class="percent-gain">${`${gain}%`}</span>
