@@ -343,7 +343,7 @@ const siteMap = [
         outletLinks: [
           {
             label: "Explore",
-            url: "https://ranchimall.github.io/RIBC/",
+            url: "https://ranchimall.github.io/ribc/",
             outbound: true,
           }
         ],
@@ -352,20 +352,20 @@ const siteMap = [
         name: `Certificates`,
         brief: `This outlet has access to blockchain verification to all of RanchiMall issued Internship & Employment  certificates`,
         outletLinks: [
-            {
-                label: "Certificate list",
-                url: "https://www.ranchimall.net/certify/",
-                outbound: true,
-            },
-            {
-                label: "Verify Certificate",
-                url: "verify.html",
-            },
-            {
-                label: "See Intern Payments",
-                url: "https://ranchimall.github.io/ribcpayments/",
-                outbound: true,
-            },
+          {
+            label: "Certificate list",
+            url: "https://www.ranchimall.net/certify/",
+            outbound: true,
+          },
+          {
+            label: "Verify Certificate",
+            url: "verify.html",
+          },
+          {
+            label: "See Intern Payments",
+            url: "https://ranchimall.github.io/ribcpayments/",
+            outbound: true,
+          },
         ],
       }
     ],
@@ -373,14 +373,14 @@ const siteMap = [
 ];
 
 function formatAmount(amount, currency = 'USD') {
-  return amount.toLocaleString(currency === 'USD'? 'en-US': 'en-IN', { style: 'currency', currency });
-} 
+  return amount.toLocaleString(currency === 'USD' ? 'en-US' : 'en-IN', { style: 'currency', currency });
+}
 
 
 const render = {
-    bitBondRow(obj) {
-        const { series, currentValue, timeElapsed, percentGain } = obj;
-        return html`
+  bitBondRow(obj) {
+    const { series, currentValue, timeElapsed, percentGain } = obj;
+    return html`
             <div class="bit-bond-series__row grid">
                 <div class="grid">
                     <h5 class="label color-0-8 weight-500">Series</h5>
@@ -396,18 +396,18 @@ const render = {
                         <h3 class="value current-value" style="color: var(--green)">${formatAmount(currentValue)}</h3>
                         <div class="flex align-center">
                             <svg class="icon up-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M13 7.828V20h-2V7.828l-5.364 5.364-1.414-1.414L12 4l7.778 7.778-1.414 1.414L13 7.828z"/></svg>
-                            <span class="percent-gain">${ `${percentGain}%`}</span>
+                            <span class="percent-gain">${`${percentGain}%`}</span>
                             <span class="time-elapsed">${`In last ${timeElapsed} years`}</span>
                         </div>
                     </div>
                 </div>
             </div>
         `;
-    },
+  },
   bobFundRow(obj) {
-      console.log(obj);
-        const { invested, floId, currentValue, timeElapsed, gain } = obj;
-        return html`
+    console.log(obj);
+    const { invested, floId, currentValue, timeElapsed, gain } = obj;
+    return html`
             <div class="bob-fund__row grid">
                 <div class="grid">
                     <h5 class="label color-0-8 weight-500">FLO ID</h5>
@@ -430,13 +430,13 @@ const render = {
                 </div>
             </div>
         `;
-    },
-    icoInvestorRow(obj, options) {
-        const { extension, investorName, bio, contribution } = obj;
-        const { thumbnail } = options;
-        const folder = thumbnail ? "investors-thumbnail" : "investors";
-        return html`
-        <div class=${`person-card investor-card grid gap-1-5 ${thumbnail? 'person-card--small': 'person-card--big'}`} >
+  },
+  icoInvestorRow(obj, options) {
+    const { extension, investorName, bio, contribution } = obj;
+    const { thumbnail } = options;
+    const folder = thumbnail ? "investors-thumbnail" : "investors";
+    return html`
+        <div class=${`person-card investor-card grid gap-1-5 ${thumbnail ? 'person-card--small' : 'person-card--big'}`} >
             <img class="person__image" src=${`assets/${folder}/${investorName}.${extension}`} alt=${`${investorName} profile picture`} loading="lazy">
             <div class="grid">
                 <h3 class="person__name value capitalize">${investorName}</h3>
@@ -448,19 +448,19 @@ const render = {
         </div>
     `;
   },
-//   internCard(obj) {
-//     const { extension, internName, level, floId, project } = obj;
-//     const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
-//     const investorImage = card.querySelector(".person__image");
-//     investorImage.src = `assets/interns/${internName}.${extension}`;
-//     investorImage.setAttribute("alt", `${internName} profile picture`);
-//     card.querySelector(".intern__level").classList.add(level.toLowerCase())
-//     card.querySelector(".intern__level").textContent = level;
-//     card.querySelector(".person__name").textContent = internName;
-//     card.querySelector(".intern-flo-id").textContent = floId;
-//     card.querySelector(".intern__project").textContent = project;
-//     return card;
-//   },
+  //   internCard(obj) {
+  //     const { extension, internName, level, floId, project } = obj;
+  //     const card = getRef("intern_card_template").content.cloneNode(true).firstElementChild;
+  //     const investorImage = card.querySelector(".person__image");
+  //     investorImage.src = `assets/interns/${internName}.${extension}`;
+  //     investorImage.setAttribute("alt", `${internName} profile picture`);
+  //     card.querySelector(".intern__level").classList.add(level.toLowerCase())
+  //     card.querySelector(".intern__level").textContent = level;
+  //     card.querySelector(".person__name").textContent = internName;
+  //     card.querySelector(".intern-flo-id").textContent = floId;
+  //     card.querySelector(".intern__project").textContent = project;
+  //     return card;
+  //   },
   floorLabel(floorNumber, offsetTop) {
     return html`
         <div class="floor-label interact" style=${`top: ${offsetTop}px`} data-target=${`floor_${floorNumber}`}>
@@ -509,8 +509,8 @@ const render = {
     button.textContent = name
     return button;
   },
-  statusBanner(bannerMsg) {    
-      return html.node`
+  statusBanner(bannerMsg) {
+    return html.node`
         <section class="banner">
             <p class="banner__text">${bannerMsg}</p>
             <button class="close-button" onclick="this.parentNode.remove()">
@@ -715,11 +715,11 @@ function hideOutletSwitcher() {
 
 let currentPage
 function renderSiteMap() {
-  getRef('floor_list').append(html.node`${siteMap.map((floor, index) =>render.floorListItem(floor, index))}`)
+  getRef('floor_list').append(html.node`${siteMap.map((floor, index) => render.floorListItem(floor, index))}`)
   const pathArray = location.pathname.split('/')
   siteMap.forEach((floor) => {
     const matchedOutlet = floor.outlets.find(outlet => pathArray[pathArray.length - 1].includes(outlet.outletLinks[0].url))
-    if (matchedOutlet) 
+    if (matchedOutlet)
       renderFloorOutlets(floor, matchedOutlet.outletLinks[0].url)
   })
 }
