@@ -369,7 +369,23 @@ const siteMap = [
         ],
       }
     ],
-  },
+  }, {
+    floor: 'El Salvador',
+    brief: ``,
+    outlets: [
+      {
+        name: 'Token Room',
+        brief: `Token Room offers tokenized room rentals in El Salvador's Bitcoin Beach, El Zonte. Buy room nights without specifying dates and receive tokens in return. As the tokens appreciate, you can get more room nights or even resell your nights to other buyers. Join the Bitcoin revolution with Token Room.`,
+        outletLinks: [
+          {
+            label: "Explore",
+            url: "https://ranchimall.github.io/reale/",
+            outbound: true,
+          }
+        ],
+      }
+    ]
+  }
 ];
 
 function formatAmount(amount, currency = 'USD') {
